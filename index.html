@@ -17,354 +17,122 @@
     --muted: #7a7669;
     --muted2: #a09c92;
     --accent: #c96442;
-    --ai: #c96442;
-    --ai-bg: #fdf1ec;
-    --ai-border: #f0c4b4;
-    --econ: #2d6a4f;
-    --econ-bg: #eef6f1;
-    --econ-border: #b8dcc8;
-    --gov: #3a5fa0;
-    --gov-bg: #eef2fa;
-    --gov-border: #b8ccee;
+    --ai: #c96442; --ai-bg: #fdf1ec; --ai-border: #f0c4b4;
+    --econ: #2d6a4f; --econ-bg: #eef6f1; --econ-border: #b8dcc8;
+    --gov: #3a5fa0; --gov-bg: #eef2fa; --gov-border: #b8ccee;
     --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
     --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    font-size: 15px;
-    line-height: 1.6;
-  }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.6; }
 
-  /* ── HEADER ── */
+  /* HEADER */
   .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+    position: sticky; top: 0; z-index: 100;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
   }
-  .header-left h1 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text);
-  }
-  .header-left p {
-    font-size: 0.75rem;
-    color: var(--muted);
-    margin-top: 2px;
-  }
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-  }
-  .updated-chip {
-    font-size: 0.72rem;
-    color: var(--muted);
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 3px 10px;
-    white-space: nowrap;
-  }
-  .btn-refresh {
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--surface);
-    background: var(--accent);
-    border: none;
-    border-radius: 6px;
-    padding: 6px 14px;
-    cursor: pointer;
-    transition: opacity .15s;
-  }
+  .header-left h1 { font-size: 1rem; font-weight: 600; }
+  .header-left p { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+  .header-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .updated-chip { font-size: 0.72rem; color: var(--muted); background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; white-space: nowrap; }
+  .btn-refresh { font-size: 0.78rem; font-weight: 500; color: #fff; background: var(--accent); border: none; border-radius: 6px; padding: 6px 14px; cursor: pointer; }
   .btn-refresh:hover { opacity: .85; }
 
-  /* ── TABS ── */
-  .tabs-bar {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    gap: 0;
-    padding: 0 24px;
-    overflow-x: auto;
-  }
+  /* TABS */
+  .tabs-bar { background: var(--surface); border-bottom: 1px solid var(--border); display: flex; padding: 0 24px; overflow-x: auto; }
   .tab-btn {
-    padding: 14px 18px 12px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--muted);
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: color .15s, border-color .15s;
-    display: flex;
-    align-items: center;
-    gap: 7px;
+    padding: 14px 18px 12px; font-size: 0.85rem; font-weight: 500; color: var(--muted);
+    background: none; border: none; border-bottom: 2px solid transparent;
+    cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 7px; transition: color .15s, border-color .15s;
   }
   .tab-btn:hover { color: var(--text); }
-  .tab-btn.active-ai  { color: var(--ai);   border-bottom-color: var(--ai); }
-  .tab-btn.active-econ{ color: var(--econ); border-bottom-color: var(--econ); }
-  .tab-btn.active-gov { color: var(--gov);  border-bottom-color: var(--gov); }
-  .tab-count {
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 1px 6px;
-    border-radius: 10px;
-    line-height: 1.5;
-  }
-  .tab-btn.active-ai  .tab-count { background: var(--ai-bg);   color: var(--ai); }
+  .tab-btn.active-ai   { color: var(--ai);   border-bottom-color: var(--ai); }
+  .tab-btn.active-econ { color: var(--econ); border-bottom-color: var(--econ); }
+  .tab-btn.active-gov  { color: var(--gov);  border-bottom-color: var(--gov); }
+  .tab-count { font-size: 0.7rem; font-weight: 600; padding: 1px 6px; border-radius: 10px; line-height: 1.5; background: var(--surface2); color: var(--muted); }
+  .tab-btn.active-ai   .tab-count { background: var(--ai-bg);   color: var(--ai); }
   .tab-btn.active-econ .tab-count { background: var(--econ-bg); color: var(--econ); }
   .tab-btn.active-gov  .tab-count { background: var(--gov-bg);  color: var(--gov); }
-  .tab-btn:not(.active-ai):not(.active-econ):not(.active-gov) .tab-count {
-    background: var(--surface2); color: var(--muted);
-  }
 
-  /* ── SECTIONS ── */
+  /* SECTIONS */
   .section { display: none; padding: 28px 24px 60px; max-width: 1200px; margin: 0 auto; }
   .section.visible { display: block; }
 
-  /* Section header */
-  .section-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
-  }
-  .section-title { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+  .section-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .section-title { font-size: 1.1rem; font-weight: 700; }
   .section-sources { font-size: 0.73rem; color: var(--muted); margin-top: 3px; }
-  .sort-select {
-    font-size: 0.78rem;
-    color: var(--text2);
-    border: 1px solid var(--border2);
-    border-radius: 6px;
-    padding: 5px 10px;
-    background: var(--surface);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
+  .sort-select { font-size: 0.78rem; color: var(--text2); border: 1px solid var(--border2); border-radius: 6px; padding: 5px 10px; background: var(--surface); cursor: pointer; flex-shrink: 0; }
 
-  /* ── FEATURED CARD ── */
-  .featured-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    box-shadow: var(--shadow-md);
-    margin-bottom: 28px;
-    display: flex;
-    overflow: hidden;
-  }
+  /* FEATURED */
+  .featured-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow-md); margin-bottom: 28px; display: flex; overflow: hidden; }
   .featured-accent { width: 5px; flex-shrink: 0; }
   .featured-body { padding: 24px 26px; flex: 1; }
-  .featured-badge {
-    display: inline-block;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-  }
-  .featured-headline {
-    font-size: 1.25rem;
-    font-weight: 700;
-    line-height: 1.35;
-    margin-bottom: 12px;
-    color: var(--text);
-  }
-  .featured-summary {
-    font-size: 0.88rem;
-    color: var(--text2);
-    line-height: 1.7;
-    margin-bottom: 16px;
-  }
-  .featured-meta {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
-  }
-  .source-chip {
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 4px;
-    background: var(--surface2);
-    color: var(--text2);
-    border: 1px solid var(--border);
-  }
-  .time-chip {
-    font-size: 0.71rem;
-    color: var(--muted);
-    padding: 3px 8px;
-    border-radius: 4px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-  }
-  .paywall-badge {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: .04em;
-    padding: 2px 6px;
-    border-radius: 4px;
-    background: #fef8e7;
-    color: #9a6b00;
-    border: 1px solid #f0d980;
-  }
-  .btn-read {
-    display: inline-block;
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 7px 16px;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: opacity .15s;
-  }
-  .btn-read:hover { opacity: .8; }
+  .featured-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-bottom: 10px; }
+  .featured-headline { font-size: 1.2rem; font-weight: 700; line-height: 1.35; margin-bottom: 12px; }
+  .featured-summary { font-size: 0.88rem; color: var(--text2); line-height: 1.7; margin-bottom: 16px; }
+  .featured-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
 
-  /* ── GRID ── */
-  .more-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: var(--muted2);
-    margin-bottom: 14px;
-  }
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-    gap: 16px;
-    margin-bottom: 36px;
-  }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 20px;
-    box-shadow: var(--shadow-sm);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    transition: box-shadow .15s;
-  }
+  .source-chip { font-size: 0.72rem; font-weight: 600; padding: 3px 8px; border-radius: 4px; background: var(--surface2); color: var(--text2); border: 1px solid var(--border); }
+  .time-chip { font-size: 0.71rem; color: var(--muted); padding: 3px 8px; border-radius: 4px; background: var(--surface2); border: 1px solid var(--border); }
+  .paywall-badge { font-size: 0.65rem; font-weight: 700; letter-spacing: .04em; padding: 2px 6px; border-radius: 4px; background: #fef8e7; color: #9a6b00; border: 1px solid #f0d980; }
+
+  .btn-read { display: inline-block; font-size: 0.8rem; font-weight: 600; padding: 7px 16px; border-radius: 6px; text-decoration: none; color: #fff; }
+  .btn-read:hover { opacity: .85; }
+
+  /* GRID */
+  .more-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted2); margin-bottom: 14px; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 16px; margin-bottom: 36px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 10px; transition: box-shadow .15s; }
   .card:hover { box-shadow: var(--shadow-md); }
   .card-tags { display: flex; gap: 5px; flex-wrap: wrap; }
-  .tag {
-    font-size: 0.62rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    padding: 2px 7px;
-    border-radius: 3px;
-  }
-  .card-headline {
-    font-size: 0.93rem;
-    font-weight: 600;
-    line-height: 1.4;
-    color: var(--text);
-  }
-  .card-summary {
-    font-size: 0.82rem;
-    color: var(--text2);
-    line-height: 1.65;
-    flex: 1;
-  }
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    flex-wrap: wrap;
-    padding-top: 6px;
-    border-top: 1px solid var(--border);
-  }
+  .tag { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 2px 7px; border-radius: 3px; }
+  .tag-secondary { background: var(--surface2); color: var(--muted); }
+  .card-headline { font-size: 0.93rem; font-weight: 600; line-height: 1.4; }
+  .card-summary { font-size: 0.82rem; color: var(--text2); line-height: 1.65; flex: 1; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; padding-top: 8px; border-top: 1px solid var(--border); }
   .card-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-  .read-link {
-    font-size: 0.78rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: opacity .15s;
-  }
+  .read-link { font-size: 0.78rem; font-weight: 600; text-decoration: none; }
   .read-link:hover { opacity: .7; }
 
-  /* ── HISTORY STRIP ── */
-  .history-strip {
-    border-top: 1px solid var(--border);
-    padding-top: 20px;
-  }
-  .history-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: var(--muted2);
-    margin-bottom: 12px;
-  }
+  /* HISTORY */
+  .history-strip { border-top: 1px solid var(--border); padding-top: 20px; }
+  .history-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted2); margin-bottom: 12px; }
   .history-items { display: flex; gap: 10px; flex-wrap: wrap; }
-  .history-item {
-    font-size: 0.78rem;
-    padding: 6px 12px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--muted);
-  }
-  .history-item.active {
-    font-weight: 600;
-    color: var(--text);
-    background: var(--surface2);
-    border-color: var(--border2);
-  }
+  .history-item { font-size: 0.78rem; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); }
+  .history-item.active { font-weight: 600; color: var(--text); background: var(--surface2); border-color: var(--border2); }
   .history-item.pending { color: var(--muted2); font-style: italic; }
 
-  /* AI bucket colours */
+  /* BUCKET THEMING */
   .ai .featured-accent { background: var(--ai); }
   .ai .featured-badge  { background: var(--ai-bg); color: var(--ai); }
-  .ai .btn-read        { background: var(--ai); color: #fff; }
-  .ai .tag-1           { background: var(--ai-bg); color: var(--ai); }
+  .ai .btn-read        { background: var(--ai); }
+  .ai .tag-primary     { background: var(--ai-bg); color: var(--ai); }
   .ai .read-link       { color: var(--ai); }
 
-  /* Econ bucket colours */
   .econ .featured-accent { background: var(--econ); }
   .econ .featured-badge  { background: var(--econ-bg); color: var(--econ); }
-  .econ .btn-read        { background: var(--econ); color: #fff; }
-  .econ .tag-1           { background: var(--econ-bg); color: var(--econ); }
+  .econ .btn-read        { background: var(--econ); }
+  .econ .tag-primary     { background: var(--econ-bg); color: var(--econ); }
   .econ .read-link       { color: var(--econ); }
 
-  /* Gov bucket colours */
   .gov .featured-accent { background: var(--gov); }
   .gov .featured-badge  { background: var(--gov-bg); color: var(--gov); }
-  .gov .btn-read        { background: var(--gov); color: #fff; }
-  .gov .tag-1           { background: var(--gov-bg); color: var(--gov); }
+  .gov .btn-read        { background: var(--gov); }
+  .gov .tag-primary     { background: var(--gov-bg); color: var(--gov); }
   .gov .read-link       { color: var(--gov); }
 
   @media(max-width:600px) {
     .site-header { flex-wrap: wrap; }
-    .section { padding: 20px 16px 48px; }
+    .section { padding: 18px 14px 48px; }
     .featured-body { padding: 18px 16px; }
-    .featured-headline { font-size: 1.05rem; }
+    .featured-headline { font-size: 1rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- ════ HEADER ════ -->
+<!-- HEADER -->
 <header class="site-header">
   <div class="header-left">
     <h1>Good morning, Anurag</h1>
@@ -376,295 +144,102 @@
   </div>
 </header>
 
-<!-- ════ TABS ════ -->
+<!-- TABS -->
 <nav class="tabs-bar">
-  <button id="tab-ai" class="tab-btn active-ai" onclick="showSection('ai', this)">
-    AI &amp; Education <span class="tab-count">8</span>
-  </button>
-  <button id="tab-econ" class="tab-btn" onclick="showSection('econ', this)">
-    Global Economy <span class="tab-count">7</span>
-  </button>
-  <button id="tab-gov" class="tab-btn" onclick="showSection('gov', this)">
-    Governance Reforms <span class="tab-count">4</span>
-  </button>
+  <button id="tab-ai"   class="tab-btn active-ai"  onclick="showSection('ai',this)">AI &amp; Education <span class="tab-count">7</span></button>
+  <button id="tab-econ" class="tab-btn"             onclick="showSection('econ',this)">Global Economy <span class="tab-count">6</span></button>
+  <button id="tab-gov"  class="tab-btn"             onclick="showSection('gov',this)">Governance Reforms <span class="tab-count">4</span></button>
 </nav>
 
-<!-- ════ SECTION: AI & EDUCATION ════ -->
+
+<!-- ══════════════════════════════════════
+     AI & EDUCATION
+═══════════════════════════════════════ -->
 <section id="section-ai" class="section ai visible">
   <div class="section-header">
     <div>
       <div class="section-title">AI &amp; Education</div>
-      <div class="section-sources">Sources: New York Times (The Daily), Al Jazeera, Axios, TechCrunch, CNN Business, MIT News, BusinessToday, CNBC</div>
+      <div class="section-sources">Sources: New York Times, Washington Post, Axios, TechCrunch, Al Jazeera, CNBC, MIT News</div>
     </div>
-    <select class="sort-select"><option>Sort: Latest first</option><option>Sort: Top Story first</option></select>
+    <select class="sort-select"><option>Sort: Latest first</option></select>
   </div>
 
-  <!-- Featured -->
+  <!-- TOP STORY -->
   <div class="featured-card ai">
     <div class="featured-accent"></div>
     <div class="featured-body">
       <span class="featured-badge">Top Story</span>
-      <h2 class="featured-headline">Anthropic vs. the Pentagon: Inside the Battle Over A.I. Warfare</h2>
-      <p class="featured-summary">The New York Times' "The Daily" devoted its March 11 episode to the escalating legal and political confrontation between Anthropic and the U.S. Department of Defense. NYT technology correspondent Sheera Frenkel details how the Pentagon designated Anthropic a supply-chain risk after the company refused to strip safety guardrails allowing Claude to be used for mass domestic surveillance and autonomous weapons targeting. On the same day, Microsoft, dozens of OpenAI and Google researchers, and retired military chiefs filed amicus briefs backing Anthropic in federal court — with a hearing set for March 24. Google, meanwhile, quietly expanded its own Pentagon AI contract to serve the DoD's 3-million-person workforce.</p>
+      <h2 class="featured-headline">Microsoft, Retired Military Chiefs and Rival AI Researchers Unite Behind Anthropic in Pentagon Court Fight</h2>
+      <p class="featured-summary">In a rare display of cross-industry solidarity, Microsoft filed an amicus brief on March 11 asking a federal court to halt the Pentagon's designation of Anthropic as a national security supply-chain risk. The brief — joined by 22 retired senior military commanders including former CIA director Michael Hayden — argues that the designation weaponises a procurement tool never before used against a domestic company over a policy disagreement. Separately, 37 researchers from OpenAI and Google DeepMind filed their own brief backing Anthropic. The dispute centres on Anthropic's refusal to allow Claude to be used for mass domestic surveillance or fully autonomous weapons targeting. A hearing is set for 24 March. The New York Times reported that Google is quietly expanding its own Pentagon AI contracts as the dispute sidelines its rivals.</p>
       <div class="featured-meta">
-        <span class="source-chip">New York Times — The Daily</span>
+        <span class="source-chip">New York Times</span>
         <span class="time-chip">11 March 2026</span>
         <span class="paywall-badge">Subscription</span>
       </div>
-      <a class="btn-read" href="https://podcasts.apple.com/us/podcast/anthropic-vs-the-pentagon-inside-the-battle-over-a-i-warfare/id1200361736?i=1000753983685" target="_blank">Read Article &rarr;</a>
+      <a class="btn-read" href="https://www.nytimes.com/2026/03/11/technology/microsoft-anthropic-pentagon-ai-lawsuit.html" target="_blank">Read Article &rarr;</a>
     </div>
   </div>
 
-  <!-- More Articles -->
   <p class="more-label">More Articles</p>
   <div class="card-grid">
 
     <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">AI Industry</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">AI Policy</span>
-      </div>
-      <h3 class="card-headline">U.S. Military Confirms Advanced AI Tools in Use in War Against Iran</h3>
-      <p class="card-summary">CENTCOM chief Admiral Brad Cooper confirmed the military is deploying a range of AI tools in the Iran conflict to help soldiers rapidly process battlefield data, while stressing that all final decisions remain with humans. The disclosure has intensified international calls for binding rules on military AI use.</p>
+      <div class="card-tags"><span class="tag tag-primary">AI Policy</span><span class="tag tag-secondary">AI Industry</span></div>
+      <h3 class="card-headline">OpenAI–Anthropic Pentagon Feud Hands Google a Quiet Windfall</h3>
+      <p class="card-summary">As Anthropic and OpenAI publicly spar over Defence Department conditions, Google is set to deploy AI agents to the Pentagon's 3-million-strong civilian and military workforce for unclassified tasks — positioning itself to capture contracts vacated by the dispute without any of the legal cost.</p>
       <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">Al Jazeera</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
-        <a class="read-link ai" href="https://www.aljazeera.com/news/2026/3/11/us-military-confirms-use-of-advanced-ai-tools-in-war-against-iran" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">AI Industry</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">AI Policy</span>
-      </div>
-      <h3 class="card-headline">OpenAI–Anthropic Feud Could Hand Google a Pentagon Windfall, Axios Reports</h3>
-      <p class="card-summary">As Anthropic sues the Pentagon and OpenAI employees publicly back the suit, Google is quietly expanding its DoD AI contracts — setting itself up to capture the Pentagon's 3-million-person workforce for AI agent work while its rivals remain locked in litigation. The dynamic may permanently reshape the federal AI market.</p>
-      <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">Axios</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
+        <div class="card-meta"><span class="source-chip">Axios</span><span class="time-chip">11 Mar 2026</span></div>
         <a class="read-link ai" href="https://www.axios.com/2026/03/11/openai-anthropic-pentagon-google" target="_blank">Read &rarr;</a>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">AI Research</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">AI Industry</span>
-      </div>
-      <h3 class="card-headline">Oracle Q3 Earnings Beat — Cloud Revenue Surges 44% on Record AI Backlog</h3>
-      <p class="card-summary">Oracle reported $17.2 billion in Q3 revenue, up 22% year on year, as cloud infrastructure jumped 84% driven by AI contracts. Its remaining performance obligations quadrupled to $553 billion and the company lifted its FY2027 revenue guidance to $90 billion, calming Wall Street concerns about the sustainability of the AI infrastructure buildout.</p>
+      <div class="card-tags"><span class="tag tag-primary">AI Industry</span><span class="tag tag-secondary">AI Research</span></div>
+      <h3 class="card-headline">Oracle Q3: Cloud Revenue Surges 84%, AI Backlog Quadruples to $553 Billion</h3>
+      <p class="card-summary">Oracle reported $17.2 billion in third-quarter revenue, up 22% year on year, with cloud infrastructure jumping 84% on record AI demand. Its remaining performance obligations quadrupled to $553 billion and the company raised its FY2027 revenue guidance to $90 billion — calming Wall Street fears about the AI infrastructure investment cycle.</p>
       <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">CNBC</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
+        <div class="card-meta"><span class="source-chip">CNBC</span><span class="time-chip">11 Mar 2026</span></div>
         <a class="read-link ai" href="https://www.cnbc.com/2026/03/11/oracle-orcl-stock-q3-earnings-ai-data-center.html" target="_blank">Read &rarr;</a>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">AI Industry</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">AI Research</span>
-      </div>
-      <h3 class="card-headline">Thinking Machines Secures Nvidia Vera Rubin Chip Deal and Major New Investment</h3>
-      <p class="card-summary">Mira Murati's startup Thinking Machines signed a multiyear Nvidia agreement that includes significant new capital and access to at least one gigawatt of next-generation Vera Rubin computing capacity. The deal gives the young company one of the largest compute runways in the industry as it builds enterprise AI systems.</p>
+      <div class="card-tags"><span class="tag tag-primary">AI Policy</span><span class="tag tag-secondary">AI Industry</span></div>
+      <h3 class="card-headline">U.S. Military Confirms AI Tools Deployed in Active War Against Iran</h3>
+      <p class="card-summary">CENTCOM chief Admiral Brad Cooper confirmed the military is using multiple AI systems in the Iran conflict to help soldiers rapidly process satellite imagery and intelligence data, emphasising that all final decisions remain with human commanders. The disclosure has accelerated international calls for binding rules on military AI use.</p>
       <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">TechCrunch</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
-        <a class="read-link ai" href="https://techstartups.com/2026/03/11/top-tech-news-today-march-11-2026/" target="_blank">Read &rarr;</a>
+        <div class="card-meta"><span class="source-chip">Al Jazeera</span><span class="time-chip">11 Mar 2026</span></div>
+        <a class="read-link ai" href="https://www.aljazeera.com/news/2026/3/11/us-military-confirms-use-of-advanced-ai-tools-in-war-against-iran" target="_blank">Read &rarr;</a>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">AI Industry</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">AI Research</span>
-      </div>
-      <h3 class="card-headline">Meta Acquires Moltbook — the Social Network Built Exclusively for AI Agents</h3>
-      <p class="card-summary">Meta agreed to acquire Moltbook, a platform designed solely for AI agents to post and interact with each other, signalling the company's ambition to own infrastructure as autonomous agents proliferate online. The deal is seen as a move to extend Meta's social graph into machine-to-machine communication.</p>
+      <div class="card-tags"><span class="tag tag-primary">AI Industry</span><span class="tag tag-secondary">AI Research</span></div>
+      <h3 class="card-headline">Anthropic Launches the Anthropic Institute — Predicts "Far More Dramatic" AI Progress</h3>
+      <p class="card-summary">Anthropic unveiled a new policy and research body, the Anthropic Institute, combining economists, legal scholars, and ML researchers. The company stated publicly it expects AI progress to accelerate dramatically over the next two years. The Institute consolidates three existing research groups and will focus on safety, governance, and economic impact.</p>
       <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">CNN Business</span>
-          <span class="time-chip">10 Mar 2026</span>
-        </div>
-        <a class="read-link ai" href="https://www.cnn.com/2026/03/10/tech/meta-moltbook-bots-social-media" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">AI Policy</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">AI Industry</span>
-      </div>
-      <h3 class="card-headline">Anthropic Launches the Anthropic Institute — Forecasts "Far More Dramatic" AI Progress</h3>
-      <p class="card-summary">Anthropic unveiled a new research and policy body, the Anthropic Institute, staffed with economists, legal scholars, and AI researchers. The company stated it expects "far more dramatic" AI progress over the next two years. The Institute consolidates three existing research groups and will focus on safety, governance, and societal impact.</p>
-      <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">Computerworld</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
+        <div class="card-meta"><span class="source-chip">Computerworld</span><span class="time-chip">11 Mar 2026</span></div>
         <a class="read-link ai" href="https://www.computerworld.com/article/4143931/anthropic-announces-think-tank-to-examine-ais-effect-on-economy-and-society-2.html" target="_blank">Read &rarr;</a>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">AI Research</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">Education</span>
-      </div>
-      <h3 class="card-headline">MIT Method Cuts LLM Training Time by Up to 210% Without Accuracy Loss</h3>
-      <p class="card-summary">MIT researchers published a training technique that accelerates reasoning large language models by 70–210% by systematically pruning redundant reasoning paths. The method was validated across multiple model architectures and could substantially reduce the energy cost and wall-clock time needed to train the next generation of frontier models.</p>
+      <div class="card-tags"><span class="tag tag-primary">AI Industry</span><span class="tag tag-secondary">AI Research</span></div>
+      <h3 class="card-headline">Meta Acquires Moltbook — the Social Network Built Exclusively for AI Agents</h3>
+      <p class="card-summary">Meta agreed to acquire Moltbook, a platform designed solely for AI agents to post and interact with one another, in a move to own infrastructure as autonomous agents proliferate across the internet. The deal signals Meta's ambition to extend its social graph into machine-to-machine communication at scale.</p>
       <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">MIT News</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
+        <div class="card-meta"><span class="source-chip">CNN Business</span><span class="time-chip">10 Mar 2026</span></div>
+        <a class="read-link ai" href="https://www.cnn.com/2026/03/10/tech/meta-moltbook-bots-social-media" target="_blank">Read &rarr;</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-primary">AI Research</span><span class="tag tag-secondary">Education</span></div>
+      <h3 class="card-headline">MIT Method Cuts LLM Reasoning Training Time by Up to 210%</h3>
+      <p class="card-summary">MIT researchers published a training technique that accelerates reasoning large language models by 70–210% by pruning redundant reasoning paths during training — without any accuracy loss. The method was validated across multiple architectures and could substantially reduce energy costs and calendar time for training frontier models.</p>
+      <div class="card-footer">
+        <div class="card-meta"><span class="source-chip">MIT News</span><span class="time-chip">11 Mar 2026</span></div>
         <a class="read-link ai" href="https://news.mit.edu/2026/new-method-could-increase-llm-training-efficiency-0226" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="history-strip">
-    <p class="history-label">Previous Editions</p>
-    <div class="history-items">
-      <div class="history-item active">12 Mar 2026 &mdash; 8 articles</div>
-      <div class="history-item pending">13 Mar 2026 &mdash; Tomorrow / Pending</div>
-    </div>
-  </div>
-</section>
-
-<!-- ════ SECTION: GLOBAL ECONOMY ════ -->
-<section id="section-econ" class="section econ">
-  <div class="section-header">
-    <div>
-      <div class="section-title">Global Economy</div>
-      <div class="section-sources">Sources: Wall Street Journal, CNBC, BLS/Bloomberg, China.org.cn, Eurasia Review, PBS NewsHour, Goldman Sachs</div>
-    </div>
-    <select class="sort-select"><option>Sort: Latest first</option><option>Sort: Top Story first</option></select>
-  </div>
-
-  <!-- Featured -->
-  <div class="featured-card econ">
-    <div class="featured-accent"></div>
-    <div class="featured-body">
-      <span class="featured-badge">Top Story</span>
-      <h2 class="featured-headline">WSJ: IEA Agrees to Largest-Ever Oil Reserve Release of 400 Million Barrels Amid Iran War</h2>
-      <p class="featured-summary">The Wall Street Journal broke the story on March 11 that the International Energy Agency had agreed to the largest emergency oil-reserve release in its history — 400 million barrels from member states — to address the supply disruption caused by the U.S.-Israeli war with Iran. Tanker traffic through the Strait of Hormuz has fallen to less than 10% of pre-conflict levels; Iran threatened that "not one litre of oil" would pass the strait. The U.S. will contribute 172 million barrels from the Strategic Petroleum Reserve. Despite the announcement, oil prices remained above $90 per barrel as markets remained unconvinced the release would be sufficient to offset supply losses.</p>
-      <div class="featured-meta">
-        <span class="source-chip">Wall Street Journal</span>
-        <span class="time-chip">11 March 2026</span>
-        <span class="paywall-badge">Subscription</span>
-      </div>
-      <a class="btn-read" href="https://hotair.com/ed-morrissey/2026/03/11/wsj-global-strategic-oil-reserves-to-counter-iran-boost-supply-n3812734" target="_blank">Read Article &rarr;</a>
-    </div>
-  </div>
-
-  <!-- More Articles -->
-  <p class="more-label">More Articles</p>
-  <div class="card-grid">
-
-    <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">China</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">Trade</span>
-      </div>
-      <h3 class="card-headline">China's Foreign Trade Surges 18.3% in First Two Months of 2026 — Exports Hit Record</h3>
-      <p class="card-summary">China's customs authority reported that total trade grew 18.3% year on year to 7.73 trillion yuan in January–February, with exports up 19.2% and the trade surplus reaching a record USD 213.6 billion. ASEAN was the top trading partner; economists attributed part of the surge to front-loading ahead of anticipated U.S. tariff measures.</p>
-      <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">China.org.cn / CGTN</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
-        <a class="read-link econ" href="http://www.china.org.cn/2026-03/11/content_118376809.shtml" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">United States</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">Monetary Policy</span>
-      </div>
-      <h3 class="card-headline">U.S. February CPI Holds at 2.4% — Fed Stays Sidelined as Iran Shock Looms</h3>
-      <p class="card-summary">The BLS reported on March 11 that the Consumer Price Index rose 0.3% month on month in February, with the annual rate holding steady at 2.4% — above the Fed's 2% target. With 92,000 jobs lost in February and oil prices spiking on the Iran war, the Fed faces a mounting dual-mandate dilemma ahead of its next meeting.</p>
-      <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">CNBC / BLS</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
-        <a class="read-link econ" href="https://www.cnbc.com/2026/03/11/cpi-inflation-report-february-2026.html" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">Trade</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">India</span>
-      </div>
-      <h3 class="card-headline">U.S. Launches Section 301 Trade Probe into India, China, and 14 Others</h3>
-      <p class="card-summary">The U.S. Trade Representative launched a Section 301 investigation into 16 economies on March 11, targeting manufacturing subsidies and industrial overcapacity — widely seen as a tactical response after the Supreme Court struck down IEEPA-based tariffs in February. The probe could yield new import duties by summer if it finds against the economies.</p>
-      <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">CNBC</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
-        <a class="read-link econ" href="https://www.cnbc.com/2026/03/11/trump-trade-investigations-ieepa-tariffs.html" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">India</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">Monetary Policy</span>
-      </div>
-      <h3 class="card-headline">RBI Cuts Rates to 5.25% as India Rides a "Goldilocks" Macro Moment</h3>
-      <p class="card-summary">India's Reserve Bank cut its benchmark policy rate by 25 basis points to 5.25%, citing GDP growth of ~7% and inflation cooling toward 2.5% in FY26. Governor Sanjay Malhotra described the combination of strong growth and low inflation as a rare "goldilocks period," as the rupee rebounded after heavy RBI dollar sales in recent weeks.</p>
-      <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">Goldman Sachs / IBEF</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
-        <a class="read-link econ" href="https://www.goldmansachs.com/insights/articles/the-outlook-for-indias-economy-in-2026-amid-new-us-tradedeal" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">United States</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">Trade</span>
-      </div>
-      <h3 class="card-headline">U.S. Economy Stumbles: 92,000 Jobs Lost, Gas Prices Spike, Trade Uncertainty Bites</h3>
-      <p class="card-summary">PBS and other outlets reported on March 11 that the U.S. economy had a difficult start to 2026, with a net loss of 92,000 jobs in February, gasoline prices climbing on Iran war fears, and business investment dampened by ongoing trade policy uncertainty. Unemployment edged to 4.3%, its highest since early 2024, challenging the administration's economic narrative.</p>
-      <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">PBS NewsHour</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
-        <a class="read-link econ" href="https://www.pbs.org/newshour/politics/trumps-roaring-economy-meets-a-rough-start-to-2026-with-job-losses-rising-gas-prices-and-uncertainty" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">China</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">United States</span>
-      </div>
-      <h3 class="card-headline">U.S. Tariff Stratification: The India Deal and Its Structural Impact on China — Eurasia Review</h3>
-      <p class="card-summary">An analysis published March 11 by Eurasia Review argues that the February 2026 U.S.-India trade deal — lowering tariffs on Indian goods from 25% to 18% in exchange for India halting Russian oil imports — creates a tiered tariff geography that structurally disadvantages China, which still faces a 47% effective rate, reshaping Asia's trade competitiveness for years.</p>
-      <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">Eurasia Review</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
-        <a class="read-link econ" href="https://www.eurasiareview.com/11032026-u-s-tariff-stratification-the-u-s-india-deal-and-its-structural-impact-on-china-analysis/" target="_blank">Read &rarr;</a>
       </div>
     </div>
 
@@ -679,23 +254,119 @@
   </div>
 </section>
 
-<!-- ════ SECTION: GOVERNANCE REFORMS ════ -->
+
+<!-- ══════════════════════════════════════
+     GLOBAL ECONOMY
+═══════════════════════════════════════ -->
+<section id="section-econ" class="section econ">
+  <div class="section-header">
+    <div>
+      <div class="section-title">Global Economy</div>
+      <div class="section-sources">Sources: Wall Street Journal, CNBC, BLS, China.org.cn, PBS NewsHour, CNBC, Goldman Sachs</div>
+    </div>
+    <select class="sort-select"><option>Sort: Latest first</option></select>
+  </div>
+
+  <!-- TOP STORY -->
+  <div class="featured-card econ">
+    <div class="featured-accent"></div>
+    <div class="featured-body">
+      <span class="featured-badge">Top Story</span>
+      <h2 class="featured-headline">IEA Agrees to Largest-Ever Emergency Oil Release — 400 Million Barrels — Amid Iran War Supply Crisis</h2>
+      <p class="featured-summary">The Wall Street Journal first reported on March 11 that the International Energy Agency had secured agreement from all 32 member nations for the largest emergency oil-stockpile release in its 51-year history: 400 million barrels, more than double the 182 million barrels released after Russia's invasion of Ukraine in 2022. The action came as the U.S.-Israeli war on Iran has reduced tanker traffic through the Strait of Hormuz to less than 10% of pre-conflict levels, creating what the IEA called "the biggest oil supply disruption in history." Iran threatened that "not one litre of oil" would pass the strait. The U.S. will contribute 172 million barrels from the Strategic Petroleum Reserve. Despite the announcement oil prices held above $90 per barrel, as markets doubted the release could offset 8 million barrels per day in lost supply.</p>
+      <div class="featured-meta">
+        <span class="source-chip">Wall Street Journal</span>
+        <span class="time-chip">11 March 2026</span>
+        <span class="paywall-badge">Subscription</span>
+      </div>
+      <a class="btn-read" href="https://www.wsj.com/business/energy-oil/iea-proposes-largest-ever-oil-release-from-strategic-reserves-iran-war" target="_blank">Read Article &rarr;</a>
+    </div>
+  </div>
+
+  <p class="more-label">More Articles</p>
+  <div class="card-grid">
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-primary">China</span><span class="tag tag-secondary">Trade</span></div>
+      <h3 class="card-headline">China Exports Surge 21.8% — Trade Surplus Hits Record $213.6 Billion in January–February</h3>
+      <p class="card-summary">China's General Administration of Customs reported total foreign trade grew 18.3% year on year to 7.73 trillion yuan in the first two months of 2026, with exports rising 21.8% — far outpacing the 7.1% economists had expected. The record trade surplus of $213.6 billion was attributed partly to front-loading by overseas buyers ahead of anticipated U.S. tariff measures.</p>
+      <div class="card-footer">
+        <div class="card-meta"><span class="source-chip">China.org.cn / CGTN</span><span class="time-chip">11 Mar 2026</span></div>
+        <a class="read-link econ" href="http://www.china.org.cn/2026-03/11/content_118376809.shtml" target="_blank">Read &rarr;</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-primary">United States</span><span class="tag tag-secondary">Monetary Policy</span></div>
+      <h3 class="card-headline">U.S. February CPI Holds at 2.4% — Fed Stuck Between Sticky Inflation and Slowing Jobs</h3>
+      <p class="card-summary">The Bureau of Labor Statistics reported February CPI rose 0.3% month on month, leaving the annual rate at 2.4%, in line with expectations. With 92,000 jobs lost in February and unemployment at 4.3%, the Federal Reserve faces a dual-mandate crunch, complicated further by energy-price shocks from the Iran war ahead of its 18 March meeting.</p>
+      <div class="card-footer">
+        <div class="card-meta"><span class="source-chip">CNBC / BLS</span><span class="time-chip">11 Mar 2026</span></div>
+        <a class="read-link econ" href="https://www.cnbc.com/2026/03/11/cpi-inflation-report-february-2026.html" target="_blank">Read &rarr;</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-primary">Trade</span><span class="tag tag-secondary">India</span></div>
+      <h3 class="card-headline">U.S. Launches Section 301 Trade Probe into India, China, EU and 13 Others After Supreme Court Tariff Ruling</h3>
+      <p class="card-summary">The U.S. Trade Representative launched Section 301 investigations into 16 economies on March 11, targeting manufacturing subsidies and industrial overcapacity — a tactical workaround after the Supreme Court struck down IEEPA-based tariffs in February. The probe could produce new import duties by summer, USTR Jamieson Greer said.</p>
+      <div class="card-footer">
+        <div class="card-meta"><span class="source-chip">CNBC</span><span class="time-chip">11 Mar 2026</span></div>
+        <a class="read-link econ" href="https://www.cnbc.com/2026/03/11/trump-trade-investigations-ieepa-tariffs.html" target="_blank">Read &rarr;</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-primary">India</span><span class="tag tag-secondary">Monetary Policy</span></div>
+      <h3 class="card-headline">India Eases FDI Rules for China as RBI Holds at 5.25% in "Goldilocks" Economy</h3>
+      <p class="card-summary">India's cabinet approved relaxed foreign direct investment rules for Chinese and other land-bordering-country firms in electronics and solar manufacturing — a notable policy shift after years of restrictions. Separately the RBI held its benchmark rate at 5.25%, citing strong GDP growth near 7% and inflation cooling toward 2.5%, in what Governor Malhotra called a rare "goldilocks" moment.</p>
+      <div class="card-footer">
+        <div class="card-meta"><span class="source-chip">CNBC</span><span class="time-chip">11 Mar 2026</span></div>
+        <a class="read-link econ" href="https://www.cnbc.com/2026/03/11/india-china-investments-fdi-ties-business.html" target="_blank">Read &rarr;</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-tags"><span class="tag tag-primary">United States</span><span class="tag tag-secondary">Trade</span></div>
+      <h3 class="card-headline">Trump's "Roaring Economy" Narrative Meets 92,000 Job Losses, Spiking Gas Prices and Trade Chaos</h3>
+      <p class="card-summary">The U.S. lost 92,000 net jobs in February, gasoline prices climbed on Iran war fears, and business investment remained subdued amid ongoing trade policy uncertainty. Unemployment edged up to 4.3%, its highest since early 2024, putting sustained pressure on the administration's economic messaging ahead of the midterms.</p>
+      <div class="card-footer">
+        <div class="card-meta"><span class="source-chip">PBS NewsHour</span><span class="time-chip">11 Mar 2026</span></div>
+        <a class="read-link econ" href="https://www.pbs.org/newshour/politics/trumps-roaring-economy-meets-a-rough-start-to-2026-with-job-losses-rising-gas-prices-and-uncertainty" target="_blank">Read &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="history-strip">
+    <p class="history-label">Previous Editions</p>
+    <div class="history-items">
+      <div class="history-item active">12 Mar 2026 &mdash; 6 articles</div>
+      <div class="history-item pending">13 Mar 2026 &mdash; Tomorrow / Pending</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     GOVERNANCE REFORMS
+═══════════════════════════════════════ -->
 <section id="section-gov" class="section gov">
   <div class="section-header">
     <div>
       <div class="section-title">Governance Reforms</div>
-      <div class="section-sources">Sources: Federal Register, EU Commission / Morrison Foerster, Manila Times, OECD</div>
+      <div class="section-sources">Sources: Federal Register, Wall Street Journal, Morrison Foerster / EU Commission, Manila Times, OECD</div>
     </div>
-    <select class="sort-select"><option>Sort: Latest first</option><option>Sort: Top Story first</option></select>
+    <select class="sort-select"><option>Sort: Latest first</option></select>
   </div>
 
-  <!-- Featured -->
+  <!-- TOP STORY -->
   <div class="featured-card gov">
     <div class="featured-accent"></div>
     <div class="featured-body">
       <span class="featured-badge">Top Story</span>
-      <h2 class="featured-headline">White House Issues Executive Order to Combat Cybercrime and Predatory Digital Schemes</h2>
-      <p class="featured-summary">A Presidential Executive Order published in the Federal Register on March 11 directs all relevant federal agencies to overhaul their operational, technical, diplomatic, and regulatory frameworks to combat transnational cybercrime, fraud networks, and predatory online schemes targeting American citizens. Agencies have 60 days to complete a review and 120 days to submit action plans identifying the criminal organisations responsible for scam centres, with proposed solutions spanning enforcement, disruption, and international co-operation. The order also targets ransomware networks and AI-enabled fraud, and aligns with a broader administration push to centralise digital security governance under a single national framework.</p>
+      <h2 class="featured-headline">White House Issues Executive Order Directing Agencies to Dismantle Transnational Cybercrime Networks</h2>
+      <p class="featured-summary">A Presidential Executive Order published in the Federal Register on March 11 directs all relevant federal agencies to overhaul operational, technical, diplomatic, and regulatory frameworks to combat transnational cybercrime, fraud, and predatory digital schemes targeting Americans. Agencies have 60 days to complete a review and 120 days to submit action plans identifying the organisations behind scam centres, with proposed solutions spanning enforcement, international co-operation, and disruption operations. The Wall Street Journal reported the order specifically targets AI-enabled fraud networks and ransomware groups that the administration says cost American consumers and businesses over $60 billion annually. The order consolidates previously scattered cybercrime mandates under a single national framework.</p>
       <div class="featured-meta">
         <span class="source-chip">Federal Register</span>
         <span class="time-chip">11 March 2026</span>
@@ -704,54 +375,35 @@
     </div>
   </div>
 
-  <!-- More Articles -->
   <p class="more-label">More Articles</p>
   <div class="card-grid">
 
     <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">AI Policy</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">Digital Governance</span>
-      </div>
-      <h3 class="card-headline">EU Digital Fitness Check Consultation Closes — Coherence of the Digital Rulebook Under Review</h3>
-      <p class="card-summary">The European Commission's public consultation for its Digital Fitness Check closed on March 11, with submissions now under assessment. The review examines synergies, gaps, and overlaps across the EU's AI Act, GDPR, DSA, and DMA, with findings set to guide the next phase of European digital regulation and governance through 2028 and beyond.</p>
+      <div class="card-tags"><span class="tag tag-primary">AI Policy</span><span class="tag tag-secondary">Digital Governance</span></div>
+      <h3 class="card-headline">EU Digital Fitness Check Consultation Closes — Coherence Review of AI Act, GDPR, DSA and DMA Begins</h3>
+      <p class="card-summary">The European Commission's public consultation for its Digital Fitness Check closed on March 11 with submissions now under assessment. The review examines synergies, overlaps, and gaps across the EU's entire digital rulebook — including the AI Act, GDPR, DSA, and DMA — with findings expected to shape regulatory reform through 2028.</p>
       <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">Morrison Foerster / EU</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
+        <div class="card-meta"><span class="source-chip">Morrison Foerster / EU</span><span class="time-chip">11 Mar 2026</span></div>
         <a class="read-link gov" href="https://www.mofo.com/resources/insights/260211-european-digital-compliance-key-digital-regulation" target="_blank">Read &rarr;</a>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">Governance</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">Privacy</span>
-      </div>
-      <h3 class="card-headline">Philippines Senate Pushes Full Budget Digitisation and Livestreaming Mandate</h3>
-      <p class="card-summary">The Philippines Senate introduced measures on March 11 to fully digitise the national budgeting process and formally institutionalise public livestreaming of bicameral conference committee sessions. The reforms aim to reduce corruption risk in fund allocation and follow public pressure after past controversies over opaque budget negotiations.</p>
+      <div class="card-tags"><span class="tag tag-primary">Governance</span><span class="tag tag-secondary">Privacy</span></div>
+      <h3 class="card-headline">Philippines Senate Mandates Public Livestreaming and Full Digitisation of National Budget Process</h3>
+      <p class="card-summary">The Philippines Senate introduced legislation on March 11 to institutionalise public livestreaming of bicameral conference committee budget sessions and fully digitise the budgeting process end-to-end. The reforms follow years of public pressure over opaque negotiations and aim to eliminate opportunities for off-the-record fund reallocation.</p>
       <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">Manila Times</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
+        <div class="card-meta"><span class="source-chip">Manila Times</span><span class="time-chip">11 Mar 2026</span></div>
         <a class="read-link gov" href="https://www.manilatimes.net/2026/03/11/news/national/senators-push-for-budget-reform-to-boost-transparency-fiscal-discipline/2297206" target="_blank">Read &rarr;</a>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-tags">
-        <span class="tag tag-1">Digital Governance</span>
-        <span class="tag" style="background:var(--surface2);color:var(--muted);">Governance</span>
-      </div>
-      <h3 class="card-headline">OECD Global Anti-Corruption Forum Opens: Integrity as an Engine for Economic Performance</h3>
-      <p class="card-summary">The 2026 OECD Global Anti-Corruption and Integrity Forum convened this week, reframing anti-corruption efforts as proactive drivers of economic resilience and innovation rather than mere safeguards. The forum brings together governments, regulators, and civil-society organisations from over 50 countries to share enforcement best practices.</p>
+      <div class="card-tags"><span class="tag tag-primary">Digital Governance</span><span class="tag tag-secondary">Governance</span></div>
+      <h3 class="card-headline">OECD Global Anti-Corruption Forum Opens: Framing Integrity as a Driver of Economic Resilience</h3>
+      <p class="card-summary">The 2026 OECD Global Anti-Corruption and Integrity Forum convened this week, reframing anti-corruption work as a proactive engine of economic performance and institutional resilience — not just a safeguard. Over 50 countries are participating, with sessions on enforcement co-operation, digital transparency tools, and the role of AI in detecting public procurement fraud.</p>
       <div class="card-footer">
-        <div class="card-meta">
-          <span class="source-chip">OECD</span>
-          <span class="time-chip">11 Mar 2026</span>
-        </div>
+        <div class="card-meta"><span class="source-chip">OECD</span><span class="time-chip">11 Mar 2026</span></div>
         <a class="read-link gov" href="https://www.oecd.org/en/events/2026/03/2026-oecd-global-anti-corruption--integrity-forum.html" target="_blank">Read &rarr;</a>
       </div>
     </div>
@@ -770,9 +422,7 @@
 <script>
   function showSection(name, el) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
-    document.querySelectorAll('.tab-btn').forEach(t => {
-      t.classList.remove('active-ai', 'active-econ', 'active-gov');
-    });
+    document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active-ai','active-econ','active-gov'));
     document.getElementById('section-' + name).classList.add('visible');
     el.classList.add('active-' + name);
   }
