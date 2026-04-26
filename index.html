@@ -1,624 +1,875 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Briefing — Anurag</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Daily Briefing — Sunday, 26 April 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #f9f8f5;
-    --surface: #ffffff;
-    --surface2: #f3f2ee;
-    --border: #e8e5de;
-    --border2: #d4cfc5;
-    --text: #1a1915;
-    --text2: #3d3b35;
-    --muted: #7a7669;
-    --muted2: #a09c92;
-    --accent: #c96442;
-    --ai: #c96442;
-    --ai-bg: #fdf1ec;
-    --ai-border: #f0c4b4;
-    --econ: #2d6a4f;
-    --econ-bg: #eef6f1;
-    --econ-border: #b8dcc8;
-    --gov: #3a5fa0;
-    --gov-bg: #eef2fa;
-    --gov-border: #b8ccee;
-    --gold: #b08a3e;
-    --gold-bg: #faf4e4;
-    --gold-border: #e5d59a;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
-    --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
-  }
+:root {
+  --bg: #f9f8f5;
+  --surface: #ffffff;
+  --surface2: #f3f2ee;
+  --border: #e8e5de;
+  --border2: #d4cfc5;
+  --text: #1a1915;
+  --text2: #3d3b35;
+  --muted: #7a7669;
+  --muted2: #a09c92;
+  --accent: #c96442;
+  --ai: #c96442;
+  --ai-bg: #fdf1ec;
+  --ai-border: #f0c4b4;
+  --econ: #2d6a4f;
+  --econ-bg: #eef6f1;
+  --econ-border: #b8dcc8;
+  --gov: #3a5fa0;
+  --gov-bg: #eef2fa;
+  --gov-border: #b8ccee;
+  --gold: #b08a3e;
+  --gold-bg: #faf3e0;
+  --gold-border: #e6d4a0;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: inherit; text-decoration: none; }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased; }
-  body { min-height: 100vh; line-height: 1.5; }
-  a { color: inherit; text-decoration: none; }
+/* HEADER */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0.875rem 1.75rem;
+}
+.header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.header-left h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.header-left p {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.125rem;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.update-chip {
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: var(--surface2);
+  padding: 0.375rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-weight: 500;
+}
+.refresh-btn {
+  font-size: 0.8125rem;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid var(--accent);
+  padding: 0.375rem 0.875rem;
+  border-radius: 999px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+.refresh-btn:hover {
+  background: var(--accent);
+  color: var(--surface);
+}
 
-  /* Header */
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 0.875rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-  .site-header .left h1 { font-size: 1rem; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
-  .site-header .left p { font-size: 0.75rem; color: var(--muted); margin-top: 0.125rem; }
-  .site-header .right { display: flex; align-items: center; gap: 0.5rem; }
-  .updated-chip {
-    background: var(--surface2);
-    color: var(--muted);
-    font-size: 0.75rem;
-    padding: 0.375rem 0.75rem;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-  }
-  .refresh-btn {
-    background: var(--accent);
-    color: #ffffff;
-    font-size: 0.75rem;
-    font-weight: 500;
-    padding: 0.4rem 0.875rem;
-    border-radius: 999px;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    transition: opacity .15s;
-  }
-  .refresh-btn:hover { opacity: 0.9; }
+/* CONTAINER */
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 1.5rem 1.75rem 3rem;
+}
 
-  /* Tabs */
-  .tabs {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 1.5rem 0;
-    display: flex;
-    gap: 0.25rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .tab {
-    background: transparent;
-    border: none;
-    padding: 0.75rem 1rem;
-    font-family: inherit;
-    font-size: 0.875rem;
-    color: var(--muted);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: color .15s, border-color .15s;
-  }
-  .tab:hover { color: var(--text2); }
-  .tab .count {
-    background: var(--surface2);
-    color: var(--muted);
-    font-size: 0.7rem;
-    padding: 0.1rem 0.45rem;
-    border-radius: 999px;
-    font-weight: 500;
-  }
-  .tab.active { color: var(--text); font-weight: 600; }
-  .tab.active[data-bucket="ai"] { border-bottom-color: var(--ai); }
-  .tab.active[data-bucket="econ"] { border-bottom-color: var(--econ); }
-  .tab.active[data-bucket="gov"] { border-bottom-color: var(--gov); }
-  .tab.active[data-bucket="ai"] .count { background: var(--ai-bg); color: var(--ai); }
-  .tab.active[data-bucket="econ"] .count { background: var(--econ-bg); color: var(--econ); }
-  .tab.active[data-bucket="gov"] .count { background: var(--gov-bg); color: var(--gov); }
+/* TABS */
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+.tab {
+  padding: 0.875rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: inherit;
+  margin-bottom: -1px;
+}
+.tab:hover { color: var(--text2); }
+.tab.active { color: var(--text); font-weight: 600; }
+.tab[data-tab="ai"].active { border-bottom-color: var(--ai); }
+.tab[data-tab="econ"].active { border-bottom-color: var(--econ); }
+.tab[data-tab="gov"].active { border-bottom-color: var(--gov); }
+.tab-count {
+  font-size: 0.75rem;
+  color: var(--muted2);
+  font-weight: 500;
+  background: var(--surface2);
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  min-width: 24px;
+  text-align: center;
+}
+.tab.active .tab-count { color: var(--text2); background: var(--surface2); }
 
-  /* Main content */
-  main { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
-  .section { display: none; }
-  .section.active { display: block; }
+/* SECTION */
+.section { display: none; }
+.section.active { display: block; }
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.section-title h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+.section-title p {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.sort-control label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.sort-control select {
+  font-size: 0.8125rem;
+  padding: 0.375rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text2);
+  font-family: inherit;
+  cursor: pointer;
+}
 
-  .section-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-    padding-bottom: 1rem;
-    margin-bottom: 1.25rem;
-    flex-wrap: wrap;
-  }
-  .section-header h2 { font-size: 1.25rem; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
-  .section-header .sources { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; max-width: 720px; }
-  .sort-dropdown {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text2);
-    font-family: inherit;
-    font-size: 0.75rem;
-    padding: 0.375rem 0.75rem;
-    border-radius: 6px;
-    cursor: pointer;
-  }
+/* TOP STORY */
+.top-story {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem 1.75rem 1.75rem 2.25rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.top-story::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+.top-story.ai::before { background: var(--ai); }
+.top-story.econ::before { background: var(--econ); }
+.top-story.gov::before { background: var(--gov); }
+.top-story-badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.625rem;
+  border-radius: 4px;
+  margin-bottom: 0.875rem;
+}
+.top-story.ai .top-story-badge { background: var(--ai-bg); color: var(--ai); border: 1px solid var(--ai-border); }
+.top-story.econ .top-story-badge { background: var(--econ-bg); color: var(--econ); border: 1px solid var(--econ-border); }
+.top-story.gov .top-story-badge { background: var(--gov-bg); color: var(--gov); border: 1px solid var(--gov-border); }
+.top-story h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  color: var(--text);
+  margin-bottom: 0.875rem;
+}
+.top-story-summary {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text2);
+  margin-bottom: 1.25rem;
+}
+.top-story-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-bottom: 1.25rem;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 0.3125rem 0.625rem;
+  border-radius: 999px;
+  font-weight: 500;
+}
+.chip-source { color: var(--text2); }
+.paywall-badge {
+  display: inline-block;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.125rem 0.375rem;
+  border-radius: 3px;
+  background: var(--gold-bg);
+  color: var(--gold);
+  border: 1px solid var(--gold-border);
+  margin-left: 0.375rem;
+}
+.read-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: var(--surface);
+  transition: all 0.15s ease;
+}
+.top-story.ai .read-btn { background: var(--ai); }
+.top-story.econ .read-btn { background: var(--econ); }
+.top-story.gov .read-btn { background: var(--gov); }
+.read-btn:hover { opacity: 0.9; }
 
-  /* Top story */
-  .top-story {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem 1.75rem 1.5rem 2rem;
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow-md);
-    margin-bottom: 2rem;
-  }
-  .top-story::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 4px;
-  }
-  .top-story.ai::before { background: var(--ai); }
-  .top-story.econ::before { background: var(--econ); }
-  .top-story.gov::before { background: var(--gov); }
-  .top-story-badge {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 0.25rem 0.625rem;
-    border-radius: 999px;
-    margin-bottom: 0.875rem;
-  }
-  .top-story.ai .top-story-badge { background: var(--ai-bg); color: var(--ai); border: 1px solid var(--ai-border); }
-  .top-story.econ .top-story-badge { background: var(--econ-bg); color: var(--econ); border: 1px solid var(--econ-border); }
-  .top-story.gov .top-story-badge { background: var(--gov-bg); color: var(--gov); border: 1px solid var(--gov-border); }
-  .top-story h3 { font-size: 1.5rem; font-weight: 600; color: var(--text); line-height: 1.3; letter-spacing: -0.015em; margin-bottom: 0.75rem; }
-  .top-story p { color: var(--text2); font-size: 0.95rem; margin-bottom: 1rem; }
-  .top-story .meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
-  .read-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    border: 1px solid var(--border2);
-    background: var(--surface);
-    color: var(--text);
-    transition: background .15s;
-  }
-  .read-btn:hover { background: var(--surface2); }
+/* MORE LABEL */
+.more-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
 
-  /* Chips */
-  .chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    font-size: 0.7rem;
-    padding: 0.225rem 0.625rem;
-    border-radius: 999px;
-    background: var(--surface2);
-    color: var(--muted);
-    border: 1px solid var(--border);
-    font-weight: 500;
-  }
-  .chip.paywall {
-    background: var(--gold-bg);
-    color: var(--gold);
-    border-color: var(--gold-border);
-    font-weight: 600;
-  }
-  .chip.time { color: var(--muted); }
+/* CARD GRID */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 1rem;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: all 0.15s ease;
+  box-shadow: var(--shadow-sm);
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border2);
+  transform: translateY(-1px);
+}
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+.tag {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.1875rem 0.5rem;
+  border-radius: 4px;
+  background: var(--surface2);
+  color: var(--text2);
+  border: 1px solid var(--border);
+}
+.tag.ai { background: var(--ai-bg); color: var(--ai); border-color: var(--ai-border); }
+.tag.econ { background: var(--econ-bg); color: var(--econ); border-color: var(--econ-border); }
+.tag.gov { background: var(--gov-bg); color: var(--gov); border-color: var(--gov-border); }
+.card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  color: var(--text);
+}
+.card-summary {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--text2);
+  flex-grow: 1;
+}
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 0.625rem;
+  border-top: 1px solid var(--border);
+}
+.card-source {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+.card-source .source-name { color: var(--text2); }
+.card-link {
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.card-link.ai { color: var(--ai); }
+.card-link.econ { color: var(--econ); }
+.card-link.gov { color: var(--gov); }
 
-  /* Tags */
-  .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.625rem 0 0.75rem; }
-  .tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    font-weight: 600;
-    background: var(--surface2);
-    color: var(--muted);
-    border: 1px solid var(--border);
-  }
-  .tag.ai { background: var(--ai-bg); color: var(--ai); border-color: var(--ai-border); }
-  .tag.econ { background: var(--econ-bg); color: var(--econ); border-color: var(--econ-border); }
-  .tag.gov { background: var(--gov-bg); color: var(--gov); border-color: var(--gov-border); }
+/* HISTORY STRIP */
+.history {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.history-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 0.875rem;
+}
+.history-strip {
+  display: flex;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+.history-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.625rem 1rem;
+  background: var(--surface);
+  min-width: 180px;
+}
+.history-item.active {
+  background: var(--surface2);
+  border-color: var(--border2);
+}
+.history-item.pending {
+  border-style: dashed;
+  background: transparent;
+  color: var(--muted2);
+}
+.history-date {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.125rem;
+}
+.history-item.pending .history-date { color: var(--muted2); }
+.history-meta {
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
 
-  /* Article grid */
-  .more-label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    margin-bottom: 0.875rem;
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-  }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.125rem 1.25rem;
-    transition: box-shadow .15s, border-color .15s, transform .15s;
-    display: flex;
-    flex-direction: column;
-    box-shadow: var(--shadow-sm);
-  }
-  .card:hover { box-shadow: var(--shadow-md); border-color: var(--border2); transform: translateY(-1px); }
-  .card h4 { font-size: 1rem; font-weight: 600; color: var(--text); line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
-  .card p { font-size: 0.85rem; color: var(--text2); margin-bottom: 0.5rem; flex-grow: 1; }
-  .card-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
-  .source-chip { display: inline-flex; align-items: center; gap: 0.35rem; flex-wrap: wrap; }
-  .read-link { font-size: 0.8rem; font-weight: 500; }
-  .read-link.ai { color: var(--ai); }
-  .read-link.econ { color: var(--econ); }
-  .read-link.gov { color: var(--gov); }
-
-  /* History strip */
-  .history {
-    border-top: 1px solid var(--border);
-    padding-top: 1.25rem;
-    margin-top: 0.5rem;
-  }
-  .history-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.75rem; }
-  .history-strip { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .history-item {
-    padding: 0.5rem 0.875rem;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    border-radius: 8px;
-    font-size: 0.75rem;
-    color: var(--muted);
-    display: inline-flex;
-    flex-direction: column;
-    line-height: 1.3;
-  }
-  .history-item strong { color: var(--text2); font-weight: 600; }
-  .history-item.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .history-item.active strong { color: #fff; }
-  .history-item.pending { border-style: dashed; color: var(--muted2); }
-
-  @media (max-width: 640px) {
-    .top-story h3 { font-size: 1.25rem; }
-    .tabs { overflow-x: auto; padding: 1rem 1rem 0; }
-    main { padding: 1rem; }
-    .site-header { padding: 0.875rem 1rem; }
-  }
+@media (max-width: 640px) {
+  .header { padding: 0.75rem 1rem; }
+  .container { padding: 1rem 1rem 2rem; }
+  .top-story { padding: 1.25rem 1.25rem 1.25rem 1.625rem; }
+  .top-story h3 { font-size: 1.25rem; }
+  .section-title h2 { font-size: 1.25rem; }
+  .tab { padding: 0.75rem 0.875rem; font-size: 0.8125rem; }
+}
 </style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="left">
-    <h1>Good morning, Anurag</h1>
-    <p>Wednesday, 22 April 2026 — Your personalised briefing is ready</p>
-  </div>
-  <div class="right">
-    <span class="updated-chip">Updated at 8:46 PM</span>
-    <button class="refresh-btn" onclick="window.location.reload()">Refresh</button>
+<header class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <h1>Good morning, Anurag</h1>
+      <p>Sunday, 26 April 2026 &middot; Your personalised briefing is ready</p>
+    </div>
+    <div class="header-right">
+      <span class="update-chip">Updated at 4:13 PM</span>
+      <button class="refresh-btn" onclick="window.location.reload()">Refresh</button>
+    </div>
   </div>
 </header>
 
-<nav class="tabs">
-  <button class="tab active" data-bucket="ai" onclick="showSection('ai', this)">AI &amp; Education <span class="count">8</span></button>
-  <button class="tab" data-bucket="econ" onclick="showSection('econ', this)">Global Economy <span class="count">7</span></button>
-  <button class="tab" data-bucket="gov" onclick="showSection('gov', this)">Governance Reforms <span class="count">5</span></button>
-</nav>
+<main class="container">
 
-<main>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="ai" onclick="showSection('ai', this)">
+      AI &amp; Education <span class="tab-count">8</span>
+    </button>
+    <button class="tab" data-tab="econ" onclick="showSection('econ', this)">
+      Global Economy <span class="tab-count">8</span>
+    </button>
+    <button class="tab" data-tab="gov" onclick="showSection('gov', this)">
+      Governance Reforms <span class="tab-count">4</span>
+    </button>
+  </nav>
 
-  <!-- ============================== AI & EDUCATION ============================== -->
-  <section id="section-ai" class="section active">
+  <!-- AI & EDUCATION -->
+  <section class="section active" id="section-ai">
     <div class="section-header">
-      <div>
+      <div class="section-title">
         <h2>AI &amp; Education</h2>
-        <p class="sources">Sources monitored: New York Times, Wall Street Journal, The Washington Post, MIT Technology Review, TechCrunch, The Verge, Axios, VentureBeat, EdSurge, CT Mirror.</p>
+        <p>CNBC, Bloomberg, MIT Technology Review, Cooley, Asanify, Medium, MarketingProfs, Transparency Coalition</p>
       </div>
-      <select class="sort-dropdown">
-        <option>Sort: Most recent</option>
-        <option>Sort: Top source</option>
-      </select>
+      <div class="sort-control">
+        <label for="sort-ai">Sort by</label>
+        <select id="sort-ai">
+          <option>Most Relevant</option>
+          <option>Newest First</option>
+          <option>Source A–Z</option>
+        </select>
+      </div>
     </div>
 
     <article class="top-story ai">
       <span class="top-story-badge">Top Story</span>
-      <h3>The post-LLM era begins: new models go beyond language</h3>
-      <p>The Washington Post's AI &amp; Tech Brief for 21 April argues that a new generation of models is starting to surpass the abilities of large language models. These "world models" incorporate visual and physical data to simulate real environments, while agentic systems orchestrate multiple models to tackle complex, multi-step goals. The piece frames this as the clearest signal yet that the frontier is shifting beyond text generation into embodied reasoning.</p>
-      <div class="meta">
-        <span class="chip">The Washington Post <span class="chip paywall" style="margin-left:0.25rem;">Subscription</span></span>
-        <span class="chip time">21 April 2026</span>
+      <h3>Google commits up to $40 billion to Anthropic, deepening the cloud-AI alliance</h3>
+      <p class="top-story-summary">
+        Google announced an investment of up to $40 billion in Anthropic, with $10 billion deployed at the company's $380 billion valuation and a further $30 billion tied to performance milestones. The deal also commits Google Cloud to deliver five gigawatts of compute to Anthropic over five years starting in 2027. The arrangement signals Google's strategy to spread AI bets even as it competes head-on with OpenAI, while Anthropic's annualised revenue has reportedly crossed $30 billion. Secondary-market trades now value the company near a trillion dollars.
+      </p>
+      <div class="top-story-meta">
+        <span class="chip chip-source">CNBC</span>
+        <span class="chip">25 April 2026</span>
+        <span class="chip">AI Industry &middot; Cloud Compute</span>
       </div>
-      <a class="read-btn" href="https://www.washingtonpost.com/wp-intelligence/ai-tech-brief/2026/04/21/ai-tech-brief-post-llm-era-begins/" target="_blank" rel="noopener">Read Article &rarr;</a>
+      <a class="read-btn" href="https://www.cnbc.com/2026/04/24/google-to-invest-up-to-40-billion-in-anthropic-as-search-giant-spreads-its-ai-bets.html" target="_blank" rel="noopener">Read Article &rarr;</a>
     </article>
 
-    <div class="more-label">More Articles</div>
-    <div class="grid">
+    <p class="more-label">More articles</p>
+    <div class="card-grid">
 
       <article class="card">
-        <h4>Anthropic outspends OpenAI in biggest-ever lobbying quarter</h4>
-        <p>Axios reports both companies posted record Q1 2026 lobbying spends — Anthropic at $1.6M and OpenAI at $1M — as Washington debates AI procurement rules, acceptable-use policies, and Pentagon deployment boundaries.</p>
-        <div class="tags"><span class="tag ai">AI Policy</span><span class="tag ai">AI Industry</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">Axios <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link ai" href="https://www.axios.com/2026/04/21/anthropic-outspends-openai-biggest-lobbying-quarter" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag ai">AI Industry</span>
+          <span class="tag">Open Source</span>
+        </div>
+        <h4>DeepSeek V4 preview lands as China's open-source push intensifies</h4>
+        <p class="card-summary">DeepSeek released a preview of its long-awaited V4 model, sharpening competition with Western labs and other Chinese open-source rivals. Analysts noted the market reaction was muted because cheap, capable Chinese models are now expected rather than novel.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">CNBC</span> &middot; 24 Apr</span>
+          <a class="card-link ai" href="https://www.cnbc.com/2026/04/24/deepseek-v4-llm-preview-open-source-ai-competition-china.html" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
       <article class="card">
-        <h4>CBIZ expands enterprise AI partnership with Microsoft</h4>
-        <p>CBIZ announced a firm-wide rollout of Microsoft 365 Copilot and Copilot Studio built on Microsoft Foundry, with AI training paths for 9,500 team members and agent-based workflows designed to handle multi-step tasks end to end.</p>
-        <div class="tags"><span class="tag ai">AI Industry</span><span class="tag ai">Enterprise AI</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">Microsoft Source <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link ai" href="https://news.microsoft.com/source/2026/04/21/cbiz-expands-ai-partnership-with-microsoft-to-unlock-new-levels-of-productivity-insight-and-talent-attraction-retention-and-development/" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag ai">AI Industry</span>
+          <span class="tag">Capex</span>
+        </div>
+        <h4>Hyperscalers on track for more than $700 billion in AI infrastructure spending</h4>
+        <p class="card-summary">The five largest cloud and AI hyperscalers are projected to spend over $700 billion this year on data centres, chips, and AI capacity. The pace continues to reshape capital markets and prompts fresh debate on whether returns will justify the build-out.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">Asanify Daily Brief</span> &middot; 25 Apr</span>
+          <a class="card-link ai" href="https://asanify.com/blog/news/open-source-frontier-ai-april-25-2026/" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
       <article class="card">
-        <h4>MIT Technology Review: the 10 things that matter in AI right now</h4>
-        <p>MIT Tech Review's flagship April briefing tracks the ten forces shaping AI in 2026, from agentic multi-model teams and robotics to the growing fight over AI energy demand. It reads as a useful map of where investment and policy attention are converging.</p>
-        <div class="tags"><span class="tag ai">AI Research</span><span class="tag ai">AI Industry</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">MIT Technology Review <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link ai" href="https://www.technologyreview.com/2026/04/21/1135643/10-ai-artificial-intelligence-trends-technologies-research-2026/" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag ai">AI Industry</span>
+          <span class="tag">Workforce</span>
+        </div>
+        <h4>Meta confirms 8,000 layoffs as it redirects spend toward AI</h4>
+        <p class="card-summary">Meta confirmed 8,000 staff cuts and the elimination of around 6,000 unfilled roles, with departures beginning 20 May. The company is redirecting payroll savings into AI compute and model development as competition for frontier capability accelerates.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">Medium AI Daily</span> &middot; 25 Apr</span>
+          <a class="card-link ai" href="https://medium.com/@stephen.stanley777/ai-daily-update-april-25-2026-bd7544cc2758" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
       <article class="card">
-        <h4>LLMs+: what comes after the language-only model</h4>
-        <p>A companion piece from MIT Technology Review argues the next generation of LLMs will be cheaper, more efficient, and fused with visual and physical world models. Benchmarks cited show Claude Opus 4.6 atop LMArena and open-source models closing the gap.</p>
-        <div class="tags"><span class="tag ai">AI Research</span><span class="tag ai">LLMs</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">MIT Technology Review <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link ai" href="https://www.technologyreview.com/2026/04/21/1135645/llm-large-language-models-ai/" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag ai">AI Research</span>
+          <span class="tag">Benchmarks</span>
+        </div>
+        <h4>Human scientists still outperform top AI agents on complex tasks</h4>
+        <p class="card-summary">A new evaluation in Nature finds that human researchers continue to beat the best AI agents on multi-step scientific problems, despite rapid gains over the past year. The result tempers the most expansive claims about agentic AI replacing knowledge work.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">Nature</span> &middot; 25 Apr</span>
+          <a class="card-link ai" href="https://www.nature.com/articles/d41586-026-01199-z" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
       <article class="card">
-        <h4>Supercharged scams: AI is making online fraud harder to spot</h4>
-        <p>MIT Tech Review details how generative AI is lowering the cost of sophisticated scams targeting consumers and enterprises, while Microsoft reports blocking $4 billion in AI-flagged fraudulent transactions in the most recent reporting window.</p>
-        <div class="tags"><span class="tag ai">AI Safety</span><span class="tag ai">Cybersecurity</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">MIT Technology Review <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link ai" href="https://www.technologyreview.com/2026/04/21/1135647/supercharged-scams-ai-artificial-intelligence/" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag ai">AI Policy</span>
+          <span class="tag">Legislation</span>
+        </div>
+        <h4>State AI laws take shape as federal preemption looms</h4>
+        <p class="card-summary">A new tracker from law firm Cooley summarises state-level AI legislation in flight, with bills active in Arizona, Hawaii, and elsewhere covering minors, automated decisions, and synthetic media. The picture grows more complex as the White House pushes for federal preemption.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">Cooley</span> &middot; 24 Apr</span>
+          <a class="card-link ai" href="https://www.cooley.com/news/insight/2026/2026-04-24-state-ai-laws-where-are-they-now" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
       <article class="card">
-        <h4>SNHU on how one of America's largest universities is deploying AI</h4>
-        <p>Josh Bersin interviews Rob McAuslan, VP for AI at Southern New Hampshire University, on how an institution serving 200,000+ students is embedding AI into advising, coursework, and back-office operations — a rare look at edtech at scale.</p>
-        <div class="tags"><span class="tag ai">Education</span><span class="tag ai">EdTech</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">Josh Bersin <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link ai" href="https://joshbersin.com/podcast/how-one-of-the-nations-largest-universities-uses-ai-to-revolutionize-education/" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag ai">AI Policy</span>
+          <span class="tag">Transparency</span>
+        </div>
+        <h4>Weekly AI legislative roundup highlights synthetic media and worker protections</h4>
+        <p class="card-summary">The Transparency Coalition's weekly update flagged moves on synthetic media in elections, automated decision oversight, and AI worker protections across multiple US state legislatures. Several bills moved out of committee this week ahead of session deadlines.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">Transparency Coalition</span> &middot; 24 Apr</span>
+          <a class="card-link ai" href="https://www.transparencycoalition.ai/news/ai-legislative-update-april24-2026" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
       <article class="card">
-        <h4>Breaking tech brief: AI surge and quantum security wins</h4>
-        <p>A roundup of 21 April tech news highlights new agentic product launches, leadership shifts at a handful of AI-forward firms, and early enterprise wins in quantum-resistant cryptography — a useful snapshot of the day's cross-currents.</p>
-        <div class="tags"><span class="tag ai">AI Industry</span><span class="tag ai">Quantum</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">Coaio <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link ai" href="https://coaio.com/news/2026/04/breaking-tech-news-on-april-21-2026-ai-surge-leadership-shifts-and-2ncc/" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag">EdTech</span>
+          <span class="tag">Education</span>
+        </div>
+        <h4>UC Irvine launches AI in Higher Education course for instructors</h4>
+        <p class="card-summary">The UC Irvine School of Education's Digital Learning Lab opened a 10-week programme to help postsecondary instructors move beyond seeing AI as an integrity threat and toward using it as a pedagogical scaffold. Demand from faculty across institutions has been strong.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">EdSurge / UC Irvine</span> &middot; 25 Apr</span>
+          <a class="card-link ai" href="https://www.pursuit.us/news/ai-in-education-news-policies-innovations" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
-    </div>
+      <article class="card">
+        <div class="card-tags">
+          <span class="tag ai">AI Industry</span>
+          <span class="tag">Markets</span>
+        </div>
+        <h4>The week in AI: model races, big spend, and slowing AI hiring</h4>
+        <p class="card-summary">A weekly roundup notes open-source frontier AI catching up to closed labs while AI-related hiring slowed for a second straight month. Recruiters reported rebalancing toward research and infrastructure roles rather than broad product hiring.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">MarketingProfs</span> &middot; 24 Apr</span>
+          <a class="card-link ai" href="https://www.marketingprofs.com/opinions/2026/54587/ai-update-april-24-2026-ai-news-and-views-from-the-past-week" target="_blank" rel="noopener">Read &rarr;</a>
+        </div>
+      </article>
 
-    <div class="history">
-      <div class="history-label">Previous Editions</div>
-      <div class="history-strip">
-        <div class="history-item active"><strong>Today · 22 Apr</strong>20 articles</div>
-        <div class="history-item pending"><strong>Tomorrow</strong>Pending</div>
-      </div>
     </div>
   </section>
 
-  <!-- ============================== GLOBAL ECONOMY ============================== -->
-  <section id="section-econ" class="section">
+  <!-- GLOBAL ECONOMY -->
+  <section class="section" id="section-econ">
     <div class="section-header">
-      <div>
+      <div class="section-title">
         <h2>Global Economy</h2>
-        <p class="sources">Sources monitored: CNBC, Reuters, Bloomberg, The Washington Post, Business Standard, The Week, Economic Times, Whalesbook, Financial Times, BBC Business. Coverage focused on the United States, India, and China.</p>
+        <p>Reuters, CNBC, People's Daily, CGTN, Business Standard, RBI, APAC News, Daily Pioneer</p>
       </div>
-      <select class="sort-dropdown">
-        <option>Sort: Most recent</option>
-        <option>Sort: Top source</option>
-      </select>
+      <div class="sort-control">
+        <label for="sort-econ">Sort by</label>
+        <select id="sort-econ">
+          <option>Most Relevant</option>
+          <option>Newest First</option>
+          <option>Source A–Z</option>
+        </select>
+      </div>
     </div>
 
     <article class="top-story econ">
       <span class="top-story-badge">Top Story</span>
-      <h3>S&amp;P 500 and Nasdaq close at records as Trump extends Iran ceasefire</h3>
-      <p>Markets whipsawed on 21 April. US indices fell during the regular session on concern a US-Iran peace deal would not be struck before the ceasefire expiration. Shortly after the close, President Trump said the ceasefire would be extended pending an Iranian proposal, triggering an after-hours rally that pushed the S&amp;P 500 up 1.05% to 7,137.90 and the Nasdaq up 1.64% to 24,657.57. The Dow added 340 points, or 0.69%, to 49,490.03.</p>
-      <div class="meta">
-        <span class="chip">CNBC</span>
-        <span class="chip time">21 April 2026</span>
+      <h3>India-US trade pact stalls as tariff ruling and Iran tensions reshape negotiations</h3>
+      <p class="top-story-summary">
+        The first tranche of the long-awaited India-US trade agreement remains unsigned after months of slipping deadlines. A US court ruling against parts of the tariff regime, combined with the war risk premium from the Iran conflict, has opened fresh room for bargaining and added uncertainty for exporters in both countries. Indian commerce minister Piyush Goyal said negotiators are seeking preferential access to US markets, while US officials want larger purchase commitments. Markets have read the delay as a temporary obstacle rather than a breakdown.
+      </p>
+      <div class="top-story-meta">
+        <span class="chip chip-source">CNBC</span>
+        <span class="chip">25 April 2026</span>
+        <span class="chip">India &middot; United States &middot; Trade</span>
       </div>
-      <a class="read-btn" href="https://www.cnbc.com/2026/04/21/stock-market-today-live-updates.html" target="_blank" rel="noopener">Read Article &rarr;</a>
+      <a class="read-btn" href="https://www.cnbc.com/2026/04/24/india-trade-deal-delay-us-tariff-ruling-iran-war-risk.html" target="_blank" rel="noopener">Read Article &rarr;</a>
     </article>
 
-    <div class="more-label">More Articles</div>
-    <div class="grid">
+    <p class="more-label">More articles</p>
+    <div class="card-grid">
 
       <article class="card">
-        <h4>Sensex jumps 753 points as RBI pivot and ceasefire hopes lift Indian equities</h4>
-        <p>The Sensex closed at 79,273 (up 0.96%) and the Nifty at 24,577 (up 0.9%) — both at their highest in six weeks. Gains were led by banking stocks amid strong earnings, plus optimism after the RBI partially rolled back rupee derivative curbs.</p>
-        <div class="tags"><span class="tag econ">India</span><span class="tag econ">Markets</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">Business Standard <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link econ" href="https://www.business-standard.com/markets/news/sensex-nifty-gain-nearly-1-to-end-at-their-highest-level-in-six-weeks-126042101093_1.html" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag econ">India</span>
+          <span class="tag">Monetary Policy</span>
+        </div>
+        <h4>RBI April Bulletin: rupee firms, trade deficit narrows to nine-month low</h4>
+        <p class="card-summary">The Reserve Bank of India's April monthly bulletin shows the rupee strengthening 40 paise to 92.58 against the dollar, while the trade deficit narrowed to a nine-month low as imports slowed and exports expanded. The RBI flagged easing supply chain pressure following the West Asia ceasefire.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">RBI / GovPing</span> &middot; 24 Apr</span>
+          <a class="card-link econ" href="https://changeflow.com/govping/banking-finance/rbi-releases-april-2026-bulletin-with-policy-updates-2026-04-24" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
       <article class="card">
-        <h4>Indian markets climb on peace hopes and an RBI pivot</h4>
-        <p>The Week analyses the day's rally through a political and policy lens: easing crude prices, short-covering ahead of weekly F&amp;O expiry, and the RBI's surprise easing of forex curbs combined to deliver the broadest one-day gain in weeks.</p>
-        <div class="tags"><span class="tag econ">India</span><span class="tag econ">Monetary Policy</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">The Week <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link econ" href="https://www.theweek.in/news/biz-tech/2026/04/21/indian-market-rally-tuesday.html" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag econ">India</span>
+          <span class="tag">Inflation</span>
+        </div>
+        <h4>India inflation risks: RBI flags supply shocks despite steady repo rate</h4>
+        <p class="card-summary">The RBI kept its benchmark repo rate unchanged at 5.25 percent for a second meeting and warned that food and fuel-driven supply shocks could pressure inflation later in the year. Economists read the tone as cautious rather than hawkish.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">APAC News Network</span> &middot; 24 Apr</span>
+          <a class="card-link econ" href="https://apacnewsnetwork.com/2026/04/rbi-april-2026-policy-update-repo-rate-unchanged-at-5-25-amid-global-tensions/" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
       <article class="card">
-        <h4>Rupee resumes slide after RBI partially rolls back forex curbs</h4>
-        <p>Even as equities rallied, the rupee weakened 0.4% to 93.5 against the dollar after the RBI partially reversed recent forex restrictions. Whalesbook tracks how HUL and other large-caps held up despite currency pressure and global risk-off sentiment.</p>
-        <div class="tags"><span class="tag econ">India</span><span class="tag econ">Currency</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">Whalesbook <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link econ" href="https://www.whalesbook.com/news/English/economy/Indian-Stocks-Climb-on-Peace-Hopes-HUL-Gains-Amid-Strategy-Scrutiny/69e74e47bca97ee10699abad" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag econ">China</span>
+          <span class="tag">Trade</span>
+        </div>
+        <h4>China's Q1 trade growth lifts global confidence, exports up 11.9 percent</h4>
+        <p class="card-summary">China's Q1 trade rose 15 percent year-on-year to 11.84 trillion yuan, the fastest quarterly pace in five years. Exports climbed 11.9 percent and imports 19.6 percent, with double-digit growth in trade with ASEAN, the EU, Latin America, and Africa.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">People's Daily</span> &middot; 23 Apr</span>
+          <a class="card-link econ" href="https://en.people.cn/n3/2026/0423/c90000-20449591.html" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
       <article class="card">
-        <h4>How major US stock indexes fared Tuesday 4/21/2026</h4>
-        <p>The Washington Post's market wrap covers the intraday sell-off on US-Iran peace-talk uncertainty and the sharp late rebound after the ceasefire extension. Banks and energy lagged, while AI-linked names led the reversal higher.</p>
-        <div class="tags"><span class="tag econ">United States</span><span class="tag econ">Markets</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">The Washington Post <span class="chip paywall" style="margin-left:0.25rem;">Subscription</span> <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link econ" href="https://www.washingtonpost.com/business/2026/04/21/wall-street-stocks-dow-nasdaq/1f0a8da4-3dbf-11f1-bb46-ed564688d953_story.html" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag econ">China</span>
+          <span class="tag">Exports</span>
+        </div>
+        <h4>Green-tech exports drive China's surge: EVs, batteries, wind components soar</h4>
+        <p class="card-summary">Chinese exports of electric vehicles rose 77.5 percent year-on-year in Q1, lithium-ion batteries 50.4 percent, and wind turbines and components 45.2 percent. The mix is reshaping China's trade balance as it leans further into the energy transition.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">CGTN</span> &middot; 14 Apr</span>
+          <a class="card-link econ" href="https://news.cgtn.com/news/2026-04-14/China-s-Q1-foreign-trade-up-15-fastest-in-5-years-1MkD9cTxlcs/p.html" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
       <article class="card">
-        <h4>China keeps benchmark lending rates unchanged as growth revs up</h4>
-        <p>The PBoC held the 1-year LPR at 3.0% and the 5-year at 3.5% for an 11th straight month. Resilient Q1 data and rising inflation have reduced urgency for fresh stimulus while Beijing monitors Middle East risk and its effect on oil.</p>
-        <div class="tags"><span class="tag econ">China</span><span class="tag econ">Monetary Policy</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">CNBC <span style="color:var(--muted2);">· 20 Apr</span></span>
-          <a class="read-link econ" href="https://www.cnbc.com/2026/04/20/china-keeps-benchmark-lending-rates-unchanged-as-economic-growth-revs-up-amid-mounting-middle-east-risk-mount-.html" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag econ">United States</span>
+          <span class="tag">Federal Reserve</span>
+        </div>
+        <h4>Fed holds rates again as labour market softens and inflation eases unevenly</h4>
+        <p class="card-summary">The Federal Reserve left the policy rate at 3.5–3.75 percent for a second consecutive meeting in March and signalled one more cut later this year. Job gains have weakened and unemployment has crept up, while core inflation is expected to drift toward target in the second half.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">St. Louis Fed</span> &middot; 24 Apr</span>
+          <a class="card-link econ" href="https://www.stlouisfed.org/from-the-president/remarks/2026/economic-outlook-monetary-policy-aei" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
       <article class="card">
-        <h4>S&amp;P 500 movers: winners NTRS, HPQ, UNH; losers TSCO, SATS, COIN</h4>
-        <p>Trefis breaks down the biggest S&amp;P 500 moves on 21 April. Financials led the winners on solid earnings while agricultural retail and crypto-linked names lagged amid commodity softness and risk-off positioning.</p>
-        <div class="tags"><span class="tag econ">United States</span><span class="tag econ">Markets</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">Trefis <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link econ" href="https://www.trefis.com/stock/spy/articles/597079/sp-500-movers-winners-ntrs-hpq-unh-losers-tsco-sats-coin/2026-04-21" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag econ">India</span>
+          <span class="tag">China</span>
+        </div>
+        <h4>China overtakes US as India's top trade partner; deficit widens to $112 billion</h4>
+        <p class="card-summary">Bilateral India-China trade reached $151.1 billion in FY26, pushing China past the United States as India's largest trade partner. The trade deficit with Beijing widened to $112.16 billion, reigniting debate over import dependence in electronics and intermediate goods.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">Business Standard</span> &middot; 15 Apr</span>
+          <a class="card-link econ" href="https://www.business-standard.com/economy/news/china-becomes-india-s-top-trade-partner-in-fy26-deficit-widens-to-usd-112-bn-126041501317_1.html" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
-    </div>
+      <article class="card">
+        <div class="card-tags">
+          <span class="tag econ">India</span>
+          <span class="tag">United States</span>
+        </div>
+        <h4>India-US talks: interim truce holds, framework deal targets 18 percent tariff</h4>
+        <p class="card-summary">India and the US are working to convert a fragile February framework into a durable trade pact, pairing Indian tariff cuts and US purchases with a planned reduction in US duties from 25 percent to 18 percent. Russian oil and energy purchases remain a sticking point.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">Daily Pioneer</span> &middot; 24 Apr</span>
+          <a class="card-link econ" href="https://dailypioneer.com/news/why-india-us-trade-talks-matter-more-than-ever-in-2026" target="_blank" rel="noopener">Read &rarr;</a>
+        </div>
+      </article>
 
-    <div class="history">
-      <div class="history-label">Previous Editions</div>
-      <div class="history-strip">
-        <div class="history-item active"><strong>Today · 22 Apr</strong>20 articles</div>
-        <div class="history-item pending"><strong>Tomorrow</strong>Pending</div>
-      </div>
+      <article class="card">
+        <div class="card-tags">
+          <span class="tag econ">India</span>
+          <span class="tag">GDP</span>
+        </div>
+        <h4>World Bank pegs India FY26 GDP growth at 7.6 percent on consumption strength</h4>
+        <p class="card-summary">The World Bank's South Asia Economic Update raised its estimate of India's FY26 growth to 7.6 percent, citing strong private consumption, GST rationalisation, and resilient exports. The RBI's own projection sits more cautiously at 6.9 percent for the year.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">PIB / Multibagg</span> &middot; 24 Apr</span>
+          <a class="card-link econ" href="https://www.multibagg.ai/market-pulse/articles/india-economy-outlook-2026-cmnah2gny8t8jpa0jvs7xj4sq" target="_blank" rel="noopener">Read &rarr;</a>
+        </div>
+      </article>
+
     </div>
   </section>
 
-  <!-- ============================== GOVERNANCE REFORMS ============================== -->
-  <section id="section-gov" class="section">
+  <!-- GOVERNANCE REFORMS -->
+  <section class="section" id="section-gov">
     <div class="section-header">
-      <div>
+      <div class="section-title">
         <h2>Governance Reforms</h2>
-        <p class="sources">Sources monitored: New York Times, Wall Street Journal, The Guardian, Reuters, BBC World, CT Mirror, PPC Land, CIGI, and other credible policy publications.</p>
+        <p>OECD, Transparency Coalition, Cooley, Just Security, Tech Policy Press</p>
       </div>
-      <select class="sort-dropdown">
-        <option>Sort: Most recent</option>
-        <option>Sort: Top source</option>
-      </select>
+      <div class="sort-control">
+        <label for="sort-gov">Sort by</label>
+        <select id="sort-gov">
+          <option>Most Relevant</option>
+          <option>Newest First</option>
+          <option>Source A–Z</option>
+        </select>
+      </div>
     </div>
 
     <article class="top-story gov">
       <span class="top-story-badge">Top Story</span>
-      <h3>Connecticut Senate passes sweeping AI bill in 32-4 vote</h3>
-      <p>The Connecticut Senate passed an amended Senate Bill 5 on 21 April, a comprehensive AI law that regulates developers of "frontier" models, establishes a state AI sandbox, and creates new obligations for youth social media and AI chatbot use. The bill requires chatbot operators to detect and respond to signals of self-harm, notifies employees when AI is used in hiring decisions, and funds a Connecticut AI Academy. Passage came after extensive questioning from members concerned about compliance burden on smaller firms.</p>
-      <div class="meta">
-        <span class="chip">CT Mirror</span>
-        <span class="chip time">21 April 2026</span>
+      <h3>State AI laws move ahead even as White House pushes federal preemption</h3>
+      <p class="top-story-summary">
+        A new tracker from Cooley details a wave of state AI legislation moving through US legislatures in late April, including bills in Arizona approaching adjournment and three Hawaii bills covering minors, AI companion systems, and oversight in reconciliation. The state-level activity is on a collision course with the White House's National Policy Framework, which recommends Congress preempt state AI laws that "impose undue burdens." The result is a fragmented but increasingly active governance landscape, with civil society groups urging that preemption preserve consumer and child-safety protections rather than override them.
+      </p>
+      <div class="top-story-meta">
+        <span class="chip chip-source">Cooley</span>
+        <span class="chip">24 April 2026</span>
+        <span class="chip">AI Policy &middot; Federalism</span>
       </div>
-      <a class="read-btn" href="https://ctmirror.org/2026/04/21/artificial-intelligence-regulation-senate-ct/" target="_blank" rel="noopener">Read Article &rarr;</a>
+      <a class="read-btn" href="https://www.cooley.com/news/insight/2026/2026-04-24-state-ai-laws-where-are-they-now" target="_blank" rel="noopener">Read Article &rarr;</a>
     </article>
 
-    <div class="more-label">More Articles</div>
-    <div class="grid">
+    <p class="more-label">More articles</p>
+    <div class="card-grid">
 
       <article class="card">
-        <h4>House Republicans unveil SECURE Data Act to replace state privacy laws</h4>
-        <p>Introduced on 21 April by Rep. Joyce (PA), the SECURE Data Act proposes a national consumer data privacy framework granting rights to access, correct, delete, and port personal data, with enforcement split between the FTC and state attorneys general — designed to pre-empt the fragmented state-level regime.</p>
-        <div class="tags"><span class="tag gov">Privacy</span><span class="tag gov">Digital Governance</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">PPC Land <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link gov" href="https://ppc.land/house-republicans-unveil-secure-data-act-to-replace-us-state-privacy-laws/" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag gov">Anti-Corruption</span>
+          <span class="tag">OECD</span>
+        </div>
+        <h4>OECD Anti-Corruption and Integrity Outlook flags uneven implementation</h4>
+        <p class="card-summary">The OECD's 2026 Outlook, presented at the Global Anti-Corruption and Integrity Forum, finds that despite progress across 37 member states and 25 partners, integrity systems remain unevenly implemented. The report calls for digitalised procurement, stronger parliamentary oversight, and clearer transparency rules.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">OECD</span> &middot; 24 Apr</span>
+          <a class="card-link gov" href="https://www.oecd.org/en/publications/anti-corruption-and-integrity-outlook-2026_16708b78-en.html" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
       <article class="card">
-        <h4>Senate Democrats detail passage of Connecticut AI harms bill</h4>
-        <p>Senator Maroney's office releases the detailed case for SB 5: mandated protocols for AI companions interacting with minors, anti-discrimination rules for AI employment decisions, and workforce programs including an AI sandbox for responsible innovation.</p>
-        <div class="tags"><span class="tag gov">AI Policy</span><span class="tag gov">Governance</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">CT Senate Democrats <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link gov" href="https://www.senatedems.ct.gov/senator-maroney-leads-passage-of-bill-to-protect-residents-from-ai-harms-boost-workforce-readiness" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag gov">Digital Governance</span>
+          <span class="tag">Privacy</span>
+        </div>
+        <h4>AI legislative roundup: states press on transparency and worker protections</h4>
+        <p class="card-summary">The Transparency Coalition's weekly governance update covered movement on synthetic media in elections, automated decision systems, and AI worker protections across several US states. Several bills moved past committee deadlines as legislative sessions approach close.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">Transparency Coalition</span> &middot; 24 Apr</span>
+          <a class="card-link gov" href="https://www.transparencycoalition.ai/news/ai-legislative-update-april24-2026" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
       <article class="card">
-        <h4>Congress debates Section 702 surveillance reform before 30 April deadline</h4>
-        <p>After a weekend 10-day extension of FISA Section 702 signed by President Trump, Congress enters a narrow window to debate new privacy measures. Hard-liners blocked longer extensions; Rep. Raskin is leading a renewed push for warrant requirements and a closed data-broker loophole.</p>
-        <div class="tags"><span class="tag gov">Surveillance</span><span class="tag gov">Privacy</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">CNBC <span style="color:var(--muted2);">· 17–21 Apr</span></span>
-          <a class="read-link gov" href="https://www.cnbc.com/2026/04/17/section-702-fisa-congress-surveillance.html" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag gov">Accountability</span>
+          <span class="tag">United States</span>
+        </div>
+        <h4>Anti-Corruption Tracker maps erosion of US oversight institutions</h4>
+        <p class="card-summary">Just Security's Anti-Corruption Tracker documents changes within the US executive branch that, taken cumulatively, weaken oversight and accountability. The trackers compile inspector-general dismissals, ethics waivers, and shifts in enforcement priorities for researchers and journalists.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">Just Security</span> &middot; 24 Apr</span>
+          <a class="card-link gov" href="https://www.justsecurity.org/117267/anti-corruption-tracker/" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
       <article class="card">
-        <h4>White House transmits nine nominations including CDC and CEA chairs</h4>
-        <p>On 21 April, the White House sent the Senate nominations for Director of the Peace Corps, Director of the CDC, Chairman of the Council of Economic Advisers, DOJ Inspector General, NRO Director, and several Ambassadors — a packed slate for Senate confirmation this quarter.</p>
-        <div class="tags"><span class="tag gov">Governance</span><span class="tag gov">Appointments</span></div>
-        <div class="card-meta">
-          <span class="source-chip chip">Congress.gov <span style="color:var(--muted2);">· 21 Apr</span></span>
-          <a class="read-link gov" href="https://www.congress.gov/" target="_blank" rel="noopener">Read &rarr;</a>
+        <div class="card-tags">
+          <span class="tag gov">Digital Governance</span>
+          <span class="tag">China</span>
+        </div>
+        <h4>China's new internet platform pricing rules enter into force</h4>
+        <p class="card-summary">The State Administration for Market Regulation's rules on internet platform pricing behaviour took effect this month, prohibiting forced discounts, price matching, and algorithmic price discrimination against businesses or consumers. The regulation marks one of Beijing's strongest competition moves of the year.</p>
+        <div class="card-footer">
+          <span class="card-source"><span class="source-name">Tech Policy Press</span> &middot; 24 Apr</span>
+          <a class="card-link gov" href="https://www.techpolicy.press/global-digital-policy-roundup-december-2025/" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </article>
 
-    </div>
-
-    <div class="history">
-      <div class="history-label">Previous Editions</div>
-      <div class="history-strip">
-        <div class="history-item active"><strong>Today · 22 Apr</strong>20 articles</div>
-        <div class="history-item pending"><strong>Tomorrow</strong>Pending</div>
-      </div>
     </div>
   </section>
+
+  <!-- HISTORY -->
+  <div class="history">
+    <p class="history-label">Previous Editions</p>
+    <div class="history-strip">
+      <div class="history-item active">
+        <div class="history-date">Today &middot; 26 Apr 2026</div>
+        <div class="history-meta">20 articles across 3 sections</div>
+      </div>
+      <div class="history-item pending">
+        <div class="history-date">Tomorrow</div>
+        <div class="history-meta">Pending</div>
+      </div>
+    </div>
+  </div>
 
 </main>
 
 <script>
-  function showSection(name, el) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.getElementById('section-' + name).classList.add('active');
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    if (el) el.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+function showSection(name, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  el.classList.add('active');
+  var section = document.getElementById('section-' + name);
+  if (section) section.classList.add('active');
+}
 </script>
 
 </body>
