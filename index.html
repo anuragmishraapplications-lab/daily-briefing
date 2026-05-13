@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Daily Briefing — Tuesday, 12 May 2026</title>
+<title>Daily Briefing — Wednesday, 13 May 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #f9f8f5;
@@ -28,722 +28,696 @@
     --gov: #3a5fa0;
     --gov-bg: #eef2fa;
     --gov-border: #b8ccee;
-    --gold: #b8862f;
-    --gold-bg: #faf3e2;
-    --gold-border: #e6d49a;
+    --gold: #b08a3e;
+    --gold-bg: #f6efdc;
+    --gold-border: #e2d3a3;
     --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
     --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
   }
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  html, body {
+    margin: 0; padding: 0;
     background: var(--bg);
     color: var(--text);
-    font-size: 14px;
-    line-height: 1.55;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    line-height: 1.5;
   }
   a { color: inherit; text-decoration: none; }
 
-  /* Header */
-  .header {
-    position: sticky;
-    top: 0;
-    z-index: 50;
+  /* HEADER */
+  header.topbar {
+    position: sticky; top: 0; z-index: 50;
     background: var(--surface);
     border-bottom: 1px solid var(--border);
     padding: 14px 28px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
   }
-  .header-left h1 {
+  .greeting h1 {
     margin: 0;
     font-size: 1rem;
     font-weight: 600;
     color: var(--text);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
   }
-  .header-left p {
-    margin: 2px 0 0;
+  .greeting p {
+    margin: 2px 0 0 0;
     font-size: 0.75rem;
     color: var(--muted);
-    font-weight: 400;
   }
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .update-chip {
+  .header-right { display: flex; align-items: center; gap: 10px; }
+  .chip-updated {
     background: var(--surface2);
+    border: 1px solid var(--border);
     color: var(--text2);
-    padding: 5px 11px;
+    padding: 6px 10px;
     border-radius: 999px;
     font-size: 0.72rem;
     font-weight: 500;
-    border: 1px solid var(--border);
   }
-  .refresh-btn {
+  .btn-refresh {
     background: var(--accent);
     color: #fff;
     border: none;
-    padding: 6px 14px;
-    border-radius: 6px;
+    padding: 7px 14px;
+    border-radius: 8px;
     font-size: 0.78rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     font-family: inherit;
-    transition: background 0.15s;
+    box-shadow: var(--shadow-sm);
+    transition: filter 120ms ease;
   }
-  .refresh-btn:hover { background: #b85838; }
+  .btn-refresh:hover { filter: brightness(1.05); }
 
-  /* Tabs */
-  .tabs {
+  /* TABS */
+  nav.tabs {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
     padding: 0 28px;
-    display: flex;
-    gap: 4px;
+    display: flex; gap: 32px;
+    position: sticky; top: 64px; z-index: 40;
   }
   .tab {
-    background: transparent;
-    border: none;
-    padding: 14px 18px;
-    font-family: inherit;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--muted);
-    cursor: pointer;
+    background: none; border: none;
+    padding: 14px 0 12px 0;
+    font-family: inherit; font-size: 0.85rem; font-weight: 500;
+    color: var(--muted); cursor: pointer;
     border-bottom: 2px solid transparent;
-    transition: color 0.15s, border-color 0.15s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    transition: color 120ms ease, border-color 120ms ease;
+    display: flex; align-items: center; gap: 8px;
   }
   .tab:hover { color: var(--text2); }
   .tab .count {
     background: var(--surface2);
     color: var(--muted);
-    padding: 1px 7px;
     border-radius: 999px;
-    font-size: 0.7rem;
-    font-weight: 500;
+    padding: 1px 8px;
+    font-size: 0.7rem; font-weight: 600;
   }
-  .tab.active { color: var(--text); }
-  .tab.active[data-tab="ai"] { border-bottom-color: var(--ai); }
-  .tab.active[data-tab="econ"] { border-bottom-color: var(--econ); }
-  .tab.active[data-tab="gov"] { border-bottom-color: var(--gov); }
-  .tab.active[data-tab="ai"] .count { background: var(--ai-bg); color: var(--ai); }
-  .tab.active[data-tab="econ"] .count { background: var(--econ-bg); color: var(--econ); }
-  .tab.active[data-tab="gov"] .count { background: var(--gov-bg); color: var(--gov); }
+  .tab.active { color: var(--text); font-weight: 600; }
+  .tab.active.tab-ai { border-bottom-color: var(--ai); }
+  .tab.active.tab-econ { border-bottom-color: var(--econ); }
+  .tab.active.tab-gov { border-bottom-color: var(--gov); }
+  .tab.active.tab-ai .count { background: var(--ai-bg); color: var(--ai); }
+  .tab.active.tab-econ .count { background: var(--econ-bg); color: var(--econ); }
+  .tab.active.tab-gov .count { background: var(--gov-bg); color: var(--gov); }
 
-  /* Main content */
-  .main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 28px 28px 60px;
-  }
-  .section { display: none; }
-  .section.active { display: block; }
+  /* MAIN */
+  main { padding: 24px 28px 60px; max-width: 1280px; margin: 0 auto; }
+  section.bucket { display: none; }
+  section.bucket.active { display: block; }
 
   .section-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 22px;
+    display: flex; align-items: flex-start; justify-content: space-between;
     gap: 16px;
-    flex-wrap: wrap;
+    margin-bottom: 20px;
   }
-  .section-header h2 {
-    margin: 0 0 4px;
-    font-size: 1.35rem;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-  }
-  .section-header .sources-line {
+  .section-header .title-block h2 {
     margin: 0;
-    font-size: 0.75rem;
-    color: var(--muted);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
-  .sort-select {
+  .section-header .title-block p {
+    margin: 4px 0 0 0;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+  .sort-dropdown {
     background: var(--surface);
-    border: 1px solid var(--border2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
     padding: 6px 10px;
-    border-radius: 6px;
     font-family: inherit;
     font-size: 0.78rem;
     color: var(--text2);
     cursor: pointer;
   }
 
-  /* Top story */
-  .top-story {
-    position: relative;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 26px 28px 26px 32px;
-    margin-bottom: 28px;
-    box-shadow: var(--shadow-sm);
-    overflow: hidden;
-  }
-  .top-story::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 4px;
-  }
-  .top-story[data-bucket="ai"]::before { background: var(--ai); }
-  .top-story[data-bucket="econ"]::before { background: var(--econ); }
-  .top-story[data-bucket="gov"]::before { background: var(--gov); }
-
-  .badge {
-    display: inline-block;
-    padding: 3px 9px;
-    border-radius: 4px;
+  /* TOP STORY */
+  .top-story-label {
+    text-transform: uppercase;
     font-size: 0.68rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 10px;
-  }
-  .top-story[data-bucket="ai"] .badge { background: var(--ai-bg); color: var(--ai); border: 1px solid var(--ai-border); }
-  .top-story[data-bucket="econ"] .badge { background: var(--econ-bg); color: var(--econ); border: 1px solid var(--econ-border); }
-  .top-story[data-bucket="gov"] .badge { background: var(--gov-bg); color: var(--gov); border: 1px solid var(--gov-border); }
-
-  .top-story h3 {
-    margin: 0 0 12px;
-    font-size: 1.35rem;
-    font-weight: 600;
-    letter-spacing: -0.015em;
-    line-height: 1.3;
-    color: var(--text);
-  }
-  .top-story .summary {
-    margin: 0 0 18px;
-    color: var(--text2);
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-  .top-story .meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 18px;
-  }
-  .read-btn {
-    display: inline-block;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: #fff;
-    transition: opacity 0.15s;
-  }
-  .top-story[data-bucket="ai"] .read-btn { background: var(--ai); }
-  .top-story[data-bucket="econ"] .read-btn { background: var(--econ); }
-  .top-story[data-bucket="gov"] .read-btn { background: var(--gov); }
-  .read-btn:hover { opacity: 0.9; }
-
-  .more-label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
+    font-weight: 700;
     letter-spacing: 0.08em;
     color: var(--muted);
-    margin: 8px 0 14px;
+    margin: 8px 0 8px 0;
   }
+  .top-story {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 26px 22px 30px;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 22px;
+  }
+  .top-story::before {
+    content: '';
+    position: absolute; top: 0; left: 0; bottom: 0;
+    width: 6px;
+  }
+  .top-story.ai::before { background: var(--ai); }
+  .top-story.econ::before { background: var(--econ); }
+  .top-story.gov::before { background: var(--gov); }
+  .top-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+  }
+  .top-badge.ai { background: var(--ai-bg); color: var(--ai); border: 1px solid var(--ai-border); }
+  .top-badge.econ { background: var(--econ-bg); color: var(--econ); border: 1px solid var(--econ-border); }
+  .top-badge.gov { background: var(--gov-bg); color: var(--gov); border: 1px solid var(--gov-border); }
+  .top-story h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.45rem;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .top-story p.summary {
+    margin: 0 0 18px 0;
+    color: var(--text2);
+    font-size: 0.93rem;
+    line-height: 1.6;
+    max-width: 78ch;
+  }
+  .top-meta {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+    margin-bottom: 18px;
+  }
+  .meta-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .meta-chip.paywall {
+    background: var(--gold-bg);
+    border-color: var(--gold-border);
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .btn-read {
+    display: inline-block;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    transition: filter 120ms ease;
+  }
+  .top-story.ai .btn-read { background: var(--ai); }
+  .top-story.econ .btn-read { background: var(--econ); }
+  .top-story.gov .btn-read { background: var(--gov); }
+  .btn-read:hover { filter: brightness(1.08); }
 
-  /* Card grid */
+  /* MORE ARTICLES */
+  .more-label {
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 28px 0 14px 0;
+  }
   .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-    gap: 18px;
+    gap: 16px;
   }
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px 20px 18px;
-    display: flex;
-    flex-direction: column;
-    transition: box-shadow 0.18s, transform 0.18s;
+    border-radius: 12px;
+    padding: 18px 18px 16px 18px;
+    display: flex; flex-direction: column;
+    transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+    box-shadow: var(--shadow-sm);
   }
-  .card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
-  .card .tags { margin-bottom: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--border2);
+  }
   .card h4 {
-    margin: 0 0 10px;
+    margin: 0 0 8px 0;
     font-size: 0.98rem;
     font-weight: 600;
     line-height: 1.35;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
     color: var(--text);
   }
-  .card p {
-    margin: 0 0 14px;
-    color: var(--text2);
-    font-size: 0.84rem;
+  .card p.card-summary {
+    margin: 0 0 12px 0;
+    font-size: 0.83rem;
     line-height: 1.55;
+    color: var(--text2);
     flex-grow: 1;
   }
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
+  .card-tags {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-bottom: 12px;
   }
-  .source-chip {
-    font-size: 0.72rem;
-    color: var(--muted);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-  .source-chip .source-name {
-    color: var(--text2);
-    font-weight: 500;
-  }
-  .source-chip .dot { color: var(--muted2); }
-  .read-link {
-    font-size: 0.78rem;
-    font-weight: 500;
-    white-space: nowrap;
-  }
-  .card[data-bucket="ai"] .read-link { color: var(--ai); }
-  .card[data-bucket="econ"] .read-link { color: var(--econ); }
-  .card[data-bucket="gov"] .read-link { color: var(--gov); }
-
-  /* Tag chip */
   .tag {
-    display: inline-block;
-    padding: 2px 7px;
-    border-radius: 3px;
-    font-size: 0.62rem;
-    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    padding: 3px 8px;
+    border-radius: 4px;
     background: var(--surface2);
-    color: var(--text2);
+    color: var(--muted);
     border: 1px solid var(--border);
   }
   .tag.ai { background: var(--ai-bg); color: var(--ai); border-color: var(--ai-border); }
   .tag.econ { background: var(--econ-bg); color: var(--econ); border-color: var(--econ-border); }
   .tag.gov { background: var(--gov-bg); color: var(--gov); border-color: var(--gov-border); }
-
-  /* Paywall badge */
-  .paywall {
-    display: inline-block;
-    padding: 1px 7px;
-    border-radius: 3px;
-    font-size: 0.62rem;
-    font-weight: 600;
-    background: var(--gold-bg);
-    color: var(--gold);
-    border: 1px solid var(--gold-border);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
-
-  /* Time / meta chip on top story */
-  .meta-chip {
-    background: var(--surface2);
-    color: var(--text2);
-    padding: 3px 10px;
-    border-radius: 4px;
-    font-size: 0.72rem;
-    border: 1px solid var(--border);
-  }
-
-  /* Previous editions strip */
-  .history {
-    margin-top: 48px;
-    padding-top: 24px;
+  .card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 8px;
+    padding-top: 10px;
     border-top: 1px solid var(--border);
   }
-  .history h5 {
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+  .card-source {
+    font-size: 0.72rem;
     color: var(--muted);
-    margin: 0 0 12px;
+    display: flex; align-items: center; gap: 6px;
   }
-  .history-strip {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding-bottom: 4px;
+  .card-source .pubdate { color: var(--muted2); }
+  .paywall-badge {
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-border);
+    color: var(--gold);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 6px;
+    border-radius: 4px;
   }
-  .history-item {
-    flex-shrink: 0;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 11px 16px;
-    min-width: 140px;
-  }
-  .history-item.active { border-color: var(--accent); background: var(--ai-bg); }
-  .history-item .date {
+  .read-link {
     font-size: 0.78rem;
     font-weight: 600;
-    color: var(--text);
   }
-  .history-item.active .date { color: var(--accent); }
-  .history-item .meta {
-    font-size: 0.7rem;
-    color: var(--muted);
-    margin-top: 2px;
-  }
-  .history-item.pending .date { color: var(--muted); }
-  .history-item.pending .meta { color: var(--muted2); }
+  .ai .read-link, .read-link.ai { color: var(--ai); }
+  .econ .read-link, .read-link.econ { color: var(--econ); }
+  .gov .read-link, .read-link.gov { color: var(--gov); }
 
-  @media (max-width: 640px) {
-    .header { padding: 12px 16px; flex-direction: column; align-items: flex-start; gap: 10px; }
-    .tabs { padding: 0 16px; overflow-x: auto; }
-    .main { padding: 20px 16px 48px; }
-    .top-story { padding: 22px 20px 22px 24px; }
+  /* HISTORY STRIP */
+  .history-strip {
+    margin-top: 42px;
+    padding: 18px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .history-strip h5 {
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .history-items { display: flex; gap: 10px; flex-wrap: wrap; }
+  .history-item {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    font-size: 0.78rem;
+    color: var(--text2);
+    min-width: 160px;
+  }
+  .history-item .h-date { font-weight: 600; color: var(--text); }
+  .history-item .h-meta { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
+  .history-item.active { background: var(--ai-bg); border-color: var(--ai-border); color: var(--ai); }
+  .history-item.active .h-date { color: var(--ai); }
+  .history-item.active .h-meta { color: var(--ai); opacity: 0.8; }
+  .history-item.pending { opacity: 0.65; border-style: dashed; }
+
+  @media (max-width: 720px) {
+    header.topbar { padding: 12px 16px; flex-wrap: wrap; }
+    nav.tabs { padding: 0 16px; gap: 18px; overflow-x: auto; }
+    main { padding: 18px 16px 60px; }
+    .top-story h3 { font-size: 1.2rem; }
+    .top-story { padding: 20px 18px 18px 22px; }
   }
 </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="header-left">
+<header class="topbar">
+  <div class="greeting">
     <h1>Good morning, Anurag</h1>
-    <p>Tuesday, 12 May 2026 &middot; Your personalised briefing is ready</p>
+    <p>Wednesday, 13 May 2026 &middot; Your personalised briefing is ready</p>
   </div>
   <div class="header-right">
-    <span class="update-chip" id="updateChip">Updated at —</span>
-    <button class="refresh-btn" onclick="window.location.reload()">Refresh</button>
+    <span class="chip-updated">Updated at 01:58 PM</span>
+    <button class="btn-refresh" onclick="location.reload()">Refresh</button>
   </div>
 </header>
 
 <nav class="tabs">
-  <button class="tab active" data-tab="ai" onclick="showSection('ai', this)">AI &amp; Education <span class="count">8</span></button>
-  <button class="tab" data-tab="econ" onclick="showSection('econ', this)">Global Economy <span class="count">7</span></button>
-  <button class="tab" data-tab="gov" onclick="showSection('gov', this)">Governance Reforms <span class="count">4</span></button>
+  <button class="tab tab-ai active" onclick="showSection('ai', this)">AI &amp; Education <span class="count">7</span></button>
+  <button class="tab tab-econ" onclick="showSection('econ', this)">Global Economy <span class="count">7</span></button>
+  <button class="tab tab-gov" onclick="showSection('gov', this)">Governance Reforms <span class="count">3</span></button>
 </nav>
 
-<main class="main">
+<main>
 
-  <!-- ========================= AI & EDUCATION ========================= -->
-  <section class="section active" id="section-ai">
-    <div class="section-header">
-      <div>
-        <h2>AI &amp; Education</h2>
-        <p class="sources-line">8 stories from 11 May 2026 &middot; CNBC, Washington Post, Bloomberg, The Hacker News, Yahoo Finance, NVIDIA Newsroom, eWeek</p>
-      </div>
-      <select class="sort-select" aria-label="Sort">
-        <option>Sort: Most relevant</option>
-        <option>Sort: Newest first</option>
-        <option>Sort: By source</option>
-      </select>
+<!-- ================= AI & EDUCATION ================= -->
+<section class="bucket active" id="bucket-ai">
+  <div class="section-header">
+    <div class="title-block">
+      <h2>AI &amp; Education</h2>
+      <p>Sources: CNBC, Fortune, The Information, DevOps.com, Tech Startups, Simon Willison, Adafruit</p>
     </div>
+    <select class="sort-dropdown">
+      <option>Sort: Newest first</option>
+      <option>Sort: Source</option>
+      <option>Sort: Headline</option>
+    </select>
+  </div>
 
-    <article class="top-story" data-bucket="ai">
-      <span class="badge">Top Story</span>
-      <h3>Microsoft, Google and xAI agree to give US government early access to new AI models for security testing</h3>
-      <p class="summary">Three of the largest US AI developers will hand pre-release versions of their frontier models to federal national security teams for vetting before public launch. The move follows mounting alarm in Washington over the hacking capabilities of Anthropic's recently unveiled Mythos model, and signals a tighter integration between commercial AI labs and US intelligence agencies. Anthropic remains a notable holdout from the arrangement, even as the Trump administration continues to exclude it from government contracts.</p>
-      <div class="meta">
-        <span class="meta-chip">CNBC &middot; 11 May 2026</span>
-        <span class="meta-chip">AI Industry</span>
-        <span class="meta-chip">National Security</span>
-      </div>
-      <a class="read-btn" href="https://www.cnbc.com/2026/05/11/google-thwarts-effort-hacker-group-use-ai-mass-exploitation-event.html" target="_blank" rel="noopener">Read Article &rarr;</a>
-    </article>
-
-    <p class="more-label">More Articles</p>
-    <div class="card-grid">
-
-      <article class="card" data-bucket="ai">
-        <div class="tags"><span class="tag ai">AI Industry</span><span class="tag">Cyber</span></div>
-        <h4>Google says it likely thwarted hacker group's bid to use AI for a "mass exploitation event"</h4>
-        <p>Google's Threat Intelligence Group disclosed that it disrupted an attempt by hackers to use AI models to plan a mass vulnerability exploitation operation, including using an AI model to find and exploit a zero-day to bypass two-factor authentication.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">CNBC</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.cnbc.com/2026/05/11/google-thwarts-effort-hacker-group-use-ai-mass-exploitation-event.html" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card" data-bucket="ai">
-        <div class="tags"><span class="tag ai">AI Policy</span><span class="tag">Regulation</span></div>
-        <h4>In Trump administration battle over AI, US spy agencies seek more power</h4>
-        <p>National security officials are pushing for greater authority over AI regulation as the White House grapples with cybersecurity threats from advanced models. The internal tussle reflects broader uncertainty over which agencies should lead federal AI oversight.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">Washington Post</span><span class="paywall">Subscription</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.washingtonpost.com/politics/2026/05/11/trump-ai-regulation-commerce-intelligence/" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card" data-bucket="ai">
-        <div class="tags"><span class="tag ai">AI Research</span><span class="tag">Cyber</span></div>
-        <h4>Hackers used AI to develop first known zero-day 2FA bypass for mass exploitation</h4>
-        <p>Security researchers detailed what appears to be the first documented case of attackers using a large language model to autonomously discover and weaponise a zero-day flaw in a two-factor authentication system, raising new concerns about offensive AI capabilities.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">The Hacker News</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://thehackernews.com/2026/05/hackers-used-ai-to-develop-first-known.html" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card" data-bucket="ai">
-        <div class="tags"><span class="tag ai">AI Industry</span><span class="tag">Corporate</span></div>
-        <h4>How AI is reshaping boardrooms: 76% of firms now have a Chief AI Officer</h4>
-        <p>A new CNBC survey of more than 2,000 organisations finds the Chief AI Officer has become one of the fastest-spreading C-suite roles, up from just 26% adoption in 2025. The role is increasingly central to capital allocation, hiring decisions and governance frameworks at the largest enterprises.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">CNBC</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.cnbc.com/2026/05/11/heres-how-artificial-intelligence-is-changing-boardrooms.html" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card" data-bucket="ai">
-        <div class="tags"><span class="tag ai">AI Industry</span><span class="tag">Workforce</span></div>
-        <h4>Layoffs accelerate in May 2026 as firms restructure around AI</h4>
-        <p>Cloudflare, Upwork, Coinbase and others announced thousands of fresh job cuts this month, citing organisational restructuring around AI-native workflows. The pace of layoffs is now running materially above the comparable period in 2025.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">Yahoo Finance</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://finance.yahoo.com/sectors/technology/articles/layoffs-accelerate-may-2026-firms-040430218.html" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card" data-bucket="ai">
-        <div class="tags"><span class="tag ai">AI Industry</span><span class="tag">Regulation</span></div>
-        <h4>OpenAI to give EU access to new cyber model; Anthropic still holds out on Mythos</h4>
-        <p>OpenAI will grant European businesses, governments and EU institutions including the EU AI Office preview access to GPT-5.5-Cyber, a security-focused variant of its latest model. Anthropic has yet to extend a similar arrangement for Mythos, which was released a month ago.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">CNBC</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.cnbc.com/2026/05/11/openai-eu-cyber-model-anthropic-mythos-gpt.html" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card" data-bucket="ai">
-        <div class="tags"><span class="tag econ">China</span><span class="tag ai">AI Industry</span></div>
-        <h4>Tencent and Alibaba face slowing growth as AI costs mount</h4>
-        <p>Bloomberg analysis ahead of quarterly earnings finds rising AI infrastructure spending is squeezing margins at China's two largest internet platforms, with Tencent's annual earnings growth expected to slow to the low-teen percentage range as AI investments roughly double.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">Bloomberg</span><span class="paywall">Subscription</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.bloomberg.com/news/articles/2026-05-08/tencent-alibaba-face-slowing-growth-as-ai-costs-mount" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card" data-bucket="ai">
-        <div class="tags"><span class="tag ai">AI Industry</span><span class="tag">Infrastructure</span></div>
-        <h4>Nvidia's $40B AI investment push goes beyond chips</h4>
-        <p>Reports this week catalogue Nvidia's surging vertical bets — a $30B stake in OpenAI, $3.2B in Corning for optical fibre, and $2.1B in IREN — totalling over $40 billion in AI-related equity commitments so far in 2026 and reshaping data centre economics.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">eWeek</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.eweek.com/news/nvidia-40b-ai-investment-push-goes-beyond-chips/" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
+  <div class="top-story-label">Top Story</div>
+  <article class="top-story ai">
+    <span class="top-badge ai">Top Story</span>
+    <h3>Google races to put Gemini at the center of Android before Apple's AI reboot</h3>
+    <p class="summary">Google is rebuilding parts of Android around Gemini Intelligence so users can complete everyday tasks through natural-language prompts, framing the shift as moving "from an operating system to an intelligence system." The push, unveiled ahead of Apple's expected AI overhaul, signals an escalating contest to make on-device AI the primary interface for smartphones. Analysts see the integration as Google's most consequential mobile platform move in a decade, with implications for app developers, advertisers, and rival assistants from OpenAI and Anthropic.</p>
+    <div class="top-meta">
+      <span class="meta-chip">CNBC</span>
+      <span class="meta-chip">Published 12 May 2026</span>
     </div>
-  </section>
+    <a class="btn-read" href="https://www.cnbc.com/2026/05/12/google-races-put-gemini-at-center-of-android-before-apples-ai-reboot.html" target="_blank" rel="noopener">Read Article &rarr;</a>
+  </article>
 
-  <!-- ========================= GLOBAL ECONOMY ========================= -->
-  <section class="section" id="section-econ">
-    <div class="section-header">
-      <div>
-        <h2>Global Economy</h2>
-        <p class="sources-line">7 stories from 11 May 2026 &middot; CNBC, Washington Post, US News, The Week, Trading Economics, Zee Business, ichongqing</p>
+  <div class="more-label">More Articles</div>
+  <div class="card-grid">
+
+    <a class="card ai" href="https://fortune.com/2026/05/12/google-hackers-using-ai-to-weaponize-zero-day-vulnerabilities/" target="_blank" rel="noopener">
+      <h4>Google's Threat Intelligence Group flags first AI-weaponized zero-day attack</h4>
+      <p class="card-summary">Google said it identified and stopped the first known case of an attacker using AI to discover and weaponize a zero-day vulnerability. The report illustrates how generative tools are lowering the bar for sophisticated cyber operations.</p>
+      <div class="card-tags"><span class="tag ai">AI Industry</span><span class="tag">Cybersecurity</span></div>
+      <div class="card-footer">
+        <div class="card-source">Fortune <span class="pubdate">&middot; 12 May 2026</span></div>
+        <span class="read-link ai">Read &rarr;</span>
       </div>
-      <select class="sort-select" aria-label="Sort">
-        <option>Sort: Most relevant</option>
-        <option>Sort: Newest first</option>
-        <option>Sort: By source</option>
-      </select>
-    </div>
+    </a>
 
-    <article class="top-story" data-bucket="econ">
-      <span class="badge">Top Story</span>
-      <h3>From Singapore to Brussels, world leaders eye Trump-Xi summit from afar as Beijing meeting begins</h3>
-      <p class="summary">Global capitals are tracking President Trump's 13–15 May visit to Beijing with unusual intensity, the first US presidential trip to China since 2017 and his first meeting with Xi Jinping since October. Trade and tariffs dominate the agenda, alongside Taiwan, the Iran war, rare-earth export controls and frontier AI. New Delhi is watching especially closely, as easier US terms for China could blunt India's attempt to play the supply-chain alternative. Trump is taking a delegation that includes Elon Musk, Tim Cook and Larry Fink.</p>
-      <div class="meta">
-        <span class="meta-chip">CNBC &middot; 11 May 2026</span>
-        <span class="meta-chip">United States</span>
-        <span class="meta-chip">China</span>
-        <span class="meta-chip">Trade</span>
+    <a class="card ai" href="https://devops.com/openais-daybreak-challenges-anthropic-in-ai-cybersecurity-race/" target="_blank" rel="noopener">
+      <h4>OpenAI's Daybreak challenges Anthropic in the AI cybersecurity race</h4>
+      <p class="card-summary">OpenAI launched Daybreak, an enterprise platform that pairs its Codex Security system with proprietary models to find software flaws, validate patches, and speed remediation. The product places OpenAI in direct competition with Anthropic's security offerings.</p>
+      <div class="card-tags"><span class="tag ai">AI Industry</span><span class="tag">Enterprise</span></div>
+      <div class="card-footer">
+        <div class="card-source">DevOps.com <span class="pubdate">&middot; 12 May 2026</span></div>
+        <span class="read-link ai">Read &rarr;</span>
       </div>
-      <a class="read-btn" href="https://www.cnbc.com/2026/05/11/trump-xi-summit-beijing-global-leaders-iran-war-taiwan-strait-of-hormuz-.html" target="_blank" rel="noopener">Read Article &rarr;</a>
-    </article>
+    </a>
 
-    <p class="more-label">More Articles</p>
-    <div class="card-grid">
-
-      <article class="card" data-bucket="econ">
-        <div class="tags"><span class="tag econ">India</span><span class="tag">Oil Shock</span></div>
-        <h4>Modi says Iran war poses severe risks to India, urges cuts in fuel use and gold purchases</h4>
-        <p>Prime Minister Narendra Modi made a rare nationally televised austerity appeal, asking citizens to curb fuel use, reduce overseas travel and pause gold purchases. The government is bracing for a sustained oil-import shock as Middle East tensions push crude sharply higher.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">CNBC</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.cnbc.com/2026/05/11/india-modi-fuel-gold-foreign-travel-middle-east-oil-shock.html" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card" data-bucket="econ">
-        <div class="tags"><span class="tag econ">India</span><span class="tag">Markets</span></div>
-        <h4>Sensex slides 1.7%, Nifty 1.5% as Iran-war fears hit gold and travel stocks</h4>
-        <p>Indian benchmarks closed at one-month lows, dragged by Titan (-7.4%) and Kalyan Jewellers (-9.7%) after Modi's austerity appeal. SBI fell 4.5% on a profit miss, with HDFC Bank, Bajaj Finance and Bajaj Finserv also weaker.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">Zee Business</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.zeebiz.com/market-news/news-stocks-to-watch-today-may-11-2026-tata-consumer-mcx-swiggy-canara-bank-upl-and-more-395275" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card" data-bucket="econ">
-        <div class="tags"><span class="tag econ">India</span><span class="tag">Trade</span></div>
-        <h4>Sleepless in New Delhi: India holds its breath as Trump heads to China for high-stakes talks</h4>
-        <p>India faces the US's highest tariff rate at 50%, compared to 47% on China, even as Washington and Beijing prepare to negotiate. New Delhi worries that an easier US-China deal could redirect manufacturing capital away from India and undercut its supply-chain pitch.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">The Week (India)</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.theweek.in/news/india/2026/05/12/sleepless-in-new-delhi-india-holds-its-breath-as-trump-heads-to-china-for-high-stakes-talks.html" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card" data-bucket="econ">
-        <div class="tags"><span class="tag econ">United States</span><span class="tag">Monetary Policy</span></div>
-        <h4>Trump-Xi summit and inflation report in focus for US economy</h4>
-        <p>This week's CPI release and the Beijing summit are converging into the most consequential macro catalyst of Q2 for the United States. With March headline PCE at 3.5%, BofA has now pushed its next Fed rate-cut call all the way to July 2027.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">US News</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.usnews.com/news/national-news/articles/2026-05-11/trump-xi-summit-inflation-report-in-focus-for-economy" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card" data-bucket="econ">
-        <div class="tags"><span class="tag econ">United States</span><span class="tag">Trade</span></div>
-        <h4>Trump invites Musk, Cook, Fink and other CEOs to join China trip for Xi summit</h4>
-        <p>The President has assembled an unusual corporate delegation for the Beijing visit, including Tesla's Elon Musk, Apple's Tim Cook, BlackRock's Larry Fink and Boeing's Kelly Ortberg, in a clear signal that commercial deal flow will sit alongside any geopolitical announcements.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">CNBC</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.cnbc.com/2026/05/11/trump-ceos-elon-musk-tim-cook-larry-fink-xi-china-summit.html" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card" data-bucket="econ">
-        <div class="tags"><span class="tag econ">United States</span><span class="tag">China</span></div>
-        <h4>Trump-Xi summit aims for stability with breakthroughs unlikely, analysts say</h4>
-        <p>Washington Post analysis frames the Beijing meeting as a damage-limitation exercise rather than a grand bargain. Since Trump's last visit eight years ago, US-China merchandise trade has fallen by more than a third, and the partial 2017 deal failed to live up to its advance billing.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">Washington Post</span><span class="paywall">Subscription</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.washingtonpost.com/politics/2026/05/12/trump-xi-summit-economy/" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card" data-bucket="econ">
-        <div class="tags"><span class="tag econ">China</span><span class="tag">Monetary Policy</span></div>
-        <h4>Chongqing leads western China in cross-border yuan use for trade and cash management</h4>
-        <p>New regional data show Chongqing has become the largest hub for cross-border yuan settlement in western China, reinforcing Beijing's push to internationalise the currency through trade-linked corridors rather than capital-account liberalisation.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">ichongqing</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.ichongqing.info/2026/05/11/chongqing-leads-western-china-in-cross-border-yuan-use-for-trade-and-cash-management/" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ========================= GOVERNANCE REFORMS ========================= -->
-  <section class="section" id="section-gov">
-    <div class="section-header">
-      <div>
-        <h2>Governance Reforms</h2>
-        <p class="sources-line">4 stories from 11 May 2026 &middot; Troutman Privacy, Cyprus Shipping News, Center for American Progress, Holland &amp; Knight</p>
+    <a class="card ai" href="https://www.theinformation.com/articles/anthropic-talks-buy-developer-tools-startup-used-openai-google" target="_blank" rel="noopener">
+      <h4>Anthropic in talks to buy developer tools startup Stainless</h4>
+      <p class="card-summary">Anthropic is in advanced discussions to acquire Stainless, a developer tools startup whose SDK generation tech is already used by OpenAI and Google, for at least $300 million. The deal would deepen Anthropic's enterprise platform stack as it courts more developers.</p>
+      <div class="card-tags"><span class="tag ai">AI Industry</span><span class="tag">M&amp;A</span></div>
+      <div class="card-footer">
+        <div class="card-source">The Information <span class="pubdate">&middot; 12 May 2026</span> <span class="paywall-badge">Subscription</span></div>
+        <span class="read-link ai">Read &rarr;</span>
       </div>
-      <select class="sort-select" aria-label="Sort">
-        <option>Sort: Most relevant</option>
-        <option>Sort: Newest first</option>
-        <option>Sort: By source</option>
-      </select>
-    </div>
+    </a>
 
-    <article class="top-story" data-bucket="gov">
-      <span class="badge">Top Story</span>
-      <h3>State legislatures sprint to finalise privacy and AI laws as 2026 session winds down</h3>
-      <p class="summary">A dense week of state-level activity saw Connecticut's SB 4 pass the legislature to amend the consumer data privacy law and create a data broker registration regime, while Iowa Governor Kim Reynolds signed a chatbot disclosure bill into law. Colorado's HB 1210, banning surveillance-based price and wage setting, cleared both chambers, and Vermont passed HB 814 on neurological rights and the use of AI in health and human services. New York's Assembly advanced A 6578, the AI Training Data Transparency Act. The pace reflects how aggressively US states are filling the federal AI-governance vacuum.</p>
-      <div class="meta">
-        <span class="meta-chip">Troutman Privacy &middot; 11 May 2026</span>
-        <span class="meta-chip">Digital Governance</span>
-        <span class="meta-chip">AI Policy</span>
+    <a class="card ai" href="https://techstartups.com/2026/05/12/top-tech-news-today-may-12-2026/" target="_blank" rel="noopener">
+      <h4>OpenAI launches $4 billion enterprise deployment company</h4>
+      <p class="card-summary">OpenAI announced the OpenAI Deployment Company, a $4 billion initiative to help large enterprises build production systems around its frontier models. The move broadens OpenAI's professional services footprint as enterprise spend on AI accelerates.</p>
+      <div class="card-tags"><span class="tag ai">AI Industry</span><span class="tag">Enterprise</span></div>
+      <div class="card-footer">
+        <div class="card-source">Tech Startups <span class="pubdate">&middot; 12 May 2026</span></div>
+        <span class="read-link ai">Read &rarr;</span>
       </div>
-      <a class="read-btn" href="https://www.troutmanprivacy.com/2026/05/proposed-state-privacy-and-ai-law-update-may-11-2026/" target="_blank" rel="noopener">Read Article &rarr;</a>
-    </article>
+    </a>
 
-    <p class="more-label">More Articles</p>
-    <div class="card-grid">
+    <a class="card ai" href="https://techstartups.com/2026/05/12/top-tech-news-today-may-12-2026/" target="_blank" rel="noopener">
+      <h4>Sam Altman testifies in Musk v. OpenAI suit; Nadella takes the stand for Altman</h4>
+      <p class="card-summary">OpenAI CEO Sam Altman took the witness stand in Elon Musk's lawsuit over the company's pivot from its nonprofit origins, with Microsoft CEO Satya Nadella testifying in support. The case is reshaping how courts treat corporate-mission disputes in AI.</p>
+      <div class="card-tags"><span class="tag ai">AI Policy</span><span class="tag">Legal</span></div>
+      <div class="card-footer">
+        <div class="card-source">Tech Startups <span class="pubdate">&middot; 12 May 2026</span></div>
+        <span class="read-link ai">Read &rarr;</span>
+      </div>
+    </a>
 
-      <article class="card" data-bucket="gov">
-        <div class="tags"><span class="tag gov">AI Policy</span><span class="tag">National Security</span></div>
-        <h4>Microsoft, Google and xAI to give US government early access to AI models for security checks</h4>
-        <p>A new pre-release access regime gives federal national security teams the ability to vet frontier AI models before public deployment. The arrangement is voluntary but creates a de facto governance backstop ahead of any formal federal AI law.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">Cyprus Shipping News</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://cyprusshippingnews.com/2026/05/11/microsoft-google-and-xai-to-give-us-government-early-access-to-ai-models-for-security-checks/" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
+    <a class="card ai" href="https://simonwillison.net/2026/May/12/llm/" target="_blank" rel="noopener">
+      <h4>Simon Willison releases llm 0.32a2 with expanded model and plugin support</h4>
+      <p class="card-summary">Developer-tools maintainer Simon Willison shipped a new alpha of his popular command-line tool for working with LLMs, broadening multi-provider support and reducing friction for local-first workflows. The release is widely watched in the open-source AI tooling community.</p>
+      <div class="card-tags"><span class="tag ai">AI Research</span><span class="tag">Open Source</span></div>
+      <div class="card-footer">
+        <div class="card-source">simonwillison.net <span class="pubdate">&middot; 12 May 2026</span></div>
+        <span class="read-link ai">Read &rarr;</span>
+      </div>
+    </a>
 
-      <article class="card" data-bucket="gov">
-        <div class="tags"><span class="tag gov">Privacy</span><span class="tag">Accountability</span></div>
-        <h4>The Trump administration is using Americans' sensitive data to build a "digital watchtower"</h4>
-        <p>A new policy analysis maps how federal agencies are stitching together sensitive personal data across immigration, tax and benefit systems with limited oversight. The piece argues for new procedural safeguards and renewed congressional scrutiny of cross-agency data sharing.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">Center for American Progress</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.americanprogress.org/article/the-trump-administration-is-using-americans-sensitive-data-to-build-a-digital-watchtower/" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
+    <a class="card ai" href="https://blog.adafruit.com/2026/05/12/running-a-local-llm-on-a-12-year-old-raspberry-pi-1/" target="_blank" rel="noopener">
+      <h4>Running a local LLM on a 12-year-old Raspberry Pi 1</h4>
+      <p class="card-summary">A new demonstration shows a 90-million-parameter Falcon H1 Tiny model running on a Raspberry Pi 1 thanks to 4-bit quantization, squeezing inference into 700 MHz of CPU and 512 MB of RAM. The hack underscores how aggressively compressed models are bringing AI to extremely modest hardware.</p>
+      <div class="card-tags"><span class="tag ai">AI Research</span><span class="tag">EdTech</span></div>
+      <div class="card-footer">
+        <div class="card-source">Adafruit <span class="pubdate">&middot; 12 May 2026</span></div>
+        <span class="read-link ai">Read &rarr;</span>
+      </div>
+    </a>
 
-      <article class="card" data-bucket="gov">
-        <div class="tags"><span class="tag gov">AI Policy</span><span class="tag">Regulation</span></div>
-        <h4>White House National Policy Framework for AI: federal preemption back on the table</h4>
-        <p>Analysis of the administration's just-released framework finds it leans toward targeted federal preemption of state AI laws, prioritising child safety, free speech and innovation while cautioning against "vague standards" and "open-ended liability" from the patchwork of state rules.</p>
-        <div class="card-footer">
-          <div class="source-chip"><span class="source-name">Holland &amp; Knight</span><span class="dot">&middot;</span><span>11 May 2026</span></div>
-          <a class="read-link" href="https://www.hklaw.com/en/insights/publications/2026/03/white-house-releases-a-national-policy-framework-for-artificial" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
+  </div>
 
-    </div>
-  </section>
-
-  <!-- ========================= HISTORY ========================= -->
-  <div class="history">
+  <div class="history-strip">
     <h5>Previous Editions</h5>
-    <div class="history-strip">
+    <div class="history-items">
       <div class="history-item active">
-        <div class="date">12 May 2026</div>
-        <div class="meta">Today &middot; 19 articles</div>
+        <div class="h-date">Today &middot; 13 May</div>
+        <div class="h-meta">17 articles &middot; current</div>
       </div>
       <div class="history-item pending">
-        <div class="date">13 May 2026</div>
-        <div class="meta">Tomorrow &middot; Pending</div>
+        <div class="h-date">Tomorrow &middot; 14 May</div>
+        <div class="h-meta">Pending</div>
       </div>
     </div>
   </div>
+</section>
+
+<!-- ================= GLOBAL ECONOMY ================= -->
+<section class="bucket" id="bucket-econ">
+  <div class="section-header">
+    <div class="title-block">
+      <h2>Global Economy</h2>
+      <p>Sources: Washington Post, CNBC, Al Jazeera, Foreign Policy, Goodreturns, The Week, Profile News</p>
+    </div>
+    <select class="sort-dropdown">
+      <option>Sort: Newest first</option>
+      <option>Sort: Source</option>
+      <option>Sort: Region</option>
+    </select>
+  </div>
+
+  <div class="top-story-label">Top Story</div>
+  <article class="top-story econ">
+    <span class="top-badge econ">Top Story</span>
+    <h3>Trump heads to Beijing for high-stakes Xi summit as trade war truce is tested</h3>
+    <p class="summary">President Trump arrived in Beijing for a two-day summit with President Xi Jinping, the leaders' first face-to-face meeting six months after a fragile trade-war truce. US Trade Representative Jamieson Greer signaled Washington is pursuing "stability" rather than a reset, with rare-earth supply chains, a proposed joint Board of Trade, and large agricultural and Boeing purchases on the table. The summit comes as the US tariff on Chinese goods sits at 30% and China's at 10%, with a 90-day reassessment looming, and as India watches nervously from the sidelines.</p>
+    <div class="top-meta">
+      <span class="meta-chip">Washington Post</span>
+      <span class="meta-chip">Published 12 May 2026</span>
+    </div>
+    <a class="btn-read" href="https://www.washingtonpost.com/politics/2026/05/12/trump-xi-summit-economy/" target="_blank" rel="noopener">Read Article &rarr;</a>
+  </article>
+
+  <div class="more-label">More Articles</div>
+  <div class="card-grid">
+
+    <a class="card econ" href="https://www.cnbc.com/2026/05/12/trump-xi-china-trade-iran-taiwan.html" target="_blank" rel="noopener">
+      <h4>What's at stake for trade, Taiwan and Iran in Trump's high-risk summit with Xi</h4>
+      <p class="card-summary">CNBC breaks down the live trade, security, and energy stakes of the Beijing summit, including the tariff truce, Taiwan policy signaling, and how the Iran conflict has reshaped Washington's leverage. Markets are watching for any concrete agricultural or Boeing commitments.</p>
+      <div class="card-tags"><span class="tag econ">United States</span><span class="tag">Trade</span></div>
+      <div class="card-footer">
+        <div class="card-source">CNBC <span class="pubdate">&middot; 12 May 2026</span></div>
+        <span class="read-link econ">Read &rarr;</span>
+      </div>
+    </a>
+
+    <a class="card econ" href="https://www.aljazeera.com/news/2026/5/12/trump-xi-meeting-could-china-us-form-a-g2" target="_blank" rel="noopener">
+      <h4>Trump-Xi meeting: Could China and the US form a 'G2'?</h4>
+      <p class="card-summary">Al Jazeera analyzes whether the Beijing summit could mark the start of a more formal bilateral economic architecture between the world's two largest economies. The piece weighs implications for emerging markets and the WTO-led order.</p>
+      <div class="card-tags"><span class="tag econ">China</span><span class="tag">Trade</span></div>
+      <div class="card-footer">
+        <div class="card-source">Al Jazeera <span class="pubdate">&middot; 12 May 2026</span></div>
+        <span class="read-link econ">Read &rarr;</span>
+      </div>
+    </a>
+
+    <a class="card econ" href="https://www.theweek.in/news/india/2026/05/12/sleepless-in-new-delhi-india-holds-its-breath-as-trump-heads-to-china-for-high-stakes-talks.html" target="_blank" rel="noopener">
+      <h4>Sleepless in New Delhi: India holds its breath as Trump heads to China</h4>
+      <p class="card-summary">India faces the highest US tariff among major economies at 50%, even after February's deal cut its effective rate to 18%, while China sits at a lower 30%. New Delhi worries any US-China rapprochement could leave it strategically and commercially squeezed.</p>
+      <div class="card-tags"><span class="tag econ">India</span><span class="tag">Trade</span></div>
+      <div class="card-footer">
+        <div class="card-source">The Week <span class="pubdate">&middot; 12 May 2026</span></div>
+        <span class="read-link econ">Read &rarr;</span>
+      </div>
+    </a>
+
+    <a class="card econ" href="https://foreignpolicy.com/2026/05/12/trump-xi-china-summit-visit-taiwan-trade-japan/" target="_blank" rel="noopener">
+      <h4>Trump-Xi summit: What to expect on trade, Taiwan, and the Iran war</h4>
+      <p class="card-summary">Foreign Policy maps the three-track agenda of the Beijing meeting: a tariff arrangement post-truce, signals on Taiwan, and coordination — or lack thereof — on the US-Israel war on Iran. Trade is expected to dominate the public deliverables.</p>
+      <div class="card-tags"><span class="tag econ">United States</span><span class="tag">Trade</span></div>
+      <div class="card-footer">
+        <div class="card-source">Foreign Policy <span class="pubdate">&middot; 12 May 2026</span></div>
+        <span class="read-link econ">Read &rarr;</span>
+      </div>
+    </a>
+
+    <a class="card econ" href="https://www.goodreturns.in/news/stock-market-outlook-today-12-may-2026-sensex-nifty-likely-to-stay-weak-amid-crude-surge-rupee-fall-1507555.html" target="_blank" rel="noopener">
+      <h4>Sensex falls 1,456 points; Nifty slips below 23,400 on crude surge and FII selling</h4>
+      <p class="card-summary">Indian benchmarks closed sharply lower as the Sensex shed 1.92% and the Nifty 1.83%, hit by a crude oil spike, a weaker rupee, and persistent foreign-investor outflows. IT was the worst-performing sector, plunging 3.58% on currency and global demand worries.</p>
+      <div class="card-tags"><span class="tag econ">India</span><span class="tag">Markets</span></div>
+      <div class="card-footer">
+        <div class="card-source">Goodreturns <span class="pubdate">&middot; 12 May 2026</span></div>
+        <span class="read-link econ">Read &rarr;</span>
+      </div>
+    </a>
+
+    <a class="card econ" href="https://udaipurtimes.com/business-udaipur/indian-stock-market-falls-sensex-nifty-crash-may-12-2026/cid18655837.htm" target="_blank" rel="noopener">
+      <h4>Indian stock market falls sharply as Middle East tensions rattle sentiment</h4>
+      <p class="card-summary">The sell-off was concentrated in real estate, IT, and consumer goods, with losses ranging from 2% to 5% across the sectors as Middle East uncertainty and a hardening rupee outlook drove risk-off flows. Analysts flagged elevated near-term volatility.</p>
+      <div class="card-tags"><span class="tag econ">India</span><span class="tag">Markets</span></div>
+      <div class="card-footer">
+        <div class="card-source">Udaipur Times <span class="pubdate">&middot; 12 May 2026</span></div>
+        <span class="read-link econ">Read &rarr;</span>
+      </div>
+    </a>
+
+    <a class="card econ" href="https://www.profilenews.com/en/china-economy-global-markets-inflation-oil/" target="_blank" rel="noopener">
+      <h4>China's trade data jolts global markets as exports surge 14.1%</h4>
+      <p class="card-summary">China reported a 14.1% rise in April exports and a 27% jump in imports, surprising markets and reinforcing its role as a global stabilizer even as oil prices and inflation risks climb. The data is reshaping expectations heading into the Trump-Xi summit.</p>
+      <div class="card-tags"><span class="tag econ">China</span><span class="tag">Trade</span></div>
+      <div class="card-footer">
+        <div class="card-source">Profile News <span class="pubdate">&middot; 12 May 2026</span></div>
+        <span class="read-link econ">Read &rarr;</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="history-strip">
+    <h5>Previous Editions</h5>
+    <div class="history-items">
+      <div class="history-item active">
+        <div class="h-date">Today &middot; 13 May</div>
+        <div class="h-meta">17 articles &middot; current</div>
+      </div>
+      <div class="history-item pending">
+        <div class="h-date">Tomorrow &middot; 14 May</div>
+        <div class="h-meta">Pending</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GOVERNANCE REFORMS ================= -->
+<section class="bucket" id="bucket-gov">
+  <div class="section-header">
+    <div class="title-block">
+      <h2>Governance Reforms</h2>
+      <p>Sources: European Commission, Consilium, Euronews</p>
+    </div>
+    <select class="sort-dropdown">
+      <option>Sort: Newest first</option>
+      <option>Sort: Source</option>
+    </select>
+  </div>
+
+  <div class="top-story-label">Top Story</div>
+  <article class="top-story gov">
+    <span class="top-badge gov">Top Story</span>
+    <h3>EU Council and Parliament agree to streamline AI Act, paving way for August rollout</h3>
+    <p class="summary">The EU Council presidency and European Parliament negotiators reached a provisional agreement on the "Omnibus VII" simplification package, materially reshaping how the AI Act will land when it becomes fully applicable on 2 August 2026. The deal is intended to reduce recurring compliance costs for European firms, particularly SMEs, while preserving the Act's risk-based architecture. Officials framed the agreement as a course correction that protects fundamental rights without choking off the EU's AI competitiveness, and it lays groundwork for the more politically charged review of GPAI obligations expected later in the year.</p>
+    <div class="top-meta">
+      <span class="meta-chip">Council of the EU</span>
+      <span class="meta-chip">Published 7 May 2026 (active dossier 12 May)</span>
+    </div>
+    <a class="btn-read" href="https://www.consilium.europa.eu/en/press/press-releases/2026/05/07/artificial-intelligence-council-and-parliament-agree-to-simplify-and-streamline-rules/" target="_blank" rel="noopener">Read Article &rarr;</a>
+  </article>
+
+  <div class="more-label">More Articles</div>
+  <div class="card-grid">
+
+    <a class="card gov" href="https://ec.europa.eu/commission/presscorner/detail/en/ip_26_914" target="_blank" rel="noopener">
+      <h4>EU's first Digital Markets Act review finds law "fit for purpose," tightens focus</h4>
+      <p class="card-summary">The Commission's first statutory DMA review, published in early May and now the active enforcement reference, concludes that the law has expanded user choice and developer access without major redesign needed. The Commission will prioritize enforcing existing obligations over expanding scope, with cloud designations due by November 2026.</p>
+      <div class="card-tags"><span class="tag gov">Digital Governance</span><span class="tag">EU</span></div>
+      <div class="card-footer">
+        <div class="card-source">European Commission <span class="pubdate">&middot; 12 May 2026 dossier</span></div>
+        <span class="read-link gov">Read &rarr;</span>
+      </div>
+    </a>
+
+    <a class="card gov" href="https://www.consilium.europa.eu/en/press/press-releases/2026/05/11/ai-in-education-council-calls-for-human-centred-approach/" target="_blank" rel="noopener">
+      <h4>EU Council calls for a human-centred approach to AI in education</h4>
+      <p class="card-summary">Education ministers adopted conclusions urging member states to keep teachers, students, and democratic oversight at the heart of AI deployment in schools and universities. The text aligns AI-in-education guidance with the AI Act's risk classifications and stresses equity and pedagogical evidence.</p>
+      <div class="card-tags"><span class="tag gov">AI Policy</span><span class="tag">Education</span></div>
+      <div class="card-footer">
+        <div class="card-source">Council of the EU <span class="pubdate">&middot; 11 May 2026</span></div>
+        <span class="read-link gov">Read &rarr;</span>
+      </div>
+    </a>
+
+    <a class="card gov" href="https://www.euronews.com/my-europe/2026/05/04/two-years-of-dma-does-it-really-work" target="_blank" rel="noopener">
+      <h4>Two years of the DMA: Is the EU's digital economy stronger?</h4>
+      <p class="card-summary">Euronews assesses the tangible impact of the Digital Markets Act after two years, including browser and search-engine choice screens and interoperability for messaging apps. Critics argue the gains have come with new friction that risks user confusion.</p>
+      <div class="card-tags"><span class="tag gov">Digital Governance</span><span class="tag">Privacy</span></div>
+      <div class="card-footer">
+        <div class="card-source">Euronews <span class="pubdate">&middot; 4 May 2026</span></div>
+        <span class="read-link gov">Read &rarr;</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="history-strip">
+    <h5>Previous Editions</h5>
+    <div class="history-items">
+      <div class="history-item active">
+        <div class="h-date">Today &middot; 13 May</div>
+        <div class="h-meta">17 articles &middot; current</div>
+      </div>
+      <div class="history-item pending">
+        <div class="h-date">Tomorrow &middot; 14 May</div>
+        <div class="h-meta">Pending</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 </main>
 
 <script>
   function showSection(name, el) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('section-' + name).classList.add('active');
+    document.querySelectorAll('section.bucket').forEach(s => s.classList.remove('active'));
+    document.getElementById('bucket-' + name).classList.add('active');
+    document.querySelectorAll('nav.tabs .tab').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
-  // Set update time
-  (function() {
-    const now = new Date();
-    let h = now.getHours();
-    const m = String(now.getMinutes()).padStart(2, '0');
-    const ampm = h >= 12 ? 'PM' : 'AM';
-    h = h % 12; if (h === 0) h = 12;
-    document.getElementById('updateChip').textContent = 'Updated at ' + h + ':' + m + ' ' + ampm;
-  })();
 </script>
 
 </body>
