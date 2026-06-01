@@ -8,399 +8,376 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#f9f8f5; --surface:#ffffff; --surface2:#f3f2ee;
-    --border:#e8e5de; --border2:#d4cfc5;
-    --text:#1a1915; --text2:#3d3b35; --muted:#7a7669; --muted2:#a09c92;
-    --accent:#c96442;
-    --ai:#c96442; --ai-bg:#fdf1ec; --ai-border:#f0c4b4;
-    --econ:#2d6a4f; --econ-bg:#eef6f1; --econ-border:#b8dcc8;
-    --gov:#3a5fa0; --gov-bg:#eef2fa; --gov-border:#b8ccee;
-    --gold:#b08400; --gold-bg:#fbf4dd; --gold-border:#e8d48a;
-    --shadow-sm:0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
-    --shadow-md:0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
-  a{text-decoration:none;color:inherit}
+:root{
+--bg:#f9f8f5; --surface:#ffffff; --surface2:#f3f2ee; --border:#e8e5de; --border2:#d4cfc5;
+--text:#1a1915; --text2:#3d3b35; --muted:#7a7669; --muted2:#a09c92; --accent:#c96442;
+--ai:#c96442; --ai-bg:#fdf1ec; --ai-border:#f0c4b4;
+--econ:#2d6a4f; --econ-bg:#eef6f1; --econ-border:#b8dcc8;
+--gov:#3a5fa0; --gov-bg:#eef2fa; --gov-border:#b8ccee;
+--gold:#9a7b1f; --gold-bg:#f7f0d9; --gold-border:#e3d29a;
+--shadow-sm:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+--shadow-md:0 4px 12px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.04);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
 
-  /* Header */
-  header{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:var(--shadow-sm)}
-  .header-inner{max-width:1180px;margin:0 auto;padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-  .header-left h1{font-size:1rem;font-weight:600;color:var(--text);letter-spacing:-.01em}
-  .header-left p{font-size:.75rem;color:var(--muted);margin-top:.15rem}
-  .header-right{display:flex;align-items:center;gap:.6rem}
-  .chip-updated{font-size:.72rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:.35rem .65rem;border-radius:999px;white-space:nowrap}
-  .btn-refresh{font-family:inherit;font-size:.75rem;font-weight:600;color:#fff;background:var(--accent);border:none;padding:.42rem .9rem;border-radius:8px;cursor:pointer;transition:opacity .15s}
-  .btn-refresh:hover{opacity:.88}
+/* Header */
+header{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--border);padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.h-left h1{font-size:1rem;font-weight:600;letter-spacing:-.01em}
+.h-left p{font-size:.75rem;color:var(--muted);margin-top:.1rem}
+.h-right{display:flex;align-items:center;gap:.6rem}
+.update-chip{font-size:.72rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:.3rem .65rem;border-radius:999px}
+.refresh-btn{font-family:inherit;font-size:.75rem;font-weight:500;color:#fff;background:var(--accent);border:none;padding:.4rem .85rem;border-radius:7px;cursor:pointer;transition:opacity .15s}
+.refresh-btn:hover{opacity:.9}
 
-  /* Tabs */
-  .tabs{max-width:1180px;margin:0 auto;padding:0 1.5rem;display:flex;gap:.25rem;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:64px;z-index:40}
-  .tab{font-family:inherit;font-size:.82rem;font-weight:500;color:var(--muted);background:none;border:none;padding:.85rem .65rem;cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1px;transition:color .15s;display:flex;align-items:center;gap:.45rem}
-  .tab:hover{color:var(--text2)}
-  .tab .count{font-size:.68rem;font-weight:600;background:var(--surface2);color:var(--muted);padding:.05rem .4rem;border-radius:999px;border:1px solid var(--border)}
-  .tab.active{color:var(--text);font-weight:600}
-  .tab[data-bucket="ai"].active{border-bottom-color:var(--ai)}
-  .tab[data-bucket="econ"].active{border-bottom-color:var(--econ)}
-  .tab[data-bucket="gov"].active{border-bottom-color:var(--gov)}
-  .tab[data-bucket="ai"].active .count{background:var(--ai-bg);color:var(--ai);border-color:var(--ai-border)}
-  .tab[data-bucket="econ"].active .count{background:var(--econ-bg);color:var(--econ);border-color:var(--econ-border)}
-  .tab[data-bucket="gov"].active .count{background:var(--gov-bg);color:var(--gov);border-color:var(--gov-border)}
+/* Tabs */
+.tabs{display:flex;gap:.25rem;padding:0 1.5rem;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:57px;z-index:40;overflow-x:auto}
+.tab{font-family:inherit;font-size:.82rem;font-weight:500;color:var(--muted);background:none;border:none;padding:.8rem .4rem;margin-right:1rem;cursor:pointer;border-bottom:2.5px solid transparent;white-space:nowrap;transition:color .15s}
+.tab .count{font-size:.7rem;color:var(--muted2);margin-left:.35rem;background:var(--surface2);padding:.05rem .4rem;border-radius:999px}
+.tab:hover{color:var(--text2)}
+.tab.active{color:var(--text)}
+.tab.active[data-c="ai"]{border-bottom-color:var(--ai)}
+.tab.active[data-c="econ"]{border-bottom-color:var(--econ)}
+.tab.active[data-c="gov"]{border-bottom-color:var(--gov)}
 
-  main{max-width:1180px;margin:0 auto;padding:1.6rem 1.5rem 3rem}
-  section{display:none}
-  section.active{display:block;animation:fade .25s ease}
-  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+/* Layout */
+main{max-width:1180px;margin:0 auto;padding:1.75rem 1.5rem 3rem}
+.section{display:none}
+.section.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
-  /* Section header */
-  .sec-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.3rem}
-  .sec-title h2{font-size:1.28rem;font-weight:700;letter-spacing:-.02em}
-  .sec-title .sources{font-size:.74rem;color:var(--muted);margin-top:.35rem;max-width:640px}
-  .sort{display:flex;align-items:center;gap:.4rem;font-size:.74rem;color:var(--muted)}
-  .sort select{font-family:inherit;font-size:.74rem;color:var(--text2);background:var(--surface);border:1px solid var(--border2);border-radius:7px;padding:.35rem .55rem;cursor:pointer}
+/* Section header */
+.sec-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1.35rem;flex-wrap:wrap}
+.sec-head h2{font-size:1.4rem;font-weight:700;letter-spacing:-.02em}
+.sec-head .sources{font-size:.74rem;color:var(--muted);margin-top:.3rem;max-width:640px}
+.sort{font-family:inherit;font-size:.74rem;color:var(--text2);background:var(--surface);border:1px solid var(--border2);border-radius:7px;padding:.4rem .6rem;cursor:pointer}
 
-  /* Top story */
-  .top-story{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.6rem 1.5rem 1.85rem;box-shadow:var(--shadow-md);overflow:hidden;margin-bottom:1.6rem}
-  .top-story::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px}
-  .ai .top-story::before{background:var(--ai)}
-  .econ .top-story::before{background:var(--econ)}
-  .gov .top-story::before{background:var(--gov)}
-  .badge-top{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .55rem;border-radius:6px;margin-bottom:.7rem}
-  .ai .badge-top{background:var(--ai-bg);color:var(--ai);border:1px solid var(--ai-border)}
-  .econ .badge-top{background:var(--econ-bg);color:var(--econ);border:1px solid var(--econ-border)}
-  .gov .badge-top{background:var(--gov-bg);color:var(--gov);border:1px solid var(--gov-border)}
-  .top-story h3{font-size:1.45rem;line-height:1.25;font-weight:700;letter-spacing:-.02em;margin-bottom:.6rem}
-  .top-story p.summary{font-size:.92rem;color:var(--text2);margin-bottom:1rem;max-width:760px}
-  .meta-row{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
-  .src-chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.74rem;font-weight:500;color:var(--text2);background:var(--surface2);border:1px solid var(--border);padding:.3rem .6rem;border-radius:999px}
-  .time-chip{font-size:.72rem;color:var(--muted)}
-  .sub-badge{font-size:.6rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);background:var(--gold-bg);border:1px solid var(--gold-border);padding:.1rem .35rem;border-radius:5px}
-  .read-btn{margin-left:auto;font-size:.78rem;font-weight:600;padding:.45rem .9rem;border-radius:8px;color:#fff;transition:opacity .15s}
-  .read-btn:hover{opacity:.88}
-  .ai .read-btn{background:var(--ai)}
-  .econ .read-btn{background:var(--econ)}
-  .gov .read-btn{background:var(--gov)}
+/* Top story */
+.top-story{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.6rem 1.5rem 1.85rem;box-shadow:var(--shadow-md);overflow:hidden;margin-bottom:1.9rem}
+.top-story::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px}
+.top-story[data-c="ai"]::before{background:var(--ai)}
+.top-story[data-c="econ"]::before{background:var(--econ)}
+.top-story[data-c="gov"]::before{background:var(--gov)}
+.badge{display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.25rem .55rem;border-radius:5px;margin-bottom:.7rem}
+.top-story[data-c="ai"] .badge{background:var(--ai-bg);color:var(--ai);border:1px solid var(--ai-border)}
+.top-story[data-c="econ"] .badge{background:var(--econ-bg);color:var(--econ);border:1px solid var(--econ-border)}
+.top-story[data-c="gov"] .badge{background:var(--gov-bg);color:var(--gov);border:1px solid var(--gov-border)}
+.top-story h3{font-size:1.45rem;font-weight:700;line-height:1.25;letter-spacing:-.02em;margin-bottom:.6rem;max-width:780px}
+.top-story p{font-size:.92rem;color:var(--text2);max-width:780px;margin-bottom:1rem}
+.meta-row{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;margin-bottom:1.05rem}
+.chip{font-size:.72rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:.25rem .6rem;border-radius:999px;display:inline-flex;align-items:center;gap:.35rem}
+.sub-badge{font-size:.6rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);background:var(--gold-bg);border:1px solid var(--gold-border);padding:.15rem .4rem;border-radius:4px}
+.read-btn{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;font-weight:600;padding:.55rem 1.05rem;border-radius:8px;color:#fff;transition:opacity .15s}
+.read-btn:hover{opacity:.9}
+.top-story[data-c="ai"] .read-btn{background:var(--ai)}
+.top-story[data-c="econ"] .read-btn{background:var(--econ)}
+.top-story[data-c="gov"] .read-btn{background:var(--gov)}
 
-  .more-label{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);margin:0 0 .9rem}
+/* More label */
+.more-label{font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted2);margin-bottom:.95rem}
 
-  /* Card grid */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1rem}
-  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.15rem 1.2rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
-  .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
-  .tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.7rem}
-  .tag{font-size:.6rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.18rem .45rem;border-radius:5px;border:1px solid}
-  .ai .tag{background:var(--ai-bg);color:var(--ai);border-color:var(--ai-border)}
-  .econ .tag{background:var(--econ-bg);color:var(--econ);border-color:var(--econ-border)}
-  .gov .tag{background:var(--gov-bg);color:var(--gov);border-color:var(--gov-border)}
-  .card h4{font-size:1rem;line-height:1.3;font-weight:600;letter-spacing:-.01em;margin-bottom:.5rem}
-  .card p.summary{font-size:.83rem;color:var(--text2);margin-bottom:1rem;flex-grow:1}
-  .card-foot{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding-top:.85rem;border-top:1px solid var(--border)}
-  .card-src{display:flex;flex-direction:column;gap:.15rem;min-width:0}
-  .card-src .name{font-size:.74rem;font-weight:500;color:var(--text2);display:flex;align-items:center;gap:.35rem}
-  .card-src .date{font-size:.68rem;color:var(--muted)}
-  .read-link{font-size:.76rem;font-weight:600;white-space:nowrap}
-  .ai .read-link{color:var(--ai)}
-  .econ .read-link{color:var(--econ)}
-  .gov .read-link{color:var(--gov)}
+/* Card grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.05rem;margin-bottom:2.25rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:1.15rem 1.2rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.tags{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.65rem}
+.tag{font-size:.6rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.2rem .45rem;border-radius:4px}
+.tag[data-c="ai"]{background:var(--ai-bg);color:var(--ai);border:1px solid var(--ai-border)}
+.tag[data-c="econ"]{background:var(--econ-bg);color:var(--econ);border:1px solid var(--econ-border)}
+.tag[data-c="gov"]{background:var(--gov-bg);color:var(--gov);border:1px solid var(--gov-border)}
+.card h4{font-size:1rem;font-weight:600;line-height:1.3;letter-spacing:-.01em;margin-bottom:.5rem}
+.card .summary{font-size:.83rem;color:var(--text2);margin-bottom:.95rem;flex:1}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:.5rem;border-top:1px solid var(--border);padding-top:.75rem;flex-wrap:wrap}
+.src{font-size:.72rem;color:var(--muted);display:inline-flex;align-items:center;gap:.4rem}
+.src b{font-weight:600;color:var(--text2)}
+.card-read{font-size:.76rem;font-weight:600}
+.card-read[data-c="ai"]{color:var(--ai)}
+.card-read[data-c="econ"]{color:var(--econ)}
+.card-read[data-c="gov"]{color:var(--gov)}
 
-  /* History strip */
-  .history{margin-top:2.4rem;padding-top:1.3rem;border-top:1px solid var(--border)}
-  .history .lbl{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);margin-bottom:.8rem}
-  .editions{display:flex;gap:.7rem;flex-wrap:wrap}
-  .edition{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.7rem .95rem;min-width:170px;box-shadow:var(--shadow-sm)}
-  .edition.active{border-color:var(--accent);background:#fff}
-  .edition .e-date{font-size:.8rem;font-weight:600;color:var(--text)}
-  .edition .e-meta{font-size:.7rem;color:var(--muted);margin-top:.2rem}
-  .edition.pending{opacity:.6;border-style:dashed}
-  .edition.active .e-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:.4rem;vertical-align:middle}
+/* History strip */
+.history{border-top:1px solid var(--border);padding-top:1.4rem}
+.history .lbl{font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted2);margin-bottom:.85rem}
+.editions{display:flex;gap:.7rem;flex-wrap:wrap}
+.edition{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:.7rem .95rem;min-width:150px}
+.edition.active{border-color:var(--border2);box-shadow:var(--shadow-sm)}
+.edition.pending{background:var(--surface2);border-style:dashed}
+.edition .e-date{font-size:.8rem;font-weight:600}
+.edition .e-meta{font-size:.7rem;color:var(--muted);margin-top:.2rem}
+.edition.active .e-meta{color:var(--accent);font-weight:600}
 
-  footer{max-width:1180px;margin:0 auto;padding:0 1.5rem 2.5rem;font-size:.7rem;color:var(--muted2)}
-  @media(max-width:600px){
-    .tabs{top:auto;position:static}
-    .top-story h3{font-size:1.2rem}
-    .read-btn{margin-left:0;margin-top:.6rem}
-  }
+footer{text-align:center;font-size:.7rem;color:var(--muted2);padding:1.5rem;border-top:1px solid var(--border)}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.top-story h3{font-size:1.2rem}.sec-head h2{font-size:1.2rem}}
 </style>
 </head>
 <body>
+
 <header>
-  <div class="header-inner">
-    <div class="header-left">
-      <h1>Good morning, Anurag</h1>
-      <p>Saturday, 30 May 2026 &nbsp;&middot;&nbsp; Your personalised briefing is ready</p>
-    </div>
-    <div class="header-right">
-      <span class="chip-updated">Updated at 2:15 PM</span>
-      <button class="btn-refresh" onclick="location.reload()">Refresh</button>
-    </div>
+  <div class="h-left">
+    <h1>Good morning, Anurag</h1>
+    <p>Sunday, 31 May 2026 &middot; Your personalised briefing is ready</p>
+  </div>
+  <div class="h-right">
+    <span class="update-chip">Updated at 12:44 AM</span>
+    <button class="refresh-btn" onclick="location.reload()">Refresh</button>
   </div>
 </header>
 
 <nav class="tabs">
-  <button class="tab active" data-bucket="ai" onclick="showSection('ai',this)">AI &amp; Education <span class="count">8</span></button>
-  <button class="tab" data-bucket="econ" onclick="showSection('econ',this)">Global Economy <span class="count">6</span></button>
-  <button class="tab" data-bucket="gov" onclick="showSection('gov',this)">Governance Reforms <span class="count">3</span></button>
+  <button class="tab active" data-c="ai" onclick="showSection('ai',this)">AI &amp; Education <span class="count">7</span></button>
+  <button class="tab" data-c="econ" onclick="showSection('econ',this)">Global Economy <span class="count">8</span></button>
+  <button class="tab" data-c="gov" onclick="showSection('gov',this)">Governance Reforms <span class="count">4</span></button>
 </nav>
 
 <main>
-  <!-- ============ AI & EDUCATION ============ -->
-  <section id="ai" class="ai active">
-    <div class="sec-head">
-      <div class="sec-title">
-        <h2>AI &amp; Education</h2>
-        <p class="sources">Sources: OpenAI, MarketingProfs, NeuralBuddies, Google, AI News, Pursuit, THE Journal</p>
-      </div>
-      <div class="sort">Sort
-        <select><option>Top stories</option><option>Newest</option><option>Source</option></select>
-      </div>
+
+<!-- ================= AI & EDUCATION ================= -->
+<section class="section active" id="ai">
+  <div class="sec-head">
+    <div>
+      <h2>AI &amp; Education</h2>
+      <p class="sources">Sources: BuildFastWithAI, CalMatters, The Harvard Crimson, Daily Nous, TechStartups, Pursuit, AI News</p>
     </div>
+    <select class="sort"><option>Sort: Latest first</option><option>Sort: Source A–Z</option></select>
+  </div>
 
-    <article class="top-story">
-      <span class="badge-top">Top Story</span>
-      <h3>OpenAI launches Rosalind Biodefense, opening frontier AI to vetted public-health partners</h3>
-      <p class="summary">OpenAI announced Rosalind Biodefense on 29 May 2026, expanding trusted access to its GPT-Rosalind reasoning model for vetted developers and U.S. government partners. The program targets biodefense, public-health surveillance and pandemic preparedness, pairing frontier capability with restricted, screened access. It marks one of the clearest moves yet to channel a powerful scientific model toward government-aligned safety work rather than open release.</p>
-      <div class="meta-row">
-        <span class="src-chip">OpenAI</span>
-        <span class="time-chip">29 May 2026</span>
-        <a class="read-btn" href="https://openai.com/research/index/release/" target="_blank" rel="noopener">Read Article &rarr;</a>
-      </div>
-    </article>
-
-    <p class="more-label">More Articles</p>
-    <div class="grid">
-      <article class="card">
-        <div class="tags"><span class="tag">AI Research</span><span class="tag">AI Industry</span></div>
-        <h4>Anthropic releases Claude Opus 4.8 at same price, just 41 days after 4.7</h4>
-        <p class="summary">Anthropic's most advanced public model rolled out everywhere at the prior Opus price. Early testers say it flags its own uncertainty more readily and makes fewer unsupported claims.</p>
-        <div class="card-foot">
-          <div class="card-src"><span class="name">MarketingProfs</span><span class="date">29 May 2026</span></div>
-          <a class="read-link" href="https://www.marketingprofs.com/opinions/2026/54875/ai-update-may-29-2026-ai-news-and-views-from-the-past-week" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="tags"><span class="tag">AI Research</span></div>
-        <h4>Hassabis warns society has only a few years to prepare for AGI</h4>
-        <p class="summary">Google DeepMind's CEO said AGI arriving by 2029 now looks plausible, calling today's wave of AI agents a "practice run." He urged governments and economists to accelerate preparation.</p>
-        <div class="card-foot">
-          <div class="card-src"><span class="name">NeuralBuddies</span><span class="date">29 May 2026</span></div>
-          <a class="read-link" href="https://www.neuralbuddies.com/p/ai-news-recap-may-29-2026" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="tags"><span class="tag">AI Industry</span></div>
-        <h4>Figure AI runs humanoid robots 200 hours straight, sorting 250,000 packages</h4>
-        <p class="summary">Three humanoid robots operated continuously for 200 hours and sorted nearly a quarter-million packages with zero crashes. The run is being held up as a milestone for reliability in embodied AI.</p>
-        <div class="card-foot">
-          <div class="card-src"><span class="name">NeuralBuddies</span><span class="date">29 May 2026</span></div>
-          <a class="read-link" href="https://www.neuralbuddies.com/p/ai-news-recap-may-29-2026" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="tags"><span class="tag">AI Industry</span></div>
-        <h4>Gemini app passes 900 million monthly users as Google ships Omni Flash</h4>
-        <p class="summary">Google said its Gemini app more than doubled in a year to over 900 million monthly active users. It also launched Gemini Omni Flash, the first model in its faster, cheaper Omni family.</p>
-        <div class="card-foot">
-          <div class="card-src"><span class="name">AI News</span><span class="date">29 May 2026</span></div>
-          <a class="read-link" href="https://www.artificialintelligence-news.com/" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="tags"><span class="tag">Education</span><span class="tag">EdTech</span></div>
-        <h4>Boston Public Schools makes AI fluency a graduation requirement</h4>
-        <p class="summary">BPS became the first major-city district to mandate AI literacy across all its high schools from September 2026. The rollout is backed by a $1 million seed grant from entrepreneur Paul English.</p>
-        <div class="card-foot">
-          <div class="card-src"><span class="name">Pursuit</span><span class="date">May 2026</span></div>
-          <a class="read-link" href="https://www.pursuit.us/news/ai-in-education-news-policies-innovations" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="tags"><span class="tag">Education</span><span class="tag">AI Policy</span></div>
-        <h4>SUNY adopts systemwide AI policy across all 64 campuses</h4>
-        <p class="summary">The State University of New York set a framework to scale responsible AI use systemwide, requiring training and embedding AI literacy into general education for incoming undergraduates from Fall 2026.</p>
-        <div class="card-foot">
-          <div class="card-src"><span class="name">Pursuit</span><span class="date">May 2026</span></div>
-          <a class="read-link" href="https://www.pursuit.us/news/ai-in-education-news-policies-innovations" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="tags"><span class="tag">AI Industry</span></div>
-        <h4>PR pros warn of an "AI-washing" wave across industries</h4>
-        <p class="summary">Communications professionals say companies are aggressively rebranding ordinary automation and legacy tech as AI to capitalise on investor and media attention. The trend is muddying claims about what is genuinely new.</p>
-        <div class="card-foot">
-          <div class="card-src"><span class="name">MarketingProfs</span><span class="date">29 May 2026</span></div>
-          <a class="read-link" href="https://www.marketingprofs.com/opinions/2026/54875/ai-update-may-29-2026-ai-news-and-views-from-the-past-week" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
+  <article class="top-story" data-c="ai">
+    <span class="badge">Top Story</span>
+    <h3>AI's deployment era arrives: cost, security and agents dominate late-May headlines</h3>
+    <p>The end of May marked a clear pivot in the AI industry from raw model capability toward the economics and security of real-world deployment. Daily roundups flagged exploding inference and "token" costs, the rise of agentic commerce, and growing scrutiny of fraud and agent-hijacking risks. Demis Hassabis reiterated that AGI as early as 2029 is now plausible, sharpening the urgency around governance. The throughline: buyers increasingly want trusted, vertical, cost-controlled systems rather than generic chat wrappers.</p>
+    <div class="meta-row">
+      <span class="chip">BuildFastWithAI</span>
+      <span class="chip">30 May 2026</span>
+      <span class="chip">AI Industry</span>
     </div>
+    <a class="read-btn" href="https://www.buildfastwithai.com/blogs/ai-news-today-may-30-2026" target="_blank">Read Article &rarr;</a>
+  </article>
 
-    <div class="history">
-      <p class="lbl">Previous Editions</p>
-      <div class="editions">
-        <div class="edition active"><div class="e-date"><span class="e-dot"></span>30 May 2026</div><div class="e-meta">Today &middot; 17 articles</div></div>
-        <div class="edition pending"><div class="e-date">31 May 2026</div><div class="e-meta">Tomorrow &middot; Pending</div></div>
-      </div>
+  <div class="more-label">More Articles</div>
+  <div class="grid">
+
+    <a class="card" href="https://calmatters.org/education/2026/05/california-state-university-open-ai-chatgpt-contract/" target="_blank">
+      <div class="tags"><span class="tag" data-c="ai">Education</span><span class="tag" data-c="ai">AI Policy</span></div>
+      <h4>Cal State's OpenAI deal faces a faculty and student revolt</h4>
+      <p class="summary">California State University's multimillion-dollar ChatGPT contract is up for renewal, but some students and faculty are refusing to use the tool, citing concerns over labour, learning and data. The standoff highlights how campus-wide AI procurement is colliding with academic values.</p>
+      <div class="card-foot"><span class="src"><b>CalMatters</b> &middot; 28 May 2026</span><span class="card-read" data-c="ai">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://dailynous.com/2026/05/27/does-your-department-have-an-ai-policy-heres-edinburghs/" target="_blank">
+      <div class="tags"><span class="tag" data-c="ai">Education</span></div>
+      <h4>Edinburgh's philosophy department bans AI in assessed work</h4>
+      <p class="summary">The University of Edinburgh's Philosophy department has prohibited generative AI tools in essays, dissertations and take-home exams, offering one of the clearest departmental policies yet. It is being circulated as a template as institutions wrestle with fragmented, course-by-course rules.</p>
+      <div class="card-foot"><span class="src"><b>Daily Nous</b> &middot; 27 May 2026</span><span class="card-read" data-c="ai">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://www.pursuit.us/news/ai-in-education-news-policies-innovations" target="_blank">
+      <div class="tags"><span class="tag" data-c="ai">EdTech</span><span class="tag" data-c="ai">Education</span></div>
+      <h4>95% of students use AI, but only 26% of institutions have a policy</h4>
+      <p class="summary">A new IREX and Development Gateway report finds near-universal AI use among students and educators, yet only about a quarter of institutions have a formal policy and barely a third have a clear strategy. The gap is fuelling inconsistent, professor-by-professor rules.</p>
+      <div class="card-foot"><span class="src"><b>Pursuit</b> &middot; 29 May 2026</span><span class="card-read" data-c="ai">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://www.thecrimson.com/article/2026/4/2/harvard-ai-chatbot-advising/" target="_blank">
+      <div class="tags"><span class="tag" data-c="ai">EdTech</span><span class="tag" data-c="ai">Education</span></div>
+      <h4>Harvard College to launch an AI advising chatbot this summer</h4>
+      <p class="summary">Harvard College plans to roll out an AI chatbot beginning this summer to guide students through course selection and degree requirements. The move signals a shift from policing AI to deploying it as official academic infrastructure.</p>
+      <div class="card-foot"><span class="src"><b>The Harvard Crimson</b> &middot; May 2026</span><span class="card-read" data-c="ai">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://techstartups.com/2026/05/29/top-tech-news-today-may-29-2026/" target="_blank">
+      <div class="tags"><span class="tag" data-c="ai">AI Industry</span></div>
+      <h4>Apple renews its push for on-device AI</h4>
+      <p class="summary">Apple is preparing a renewed bet on AI that runs directly on devices rather than in the cloud, leaning on its custom silicon and privacy positioning. The strategy contrasts with rivals racing to scale cloud-based personal agents.</p>
+      <div class="card-foot"><span class="src"><b>TechStartups</b> &middot; 29 May 2026</span><span class="card-read" data-c="ai">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://blog.mean.ceo/large-language-model-news-may-2026/" target="_blank">
+      <div class="tags"><span class="tag" data-c="ai">AI Industry</span><span class="tag" data-c="ai">AI Research</span></div>
+      <h4>Anthropic's $300M Stainless deal lands hardest on OpenAI and Google</h4>
+      <p class="summary">Anthropic's reported $300M acquisition tightens its developer-tooling stack as it races toward a near-trillion-dollar valuation. The deal underscores a market shift toward specialised, cost-controlled LLM products over generic chatbots.</p>
+      <div class="card-foot"><span class="src"><b>mean.ceo</b> &middot; 30 May 2026</span><span class="card-read" data-c="ai">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://www.artificialintelligence-news.com/" target="_blank">
+      <div class="tags"><span class="tag" data-c="ai">AI Industry</span></div>
+      <h4>DuckDuckGo surges as Google leans into AI-replacing-search</h4>
+      <p class="summary">DuckDuckGo reported US app installs rising more than 18% week over week after Google said AI agents will increasingly replace traditional search results. The reaction hints at user unease with AI-mediated discovery.</p>
+      <div class="card-foot"><span class="src"><b>AI News</b> &middot; 30 May 2026</span><span class="card-read" data-c="ai">Read &rarr;</span></div>
+    </a>
+
+  </div>
+
+  <div class="history">
+    <div class="lbl">Previous Editions</div>
+    <div class="editions">
+      <div class="edition active"><div class="e-date">31 May 2026</div><div class="e-meta">Today &middot; 19 articles</div></div>
+      <div class="edition pending"><div class="e-date">1 Jun 2026</div><div class="e-meta">Tomorrow &middot; Pending</div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============ GLOBAL ECONOMY ============ -->
-  <section id="econ" class="econ">
-    <div class="sec-head">
-      <div class="sec-title">
-        <h2>Global Economy</h2>
-        <p class="sources">Sources: TheStreet, Yahoo Finance, Republic World, Outlook Business, The Straits Times, Global Times &middot; Coverage: United States, India, China</p>
-      </div>
-      <div class="sort">Sort
-        <select><option>Top stories</option><option>Newest</option><option>Source</option></select>
-      </div>
+<!-- ================= GLOBAL ECONOMY ================= -->
+<section class="section" id="econ">
+  <div class="sec-head">
+    <div>
+      <h2>Global Economy</h2>
+      <p class="sources">Sources: Republic World, The Tribune, Goldman Sachs, CNBC, BizzBuzz, TheStreet, The Diplomat, Federal Reserve &middot; Focus: US, India, China</p>
     </div>
+    <select class="sort"><option>Sort: Latest first</option><option>Sort: Source A–Z</option></select>
+  </div>
 
-    <article class="top-story">
-      <span class="badge-top">Top Story</span>
-      <h3>S&amp;P 500 and Nasdaq close at record highs on AI optimism and ceasefire hopes</h3>
-      <p class="summary">U.S. equities ended higher on 29 May 2026, with the S&amp;P 500 and Nasdaq notching record closes and the index logging a ninth straight weekly gain. Investors leaned into long-term AI growth and resilient corporate earnings, with Dell up nearly 30% the day after results. Sentiment was further lifted by hopes of a 60-day extension to a U.S.&ndash;Iran ceasefire. The rally held even as questions lingered over inflation and Middle East risk.</p>
-      <div class="meta-row">
-        <span class="src-chip">TheStreet</span>
-        <span class="time-chip">29 May 2026</span>
-        <a class="read-btn" href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-may-29-2026" target="_blank" rel="noopener">Read Article &rarr;</a>
-      </div>
-    </article>
-
-    <p class="more-label">More Articles</p>
-    <div class="grid">
-      <article class="card">
-        <div class="tags"><span class="tag">United States</span><span class="tag">Monetary Policy</span></div>
-        <h4>U.S. Q1 GDP revised down to 1.6% in second estimate</h4>
-        <p class="summary">The government cut its first-quarter growth estimate to a 1.6% annualised pace, down from 2% and below levels economists call robust. Markets rallied anyway, but the revision underscored a softening backdrop.</p>
-        <div class="card-foot">
-          <div class="card-src"><span class="name">Yahoo Finance</span><span class="date">29 May 2026</span></div>
-          <a class="read-link" href="https://finance.yahoo.com/markets/stocks/articles/stock-market-news-may-29-132100817.html" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="tags"><span class="tag">India</span><span class="tag">Monetary Policy</span></div>
-        <h4>RBI Annual Report: India GDP grows 7.6%, UPI crosses 200 billion transactions</h4>
-        <p class="summary">India's central bank reported 7.6% GDP growth and headline inflation cooling to 2.1%, while annual UPI payments topped 200 billion. The RBI deployed real-time AI fraud tools and expanded its digital-rupee welfare trials.</p>
-        <div class="card-foot">
-          <div class="card-src"><span class="name">Republic World</span><span class="date">29 May 2026</span></div>
-          <a class="read-link" href="https://www.republicworld.com/business/rbi-annual-report-india-gdp-growth-inflation-upi-milestone-2026-05-29-126151" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="tags"><span class="tag">India</span><span class="tag">Trade</span></div>
-        <h4>RBI projects 6.9% growth for 2026-27 despite global risks</h4>
-        <p class="summary">The RBI sees India growing 6.9% next fiscal year, assuming the West Asia conflict stays contained. It flagged a higher 4.6% inflation projection on rising shipping costs and geopolitical strain.</p>
-        <div class="card-foot">
-          <div class="card-src"><span class="name">Outlook Business</span><span class="date">29 May 2026</span></div>
-          <a class="read-link" href="https://www.outlookbusiness.com/economy-and-policy/india-economy-to-grow-69-in-2026-27-despite-global-risks-says-rbi-report" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="tags"><span class="tag">China</span><span class="tag">Trade</span></div>
-        <h4>China's industrial profits extend gains on resilient exports</h4>
-        <p class="summary">Industrial profits rose in April as policy support bolstered business confidence and exports held up. The data added to a picture of external demand cushioning a still-uneven domestic recovery.</p>
-        <div class="card-foot">
-          <div class="card-src"><span class="name">The Straits Times</span><span class="date">May 2026</span></div>
-          <a class="read-link" href="https://www.straitstimes.com/business/economy/chinas-industrial-profits-rise-in-april-as-policy-support-bolsters-confidence" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="tags"><span class="tag">China</span><span class="tag">Trade</span></div>
-        <h4>China's manufacturing activity contracts for a second month</h4>
-        <p class="summary">The official manufacturing PMI stayed below the 50-point line, signalling shrinking factory activity even as exports remained strong. Analysts called the mix a sign of an uneven, lopsided recovery.</p>
-        <div class="card-foot">
-          <div class="card-src"><span class="name">Global Times</span><span class="date">May 2026</span></div>
-          <a class="read-link" href="https://www.globaltimes.cn/page/202605/1342567.shtml" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
+  <article class="top-story" data-c="econ">
+    <span class="badge">Top Story</span>
+    <h3>RBI Annual Report: India grows 7.6%, inflation cools to 2.1% — but the rupee buckles</h3>
+    <p>The Reserve Bank of India released its 2025-26 Annual Report on 29 May, reporting real GDP growth of 7.6% and headline inflation easing to 2.1%, alongside annual UPI payments crossing 200 billion. Yet the report laid bare the strain from the West Asia conflict: the rupee depreciated 9.9% against the dollar, net FPI outflows hit $16.5 billion, and FX reserves slipped to $681.4 billion. The RBI projected 6.9% growth for 2026-27, assuming the conflict stays contained.</p>
+    <div class="meta-row">
+      <span class="chip">Republic World</span>
+      <span class="chip">29 May 2026</span>
+      <span class="chip">India</span>
     </div>
+    <a class="read-btn" href="https://www.republicworld.com/business/rbi-annual-report-india-gdp-growth-inflation-upi-milestone-2026-05-29-126151" target="_blank">Read Article &rarr;</a>
+  </article>
 
-    <div class="history">
-      <p class="lbl">Previous Editions</p>
-      <div class="editions">
-        <div class="edition active"><div class="e-date"><span class="e-dot"></span>30 May 2026</div><div class="e-meta">Today &middot; 17 articles</div></div>
-        <div class="edition pending"><div class="e-date">31 May 2026</div><div class="e-meta">Tomorrow &middot; Pending</div></div>
-      </div>
+  <div class="more-label">More Articles</div>
+  <div class="grid">
+
+    <a class="card" href="https://www.tribuneindia.com/news/business/rbi-projects-6-9-gdp-growth-despite-geopolitical-headwinds" target="_blank">
+      <div class="tags"><span class="tag" data-c="econ">India</span><span class="tag" data-c="econ">Monetary Policy</span></div>
+      <h4>RBI projects 6.9% growth for FY27 despite geopolitical headwinds</h4>
+      <p class="summary">The central bank expects India to expand 6.9% in 2026-27, citing strong corporate and banking balance sheets and sustained government capex. The forecast assumes the West Asia conflict's impact remains contained.</p>
+      <div class="card-foot"><span class="src"><b>The Tribune</b> &middot; 29 May 2026</span><span class="card-read" data-c="econ">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://www.bizzbuzz.news/economy/indias-economy-shows-resilience-in-may-but-global-headwinds-loom-1392614" target="_blank">
+      <div class="tags"><span class="tag" data-c="econ">India</span></div>
+      <h4>India's economy resilient in May, but global headwinds loom</h4>
+      <p class="summary">Domestic activity held up through May even as the rupee weakened and reserves were drawn down to defend it. Rising energy costs and supply-chain disruption from the West Asia conflict remain the key external risks.</p>
+      <div class="card-foot"><span class="src"><b>BizzBuzz</b> &middot; 30 May 2026</span><span class="card-read" data-c="econ">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://www.goldmansachs.com/insights/articles/chinas-economy-expected-to-grow-in-2026-amid-surging-exports" target="_blank">
+      <div class="tags"><span class="tag" data-c="econ">China</span><span class="tag" data-c="econ">Trade</span></div>
+      <h4>China's economy seen growing 4.8% in 2026 on surging exports</h4>
+      <p class="summary">Goldman Sachs expects China to grow 4.8% this year, above consensus, driven by an export boom into developing markets and higher-value goods. The renminbi remains weak on a trade-weighted basis despite a record surplus.</p>
+      <div class="card-foot"><span class="src"><b>Goldman Sachs</b> &middot; May 2026</span><span class="card-read" data-c="econ">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://www.cnbc.com/2026/03/10/china-trade-balance-surplus-record-exports-tariffs-imports.html" target="_blank">
+      <div class="tags"><span class="tag" data-c="econ">China</span><span class="tag" data-c="econ">Trade</span></div>
+      <h4>China exports hit record, but shipments to the US fall 16%</h4>
+      <p class="summary">China's exports surged into developing markets and the EU, with double-digit gains, even as exports to the United States dropped 16% under tariffs. The trade surplus has added over $1tn year-to-date.</p>
+      <div class="card-foot"><span class="src"><b>CNBC</b> &middot; May 2026</span><span class="card-read" data-c="econ">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://www.federalreserve.gov/newsevents/pressreleases/monetary20260429a.htm" target="_blank">
+      <div class="tags"><span class="tag" data-c="econ">United States</span><span class="tag" data-c="econ">Monetary Policy</span></div>
+      <h4>Fed holds at 3.5–3.75% as the dual mandate strains</h4>
+      <p class="summary">The Federal Reserve kept rates steady with headline PCE inflation at 3.5%, elevated by global energy prices, while job gains slowed and unemployment crept up. Policymakers face a sharpening conflict between their employment and price-stability goals.</p>
+      <div class="card-foot"><span class="src"><b>Federal Reserve</b> &middot; Late May 2026</span><span class="card-read" data-c="econ">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-may-29-2026" target="_blank">
+      <div class="tags"><span class="tag" data-c="econ">United States</span></div>
+      <h4>S&amp;P 500 logs a ninth straight weekly gain</h4>
+      <p class="summary">US stocks closed out the week higher, with the S&amp;P 500 up 0.22% to 7,580 and the Dow gaining 363 points to 51,032 — a ninth consecutive weekly advance after the Memorial Day reprieve.</p>
+      <div class="card-foot"><span class="src"><b>TheStreet</b> &middot; 29 May 2026</span><span class="card-read" data-c="econ">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://www.cnbc.com/2026/05/28/stock-market-today-live-updates.html" target="_blank">
+      <div class="tags"><span class="tag" data-c="econ">United States</span></div>
+      <h4>Wall Street wrap: markets grind higher into month-end</h4>
+      <p class="summary">Equities extended gains on 29 May as investors weighed a cooling labour market against still-elevated inflation. AI-linked names continued to lead the tape into the close.</p>
+      <div class="card-foot"><span class="src"><b>CNBC</b> &middot; 29 May 2026</span><span class="card-read" data-c="econ">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://thediplomat.com/2026/03/the-india-us-interim-trade-deal-and-new-tariffs/" target="_blank">
+      <div class="tags"><span class="tag" data-c="econ">India</span><span class="tag" data-c="econ">Trade</span></div>
+      <h4>India–US deal cuts reciprocal tariffs to 18%</h4>
+      <p class="summary">Under the trade deal announced earlier this year, US reciprocal tariffs on Indian goods fell to 18% from 25%, with the extra Russia-oil penalty removed. Textiles, gems, pharma and engineering goods gain immediate competitiveness.</p>
+      <div class="card-foot"><span class="src"><b>The Diplomat</b> &middot; 2026</span><span class="card-read" data-c="econ">Read &rarr;</span></div>
+    </a>
+
+  </div>
+
+  <div class="history">
+    <div class="lbl">Previous Editions</div>
+    <div class="editions">
+      <div class="edition active"><div class="e-date">31 May 2026</div><div class="e-meta">Today &middot; 19 articles</div></div>
+      <div class="edition pending"><div class="e-date">1 Jun 2026</div><div class="e-meta">Tomorrow &middot; Pending</div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============ GOVERNANCE REFORMS ============ -->
-  <section id="gov" class="gov">
-    <div class="sec-head">
-      <div class="sec-title">
-        <h2>Governance Reforms</h2>
-        <p class="sources">Sources: MediaNama, Tech Policy Press, European Commission &middot; A deliberately low-volume bucket &mdash; only substantive items included</p>
-      </div>
-      <div class="sort">Sort
-        <select><option>Top stories</option><option>Newest</option><option>Source</option></select>
-      </div>
+<!-- ================= GOVERNANCE REFORMS ================= -->
+<section class="section" id="gov">
+  <div class="sec-head">
+    <div>
+      <h2>Governance Reforms</h2>
+      <p class="sources">Sources: Council of the EU, Built In, National Law Review, OECD &middot; Lower-volume bucket — substantive items only</p>
     </div>
+    <select class="sort"><option>Sort: Latest first</option><option>Sort: Source A–Z</option></select>
+  </div>
 
-    <article class="top-story">
-      <span class="badge-top">Top Story</span>
-      <h3>India's data-protection rules take effect, tightening consent and fiduciary duties</h3>
-      <p class="summary">New rules under India's Digital Personal Data Protection Act came into force in late May 2026, formalising consent-management requirements and data-fiduciary obligations. The provisions set clearer standards for how companies collect and process personal data, backed by enhanced penalties for violations. The shift moves India from passing the law to enforcing it, with practical compliance demands now landing on businesses.</p>
-      <div class="meta-row">
-        <span class="src-chip">MediaNama</span>
-        <span class="time-chip">May 2026</span>
-        <a class="read-btn" href="https://www.medianama.com/2026/05/dpdp-rules-2026-update" target="_blank" rel="noopener">Read Article &rarr;</a>
-      </div>
-    </article>
-
-    <p class="more-label">More Articles</p>
-    <div class="grid">
-      <article class="card">
-        <div class="tags"><span class="tag">AI Policy</span><span class="tag">Digital Governance</span></div>
-        <h4>EU AI Act reaches new compliance milestone for general-purpose models</h4>
-        <p class="summary">The EU advanced phased implementation of the AI Act, with fresh compliance requirements for general-purpose AI and high-risk systems coming into force. The focus is shifting from rule-making toward enforceable obligations.</p>
-        <div class="card-foot">
-          <div class="card-src"><span class="name">Tech Policy Press</span><span class="date">May 2026</span></div>
-          <a class="read-link" href="https://www.techpolicy.press/global-digital-governance-roundup-may-2026" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="tags"><span class="tag">Governance</span><span class="tag">Digital Governance</span></div>
-        <h4>Digital governance shifts from passing laws to enforcing them</h4>
-        <p class="summary">A May 2026 roundup finds multiple jurisdictions moving past legislation toward enforcement on AI accountability, data protection and platform regulation. The emphasis is now on practical implementation of laws already on the books.</p>
-        <div class="card-foot">
-          <div class="card-src"><span class="name">Tech Policy Press</span><span class="date">May 2026</span></div>
-          <a class="read-link" href="https://www.techpolicy.press/global-digital-governance-roundup-may-2026" target="_blank" rel="noopener">Read &rarr;</a>
-        </div>
-      </article>
+  <article class="top-story" data-c="gov">
+    <span class="badge">Top Story</span>
+    <h3>EU agrees an 'AI omnibus' to simplify the AI Act — and bans 'nudifier' apps</h3>
+    <p>The Council and Parliament reached political agreement to streamline the EU AI Act, postponing high-risk (Annex III) obligations from August 2026 to December 2027 and pushing back transparency rules for synthetic content. In a notable tightening, prohibited practices now expressly extend to "nudifier" apps that generate non-consensual intimate imagery or CSAM, effective December 2026. Compliance relief was also widened to firms with up to 750 employees and €150m in revenue.</p>
+    <div class="meta-row">
+      <span class="chip">Council of the EU</span>
+      <span class="chip">Late May 2026</span>
+      <span class="chip">AI Policy</span>
     </div>
+    <a class="read-btn" href="https://www.consilium.europa.eu/en/press/press-releases/2026/05/07/artificial-intelligence-council-and-parliament-agree-to-simplify-and-streamline-rules/" target="_blank">Read Article &rarr;</a>
+  </article>
 
-    <div class="history">
-      <p class="lbl">Previous Editions</p>
-      <div class="editions">
-        <div class="edition active"><div class="e-date"><span class="e-dot"></span>30 May 2026</div><div class="e-meta">Today &middot; 17 articles</div></div>
-        <div class="edition pending"><div class="e-date">31 May 2026</div><div class="e-meta">Tomorrow &middot; Pending</div></div>
-      </div>
+  <div class="more-label">More Articles</div>
+  <div class="grid">
+
+    <a class="card" href="https://builtin.com/articles/tech-laws-2026" target="_blank">
+      <div class="tags"><span class="tag" data-c="gov">Digital Governance</span><span class="tag" data-c="gov">AI Policy</span></div>
+      <h4>A wave of US tech laws takes effect in 2026</h4>
+      <p class="summary">Mostly state-level statutes covering AI transparency, child safety, discrimination and data privacy are coming into force through 2026. The patchwork is reshaping compliance for any company operating across US states.</p>
+      <div class="card-foot"><span class="src"><b>Built In</b> &middot; May 2026</span><span class="card-read" data-c="gov">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://natlawreview.com/article/crypto-2026-democratization-digital-assets" target="_blank">
+      <div class="tags"><span class="tag" data-c="gov">Privacy</span><span class="tag" data-c="gov">Digital Governance</span></div>
+      <h4>Data-rights reforms: deletion and portability go live</h4>
+      <p class="summary">California's Delete Act lets residents force hundreds of data brokers to erase personal data, while Utah's Digital Choice Act will require social platforms to make user data portable from 1 July. Together they mark a shift toward enforceable individual data rights.</p>
+      <div class="card-foot"><span class="src"><b>National Law Review</b> &middot; 2026</span><span class="card-read" data-c="gov">Read &rarr;</span></div>
+    </a>
+
+    <a class="card" href="https://www.oecd.org/en/publications/anti-corruption-and-integrity-outlook-2026_16708b78-en.html" target="_blank">
+      <div class="tags"><span class="tag" data-c="gov">Governance</span></div>
+      <h4>OECD Anti-Corruption &amp; Integrity Outlook 2026</h4>
+      <p class="summary">The OECD's latest outlook assesses integrity systems across 37 members and 25 partner countries, finding uneven implementation despite recent progress. It calls for stronger enforcement to close the gap between rules on paper and practice.</p>
+      <div class="card-foot"><span class="src"><b>OECD</b> &middot; 2026</span><span class="card-read" data-c="gov">Read &rarr;</span></div>
+    </a>
+
+  </div>
+
+  <div class="history">
+    <div class="lbl">Previous Editions</div>
+    <div class="editions">
+      <div class="edition active"><div class="e-date">31 May 2026</div><div class="e-meta">Today &middot; 19 articles</div></div>
+      <div class="edition pending"><div class="e-date">1 Jun 2026</div><div class="e-meta">Tomorrow &middot; Pending</div></div>
     </div>
-  </section>
+  </div>
+</section>
+
 </main>
 
-<footer>
-  Personalised daily briefing for Anurag &middot; Articles published 29 May 2026 &middot; Generated 30 May 2026. Summaries are paraphrased; follow source links for full reporting.
-</footer>
+<footer>Personalised daily briefing for Anurag &middot; Generated 31 May 2026 &middot; Articles curated from public reporting</footer>
 
 <script>
-  function showSection(name, el){
-    document.querySelectorAll('main section').forEach(function(s){s.classList.remove('active')});
-    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
-    document.getElementById(name).classList.add('active');
-    el.classList.add('active');
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
+function showSection(name, el){
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active')});
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+  document.getElementById(name).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 </script>
 </body>
 </html>
