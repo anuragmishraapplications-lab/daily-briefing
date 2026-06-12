@@ -14,426 +14,355 @@
   --ai:#c96442; --ai-bg:#fdf1ec; --ai-border:#f0c4b4;
   --econ:#2d6a4f; --econ-bg:#eef6f1; --econ-border:#b8dcc8;
   --gov:#3a5fa0; --gov-bg:#eef2fa; --gov-border:#b8ccee;
-  --gold:#9a7b1f; --gold-bg:#faf4e2; --gold-border:#e6d4a0;
+  --gold:#b08423; --gold-bg:#fbf3df; --gold-border:#ecd9a8;
   --shadow-sm:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
   --shadow-md:0 4px 12px rgba(0,0,0,.08),0 2px 4px rgba(0,0,0,.04);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
 
 /* Header */
 header{position:sticky;top:0;z-index:50;background:var(--surface);border-bottom:1px solid var(--border);box-shadow:var(--shadow-sm)}
-.header-inner{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.header-left h1{font-size:1rem;font-weight:600;letter-spacing:-.01em}
-.header-left p{font-size:.75rem;color:var(--muted);margin-top:2px}
-.header-right{display:flex;align-items:center;gap:10px}
-.chip-updated{font-size:.72rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:5px 11px;border-radius:20px;white-space:nowrap}
-.btn-refresh{font-family:inherit;font-size:.75rem;font-weight:500;color:#fff;background:var(--accent);border:none;padding:7px 15px;border-radius:7px;cursor:pointer;transition:opacity .15s}
+.header-inner{max-width:1180px;margin:0 auto;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.header-inner h1{font-size:1rem;font-weight:600;color:var(--text)}
+.header-inner p{font-size:.75rem;color:var(--muted);margin-top:.1rem}
+.header-right{display:flex;align-items:center;gap:.6rem}
+.chip-updated{font-size:.72rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:.34rem .7rem;border-radius:999px;white-space:nowrap}
+.btn-refresh{font-family:inherit;font-size:.75rem;font-weight:500;color:#fff;background:var(--accent);border:none;padding:.4rem .9rem;border-radius:8px;cursor:pointer;transition:opacity .15s}
 .btn-refresh:hover{opacity:.88}
 
 /* Tabs */
-.tabs{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;gap:4px;border-bottom:1px solid var(--border)}
-.tab{font-family:inherit;font-size:.82rem;font-weight:500;color:var(--muted);background:none;border:none;padding:14px 16px 12px;cursor:pointer;position:relative;display:flex;align-items:center;gap:8px;transition:color .15s}
+.tabs{max-width:1180px;margin:0 auto;padding:0 1.5rem;display:flex;gap:.25rem;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:54px;z-index:40}
+.tab{font-family:inherit;font-size:.84rem;font-weight:500;color:var(--muted);background:none;border:none;padding:.85rem .9rem;cursor:pointer;border-bottom:2.5px solid transparent;margin-bottom:-1px;transition:color .15s;display:flex;align-items:center;gap:.45rem}
 .tab:hover{color:var(--text2)}
-.tab .count{font-size:.68rem;font-weight:600;background:var(--surface2);color:var(--muted);padding:1px 7px;border-radius:10px;min-width:20px;text-align:center}
-.tab.active{color:var(--text)}
-.tab.active::after{content:"";position:absolute;left:8px;right:8px;bottom:-1px;height:2.5px;border-radius:2px}
-.tab[data-tab="ai"].active::after{background:var(--ai)}
-.tab[data-tab="econ"].active::after{background:var(--econ)}
-.tab[data-tab="gov"].active::after{background:var(--gov)}
-.tab[data-tab="ai"].active .count{background:var(--ai-bg);color:var(--ai)}
-.tab[data-tab="econ"].active .count{background:var(--econ-bg);color:var(--econ)}
-.tab[data-tab="gov"].active .count{background:var(--gov-bg);color:var(--gov)}
+.tab .count{font-size:.7rem;font-weight:600;background:var(--surface2);color:var(--muted);padding:.05rem .42rem;border-radius:999px;border:1px solid var(--border)}
+.tab.active[data-bucket="ai"]{color:var(--ai);border-bottom-color:var(--ai)}
+.tab.active[data-bucket="econ"]{color:var(--econ);border-bottom-color:var(--econ)}
+.tab.active[data-bucket="gov"]{color:var(--gov);border-bottom-color:var(--gov)}
+.tab.active .count{color:var(--text);background:var(--surface)}
 
-/* Main */
-main{max-width:1180px;margin:0 auto;padding:26px 28px 60px}
+/* Layout */
+main{max-width:1180px;margin:0 auto;padding:1.6rem 1.5rem 3rem}
 .section{display:none}
 .section.active{display:block;animation:fade .25s ease}
 @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
-.section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:22px;flex-wrap:wrap}
-.section-head h2{font-size:1.35rem;font-weight:700;letter-spacing:-.02em}
-.section-head .sources{font-size:.74rem;color:var(--muted);margin-top:5px;max-width:640px}
-.sort{display:flex;align-items:center;gap:7px}
-.sort label{font-size:.72rem;color:var(--muted)}
-.sort select{font-family:inherit;font-size:.74rem;color:var(--text2);background:var(--surface);border:1px solid var(--border2);border-radius:6px;padding:5px 8px;cursor:pointer}
+.sec-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.3rem}
+.sec-head h2{font-size:1.35rem;font-weight:700;letter-spacing:-.01em}
+.sec-head .sources{font-size:.74rem;color:var(--muted);margin-top:.35rem;max-width:640px}
+.sort{display:flex;align-items:center;gap:.45rem;font-size:.74rem;color:var(--muted)}
+.sort select{font-family:inherit;font-size:.74rem;color:var(--text2);background:var(--surface);border:1px solid var(--border2);border-radius:7px;padding:.35rem .55rem;cursor:pointer}
 
 /* Top story */
-.top-story{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px 26px 24px 30px;box-shadow:var(--shadow-md);overflow:hidden;margin-bottom:30px}
+.top-story{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem 1.7rem 1.5rem 2rem;box-shadow:var(--shadow-md);overflow:hidden;margin-bottom:1.8rem}
 .top-story::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px}
-.section[data-color="ai"] .top-story::before{background:var(--ai)}
-.section[data-color="econ"] .top-story::before{background:var(--econ)}
-.section[data-color="gov"] .top-story::before{background:var(--gov)}
-.badge-top{display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:5px;margin-bottom:12px}
-.section[data-color="ai"] .badge-top{background:var(--ai-bg);color:var(--ai);border:1px solid var(--ai-border)}
-.section[data-color="econ"] .badge-top{background:var(--econ-bg);color:var(--econ);border:1px solid var(--econ-border)}
-.section[data-color="gov"] .badge-top{background:var(--gov-bg);color:var(--gov);border:1px solid var(--gov-border)}
-.top-story h3{font-size:1.5rem;font-weight:700;letter-spacing:-.02em;line-height:1.25;margin-bottom:10px}
-.top-story p.summary{font-size:.92rem;color:var(--text2);margin-bottom:16px;max-width:780px}
-.meta-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.read-btn{font-size:.78rem;font-weight:600;padding:8px 16px;border-radius:7px;color:#fff;transition:opacity .15s}
-.read-btn:hover{opacity:.88}
-.section[data-color="ai"] .read-btn{background:var(--ai)}
-.section[data-color="econ"] .read-btn{background:var(--econ)}
-.section[data-color="gov"] .read-btn{background:var(--gov)}
+.top-story[data-bucket="ai"]::before{background:var(--ai)}
+.top-story[data-bucket="econ"]::before{background:var(--econ)}
+.top-story[data-bucket="gov"]::before{background:var(--gov)}
+.badge-top{display:inline-block;font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;padding:.25rem .6rem;border-radius:6px;margin-bottom:.7rem}
+.top-story[data-bucket="ai"] .badge-top{color:var(--ai);background:var(--ai-bg);border:1px solid var(--ai-border)}
+.top-story[data-bucket="econ"] .badge-top{color:var(--econ);background:var(--econ-bg);border:1px solid var(--econ-border)}
+.top-story[data-bucket="gov"] .badge-top{color:var(--gov);background:var(--gov-bg);border:1px solid var(--gov-border)}
+.top-story h3{font-size:1.5rem;font-weight:700;line-height:1.25;letter-spacing:-.015em;margin-bottom:.65rem;color:var(--text)}
+.top-story .summary{font-size:.95rem;color:var(--text2);max-width:780px;margin-bottom:1.1rem}
+.story-meta{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
+.btn-read{margin-left:auto;font-size:.8rem;font-weight:500;color:#fff;padding:.5rem 1rem;border-radius:8px;transition:opacity .15s}
+.top-story[data-bucket="ai"] .btn-read{background:var(--ai)}
+.top-story[data-bucket="econ"] .btn-read{background:var(--econ)}
+.top-story[data-bucket="gov"] .btn-read{background:var(--gov)}
+.btn-read:hover{opacity:.88}
 
 /* chips */
-.src-chip{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;color:var(--muted);background:var(--surface2);border:1px solid var(--border);padding:4px 10px;border-radius:6px}
-.time-chip{font-size:.72rem;color:var(--muted2)}
-.paywall{font-size:.6rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);background:var(--gold-bg);border:1px solid var(--gold-border);padding:2px 7px;border-radius:4px}
+.chip-src{display:inline-flex;align-items:center;gap:.4rem;font-size:.73rem;font-weight:500;color:var(--text2);background:var(--surface2);border:1px solid var(--border);padding:.28rem .6rem;border-radius:999px}
+.chip-time{font-size:.72rem;color:var(--muted);background:none;border:1px solid var(--border);padding:.28rem .6rem;border-radius:999px}
+.badge-pay{font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--gold);background:var(--gold-bg);border:1px solid var(--gold-border);padding:.13rem .4rem;border-radius:5px}
 
-.more-label{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);margin-bottom:14px}
+/* More label */
+.more-label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted2);margin:0 0 .9rem}
 
-/* grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:18px 19px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s}
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.1rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.25rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:box-shadow .18s,transform .18s}
 .card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
-.tags{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
-.tag{font-size:.6rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:4px}
-.section[data-color="ai"] .tag{background:var(--ai-bg);color:var(--ai)}
-.section[data-color="econ"] .tag{background:var(--econ-bg);color:var(--econ)}
-.section[data-color="gov"] .tag{background:var(--gov-bg);color:var(--gov)}
-.card h4{font-size:1.02rem;font-weight:600;letter-spacing:-.01em;line-height:1.3;margin-bottom:8px}
-.card p.summary{font-size:.82rem;color:var(--text2);margin-bottom:14px;flex:1}
-.card-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto}
-.card-src{display:flex;align-items:center;gap:7px;font-size:.7rem;color:var(--muted);flex-wrap:wrap}
-.read-link{font-size:.76rem;font-weight:600;white-space:nowrap}
-.section[data-color="ai"] .read-link{color:var(--ai)}
-.section[data-color="econ"] .read-link{color:var(--econ)}
-.section[data-color="gov"] .read-link{color:var(--gov)}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.7rem}
+.tag{font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:.2rem .5rem;border-radius:5px}
+.tag.ai{color:var(--ai);background:var(--ai-bg);border:1px solid var(--ai-border)}
+.tag.econ{color:var(--econ);background:var(--econ-bg);border:1px solid var(--econ-border)}
+.tag.gov{color:var(--gov);background:var(--gov-bg);border:1px solid var(--gov-border)}
+.card h4{font-size:1.02rem;font-weight:600;line-height:1.3;letter-spacing:-.01em;margin-bottom:.5rem;color:var(--text)}
+.card .summary{font-size:.85rem;color:var(--text2);margin-bottom:1rem;flex-grow:1}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:.8rem}
+.card-foot .src-line{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;font-size:.73rem;color:var(--muted)}
+.card-foot .src-name{font-weight:500;color:var(--text2)}
+.read-link{font-size:.78rem;font-weight:600}
+.read-link.ai{color:var(--ai)}
+.read-link.econ{color:var(--econ)}
+.read-link.gov{color:var(--gov)}
 
-/* history strip */
-.history{margin-top:42px;padding-top:24px;border-top:1px solid var(--border)}
-.history .more-label{margin-bottom:14px}
-.editions{display:flex;gap:12px;flex-wrap:wrap}
-.edition{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:12px 16px;min-width:150px}
-.edition.active{border-color:var(--accent);box-shadow:var(--shadow-sm)}
-.edition .ed-date{font-size:.78rem;font-weight:600;color:var(--text)}
-.edition .ed-meta{font-size:.68rem;color:var(--muted);margin-top:3px}
-.edition.active .ed-meta{color:var(--accent);font-weight:600}
-.edition.pending{border-style:dashed;opacity:.7}
+/* History strip */
+.history{margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid var(--border)}
+.history .h-label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted2);margin-bottom:.9rem}
+.editions{display:flex;gap:.7rem;flex-wrap:wrap}
+.edition{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.7rem 1rem;min-width:160px}
+.edition.active{border-color:var(--border2);box-shadow:var(--shadow-sm)}
+.edition.pending{background:var(--surface2);border-style:dashed}
+.edition .e-date{font-size:.82rem;font-weight:600;color:var(--text)}
+.edition .e-meta{font-size:.7rem;color:var(--muted);margin-top:.2rem}
+.edition.active .e-meta{color:var(--accent);font-weight:500}
 
-footer{max-width:1180px;margin:0 auto;padding:0 28px 40px;font-size:.7rem;color:var(--muted2)}
-@media(max-width:560px){
-  .header-inner{padding:12px 16px}
-  .tabs{padding:0 16px}.main,main{padding:20px 16px 50px}
+footer{max-width:1180px;margin:0 auto;padding:0 1.5rem 2.5rem;font-size:.72rem;color:var(--muted2)}
+
+@media(max-width:600px){
+  .header-inner{flex-direction:column;align-items:flex-start;gap:.6rem}
+  .tabs{top:96px;overflow-x:auto}
   .top-story h3{font-size:1.25rem}
+  .btn-read{margin-left:0;margin-top:.8rem}
+  .story-meta{align-items:flex-start}
 }
 </style>
 </head>
 <body>
-
 <header>
   <div class="header-inner">
-    <div class="header-left">
+    <div>
       <h1>Good morning, Anurag</h1>
-      <p>Wednesday, 3 June 2026 &nbsp;&middot;&nbsp; Your personalised briefing is ready</p>
+      <p>Friday, 12 June 2026 &middot; Your personalised briefing is ready</p>
     </div>
     <div class="header-right">
-      <span class="chip-updated">Updated at 07:03 PM</span>
+      <span class="chip-updated">Updated at 2:00 PM</span>
       <button class="btn-refresh" onclick="location.reload()">Refresh</button>
     </div>
   </div>
-  <div class="tabs">
-    <button class="tab active" data-tab="ai" onclick="showSection('ai',this)">AI &amp; Education <span class="count">8</span></button>
-    <button class="tab" data-tab="econ" onclick="showSection('econ',this)">Global Economy <span class="count">6</span></button>
-    <button class="tab" data-tab="gov" onclick="showSection('gov',this)">Governance Reforms <span class="count">4</span></button>
-  </div>
 </header>
+
+<nav class="tabs">
+  <button class="tab active" data-bucket="ai" onclick="showSection('ai',this)">AI &amp; Education <span class="count">5</span></button>
+  <button class="tab" data-bucket="econ" onclick="showSection('econ',this)">Global Economy <span class="count">5</span></button>
+  <button class="tab" data-bucket="gov" onclick="showSection('gov',this)">Governance Reforms <span class="count">3</span></button>
+</nav>
 
 <main>
 
 <!-- ===================== AI & EDUCATION ===================== -->
-<section class="section active" id="ai" data-color="ai">
-  <div class="section-head">
+<section class="section active" id="ai">
+  <div class="sec-head">
     <div>
       <h2>AI &amp; Education</h2>
-      <p class="sources">Sources: CNBC, Scientific American, The White House, Fortune, Tech Startups, BuildFastWithAI, AI-Weekly</p>
+      <p class="sources">Sources: The Washington Post, OpenAI, Anthropic, TechCrunch, Tech Startups. Published 11 June 2026.</p>
     </div>
-    <div class="sort">
-      <label for="sort-ai">Sort</label>
-      <select id="sort-ai"><option>Most relevant</option><option>Newest first</option><option>Source A–Z</option></select>
+    <div class="sort">Sort by
+      <select onchange="return false">
+        <option>Most relevant</option>
+        <option>Newest first</option>
+        <option>Source A–Z</option>
+      </select>
     </div>
   </div>
 
-  <div class="top-story">
+  <article class="top-story" data-bucket="ai">
     <span class="badge-top">Top Story</span>
-    <h3>Trump signs AI executive order asking companies to give government early access to frontier models</h3>
-    <p class="summary">President Trump signed an executive order on Tuesday asking AI companies to voluntarily share new models with the federal government for assessment up to 30 days before a wider release. The order sets up a benchmarking process to evaluate a model's "advanced cyber capabilities" and decide whether it qualifies as a "covered frontier model." It marks a sharp shift from the administration's previously hands-off posture, while explicitly ruling out mandatory licensing or preclearance for new AI models.</p>
-    <div class="meta-row">
-      <a class="read-btn" href="https://www.cnbc.com/2026/06/02/trump-executive-order-ai.html" target="_blank">Read Article &rarr;</a>
-      <span class="src-chip">CNBC</span>
-      <span class="time-chip">2 June 2026</span>
+    <h3>Anthropic launches &lsquo;Claude Corps&rsquo;, a $150M national AI fellowship for early-career Americans</h3>
+    <p class="summary">Anthropic unveiled Claude Corps, a 12-month paid fellowship placing early-career people inside US nonprofits, with fellows earning $85,000 a year plus benefits and training in applying Claude to real-world problems. The $150 million program aims to reach 1,000 fellows across three cohorts, with applications for the first 100-person cohort closing 17 July. The launch sits alongside Anthropic's broader argument that AI will reshape the labour market and that institutions must prepare workers now.</p>
+    <div class="story-meta">
+      <span class="chip-src">The Washington Post</span>
+      <span class="chip-time">11 June 2026</span>
+      <a class="btn-read" href="https://www.washingtonpost.com/business/2026/06/11/anthropic-ai-claude-corps-daniela-amodei/" target="_blank" rel="noopener">Read Article &rarr;</a>
     </div>
-  </div>
+  </article>
 
-  <div class="more-label">More Articles</div>
+  <p class="more-label">More Articles</p>
   <div class="grid">
 
-    <div class="card">
-      <div class="tags"><span class="tag">AI Industry</span></div>
-      <h4>Microsoft unveils new AI models to cut reliance on OpenAI</h4>
-      <p class="summary">Microsoft introduced MAI-Code-1-Flash, its first model that turns written descriptions into source code for apps and websites, as it pushes into more layers of the AI stack and aims to lower costs for developers.</p>
+    <article class="card">
+      <div class="tags"><span class="tag ai">AI Industry</span></div>
+      <h4>OpenAI ties its frontier models and Codex to Oracle cloud credits</h4>
+      <p class="summary">OpenAI and Oracle announced that OCI customers will soon be able to apply existing Oracle Universal Credits toward OpenAI models and the Codex coding agent. The deal lets enterprises adopt frontier AI through their established cloud-commitment workflows rather than a separate purchasing path.</p>
       <div class="card-foot">
-        <div class="card-src"><span>CNBC</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://www.cnbc.com/2026/06/02/microsoft-unveils-new-ai-models-lessen-reliance-on-openai-lower-costs.html" target="_blank">Read &rarr;</a>
+        <span class="src-line"><span class="src-name">OpenAI</span> &middot; 11 Jun 2026</span>
+        <a class="read-link ai" href="https://openai.com/index/openai-on-oracle-cloud/" target="_blank" rel="noopener">Read &rarr;</a>
       </div>
-    </div>
+    </article>
 
-    <div class="card">
-      <div class="tags"><span class="tag">AI Industry</span></div>
-      <h4>Anthropic IPO is no longer just a rumor</h4>
-      <p class="summary">Anthropic confidentially filed a draft S-1 with the SEC and expanded its Project Glasswing security program to roughly 150 more organizations across 15-plus countries. The moves point toward the first frontier AI lab heading for public markets.</p>
+    <article class="card">
+      <div class="tags"><span class="tag ai">AI Research</span></div>
+      <h4>OpenAI rolls out the Responses API for building agentic apps</h4>
+      <p class="summary">OpenAI introduced the Responses API, a faster and more flexible way to build assistants and tool-based experiences. It bundles built-in tools including web search, file search and computer use, lowering the engineering lift for developers building agentic applications.</p>
       <div class="card-foot">
-        <div class="card-src"><span>Fortune</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://fortune.com/2026/06/02/anthropic-ipo-no-longer-just-a-rumor/" target="_blank">Read &rarr;</a>
+        <span class="src-line"><span class="src-name">OpenAI</span> &middot; 11 Jun 2026</span>
+        <a class="read-link ai" href="https://releasebot.io/updates/openai" target="_blank" rel="noopener">Read &rarr;</a>
       </div>
-    </div>
+    </article>
 
-    <div class="card">
-      <div class="tags"><span class="tag">AI Research</span><span class="tag">AI Industry</span></div>
-      <h4>Nvidia's new PC chips: Huang's bid to win every layer of the AI stack</h4>
-      <p class="summary">Nvidia unveiled consumer PC silicon as CEO Jensen Huang declared 2026 the "year of inference." The company is extending from data-center GPUs into laptops and agentic-AI CPUs, staking a claim across the full computing stack.</p>
+    <article class="card">
+      <div class="tags"><span class="tag ai">AI Industry</span><span class="tag ai">Education</span></div>
+      <h4>Anthropic commits $200M to an Economic Futures Research Fund</h4>
+      <p class="summary">Alongside Claude Corps, Anthropic pledged $200 million to a new Economic Futures Research Fund backing research trials and evaluations of public policies designed to address AI-driven economic disruption. The two commitments bring Anthropic's voluntary pledge to $350 million focused on the workforce and skills transition.</p>
       <div class="card-foot">
-        <div class="card-src"><span>CNBC</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://www.cnbc.com/2026/06/02/nvidias-new-pc-chips-are-ceos-bid-to-own-every-part-of-ai-stack.html" target="_blank">Read &rarr;</a>
+        <span class="src-line"><span class="src-name">Anthropic</span> &middot; 11 Jun 2026</span>
+        <a class="read-link ai" href="https://www.anthropic.com/economic-futures/program" target="_blank" rel="noopener">Read &rarr;</a>
       </div>
-    </div>
+    </article>
 
-    <div class="card">
-      <div class="tags"><span class="tag">AI Policy</span></div>
-      <h4>Trump's AI executive order drastically shifts the administration's stance</h4>
-      <p class="summary">A closer look at the order finds it reverses an earlier deregulatory approach by inviting voluntary federal review of the most capable models. Analysts say the cyber-capability benchmarking could become a de facto pre-release checkpoint for leading labs.</p>
+    <article class="card">
+      <div class="tags"><span class="tag ai">AI Industry</span></div>
+      <h4>AI infrastructure money keeps flowing: Prometheus raises $12B, NEURA $1.4B</h4>
+      <p class="summary">The day's funding roundup underscored investor appetite for "physical AI": Jeff Bezos's startup Prometheus announced a $12 billion Series B at a $41 billion valuation, while German robotics firm NEURA Robotics revealed up to $1.4 billion in Series C backing. Capital is concentrating on systems that pair AI models with robots, sensors and real-world hardware.</p>
       <div class="card-foot">
-        <div class="card-src"><span>Scientific American</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://www.scientificamerican.com/article/trumps-new-ai-executive-order-drastically-shifts-the-administrations-stance-on-the-tech/" target="_blank">Read &rarr;</a>
+        <span class="src-line"><span class="src-name">Tech Startups</span> &middot; 11 Jun 2026</span>
+        <a class="read-link ai" href="https://techstartups.com/2026/06/11/venture-capital-startup-funding-roundup-june-11-2026/" target="_blank" rel="noopener">Read &rarr;</a>
       </div>
-    </div>
-
-    <div class="card">
-      <div class="tags"><span class="tag">AI Industry</span></div>
-      <h4>Microsoft Build 2026 headlines a packed day of AI news</h4>
-      <p class="summary">A round-up of the day's biggest stories, led by Microsoft Build, where Satya Nadella outlined deeper agentic AI across everyday computing. A $9.69 billion Defense Department software deal for Microsoft 365, Azure, and Copilot was also announced.</p>
-      <div class="card-foot">
-        <div class="card-src"><span>BuildFastWithAI</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://www.buildfastwithai.com/blogs/ai-news-today-june-2-2026" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="tags"><span class="tag">AI Industry</span></div>
-      <h4>Top tech news today: Alphabet's $80B AI infrastructure raise</h4>
-      <p class="summary">Alphabet plans to raise up to $80 billion through equity offerings to fund AI infrastructure, while Uber and Autobrains move to launch a Munich robotaxi pilot on Nvidia's Drive Hyperion platform. A snapshot of the day's tech headlines.</p>
-      <div class="card-foot">
-        <div class="card-src"><span>Tech Startups</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://techstartups.com/2026/06/02/top-tech-news-today-june-2-2026/" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="tags"><span class="tag">AI Research</span><span class="tag">EdTech</span></div>
-      <h4>AI-Weekly Issue 219: agents move from hype to deployment</h4>
-      <p class="summary">This week's digest tracks the shift to autonomous "agent AI" across hardware and software, alongside new coding models and education-sector tooling. A useful weekly synthesis of model releases and applied AI trends for practitioners.</p>
-      <div class="card-foot">
-        <div class="card-src"><span>AI-Weekly</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://ai-weekly.ai/newsletter-06-02-2026/" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="tags"><span class="tag">AI Policy</span><span class="tag">Education</span></div>
-      <h4>White House fact sheet details the frontier-AI framework</h4>
-      <p class="summary">The official fact sheet lays out how the new order promotes "advanced AI innovation and security," including voluntary model-sharing and security benchmarking. It frames the policy around national competitiveness and workforce readiness, with implications for AI in research and classrooms.</p>
-      <div class="card-foot">
-        <div class="card-src"><span>The White House</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://www.whitehouse.gov/fact-sheets/2026/06/fact-sheet-president-donald-j-trump-promotes-advanced-artificial-intelligence-innovation-and-security/" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
+    </article>
 
   </div>
 
   <div class="history">
-    <div class="more-label">Previous Editions</div>
+    <p class="h-label">Previous Editions</p>
     <div class="editions">
-      <div class="edition active"><div class="ed-date">3 June 2026</div><div class="ed-meta">Today &middot; 18 articles</div></div>
-      <div class="edition pending"><div class="ed-date">4 June 2026</div><div class="ed-meta">Tomorrow &middot; Pending</div></div>
+      <div class="edition active"><div class="e-date">12 June 2026</div><div class="e-meta">Today &middot; 13 articles</div></div>
+      <div class="edition pending"><div class="e-date">13 June 2026</div><div class="e-meta">Tomorrow &middot; Pending</div></div>
     </div>
   </div>
 </section>
 
 <!-- ===================== GLOBAL ECONOMY ===================== -->
-<section class="section" id="econ" data-color="econ">
-  <div class="section-head">
+<section class="section" id="econ">
+  <div class="sec-head">
     <div>
       <h2>Global Economy</h2>
-      <p class="sources">Sources: TheStreet, Bloomberg, Business Today, Reuters, CNBC &middot; Focus: United States, India, China</p>
+      <p class="sources">Sources: WION, U.S. Bureau of Labor Statistics, UPI, TheStreet, CNBC. US, India &amp; China &middot; Published 11 June 2026.</p>
     </div>
-    <div class="sort">
-      <label for="sort-econ">Sort</label>
-      <select id="sort-econ"><option>Most relevant</option><option>Newest first</option><option>Source A–Z</option></select>
+    <div class="sort">Sort by
+      <select onchange="return false">
+        <option>Most relevant</option>
+        <option>Newest first</option>
+        <option>Source A–Z</option>
+      </select>
     </div>
   </div>
 
-  <div class="top-story">
+  <article class="top-story" data-bucket="econ">
     <span class="badge-top">Top Story</span>
-    <h3>US proposes 12.5% tariff on India and China over forced-labour import curbs</h3>
-    <p class="summary">The US proposed a 12.5% levy on goods from India, China and several other partners that have not adopted full bans on forced-labour imports, with a lower 10% rate for countries that have. The proposal landed as US and Indian negotiators opened three days of talks in New Delhi (June 2–4) to finalise a bilateral trade agreement. US Trade Representative Jamieson Greer called the failure to curb forced-labour goods "unacceptable." The measure is still under review and not yet approved.</p>
-    <div class="meta-row">
-      <a class="read-btn" href="https://www.businesstoday.in/india/story/us-proposes-new-tariffs-on-trading-partners-india-china-to-be-tariffed-12-5-percent-report-534589-2026-06-03" target="_blank">Read Article &rarr;</a>
-      <span class="src-chip">Business Today</span>
-      <span class="time-chip">2 June 2026</span>
+    <h3>RBI holds rates at 5.25%, cuts India's growth forecast and lifts its inflation outlook</h3>
+    <p class="summary">India's central bank kept the repo rate unchanged at 5.25% while trimming its GDP growth forecast for the current fiscal year to 6.6% from 6.9% and raising its inflation projection to 5.1% from 4.6%. The move signals caution as a weakening rupee, elevated oil prices and rising geopolitical tensions tied to the Middle East conflict cloud the outlook. India's economy still grew 7.8% year-on-year in the March quarter, comfortably ahead of expectations.</p>
+    <div class="story-meta">
+      <span class="chip-src">WION</span>
+      <span class="chip-time">11 June 2026</span>
+      <a class="btn-read" href="https://www.wionews.com/india-news/rbi-repo-rate-gdp-growth-forecast-inflation-stagflation-risk-june-2026-1780637958506/amp" target="_blank" rel="noopener">Read Article &rarr;</a>
     </div>
-  </div>
+  </article>
 
-  <div class="more-label">More Articles</div>
+  <p class="more-label">More Articles</p>
   <div class="grid">
 
-    <div class="card">
-      <div class="tags"><span class="tag">United States</span></div>
-      <h4>S&amp;P 500 finishes above 7,600 for the first time</h4>
-      <p class="summary">World stocks rose to fresh peaks as the S&amp;P 500 closed above 7,600 for the first time, powered by a continued chip-sector boom. Calm in currency and bond markets and steady US–Iran tensions supported the rally.</p>
+    <article class="card">
+      <div class="tags"><span class="tag econ">United States</span><span class="tag econ">Monetary Policy</span></div>
+      <h4>US inflation climbs to 4.2%, highest since 2023, on an energy shock</h4>
+      <p class="summary">The Consumer Price Index rose 0.5% in May, pushing annual headline inflation to 4.2% — a third straight monthly acceleration and the highest reading since April 2023. Energy prices, up sharply amid the conflict with Iran, drove more than 60% of the monthly increase, while core inflation edged up to 2.9%, complicating the Federal Reserve's path.</p>
       <div class="card-foot">
-        <div class="card-src"><span>TheStreet</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-june-02-2026" target="_blank">Read &rarr;</a>
+        <span class="src-line"><span class="src-name">U.S. BLS</span> &middot; 11 Jun 2026</span>
+        <a class="read-link econ" href="https://www.bls.gov/news.release/cpi.nr0.htm" target="_blank" rel="noopener">Read &rarr;</a>
       </div>
-    </div>
+    </article>
 
-    <div class="card">
-      <div class="tags"><span class="tag">India</span></div>
-      <h4>South Korea overtakes India as world's sixth-largest stock market</h4>
-      <p class="summary">Korea's market capitalisation jumped 86% this year to $5 trillion on the back of chip heavyweights, edging past India, whose market value slipped to $4.8 trillion. The shift underscores diverging equity fortunes across Asia.</p>
+    <article class="card">
+      <div class="tags"><span class="tag econ">China</span><span class="tag econ">Trade</span></div>
+      <h4>China's yuan hits a three-year high — a double-edged win for Beijing</h4>
+      <p class="summary">The renminbi strengthened to its firmest level in more than three years as Beijing pushes to raise the currency's global standing, helped by a large trade surplus and wartime demand for safe assets. But a stronger yuan risks squeezing export-dependent firms and deepening China's chronic deflationary pressure.</p>
       <div class="card-foot">
-        <div class="card-src"><span>Bloomberg</span><span class="paywall">Subscription</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://www.bloomberg.com/news/articles/2026-06-02/s-korea-surpasses-india-as-world-s-sixth-largest-stock-market" target="_blank">Read &rarr;</a>
+        <span class="src-line"><span class="src-name">UPI</span> &middot; 11 Jun 2026</span>
+        <a class="read-link econ" href="https://www.upi.com/Top_News/World-News/2026/06/11/economy-strong-yuan-exports/9051781221367/" target="_blank" rel="noopener">Read &rarr;</a>
       </div>
-    </div>
+    </article>
 
-    <div class="card">
-      <div class="tags"><span class="tag">China</span></div>
-      <h4>China escalates crackdown on cross-border securities activity</h4>
-      <p class="summary">Beijing fined Tiger Brokers, Futu Holdings and Longbridge Securities as part of a widening crackdown on illegal cross-border brokerage. Offshore-listed Chinese brokerage shares fell sharply, weighing on Hong Kong sentiment.</p>
+    <article class="card">
+      <div class="tags"><span class="tag econ">United States</span></div>
+      <h4>Wall Street rallies as Trump signals an Iran deal is close</h4>
+      <p class="summary">US equities surged, with the S&amp;P 500 up 1.75% to 7,394.30 and the Nasdaq gaining 2.54%, after the President called off strikes on Iran and pointed to a deal that could restore energy flows through the Strait of Hormuz. Energy prices and bond yields eased; Oracle slid about 9% on heavy AI spending plans.</p>
       <div class="card-foot">
-        <div class="card-src"><span>Reuters</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://www.aol.com/articles/trading-day-high-still-buy-210300000.html" target="_blank">Read &rarr;</a>
+        <span class="src-line"><span class="src-name">TheStreet</span> &middot; 11 Jun 2026</span>
+        <a class="read-link econ" href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-june-11-2026" target="_blank" rel="noopener">Read &rarr;</a>
       </div>
-    </div>
+    </article>
 
-    <div class="card">
-      <div class="tags"><span class="tag">United States</span><span class="tag">Trade</span></div>
-      <h4>Marvell surges 25% after Huang's "next trillion-dollar" praise</h4>
-      <p class="summary">Marvell Technology shares jumped more than 25% after Nvidia CEO Jensen Huang called the company the "next trillion-dollar company" at Computex in Taipei, adding momentum to an already powerful US chip rally.</p>
+    <article class="card">
+      <div class="tags"><span class="tag econ">United States</span></div>
+      <h4>SpaceX prices the largest IPO on record ahead of its market debut</h4>
+      <p class="summary">SpaceX priced its initial public offering at $135 a share, raising roughly $75 billion and targeting a valuation at or above $1.75 trillion — set to be the largest IPO in history. The stock begins trading on Nasdaq under the ticker SPCX the following day.</p>
       <div class="card-foot">
-        <div class="card-src"><span>TheStreet</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-june-02-2026" target="_blank">Read &rarr;</a>
+        <span class="src-line"><span class="src-name">CNBC</span> &middot; 11 Jun 2026</span>
+        <a class="read-link econ" href="https://www.cnbc.com/2026/06/10/stock-market-today-live-updates.html" target="_blank" rel="noopener">Read &rarr;</a>
       </div>
-    </div>
-
-    <div class="card">
-      <div class="tags"><span class="tag">India</span><span class="tag">Trade</span></div>
-      <h4>India–US open three-day push for a bilateral trade deal</h4>
-      <p class="summary">US chief negotiators began talks with Indian officials in New Delhi running June 2–4, aiming to finalise a bilateral trade agreement even as Washington floats new forced-labour tariffs. A deal would reshape one of the year's most closely watched trade tracks.</p>
-      <div class="card-foot">
-        <div class="card-src"><span>PTC News</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://www.ptcnews.tv/amp/world-news/us-proposes-12-per-cent-tariff-on-india-china-over-forced-labour-import-curbs-4425244" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="tags"><span class="tag">China</span><span class="tag">Trade</span></div>
-      <h4>China's export engine keeps running hot into mid-2026</h4>
-      <p class="summary">Recent data show Chinese exports up double digits year on year, led by high-tech and high-value mechanical and electrical goods, even as trade with the US contracts and Belt-and-Road flows expand. The renminbi has firmed slightly against the dollar.</p>
-      <div class="card-foot">
-        <div class="card-src"><span>CNBC</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://www.cnbc.com/2026/03/10/china-trade-balance-surplus-record-exports-tariffs-imports.html" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
+    </article>
 
   </div>
 
   <div class="history">
-    <div class="more-label">Previous Editions</div>
+    <p class="h-label">Previous Editions</p>
     <div class="editions">
-      <div class="edition active"><div class="ed-date">3 June 2026</div><div class="ed-meta">Today &middot; 18 articles</div></div>
-      <div class="edition pending"><div class="ed-date">4 June 2026</div><div class="ed-meta">Tomorrow &middot; Pending</div></div>
+      <div class="edition active"><div class="e-date">12 June 2026</div><div class="e-meta">Today &middot; 13 articles</div></div>
+      <div class="edition pending"><div class="e-date">13 June 2026</div><div class="e-meta">Tomorrow &middot; Pending</div></div>
     </div>
   </div>
 </section>
 
 <!-- ===================== GOVERNANCE REFORMS ===================== -->
-<section class="section" id="gov" data-color="gov">
-  <div class="section-head">
+<section class="section" id="gov">
+  <div class="sec-head">
     <div>
       <h2>Governance Reforms</h2>
-      <p class="sources">Sources: The White House, Regulations.gov, UK Parliament, Federal Register</p>
+      <p class="sources">Sources: darioamodei.com, Business Standard, Tech Times, U.S. Senate. Published 11 June 2026. This bucket is intentionally low-volume; only substantive items are included.</p>
     </div>
-    <div class="sort">
-      <label for="sort-gov">Sort</label>
-      <select id="sort-gov"><option>Most relevant</option><option>Newest first</option><option>Source A–Z</option></select>
+    <div class="sort">Sort by
+      <select onchange="return false">
+        <option>Most relevant</option>
+        <option>Newest first</option>
+        <option>Source A–Z</option>
+      </select>
     </div>
   </div>
 
-  <div class="top-story">
+  <article class="top-story" data-bucket="gov">
     <span class="badge-top">Top Story</span>
-    <h3>White House sets a voluntary federal-review framework for frontier AI models</h3>
-    <p class="summary">A new executive order establishes a government framework to assess the most capable AI systems before wide release, asking companies to share "covered frontier models" up to 30 days early for cyber-capability benchmarking. The fact sheet frames the policy around innovation and national security, and explicitly bars mandatory licensing, preclearance or permitting. It is the administration's most significant move yet to formalise oversight of advanced AI without imposing binding mandates.</p>
-    <div class="meta-row">
-      <a class="read-btn" href="https://www.whitehouse.gov/fact-sheets/2026/06/fact-sheet-president-donald-j-trump-promotes-advanced-artificial-intelligence-innovation-and-security/" target="_blank">Read Article &rarr;</a>
-      <span class="src-chip">The White House</span>
-      <span class="time-chip">2 June 2026</span>
+    <h3>Amodei calls for binding, FAA-style regulation of frontier AI in &lsquo;Policy on the AI Exponential&rsquo;</h3>
+    <p class="summary">In a sweeping policy essay, Anthropic CEO Dario Amodei argued that governments should hold legal authority to block or reverse the release of frontier AI models that fail independent safety testing — likening the regime to how aviation and pharmaceuticals are regulated. The piece marks a notable shift for Anthropic, from advocating transparency rules to calling for enforceable regulation, and spans five policy domains: public safety, macroeconomics and tax, scientific innovation, the balance of power between state and society, and geopolitics.</p>
+    <div class="story-meta">
+      <span class="chip-src">darioamodei.com</span>
+      <span class="chip-time">11 June 2026</span>
+      <a class="btn-read" href="https://darioamodei.com/post/policy-on-the-ai-exponential" target="_blank" rel="noopener">Read Article &rarr;</a>
     </div>
-  </div>
+  </article>
 
-  <div class="more-label">More Articles</div>
+  <p class="more-label">More Articles</p>
   <div class="grid">
 
-    <div class="card">
-      <div class="tags"><span class="tag">Governance</span></div>
-      <h4>OMB proposes reform of federal financial-assistance rules</h4>
-      <p class="summary">A proposed Office of Management and Budget rule would require agencies to design grant and assistance programs strictly around public purposes authorised by law, aiming to strip out spending the administration deems wasteful. The measure was open in the Federal Register on June 2.</p>
+    <article class="card">
+      <div class="tags"><span class="tag gov">AI Policy</span><span class="tag gov">Governance</span></div>
+      <h4>Anthropic pairs its regulation push with a $350M policy pledge</h4>
+      <p class="summary">Alongside the essay, Anthropic issued two formal policy frameworks and pledged $350 million to manage AI's labour-market fallout — a $200 million Economic Futures Research Fund and a $150 million national fellowship. The combination frames safety regulation and economic-transition policy as two halves of the same governance agenda.</p>
       <div class="card-foot">
-        <div class="card-src"><span>Regulations.gov</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://www.regulations.gov/document/OMB-2026-0034-0001" target="_blank">Read &rarr;</a>
+        <span class="src-line"><span class="src-name">Tech Times</span> &middot; 11 Jun 2026</span>
+        <a class="read-link gov" href="https://www.techtimes.com/articles/318217/20260611/ai-regulation-push-amodei-demands-power-blocking-unsafe-models-anthropic-pledges-350-million.htm" target="_blank" rel="noopener">Read &rarr;</a>
       </div>
-    </div>
+    </article>
 
-    <div class="card">
-      <div class="tags"><span class="tag">Governance</span><span class="tag">Privacy</span></div>
-      <h4>UK bill would impose a "duty of candour" on public officials</h4>
-      <p class="summary">A Parliament research briefing dated 2 June details a bill creating a legal duty on public authorities and officials to act with candour and transparency in dealings with inquiries and investigations, with enforcement provisions to maintain ethical conduct.</p>
+    <article class="card">
+      <div class="tags"><span class="tag gov">Governance</span><span class="tag gov">United States</span></div>
+      <h4>US Senate advances judicial and executive-branch nominations</h4>
+      <p class="summary">The Senate's 11 June floor session focused on confirmations rather than broad legislation, taking up the nomination of Brock Dahl as State Department Legal Adviser and a cloture vote on Justin D. Smith for the Eighth Circuit. The day reflects the chamber's steady churn through executive and judicial appointments shaping federal governance.</p>
       <div class="card-foot">
-        <div class="card-src"><span>UK Parliament</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://researchbriefings.files.parliament.uk/documents/CBP-10468/CBP-10468.pdf" target="_blank">Read &rarr;</a>
+        <span class="src-line"><span class="src-name">U.S. Senate</span> &middot; 11 Jun 2026</span>
+        <a class="read-link gov" href="https://www.senate.gov/legislative/legislative_home.htm" target="_blank" rel="noopener">Read &rarr;</a>
       </div>
-    </div>
-
-    <div class="card">
-      <div class="tags"><span class="tag">Digital Governance</span><span class="tag">AI Policy</span></div>
-      <h4>Colorado's AI accountability law nears its June 2026 start</h4>
-      <p class="summary">Colorado's landmark AI regulation takes effect this month, mandating impact assessments, transparency disclosures and anti-discrimination safeguards for high-risk AI systems. It is among the first comprehensive US state frameworks governing automated decision-making.</p>
-      <div class="card-foot">
-        <div class="card-src"><span>Federal Register / Brookings</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://www.brookings.edu/articles/tracking-regulatory-changes-in-the-second-trump-administration/" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="tags"><span class="tag">Digital Governance</span><span class="tag">Privacy</span></div>
-      <h4>US federal privacy bills advance a rights-based framework</h4>
-      <p class="summary">Congress is weighing the Online Privacy Act of 2026, which would create individual privacy rights and a dedicated Digital Privacy Agency, alongside a uniform federal Consumer Data Privacy and Security Act. New state laws in Indiana, Kentucky and Rhode Island also take effect this year.</p>
-      <div class="card-foot">
-        <div class="card-src"><span>Congress.gov</span><span>&middot;</span><span>2 June 2026</span></div>
-        <a class="read-link" href="https://www.congress.gov/bill/119th-congress/house-bill/8014/text" target="_blank">Read &rarr;</a>
-      </div>
-    </div>
+    </article>
 
   </div>
 
   <div class="history">
-    <div class="more-label">Previous Editions</div>
+    <p class="h-label">Previous Editions</p>
     <div class="editions">
-      <div class="edition active"><div class="ed-date">3 June 2026</div><div class="ed-meta">Today &middot; 18 articles</div></div>
-      <div class="edition pending"><div class="ed-date">4 June 2026</div><div class="ed-meta">Tomorrow &middot; Pending</div></div>
+      <div class="edition active"><div class="e-date">12 June 2026</div><div class="e-meta">Today &middot; 13 articles</div></div>
+      <div class="edition pending"><div class="e-date">13 June 2026</div><div class="e-meta">Tomorrow &middot; Pending</div></div>
     </div>
   </div>
 </section>
@@ -441,7 +370,7 @@ footer{max-width:1180px;margin:0 auto;padding:0 28px 40px;font-size:.7rem;color:
 </main>
 
 <footer>
-  Personalised daily briefing for Anurag &middot; Generated 3 June 2026 &middot; Articles published 2 June 2026. Headlines summarised from public reporting; follow source links for full coverage.
+  Personalised daily briefing &middot; Generated 12 June 2026 &middot; Covering news published 11 June 2026. Headlines and summaries are editorial paraphrases; follow each link for the original reporting.
 </footer>
 
 <script>
