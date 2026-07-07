@@ -3,740 +3,776 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anurag's Daily Briefing</title>
+<title>Anurag's Daily Briefing — Tuesday, 7 July 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#f9f8f5;
-    --surface:#ffffff;
-    --surface2:#f3f2ee;
-    --border:#e8e5de;
-    --border2:#d4cfc5;
-    --text:#1a1915;
-    --text2:#3d3b35;
-    --muted:#7a7669;
-    --muted2:#a09c92;
-    --accent:#c96442;
-    --ai:#c96442; --ai-bg:#fdf1ec; --ai-border:#f0c4b4;
-    --econ:#2d6a4f; --econ-bg:#eef6f1; --econ-border:#b8dcc8;
-    --gov:#3a5fa0; --gov-bg:#eef2fa; --gov-border:#b8ccee;
-    --shadow-sm:0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
-    --shadow-md:0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  :root {
+    --bg: #f9f8f5;
+    --surface: #ffffff;
+    --surface2: #f3f2ee;
+    --border: #e8e5de;
+    --border2: #d4cfc5;
+    --text: #1a1915;
+    --text2: #3d3b35;
+    --muted: #7a7669;
+    --muted2: #a09c92;
+    --accent: #c96442;
+    --ai: #c96442;
+    --ai-bg: #fdf1ec;
+    --ai-border: #f0c4b4;
+    --econ: #2d6a4f;
+    --econ-bg: #eef6f1;
+    --econ-border: #b8dcc8;
+    --gov: #3a5fa0;
+    --gov-bg: #eef2fa;
+    --gov-border: #b8ccee;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
   }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-    background:var(--bg);
-    color:var(--text);
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
-  a{color:inherit;}
+
+  a { text-decoration: none; color: inherit; }
 
   /* Header */
-  header{
-    position:sticky;
-    top:0;
-    z-index:50;
-    background:var(--surface);
-    border-bottom:1px solid var(--border);
-    padding:14px 32px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
+  header.top {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
   }
-  header h1{
-    margin:0;
-    font-size:1rem;
-    font-weight:600;
-    color:var(--text);
+
+  header.top h1 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text);
   }
-  header p{
-    margin:2px 0 0 0;
-    font-size:0.75rem;
-    color:var(--muted);
+
+  header.top .sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin: 2px 0 0 0;
   }
-  .header-right{
-    display:flex;
-    align-items:center;
-    gap:10px;
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
-  .updated-chip{
-    font-size:0.72rem;
-    color:var(--muted);
-    background:var(--surface2);
-    border:1px solid var(--border);
-    padding:6px 12px;
-    border-radius:999px;
-    white-space:nowrap;
+
+  .updated-chip {
+    font-size: 0.75rem;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
   }
-  .refresh-btn{
-    font-size:0.78rem;
-    font-weight:600;
-    color:#fff;
-    background:var(--accent);
-    border:none;
-    padding:7px 16px;
-    border-radius:8px;
-    cursor:pointer;
-    white-space:nowrap;
+
+  .btn-refresh {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
   }
-  .refresh-btn:hover{ opacity:0.92; }
+
+  .btn-refresh:hover { opacity: 0.92; }
 
   /* Tabs */
-  .tabs{
-    display:flex;
-    gap:4px;
-    padding:0 32px;
-    background:var(--surface);
-    border-bottom:1px solid var(--border);
-    overflow-x:auto;
-  }
-  .tab{
-    position:relative;
-    padding:14px 6px;
-    margin-right:28px;
-    font-size:0.86rem;
-    font-weight:600;
-    color:var(--muted);
-    background:none;
-    border:none;
-    cursor:pointer;
-    white-space:nowrap;
-    border-bottom:2px solid transparent;
-  }
-  .tab .count{
-    font-weight:500;
-    color:var(--muted2);
-    margin-left:4px;
-    font-size:0.78rem;
-  }
-  .tab.active{ color:var(--text); }
-  .tab.active[data-color="ai"]{ border-bottom-color:var(--ai); }
-  .tab.active[data-color="econ"]{ border-bottom-color:var(--econ); }
-  .tab.active[data-color="gov"]{ border-bottom-color:var(--gov); }
-
-  main{
-    max-width:1180px;
-    margin:0 auto;
-    padding:28px 32px 60px 32px;
-  }
-  .section{ display:none; }
-  .section.active{ display:block; }
-
-  .section-header{
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:12px;
-    margin-bottom:20px;
-  }
-  .section-header h2{
-    margin:0 0 4px 0;
-    font-size:1.3rem;
-    font-weight:700;
-  }
-  .section-header .sources{
-    margin:0;
-    font-size:0.78rem;
-    color:var(--muted);
-    max-width:640px;
-  }
-  .sort-select{
-    font-size:0.78rem;
-    color:var(--text2);
-    background:var(--surface);
-    border:1px solid var(--border2);
-    border-radius:8px;
-    padding:7px 10px;
-    cursor:pointer;
+  .tabbar {
+    display: flex;
+    gap: 4px;
+    padding: 0 28px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
   }
 
-  /* Top story card */
-  .top-story{
-    position:relative;
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:14px;
-    box-shadow:var(--shadow-md);
-    padding:26px 28px 26px 30px;
-    margin-bottom:28px;
-    overflow:hidden;
-  }
-  .top-story::before{
-    content:"";
-    position:absolute;
-    left:0; top:0; bottom:0;
-    width:6px;
-  }
-  .section[data-bucket="ai"] .top-story::before{ background:var(--ai); }
-  .section[data-bucket="econ"] .top-story::before{ background:var(--econ); }
-  .section[data-bucket="gov"] .top-story::before{ background:var(--gov); }
-
-  .badge{
-    display:inline-block;
-    font-size:0.68rem;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:0.04em;
-    padding:4px 10px;
-    border-radius:6px;
-    margin-bottom:12px;
-  }
-  .section[data-bucket="ai"] .badge{ color:var(--ai); background:var(--ai-bg); border:1px solid var(--ai-border); }
-  .section[data-bucket="econ"] .badge{ color:var(--econ); background:var(--econ-bg); border:1px solid var(--econ-border); }
-  .section[data-bucket="gov"] .badge{ color:var(--gov); background:var(--gov-bg); border:1px solid var(--gov-border); }
-
-  .top-story h3{
-    margin:0 0 12px 0;
-    font-size:1.36rem;
-    font-weight:700;
-    line-height:1.32;
-    max-width:820px;
-  }
-  .top-story p.summary{
-    margin:0 0 18px 0;
-    font-size:0.95rem;
-    line-height:1.6;
-    color:var(--text2);
-    max-width:820px;
-  }
-  .meta-row{
-    display:flex;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-bottom:18px;
-  }
-  .chip{
-    font-size:0.74rem;
-    color:var(--text2);
-    background:var(--surface2);
-    border:1px solid var(--border);
-    padding:5px 11px;
-    border-radius:999px;
-  }
-  .chip.gold{
-    color:#8a6d1c;
-    background:#fbf3dc;
-    border-color:#e9d79a;
-    font-weight:600;
-  }
-  .read-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    font-size:0.82rem;
-    font-weight:600;
-    text-decoration:none;
-    padding:9px 18px;
-    border-radius:8px;
-    color:#fff;
-  }
-  .section[data-bucket="ai"] .read-btn{ background:var(--ai); }
-  .section[data-bucket="econ"] .read-btn{ background:var(--econ); }
-  .section[data-bucket="gov"] .read-btn{ background:var(--gov); }
-
-  .more-label{
-    font-size:0.78rem;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:0.05em;
-    color:var(--muted);
-    margin:0 0 14px 0;
+  .tab {
+    padding: 14px 6px;
+    margin-right: 28px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(330px, 1fr));
-    gap:16px;
-    margin-bottom:36px;
+  .tab .count {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--muted2);
+    background: var(--surface2);
+    border-radius: 999px;
+    padding: 1px 8px;
   }
-  .card{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:20px;
-    box-shadow:var(--shadow-sm);
-    display:flex;
-    flex-direction:column;
-  }
-  .card h4{
-    margin:0 0 8px 0;
-    font-size:0.98rem;
-    font-weight:700;
-    line-height:1.36;
-  }
-  .card p{
-    margin:0 0 12px 0;
-    font-size:0.84rem;
-    line-height:1.55;
-    color:var(--text2);
-    flex-grow:1;
-  }
-  .tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-    margin-bottom:12px;
-  }
-  .tag{
-    font-size:0.64rem;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:0.03em;
-    padding:4px 8px;
-    border-radius:5px;
-  }
-  .section[data-bucket="ai"] .tag{ color:var(--ai); background:var(--ai-bg); border:1px solid var(--ai-border); }
-  .section[data-bucket="econ"] .tag{ color:var(--econ); background:var(--econ-bg); border:1px solid var(--econ-border); }
-  .section[data-bucket="gov"] .tag{ color:var(--gov); background:var(--gov-bg); border:1px solid var(--gov-border); }
 
-  .card-footer{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:8px;
-    padding-top:12px;
-    border-top:1px solid var(--border);
-  }
-  .source-line{
-    display:flex;
-    flex-direction:column;
-    gap:2px;
-  }
-  .source-name{
-    font-size:0.76rem;
-    font-weight:600;
-    color:var(--text2);
-    display:flex;
-    align-items:center;
-    gap:6px;
-  }
-  .pub-date{
-    font-size:0.7rem;
-    color:var(--muted2);
-  }
-  .card-read{
-    font-size:0.8rem;
-    font-weight:700;
-    text-decoration:none;
-    white-space:nowrap;
-  }
-  .section[data-bucket="ai"] .card-read{ color:var(--ai); }
-  .section[data-bucket="econ"] .card-read{ color:var(--econ); }
-  .section[data-bucket="gov"] .card-read{ color:var(--gov); }
+  .tab.active { color: var(--text); }
+  .tab.active[data-color="ai"] { border-bottom-color: var(--ai); }
+  .tab.active[data-color="ai"] .count { color: var(--ai); background: var(--ai-bg); }
+  .tab.active[data-color="econ"] { border-bottom-color: var(--econ); }
+  .tab.active[data-color="econ"] .count { color: var(--econ); background: var(--econ-bg); }
+  .tab.active[data-color="gov"] { border-bottom-color: var(--gov); }
+  .tab.active[data-color="gov"] .count { color: var(--gov); background: var(--gov-bg); }
 
-  .gold-mini{
-    font-size:0.6rem;
-    font-weight:700;
-    color:#8a6d1c;
-    background:#fbf3dc;
-    border:1px solid #e9d79a;
-    padding:2px 6px;
-    border-radius:4px;
-    text-transform:uppercase;
+  /* Main */
+  main {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 28px 28px 60px 28px;
   }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-header h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+  }
+
+  .section-header .sources {
+    font-size: 0.78rem;
+    color: var(--muted);
+    max-width: 620px;
+  }
+
+  select.sort {
+    font-family: inherit;
+    font-size: 0.8rem;
+    color: var(--text2);
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 7px 12px;
+    cursor: pointer;
+  }
+
+  /* Top story */
+  .top-story {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 26px 28px 26px 32px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 30px;
+    overflow: hidden;
+  }
+
+  .top-story::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+  }
+  .top-story[data-color="ai"]::before { background: var(--ai); }
+  .top-story[data-color="econ"]::before { background: var(--econ); }
+  .top-story[data-color="gov"]::before { background: var(--gov); }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .badge[data-color="ai"] { color: var(--ai); background: var(--ai-bg); border: 1px solid var(--ai-border); }
+  .badge[data-color="econ"] { color: var(--econ); background: var(--econ-bg); border: 1px solid var(--econ-border); }
+  .badge[data-color="gov"] { color: var(--gov); background: var(--gov-bg); border: 1px solid var(--gov-border); }
+
+  .top-story h3 {
+    font-size: 1.4rem;
+    line-height: 1.32;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+  }
+
+  .top-story p.summary {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text2);
+    margin: 0 0 18px 0;
+    max-width: 800px;
+  }
+
+  .meta-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .chip {
+    font-size: 0.75rem;
+    color: var(--muted);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 5px 11px;
+    border-radius: 999px;
+  }
+
+  .chip.tag {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.66rem;
+    letter-spacing: 0.03em;
+    color: var(--text2);
+    background: var(--surface2);
+  }
+
+  .chip.subscription {
+    color: #8a6d1a;
+    background: #fbf3dc;
+    border: 1px solid #ecdba0;
+    font-weight: 600;
+  }
+
+  .read-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
+    padding: 9px 18px;
+    border-radius: 8px;
+  }
+  .read-btn[data-color="ai"] { background: var(--ai); }
+  .read-btn[data-color="econ"] { background: var(--econ); }
+  .read-btn[data-color="gov"] { background: var(--gov); }
+  .read-btn:hover { opacity: 0.9; }
+
+  .more-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted2);
+    margin: 0 0 14px 0;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 18px;
+    margin-bottom: 36px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card h4 {
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+  }
+
+  .card p.summary {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--text2);
+    margin: 0 0 14px 0;
+    flex-grow: 1;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+
+  .source-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .source-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .pub-date {
+    font-size: 0.72rem;
+    color: var(--muted2);
+  }
+
+  .read-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .read-link[data-color="ai"] { color: var(--ai); }
+  .read-link[data-color="econ"] { color: var(--econ); }
+  .read-link[data-color="gov"] { color: var(--gov); }
 
   /* History strip */
-  .history{
-    margin-top:20px;
-    padding-top:22px;
-    border-top:1px solid var(--border);
+  .history {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    margin-top: 10px;
   }
-  .history h5{
-    margin:0 0 14px 0;
-    font-size:0.78rem;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:0.05em;
-    color:var(--muted);
-  }
-  .history-strip{
-    display:flex;
-    gap:12px;
-    overflow-x:auto;
-  }
-  .history-item{
-    flex:0 0 auto;
-    min-width:150px;
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:14px 16px;
-  }
-  .history-item.active{
-    border-color:var(--border2);
-    background:var(--surface2);
-  }
-  .history-item .h-date{
-    font-size:0.82rem;
-    font-weight:700;
-    color:var(--text);
-  }
-  .history-item .h-sub{
-    font-size:0.7rem;
-    color:var(--muted);
-    margin-top:3px;
-  }
-  .history-item.pending .h-date{ color:var(--muted2); }
 
-  @media (max-width:640px){
-    header{ padding:12px 18px; flex-wrap:wrap; }
-    .tabs{ padding:0 18px; }
-    main{ padding:22px 18px 50px 18px; }
+  .history h3 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text2);
+    margin: 0 0 14px 0;
+  }
+
+  .history-strip {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+
+  .history-item {
+    flex: 0 0 auto;
+    min-width: 150px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+  }
+
+  .history-item.today {
+    background: var(--surface);
+    border: 1.5px solid var(--accent);
+  }
+
+  .history-item .h-date {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .history-item .h-meta {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  .history-item.pending .h-date { color: var(--muted2); }
+
+  @media (max-width: 640px) {
+    header.top { padding: 12px 16px; flex-wrap: wrap; }
+    .tabbar { padding: 0 16px; }
+    main { padding: 20px 16px 40px 16px; }
+    .top-story { padding: 20px 18px 20px 22px; }
   }
 </style>
 </head>
 <body>
 
-<header>
+<header class="top">
   <div>
     <h1>Good morning, Anurag</h1>
-    <p>Monday, 6 July 2026 &middot; Your personalised briefing is ready</p>
+    <p class="sub">Tuesday, 7 July 2026 &middot; Your personalised briefing is ready</p>
   </div>
   <div class="header-right">
-    <span class="updated-chip">Updated at 09:34 AM</span>
-    <button class="refresh-btn" onclick="location.reload()">Refresh</button>
+    <span class="updated-chip">Updated at 09:11 AM</span>
+    <button class="btn-refresh" onclick="location.reload()">Refresh</button>
   </div>
 </header>
 
-<div class="tabs">
-  <button class="tab active" data-color="ai" onclick="showSection('ai', this)">AI &amp; Education <span class="count">(6)</span></button>
-  <button class="tab" data-color="econ" onclick="showSection('econ', this)">Global Economy <span class="count">(6)</span></button>
-  <button class="tab" data-color="gov" onclick="showSection('gov', this)">Governance Reforms <span class="count">(4)</span></button>
-</div>
+<nav class="tabbar">
+  <div class="tab active" data-color="ai" onclick="showSection('ai', this)">
+    AI &amp; Education <span class="count">7</span>
+  </div>
+  <div class="tab" data-color="econ" onclick="showSection('econ', this)">
+    Global Economy <span class="count">4</span>
+  </div>
+  <div class="tab" data-color="gov" onclick="showSection('gov', this)">
+    Governance Reforms <span class="count">3</span>
+  </div>
+</nav>
 
 <main>
 
   <!-- AI & EDUCATION -->
-  <section class="section active" data-bucket="ai" id="section-ai">
+  <section id="ai" class="section active">
     <div class="section-header">
       <div>
         <h2>AI &amp; Education</h2>
-        <p class="sources">Sources: CNBC, MIT Technology Review, TechCrunch, GovTech</p>
+        <div class="sources">TechCrunch, Phys.org / University of Manchester, MarketScale &mdash; covering AI industry, research and education, 6 July 2026</div>
       </div>
-      <select class="sort-select">
-        <option>Sort: Newest first</option>
-        <option>Sort: Oldest first</option>
-        <option>Sort: Source A-Z</option>
+      <select class="sort" onchange="sortCards('ai-grid', this.value)">
+        <option value="default">Sort: Featured</option>
+        <option value="az">Sort: A &ndash; Z</option>
+        <option value="source">Sort: Source</option>
       </select>
     </div>
 
-    <div class="top-story">
-      <span class="badge">Top Story</span>
-      <h3>OpenAI proposes handing the US government a 5% equity stake to ease Washington pressure</h3>
-      <p class="summary">OpenAI has proposed giving the US government a 5% equity stake in the company as part of an effort led by CEO Sam Altman to defuse mounting political scrutiny in Washington. Altman has reportedly discussed the idea directly with President Trump, Treasury Secretary Scott Bessent, and Commerce Secretary Howard Lutnick, framing it as part of a broader "Public Wealth Fund" concept meant to share AI-driven economic gains with citizens. The proposal complicates OpenAI's path toward a future public listing and underscores how closely frontier AI companies have become intertwined with federal policy.</p>
+    <div class="top-story" data-color="ai">
+      <span class="badge" data-color="ai">Top Story</span>
+      <h3>Vercel CEO Guillermo Rauch on the fight to split off models from agents</h3>
+      <p class="summary">Vercel CEO Guillermo Rauch told TechCrunch that AI customers are abandoning single-lab partnerships in favor of plug-and-play stacks spanning OpenAI, Anthropic, Gemini, DeepSeek and GLM-5.2. Vercel now handles roughly 6 million deployments a day, half of them triggered by coding agents, with more than 1 trillion tokens flowing through its AI gateway daily. Rauch argued that decoupling model providers from agent infrastructure gives enterprises more security control, portability and negotiating leverage as the multi-model era matures.</p>
       <div class="meta-row">
-        <span class="chip">CNBC</span>
-        <span class="chip">2 July 2026</span>
+        <span class="chip tag">AI Industry</span>
+        <span class="chip source-name">TechCrunch</span>
+        <span class="chip">6 July 2026</span>
       </div>
-      <a class="read-btn" href="https://www.cnbc.com/2026/07/02/openai-proposes-us-government-own-5percent-stake-to-address-political-blowback.html" target="_blank">Read Article &rarr;</a>
+      <a class="read-btn" data-color="ai" href="https://techcrunch.com/2026/07/06/vercel-ceo-guillermo-rauch-on-the-fight-to-split-off-models-from-agents/" target="_blank" rel="noopener">Read Article &rarr;</a>
     </div>
 
     <p class="more-label">More Articles</p>
-    <div class="grid">
+    <div class="card-grid" id="ai-grid">
 
-      <div class="card">
-        <h4>Anthropic launches Claude Science, an AI workbench for drug discovery</h4>
-        <p>Anthropic released Claude Science in beta, bundling more than 60 preconfigured research tools alongside an internal drug-discovery initiative targeting neglected diseases. The launch gives researchers a single environment to work across databases, file formats, and analysis pipelines.</p>
-        <div class="tags"><span class="tag">AI Industry</span><span class="tag">AI Research</span></div>
-        <div class="card-footer">
-          <div class="source-line">
-            <span class="source-name">MIT Technology Review</span>
-            <span class="pub-date">30 June 2026</span>
-          </div>
-          <a class="card-read" href="https://www.technologyreview.com/2026/06/30/1139987/claude-science-is-anthropics-newest-flagship-product/" target="_blank">Read &rarr;</a>
+      <div class="card" data-title="Every major tech layoff in 2026 that has name-checked AI" data-source="TechCrunch">
+        <h4>Every major tech layoff in 2026 that has name-checked AI</h4>
+        <p class="summary">TechCrunch's running tracker shows roughly 120,000 tech jobs cut in 2026 with employers citing AI-driven restructuring, including Oracle's disclosed 21,000-person, 13% workforce reduction. The list shows AI adoption increasingly cited alongside traditional cost-cutting in layoff announcements across the sector.</p>
+        <div class="tag-row">
+          <span class="chip tag">AI Industry</span>
         </div>
-      </div>
-
-      <div class="card">
-        <h4>Microsoft launches AI deployment unit backed by $2.5 billion</h4>
-        <p>Microsoft unveiled Microsoft Frontier Company, a new unit dedicated to helping enterprises deploy its AI tools successfully, backed by a $2.5 billion investment and roughly 6,000 engineering specialists. The move reflects pressure on cloud providers to prove AI spending translates into usable outcomes.</p>
-        <div class="tags"><span class="tag">AI Industry</span></div>
         <div class="card-footer">
-          <div class="source-line">
+          <div class="source-info">
             <span class="source-name">TechCrunch</span>
-            <span class="pub-date">2 July 2026</span>
+            <span class="pub-date">6 July 2026</span>
           </div>
-          <a class="card-read" href="https://techcrunch.com/2026/07/02/microsoft-launches-its-own-ai-deployment-company-with-2-5-billion-commitment/" target="_blank">Read &rarr;</a>
+          <a class="read-link" data-color="ai" href="https://techcrunch.com/2026/07/06/the-running-list-major-tech-layoffs-in-2026-where-employers-cited-ai/" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </div>
 
-      <div class="card">
-        <h4>Zuckerberg tells staff AI agent progress has stalled</h4>
-        <p>At an internal town hall, Meta CEO Mark Zuckerberg acknowledged that AI agent capabilities have not advanced as quickly as executives expected, admitting the pace had plateaued for several months. The comments came just before Meta's AI chief claimed an unreleased model had caught up to GPT-5.5.</p>
-        <div class="tags"><span class="tag">AI Industry</span></div>
+      <div class="card" data-title="The 'first' AI-run ransomware attack still needed a human" data-source="TechCrunch">
+        <h4>The "first" AI-run ransomware attack still needed a human</h4>
+        <p class="summary">Security researchers documented what they call the first known "agentic ransomware" case, an operation dubbed JadePuffer in which an AI agent independently breached a server, stole credentials, moved through networks and encrypted files. Human operators still directed the overall strategy, underscoring both the growing autonomy and current limits of AI attack tools.</p>
+        <div class="tag-row">
+          <span class="chip tag">AI Research</span>
+        </div>
         <div class="card-footer">
-          <div class="source-line">
+          <div class="source-info">
             <span class="source-name">TechCrunch</span>
-            <span class="pub-date">2 July 2026</span>
+            <span class="pub-date">6 July 2026</span>
           </div>
-          <a class="card-read" href="https://techcrunch.com/2026/07/02/mark-zuckerberg-tells-staff-that-ai-agents-havent-progressed-as-quickly-as-hed-hoped/" target="_blank">Read &rarr;</a>
+          <a class="read-link" data-color="ai" href="https://techcrunch.com/2026/07/06/the-first-ai-run-ransomware-attack-still-needed-a-human/" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </div>
 
-      <div class="card">
-        <h4>Midjourney seeks to force Hollywood studios to disclose their own AI use</h4>
-        <p>Midjourney is asking a court to compel Disney, Universal, and Warner Bros. to reveal details of their internal AI usage as part of the studios' ongoing copyright lawsuits against the image-generation startup. The discovery push could reveal how studios themselves experiment with generative tools.</p>
-        <div class="tags"><span class="tag">AI Industry</span></div>
+      <div class="card" data-title="If you use Google, you're training its AI. Here's how to opt out" data-source="TechCrunch">
+        <h4>If you use Google, you're training its AI. Here's how to opt out</h4>
+        <p class="summary">Google has changed its privacy settings to store more user data for AI model training, meaning media uploaded to Google's search services is used to train its AI systems by default unless users manually opt out. The article walks through exactly which settings need to change to prevent this.</p>
+        <div class="tag-row">
+          <span class="chip tag">Privacy</span>
+        </div>
         <div class="card-footer">
-          <div class="source-line">
+          <div class="source-info">
             <span class="source-name">TechCrunch</span>
-            <span class="pub-date">4 July 2026</span>
+            <span class="pub-date">6 July 2026</span>
           </div>
-          <a class="card-read" href="https://techcrunch.com/2026/07/04/midjourney-wants-hollywood-studios-to-reveal-the-details-of-their-ai-usage/" target="_blank">Read &rarr;</a>
+          <a class="read-link" data-color="ai" href="https://techcrunch.com/2026/07/06/if-you-use-google-youre-training-its-ai-heres-how-to-opt-out/" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </div>
 
-      <div class="card">
-        <h4>Ohio's statewide deadline pushes every school district to adopt an AI policy</h4>
-        <p>Ohio's July 1 deadline required every school district, community school, and STEM school to adopt a formal AI use policy, with the state's model guidance covering student and staff use, privacy, and vendor agreements. District compliance and training remain uneven nationally.</p>
-        <div class="tags"><span class="tag">Education</span><span class="tag">AI Policy</span></div>
+      <div class="card" data-title="Universities must rethink how they prepare students for an AI-powered world" data-source="Phys.org">
+        <h4>Universities must rethink how they prepare students for an AI-powered world, study argues</h4>
+        <p class="summary">A University of Manchester study published in Frontiers in Education argues universities must move past plagiarism concerns to focus on skills AI cannot easily replace, including critical thinking, communication and ethical awareness. Researchers warn graduates entering government, consultancy and public-service careers will encounter AI-powered systems throughout their working lives regardless of technical background.</p>
+        <div class="tag-row">
+          <span class="chip tag">Education</span>
+          <span class="chip tag">AI Research</span>
+        </div>
         <div class="card-footer">
-          <div class="source-line">
-            <span class="source-name">GovTech</span>
-            <span class="pub-date">1 July 2026</span>
+          <div class="source-info">
+            <span class="source-name">Phys.org</span>
+            <span class="pub-date">6 July 2026</span>
           </div>
-          <a class="card-read" href="https://www.govtech.com/education/k-12/ai-use-in-schools-growing-but-district-policies-havent-caught-up" target="_blank">Read &rarr;</a>
+          <a class="read-link" data-color="ai" href="https://phys.org/news/2026-07-universities-rethink-students-ai-powered.html" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </div>
 
-      <div class="card">
-        <h4>US universities race to launch dedicated undergraduate AI majors</h4>
-        <p>Stevens Institute of Technology, Northwestern, USC, and Kennesaw State are among several universities rolling out new Bachelor's degrees in Artificial Intelligence for Fall 2026, reflecting surging student demand for AI-specific credentials over general computer science tracks.</p>
-        <div class="tags"><span class="tag">Education</span><span class="tag">AI Industry</span></div>
+      <div class="card" data-title="Gemini 3.5 Pro is still in preview entering the second week of July" data-source="MarketScale">
+        <h4>Gemini 3.5 Pro is still in preview entering the second week of July</h4>
+        <p class="summary">Google's Gemini 3.5 Pro remains in limited Vertex AI enterprise preview after missing both its May and June general-availability targets, with token-efficiency problems, coding-performance gaps and long-task reasoning shortfalls cited as causes. Its 2-million-token context window remains a genuine differentiator once shipped, but repeated delays are prompting enterprise teams to hedge with other providers.</p>
+        <div class="tag-row">
+          <span class="chip tag">AI Industry</span>
+        </div>
         <div class="card-footer">
-          <div class="source-line">
-            <span class="source-name">Stevens Institute of Technology</span>
-            <span class="pub-date">2026</span>
+          <div class="source-info">
+            <span class="source-name">MarketScale</span>
+            <span class="pub-date">6 July 2026</span>
           </div>
-          <a class="card-read" href="https://www.stevens.edu/news/new-ai-degree-launches-fall-2026" target="_blank">Read &rarr;</a>
+          <a class="read-link" data-color="ai" href="https://www.marketscale.com/industries/software-and-technology/gemini-3-5-pro-still-in-preview-what-enterprise-teams-evaluating-a-model-should-do-now" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </div>
 
-    </div>
-
-    <div class="history">
-      <h5>Previous Editions</h5>
-      <div class="history-strip">
-        <div class="history-item active">
-          <div class="h-date">Today &middot; 6 Jul</div>
-          <div class="h-sub">6 articles</div>
+      <div class="card" data-title="Station F ramps up as a launchpad for Europe's hottest AI startups" data-source="TechCrunch">
+        <h4>Station F ramps up as a launchpad for Europe's hottest AI startups</h4>
+        <p class="summary">Paris-based startup hub Station F is preparing the second batch of its F/ai accelerator, backed by OpenAI, Anthropic, Google, Microsoft, Meta, Mistral, AWS, AMD, Qualcomm and OVHcloud, starting in September. The program aims to help AI-focused European startups move from early product development to real revenue.</p>
+        <div class="tag-row">
+          <span class="chip tag">AI Industry</span>
         </div>
-        <div class="history-item pending">
-          <div class="h-date">Tomorrow</div>
-          <div class="h-sub">Pending</div>
+        <div class="card-footer">
+          <div class="source-info">
+            <span class="source-name">TechCrunch</span>
+            <span class="pub-date">6 July 2026</span>
+          </div>
+          <a class="read-link" data-color="ai" href="https://techcrunch.com/2026/07/06/station-f-ramps-up-as-a-launchpad-for-europes-hottest-ai-startups/" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </div>
+
     </div>
   </section>
 
   <!-- GLOBAL ECONOMY -->
-  <section class="section" data-bucket="econ" id="section-econ">
+  <section id="econ" class="section">
     <div class="section-header">
       <div>
         <h2>Global Economy</h2>
-        <p class="sources">Sources: CNN Business, CNBC, WION, CBS News, Yahoo Finance</p>
+        <div class="sources">Keel Point, Reuters (via U.S. News), Law360, Business Standard &mdash; covering the US, India and China, 6 July 2026</div>
       </div>
-      <select class="sort-select">
-        <option>Sort: Newest first</option>
-        <option>Sort: Oldest first</option>
-        <option>Sort: Source A-Z</option>
+      <select class="sort" onchange="sortCards('econ-grid', this.value)">
+        <option value="default">Sort: Featured</option>
+        <option value="az">Sort: A &ndash; Z</option>
+        <option value="source">Sort: Source</option>
       </select>
     </div>
 
-    <div class="top-story">
-      <span class="badge">Top Story</span>
-      <h3>US economy adds just 57,000 jobs in June as hiring cools sharply</h3>
-      <p class="summary">The US economy added only 57,000 jobs in June, well below the 113,000 forecast and a sharp deceleration from May's pace, even as the unemployment rate edged down to 4.2%. The cooler jobs data breaks a three-month hot streak and is likely to keep the Federal Reserve's attention on inflation risk rather than growth. Markets are now pricing an 80% chance the Fed holds rates steady at its next meeting, with a smaller chance of a hike later this year given persistent price pressures.</p>
+    <div class="top-story" data-color="econ">
+      <span class="badge" data-color="econ">Top Story</span>
+      <h3>US labor market cools sharply as June payrolls badly miss expectations</h3>
+      <p class="summary">June's non-farm payrolls rose by just 57,000, roughly half of consensus expectations, with nearly all gains concentrated in health care. The unemployment rate ticked down to 4.2% as the labor force shrank, average hourly earnings rose 3.5% year-over-year, and core PCE inflation held at 3.4%, well above the Federal Reserve's 2% target. Big tech stocks fell further behind the broader S&amp;P 500 last week, and the Fed is expected to maintain hawkish rhetoric into its upcoming FOMC minutes release.</p>
       <div class="meta-row">
-        <span class="chip">CNN Business</span>
-        <span class="chip">2 July 2026</span>
+        <span class="chip tag">United States</span>
+        <span class="chip tag">Monetary Policy</span>
+        <span class="chip source-name">Keel Point</span>
+        <span class="chip">6 July 2026</span>
       </div>
-      <a class="read-btn" href="https://www.cnn.com/2026/07/02/economy/us-jobs-report-june-final" target="_blank">Read Article &rarr;</a>
+      <a class="read-btn" data-color="econ" href="https://keelpoint.com/insights/market-recap-july-6-2026/" target="_blank" rel="noopener">Read Article &rarr;</a>
     </div>
 
     <p class="more-label">More Articles</p>
-    <div class="grid">
+    <div class="card-grid" id="econ-grid">
 
-      <div class="card">
-        <h4>RBI holds repo rate at 5.25%, cuts growth forecast, raises inflation outlook</h4>
-        <p>The Reserve Bank of India kept its policy repo rate unchanged at 5.25% while trimming its GDP growth forecast for the fiscal year to 6.6% from 6.9% and raising its inflation projection to 5.1%. India still retains its position as the fastest-growing major economy in the G20.</p>
-        <div class="tags"><span class="tag">India</span><span class="tag">Monetary Policy</span></div>
+      <div class="card" data-title="China breaks step with global markets, and investors buy in" data-source="Reuters">
+        <h4>China breaks step with global markets, and investors buy in</h4>
+        <p class="summary">Global asset managers are increasingly buying Chinese stocks and bonds as the yuan's steady appreciation and low-correlation returns help the market act as a diversification anchor amid volatility from the Iran war and AI-driven swings elsewhere. Invesco's Asia-Pacific investment head said China's role in portfolios is shifting from a simple growth bet toward a distinct diversification source, with mainland blue-chip stocks up nearly 11% in dollar terms in the first half of the year.</p>
+        <div class="tag-row">
+          <span class="chip tag">China</span>
+          <span class="chip tag">Monetary Policy</span>
+        </div>
         <div class="card-footer">
-          <div class="source-line">
-            <span class="source-name">WION</span>
-            <span class="pub-date">June 2026</span>
+          <div class="source-info">
+            <span class="source-name">Reuters (U.S. News)</span>
+            <span class="pub-date">6 July 2026</span>
           </div>
-          <a class="card-read" href="https://www.wionews.com/india-news/rbi-repo-rate-gdp-growth-forecast-inflation-stagflation-risk-june-2026-1780637958506/amp" target="_blank">Read &rarr;</a>
+          <a class="read-link" data-color="econ" href="https://money.usnews.com/investing/news/articles/2026-07-06/analysis-china-breaks-step-with-global-markets-and-investors-buy-in" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </div>
 
-      <div class="card">
-        <h4>China's economy picks up in June on rebounding US exports</h4>
-        <p>Chinese exports jumped 19.4% year-over-year to a record $376.78 billion in May, the fastest pace since February, as companies built inventories ahead of anticipated energy-price pressures. Demand for semiconductors and AI hardware stayed strong throughout the period.</p>
-        <div class="tags"><span class="tag">China</span><span class="tag">Trade</span></div>
+      <div class="card" data-title="India, China call broad US forced labor tariffs not justified" data-source="Law360">
+        <h4>India, China call broad US forced labor tariffs "not justified"</h4>
+        <p class="summary">India, China and other US trading partners pushed back against proposed American tariffs tied to forced-labor allegations ahead of a public hearing, arguing the determinations are too generalized and improperly disregard existing protective measures. The dispute adds friction to trade relations as Washington moves to replace expiring Section 122 tariffs with new Section 301 measures targeting China, India and Vietnam.</p>
+        <div class="tag-row">
+          <span class="chip tag">Trade</span>
+          <span class="chip tag">India</span>
+        </div>
         <div class="card-footer">
-          <div class="source-line">
-            <span class="source-name">CNBC</span>
-            <span class="pub-date">29 June 2026</span>
+          <div class="source-info">
+            <span class="source-name">Law360 <span class="chip subscription">Subscription</span></span>
+            <span class="pub-date">6 July 2026</span>
           </div>
-          <a class="card-read" href="https://www.cnbc.com/2026/06/29/china-economy-june-trade-exports-manufacturing-tariffs-iran-war-consumption-ai-technology-.html" target="_blank">Read &rarr;</a>
+          <a class="read-link" data-color="econ" href="https://www.law360.com/tax-authority/federal/articles/2497357/india-china-call-broad-us-forced-labor-tariffs-not-justified" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </div>
 
-      <div class="card">
-        <h4>China's shipments to the US surge 35%, a five-year high</h4>
-        <p>China's exports to the United States rose nearly 35% year-over-year in May, the fastest growth since March 2021, with shipments reaching close to 90% of 2024 levels. The rebound signals a partial trade recovery despite ongoing tariff friction.</p>
-        <div class="tags"><span class="tag">China</span><span class="tag">Trade</span></div>
+      <div class="card" data-title="India trade roundup: UK FTA rules, Canada talks, June GST collections" data-source="Business Standard">
+        <h4>India trade roundup: UK FTA rules notified, Canada talks advance, June GST rises</h4>
+        <p class="summary">India notified rules for determining the origin of goods under the newly concluded India-UK trade pact, clearing the way for implementation from 15 July, while Commerce Minister Piyush Goyal said a Trade and Technology Council dialogue would complement the recent India-EU free trade agreement and that Canada FTA talks aim to conclude within six months. June GST collections rose from a year earlier, and Prime Minister Modi's upcoming visit to Indonesia, Australia and New Zealand is expected to advance trade and maritime ties.</p>
+        <div class="tag-row">
+          <span class="chip tag">India</span>
+          <span class="chip tag">Trade</span>
+        </div>
         <div class="card-footer">
-          <div class="source-line">
-            <span class="source-name">CNBC</span>
-            <span class="pub-date">9 June 2026</span>
+          <div class="source-info">
+            <span class="source-name">Business Standard</span>
+            <span class="pub-date">6 July 2026</span>
           </div>
-          <a class="card-read" href="https://www.cnbc.com/2026/06/09/china-trade-exports-imports-iran-war.html" target="_blank">Read &rarr;</a>
+          <a class="read-link" data-color="econ" href="https://www.business-standard.com/economy" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </div>
 
-      <div class="card">
-        <h4>Cooler June jobs report keeps the Fed focused on inflation, hikes not ruled out</h4>
-        <p>A cooler reading on June payrolls is likely to keep Federal Reserve officials focused on inflation risk and extend the current rate pause, while preserving the case some policymakers make for a possible hike later this year given still-elevated price pressures.</p>
-        <div class="tags"><span class="tag">United States</span><span class="tag">Monetary Policy</span></div>
-        <div class="card-footer">
-          <div class="source-line">
-            <span class="source-name">Yahoo Finance</span>
-            <span class="pub-date">2 July 2026</span>
-          </div>
-          <a class="card-read" href="https://finance.yahoo.com/economy/policy/article/cooler-june-jobs-report-to-keep-fed-focused-on-inflation-with-possibility-of-hikes-later-this-year-124547980.html" target="_blank">Read &rarr;</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h4>Are Trump's tariffs fueling a trade-deal boom for China and India?</h4>
-        <p>Even as new tariff investigations continue against China and India, both countries have struck fresh trade arrangements with Washington this year, complicating the narrative that tariffs are purely a drag on bilateral commerce.</p>
-        <div class="tags"><span class="tag">Trade</span><span class="tag">United States</span></div>
-        <div class="card-footer">
-          <div class="source-line">
-            <span class="source-name">CBS News</span>
-            <span class="pub-date">2026</span>
-          </div>
-          <a class="card-read" href="https://www.cbsnews.com/news/trump-tariffs-fueling-trade-deals-for-china-and-india/" target="_blank">Read &rarr;</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="history">
-      <h5>Previous Editions</h5>
-      <div class="history-strip">
-        <div class="history-item active">
-          <div class="h-date">Today &middot; 6 Jul</div>
-          <div class="h-sub">6 articles</div>
-        </div>
-        <div class="history-item pending">
-          <div class="h-date">Tomorrow</div>
-          <div class="h-sub">Pending</div>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- GOVERNANCE REFORMS -->
-  <section class="section" data-bucket="gov" id="section-gov">
+  <section id="gov" class="section">
     <div class="section-header">
       <div>
         <h2>Governance Reforms</h2>
-        <p class="sources">Sources: Deadline, S&amp;P Global, Sidley Data Matters, legislative reporting</p>
+        <div class="sources">GOV.UK / Reuters / The Guardian, UN News, Federal News Network &mdash; 6 July 2026</div>
       </div>
-      <select class="sort-select">
-        <option>Sort: Newest first</option>
-        <option>Sort: Oldest first</option>
-        <option>Sort: Source A-Z</option>
+      <select class="sort" onchange="sortCards('gov-grid', this.value)">
+        <option value="default">Sort: Featured</option>
+        <option value="az">Sort: A &ndash; Z</option>
+        <option value="source">Sort: Source</option>
       </select>
     </div>
 
-    <div class="top-story">
-      <span class="badge">Top Story</span>
-      <h3>Supreme Court strikes down limits on presidential power to fire FTC commissioners</h3>
-      <p class="summary">In a 6-3 ruling, the Supreme Court struck down the federal law that had barred presidents from firing Federal Trade Commission members except for cause, such as inefficiency or malfeasance. The decision significantly expands presidential control over independent regulatory agencies and is expected to reshape how the FTC and comparable commissions operate going forward. Legal scholars say the ruling raises broader questions about the durability of agency independence across the federal government.</p>
+    <div class="top-story" data-color="gov">
+      <span class="badge" data-color="gov">Top Story</span>
+      <h3>UK announces tough new rules to crack down on foreign money in elections</h3>
+      <p class="summary">The UK government announced sweeping new political-finance rules in response to the independent Rycroft Review, including tougher vetting of company donations assessed against post-tax profits rather than revenue, a new cap on large donations from recent arrivals to the UK, and a requirement that candidates prove pre-candidacy donations came from legitimate sources. Reuters and The Guardian tied the reforms to recent scrutiny of Reform UK's funding arrangements, with ministers framing the package as closing loopholes exploited by foreign-linked money and protecting the integrity of British elections.</p>
       <div class="meta-row">
-        <span class="chip">Legal &amp; policy reporting</span>
-        <span class="chip">29 June 2026</span>
+        <span class="chip tag">Governance</span>
+        <span class="chip source-name">GOV.UK / Reuters / The Guardian</span>
+        <span class="chip">6 July 2026</span>
       </div>
-      <a class="read-btn" href="https://www.judiciary.senate.gov/committee-activity/hearings/the-no-fakes-act-protecting-americans-from-unauthorized-digital-replicas" target="_blank">Read Article &rarr;</a>
+      <a class="read-btn" data-color="gov" href="https://www.gov.uk/government/news/tough-new-rules-to-crackdown-on-foreign-money-in-uk-elections" target="_blank" rel="noopener">Read Article &rarr;</a>
     </div>
 
     <p class="more-label">More Articles</p>
-    <div class="grid">
+    <div class="card-grid" id="gov-grid">
 
-      <div class="card">
-        <h4>NO FAKES Act clears Senate Judiciary Committee on a unanimous vote</h4>
-        <p>The Senate Judiciary Committee unanimously advanced the NO FAKES Act, creating a federal right protecting voice and likeness from unauthorized AI-generated digital replicas and civil liability for those who create or knowingly host them. The bill now moves to the full Senate.</p>
-        <div class="tags"><span class="tag">AI Policy</span><span class="tag">Governance</span></div>
+      <div class="card" data-title="UN chief issues urgent governance call, seeks ban on killer robots" data-source="UN News">
+        <h4>From AI to "killer robots": UN chief issues urgent governance call</h4>
+        <p class="summary">UN Secretary-General Antonio Guterres opened the inaugural Global Dialogue on AI Governance in Geneva by calling for binding international controls on artificial intelligence, including a legal ban on lethal autonomous weapons and common global safety standards. He outlined four priorities: shared safety standards, human-rights red lines, capacity-building support for developing countries and transparency about AI's environmental footprint, warning that "we may be the last generation able to set the terms on which humanity and machines coexist."</p>
+        <div class="tag-row">
+          <span class="chip tag">AI Policy</span>
+          <span class="chip tag">Governance</span>
+        </div>
         <div class="card-footer">
-          <div class="source-line">
-            <span class="source-name">Deadline</span>
-            <span class="pub-date">18 June 2026</span>
+          <div class="source-info">
+            <span class="source-name">UN News</span>
+            <span class="pub-date">6 July 2026</span>
           </div>
-          <a class="card-read" href="https://deadline.com/2026/06/no-fakes-act-senate-judiciary-committee-1236959147/" target="_blank">Read &rarr;</a>
+          <a class="read-link" data-color="gov" href="https://news.un.org/en/story/2026/07/1167873" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </div>
 
-      <div class="card">
-        <h4>KIDS Act passes the House with bipartisan support</h4>
-        <p>The House passed the KIDS Act by a vote of 267-117, advancing a bipartisan online child-safety and privacy package after the Energy and Commerce Committee reached agreement on its terms. The bill now heads to the Senate.</p>
-        <div class="tags"><span class="tag">Privacy</span><span class="tag">Governance</span></div>
+      <div class="card" data-title="The administration's new AI framework includes something the government hasn't had before" data-source="Federal News Network">
+        <h4>The administration's new AI framework includes something the government hasn't had before</h4>
+        <p class="summary">A month after the White House's executive order on advanced AI took effect, legal experts say its most significant feature is a voluntary framework letting companies share frontier AI models with federal reviewers before public release, giving government early visibility into emerging capabilities and risks. The order also directs agencies to expand AI cybersecurity support to critical infrastructure operators such as rural hospitals and local utilities, though open questions remain around confidentiality, intellectual property protection and how the 30-day review window will work in practice.</p>
+        <div class="tag-row">
+          <span class="chip tag">AI Policy</span>
+          <span class="chip tag">Digital Governance</span>
+        </div>
         <div class="card-footer">
-          <div class="source-line">
-            <span class="source-name">Legislative reporting</span>
-            <span class="pub-date">29 June 2026</span>
+          <div class="source-info">
+            <span class="source-name">Federal News Network</span>
+            <span class="pub-date">6 July 2026</span>
           </div>
-          <a class="card-read" href="https://www.congress.gov/bill/119th-congress/senate-bill/4591/text" target="_blank">Read &rarr;</a>
+          <a class="read-link" data-color="gov" href="https://federalnewsnetwork.com/artificial-intelligence/2026/07/the-administrations-new-ai-framework-includes-something-the-government-hasnt-had-before/" target="_blank" rel="noopener">Read &rarr;</a>
         </div>
       </div>
 
-      <div class="card">
-        <h4>EU AI Act transparency rules take effect August 2 as high-risk deadline slips</h4>
-        <p>Transparency obligations under Article 50 of the EU AI Act become enforceable on August 2, 2026, requiring disclosure of AI interactions and labeling of synthetic content. Separately, the bloc's Digital Omnibus has deferred the stricter high-risk compliance deadline to December 2027.</p>
-        <div class="tags"><span class="tag">Digital Governance</span><span class="tag">AI Policy</span></div>
-        <div class="card-footer">
-          <div class="source-line">
-            <span class="source-name">Sidley Data Matters</span>
-            <span class="pub-date">24 June 2026</span>
-          </div>
-          <a class="card-read" href="https://datamatters.sidley.com/2026/06/24/eu-ai-act-transparency-obligations-preparing-for-compliance-by-2-august-2026/" target="_blank">Read &rarr;</a>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="history">
-      <h5>Previous Editions</h5>
-      <div class="history-strip">
-        <div class="history-item active">
-          <div class="h-date">Today &middot; 6 Jul</div>
-          <div class="h-sub">4 articles</div>
-        </div>
-        <div class="history-item pending">
-          <div class="h-date">Tomorrow</div>
-          <div class="h-sub">Pending</div>
-        </div>
-      </div>
     </div>
   </section>
+
+  <!-- HISTORY -->
+  <div class="history">
+    <h3>Previous Editions</h3>
+    <div class="history-strip">
+      <div class="history-item today">
+        <div class="h-date">Today &mdash; 7 July 2026</div>
+        <div class="h-meta">14 articles</div>
+      </div>
+      <div class="history-item pending">
+        <div class="h-date">Tomorrow</div>
+        <div class="h-meta">Pending</div>
+      </div>
+    </div>
+  </div>
 
 </main>
 
 <script>
-  function showSection(name, el){
-    document.querySelectorAll('.section').forEach(function(s){ s.classList.remove('active'); });
-    document.getElementById('section-' + name).classList.add('active');
-    document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+  function showSection(name, el) {
+    document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+    document.getElementById(name).classList.add('active');
+
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
     el.classList.add('active');
+  }
+
+  function sortCards(gridId, mode) {
+    var grid = document.getElementById(gridId);
+    var cards = Array.prototype.slice.call(grid.children);
+
+    if (mode === 'default') {
+      // no-op: reload to restore original order
+      location.reload();
+      return;
+    }
+
+    cards.sort(function(a, b) {
+      var av, bv;
+      if (mode === 'az') {
+        av = a.getAttribute('data-title').toLowerCase();
+        bv = b.getAttribute('data-title').toLowerCase();
+      } else if (mode === 'source') {
+        av = a.getAttribute('data-source').toLowerCase();
+        bv = b.getAttribute('data-source').toLowerCase();
+      }
+      if (av < bv) return -1;
+      if (av > bv) return 1;
+      return 0;
+    });
+
+    cards.forEach(function(c) { grid.appendChild(c); });
   }
 </script>
 
