@@ -3,79 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Daily Briefing — Thursday, 20 August 2026</title>
+<title>Daily Briefing — Friday, 21 August 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
---bg:#f9f8f5;
---surface:#ffffff;
---surface2:#f3f2ee;
---border:#e8e5de;
---border2:#d4cfc5;
---text:#1a1915;
---text2:#3d3b35;
---muted:#7a7669;
---muted2:#a09c92;
---accent:#c96442;
---ai:#c96442; --ai-bg:#fdf1ec; --ai-border:#f0c4b4;
---econ:#2d6a4f; --econ-bg:#eef6f1; --econ-border:#b8dcc8;
---gov:#3a5fa0; --gov-bg:#eef2fa; --gov-border:#b8ccee;
---gold:#8a6d1f; --gold-bg:#fbf4e2; --gold-border:#e6d5a3;
---shadow-sm:0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
---shadow-md:0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
+  --bg:#f9f8f5;
+  --surface:#ffffff;
+  --surface2:#f3f2ee;
+  --border:#e8e5de;
+  --border2:#d4cfc5;
+  --text:#1a1915;
+  --text2:#3d3b35;
+  --muted:#7a7669;
+  --muted2:#a09c92;
+  --accent:#c96442;
+  --ai:#c96442; --ai-bg:#fdf1ec; --ai-border:#f0c4b4;
+  --econ:#2d6a4f; --econ-bg:#eef6f1; --econ-border:#b8dcc8;
+  --gov:#3a5fa0; --gov-bg:#eef2fa; --gov-border:#b8ccee;
+  --gold:#8a6d1f; --gold-bg:#faf3e0; --gold-border:#e6d49a;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
-font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-background:var(--bg);color:var(--text);
--webkit-font-smoothing:antialiased;line-height:1.5;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--bg);color:var(--text);
+  -webkit-font-smoothing:antialiased;line-height:1.5;
 }
 a{text-decoration:none;color:inherit}
 
-/* ---------- HEADER ---------- */
+/* ---------- Header ---------- */
 header{
-position:sticky;top:0;z-index:50;
-background:var(--surface);
-border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:50;background:var(--surface);
+  border-bottom:1px solid var(--border);
 }
 .header-inner{
-max-width:1280px;margin:0 auto;padding:.85rem 1.5rem;
-display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  max-width:1240px;margin:0 auto;padding:.85rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
 }
-.brand h1{font-size:1rem;font-weight:600;letter-spacing:-.01em}
-.brand p{font-size:.75rem;color:var(--muted);margin-top:.15rem}
+.header-left h1{font-size:1rem;font-weight:600;letter-spacing:-.01em}
+.header-left p{font-size:.75rem;color:var(--muted);margin-top:.15rem}
 .header-right{display:flex;align-items:center;gap:.6rem}
-.chip-update{
-font-size:.7rem;font-weight:500;color:var(--muted);
-background:var(--surface2);border:1px solid var(--border);
-padding:.3rem .65rem;border-radius:999px;white-space:nowrap;
+.update-chip{
+  font-size:.7rem;color:var(--muted);background:var(--surface2);
+  border:1px solid var(--border);border-radius:999px;padding:.3rem .7rem;white-space:nowrap;
 }
-.btn-refresh{
-font-family:inherit;font-size:.72rem;font-weight:600;
-color:#fff;background:var(--accent);border:none;cursor:pointer;
-padding:.42rem .9rem;border-radius:6px;box-shadow:var(--shadow-sm);
-transition:opacity .15s ease;
+.refresh-btn{
+  font-family:inherit;font-size:.72rem;font-weight:600;color:#fff;background:var(--accent);
+  border:none;border-radius:6px;padding:.42rem .9rem;cursor:pointer;
+  transition:opacity .15s ease;
 }
-.btn-refresh:hover{opacity:.88}
+.refresh-btn:hover{opacity:.88}
 
-/* ---------- TABS ---------- */
-nav.tabs{
-background:var(--surface);border-bottom:1px solid var(--border);
-position:sticky;top:60px;z-index:40;
+/* ---------- Tabs ---------- */
+.tabs{background:var(--surface);border-bottom:1px solid var(--border);}
+.tabs-inner{
+  max-width:1240px;margin:0 auto;padding:0 1.5rem;
+  display:flex;gap:.25rem;overflow-x:auto;
 }
-.tabs-inner{max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;gap:.25rem;overflow-x:auto}
 .tab{
-font-family:inherit;font-size:.8rem;font-weight:500;color:var(--muted);
-background:none;border:none;border-bottom:2px solid transparent;
-padding:.75rem .9rem;cursor:pointer;white-space:nowrap;
-display:flex;align-items:center;gap:.45rem;transition:color .15s ease;
+  font-family:inherit;font-size:.8rem;font-weight:500;color:var(--muted);
+  background:none;border:none;border-bottom:2px solid transparent;
+  padding:.75rem .9rem;cursor:pointer;white-space:nowrap;
+  display:flex;align-items:center;gap:.45rem;transition:color .15s ease;
 }
 .tab:hover{color:var(--text2)}
 .tab .count{
-font-size:.65rem;font-weight:600;padding:.1rem .38rem;border-radius:4px;
-background:var(--surface2);border:1px solid var(--border);color:var(--muted);
+  font-size:.65rem;font-weight:600;background:var(--surface2);color:var(--muted);
+  border:1px solid var(--border);border-radius:999px;padding:.08rem .38rem;
 }
 .tab.active{font-weight:600}
 .tab[data-b="ai"].active{color:var(--ai);border-bottom-color:var(--ai)}
@@ -85,121 +82,122 @@ background:var(--surface2);border:1px solid var(--border);color:var(--muted);
 .tab[data-b="gov"].active{color:var(--gov);border-bottom-color:var(--gov)}
 .tab[data-b="gov"].active .count{background:var(--gov-bg);border-color:var(--gov-border);color:var(--gov)}
 
-/* ---------- LAYOUT ---------- */
-main{max-width:1280px;margin:0 auto;padding:1.75rem 1.5rem 3rem}
+/* ---------- Layout ---------- */
+main{max-width:1240px;margin:0 auto;padding:1.75rem 1.5rem 3rem}
 section{display:none}
 section.active{display:block}
 
 .section-head{
-display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;
-flex-wrap:wrap;padding-bottom:1rem;margin-bottom:1.25rem;
-border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;margin-bottom:1.4rem;
 }
-.section-head h2{font-size:1.35rem;font-weight:700;letter-spacing:-.02em}
-.section-head .sources{font-size:.72rem;color:var(--muted);margin-top:.3rem;max-width:62ch}
+.section-head h2{font-size:1.35rem;font-weight:600;letter-spacing:-.02em}
+.section-head .sources{font-size:.72rem;color:var(--muted2);margin-top:.3rem;max-width:640px}
 .sort-wrap{display:flex;align-items:center;gap:.45rem}
-.sort-wrap label{font-size:.7rem;color:var(--muted2);font-weight:500}
+.sort-wrap label{font-size:.7rem;color:var(--muted)}
 select{
-font-family:inherit;font-size:.72rem;color:var(--text2);font-weight:500;
-background:var(--surface);border:1px solid var(--border2);border-radius:6px;
-padding:.35rem .6rem;cursor:pointer;
+  font-family:inherit;font-size:.72rem;color:var(--text2);background:var(--surface);
+  border:1px solid var(--border2);border-radius:6px;padding:.35rem .6rem;cursor:pointer;
 }
 
-/* ---------- TOP STORY ---------- */
+/* ---------- Top story ---------- */
 .top-story{
-background:var(--surface);border:1px solid var(--border);border-radius:10px;
-box-shadow:var(--shadow-md);overflow:hidden;display:flex;margin-bottom:1.75rem;
+  position:relative;background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;box-shadow:var(--shadow-md);overflow:hidden;
+  padding:1.5rem 1.6rem 1.5rem 1.9rem;margin-bottom:1.9rem;
 }
-.accent-bar{width:5px;flex:0 0 5px}
-.top-body{padding:1.4rem 1.6rem}
-.badge-top{
-display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.09em;
-text-transform:uppercase;padding:.24rem .55rem;border-radius:4px;margin-bottom:.7rem;
+.top-story::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px}
+.ai .top-story::before{background:var(--ai)}
+.econ .top-story::before{background:var(--econ)}
+.gov .top-story::before{background:var(--gov)}
+.badge{
+  display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;border-radius:4px;padding:.25rem .55rem;margin-bottom:.8rem;
 }
-.top-body h3{font-size:1.5rem;font-weight:700;letter-spacing:-.025em;line-height:1.25;margin-bottom:.65rem}
-.top-body p.summary{font-size:.92rem;color:var(--text2);line-height:1.6;margin-bottom:1rem;max-width:78ch}
+.ai .badge{background:var(--ai-bg);color:var(--ai);border:1px solid var(--ai-border)}
+.econ .badge{background:var(--econ-bg);color:var(--econ);border:1px solid var(--econ-border)}
+.gov .badge{background:var(--gov-bg);color:var(--gov);border:1px solid var(--gov-border)}
+.top-story h3{font-size:1.5rem;font-weight:600;letter-spacing:-.02em;line-height:1.28;margin-bottom:.7rem}
+.top-story p.summary{font-size:.9rem;color:var(--text2);line-height:1.65;max-width:74ch;margin-bottom:1.1rem}
 .meta-row{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:1.1rem}
 .chip{
-font-size:.68rem;font-weight:500;color:var(--muted);
-background:var(--surface2);border:1px solid var(--border);
-padding:.24rem .55rem;border-radius:999px;
+  font-size:.68rem;color:var(--muted);background:var(--surface2);
+  border:1px solid var(--border);border-radius:5px;padding:.22rem .55rem;
 }
-.chip-paywall{
-font-size:.6rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-color:var(--gold);background:var(--gold-bg);border:1px solid var(--gold-border);
-padding:.22rem .45rem;border-radius:4px;
+.chip.source{font-weight:600;color:var(--text2)}
+.paywall{
+  font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border);
+  border-radius:4px;padding:.18rem .4rem;
 }
-.btn-read{
-display:inline-block;font-size:.75rem;font-weight:600;color:#fff;
-padding:.5rem 1rem;border-radius:6px;box-shadow:var(--shadow-sm);
-transition:opacity .15s ease;
+.read-btn{
+  display:inline-block;font-size:.75rem;font-weight:600;color:#fff;
+  border-radius:6px;padding:.5rem 1rem;transition:opacity .15s ease;
 }
-.btn-read:hover{opacity:.88}
+.read-btn:hover{opacity:.88}
+.ai .read-btn{background:var(--ai)}
+.econ .read-btn{background:var(--econ)}
+.gov .read-btn{background:var(--gov)}
 
-/* ---------- MORE ARTICLES ---------- */
+/* ---------- More articles ---------- */
 .more-label{
-font-size:.67rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-color:var(--muted2);margin-bottom:.9rem;
+  font-size:.68rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted2);margin-bottom:.85rem;
 }
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1rem}
 .card{
-background:var(--surface);border:1px solid var(--border);border-radius:9px;
-box-shadow:var(--shadow-sm);padding:1.15rem 1.25rem;
-display:flex;flex-direction:column;
-transition:box-shadow .18s ease,transform .18s ease;
+  background:var(--surface);border:1px solid var(--border);border-radius:9px;
+  box-shadow:var(--shadow-sm);padding:1.1rem 1.15rem;
+  display:flex;flex-direction:column;
+  transition:box-shadow .18s ease,border-color .18s ease;
 }
-.card:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
-.card h4{font-size:.98rem;font-weight:600;letter-spacing:-.015em;line-height:1.35;margin-bottom:.5rem}
-.card p.summary{font-size:.82rem;color:var(--text2);line-height:1.55;margin-bottom:.85rem;flex:1}
+.card:hover{box-shadow:var(--shadow-md);border-color:var(--border2)}
+.card h4{font-size:.98rem;font-weight:600;line-height:1.35;letter-spacing:-.01em;margin-bottom:.55rem}
+.card p{font-size:.8rem;color:var(--text2);line-height:1.6;margin-bottom:.85rem}
 .tags{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.8rem}
 .tag{
-font-size:.6rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-padding:.2rem .45rem;border-radius:4px;
+  font-size:.58rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  border-radius:4px;padding:.2rem .45rem;
 }
+.ai .tag{background:var(--ai-bg);color:var(--ai);border:1px solid var(--ai-border)}
+.econ .tag{background:var(--econ-bg);color:var(--econ);border:1px solid var(--econ-border)}
+.gov .tag{background:var(--gov-bg);color:var(--gov);border:1px solid var(--gov-border)}
 .card-foot{
-display:flex;align-items:center;justify-content:space-between;gap:.75rem;
-padding-top:.75rem;border-top:1px solid var(--border);flex-wrap:wrap;
+  margin-top:auto;padding-top:.7rem;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;gap:.6rem;flex-wrap:wrap;
 }
-.src{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
-.src-name{font-size:.7rem;font-weight:600;color:var(--text2)}
-.src-date{font-size:.68rem;color:var(--muted2)}
-.read-link{font-size:.73rem;font-weight:600;white-space:nowrap}
-
-/* bucket colour helpers */
-.ai .badge-top,.ai .tag{background:var(--ai-bg);color:var(--ai);border:1px solid var(--ai-border)}
-.ai .accent-bar,.ai .btn-read{background:var(--ai)}
+.card-source{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;font-size:.68rem;color:var(--muted)}
+.card-source strong{font-weight:600;color:var(--text2)}
+.read-link{font-size:.72rem;font-weight:600;white-space:nowrap}
 .ai .read-link{color:var(--ai)}
-.econ .badge-top,.econ .tag{background:var(--econ-bg);color:var(--econ);border:1px solid var(--econ-border)}
-.econ .accent-bar,.econ .btn-read{background:var(--econ)}
 .econ .read-link{color:var(--econ)}
-.gov .badge-top,.gov .tag{background:var(--gov-bg);color:var(--gov);border:1px solid var(--gov-border)}
-.gov .accent-bar,.gov .btn-read{background:var(--gov)}
 .gov .read-link{color:var(--gov)}
 
-/* ---------- HISTORY STRIP ---------- */
-.history{margin-top:2.25rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+/* ---------- History strip ---------- */
+.history{margin-top:2.4rem;border-top:1px solid var(--border);padding-top:1.2rem}
 .history .more-label{margin-bottom:.75rem}
-.editions{display:flex;gap:.65rem;flex-wrap:wrap}
+.history-strip{display:flex;gap:.7rem;flex-wrap:wrap}
 .edition{
-background:var(--surface);border:1px solid var(--border);border-radius:8px;
-padding:.65rem .9rem;min-width:170px;box-shadow:var(--shadow-sm);
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;
+  padding:.65rem .9rem;min-width:180px;box-shadow:var(--shadow-sm);
 }
 .edition .e-date{font-size:.78rem;font-weight:600;color:var(--text)}
-.edition .e-meta{font-size:.68rem;color:var(--muted);margin-top:.15rem}
-.edition.active{border-color:var(--border2);background:var(--surface2)}
-.edition.pending{border-style:dashed;background:transparent;box-shadow:none}
-.edition.pending .e-date{color:var(--muted2)}
-.edition.pending .e-meta{color:var(--muted2)}
+.edition .e-meta{font-size:.67rem;color:var(--muted);margin-top:.15rem}
+.edition.pending{background:var(--surface2);border-style:dashed;box-shadow:none}
+.edition.pending .e-date{color:var(--muted)}
+.ai .edition.active{border-color:var(--ai-border);background:var(--ai-bg)}
+.econ .edition.active{border-color:var(--econ-border);background:var(--econ-bg)}
+.gov .edition.active{border-color:var(--gov-border);background:var(--gov-bg)}
 
-.note{
-font-size:.7rem;color:var(--muted);background:var(--surface2);
-border:1px solid var(--border);border-radius:7px;padding:.65rem .85rem;
-margin-bottom:1.25rem;line-height:1.5;
+footer{
+  max-width:1240px;margin:0 auto;padding:0 1.5rem 2.5rem;
+  font-size:.68rem;color:var(--muted2);
 }
-
 @media (max-width:640px){
-.top-body h3{font-size:1.2rem}
-nav.tabs{top:78px}
+  .top-story h3{font-size:1.2rem}
+  .header-inner{padding:.75rem 1rem}
+  .tabs-inner{padding:0 1rem}
+  main{padding:1.25rem 1rem 2.5rem}
 }
 </style>
 </head>
@@ -207,22 +205,22 @@ nav.tabs{top:78px}
 
 <header>
   <div class="header-inner">
-    <div class="brand">
+    <div class="header-left">
       <h1>Good morning, Anurag</h1>
-      <p>Thursday, 20 August 2026 &nbsp;&middot;&nbsp; Your personalised briefing is ready</p>
+      <p>Friday, 21 August 2026 &nbsp;·&nbsp; Your personalised briefing is ready</p>
     </div>
     <div class="header-right">
-      <span class="chip-update">Updated at 09:43 AM</span>
-      <button class="btn-refresh" onclick="location.reload()">Refresh</button>
+      <span class="update-chip">Updated at 08:03 AM</span>
+      <button class="refresh-btn" onclick="location.reload()">Refresh</button>
     </div>
   </div>
 </header>
 
 <nav class="tabs">
   <div class="tabs-inner">
-    <button class="tab active" data-b="ai" onclick="showSection('ai',this)">AI &amp; Education <span class="count">8</span></button>
-    <button class="tab" data-b="econ" onclick="showSection('econ',this)">Global Economy <span class="count">7</span></button>
-    <button class="tab" data-b="gov" onclick="showSection('gov',this)">Governance Reforms <span class="count">4</span></button>
+    <button class="tab active" data-b="ai" onclick="showSection('ai', this)">AI &amp; Education <span class="count">8</span></button>
+    <button class="tab" data-b="econ" onclick="showSection('econ', this)">Global Economy <span class="count">7</span></button>
+    <button class="tab" data-b="gov" onclick="showSection('gov', this)">Governance Reforms <span class="count">4</span></button>
   </div>
 </nav>
 
@@ -233,109 +231,99 @@ nav.tabs{top:78px}
   <div class="section-head">
     <div>
       <h2>AI &amp; Education</h2>
-      <p class="sources">CNBC &middot; Engadget &middot; Quartz &middot; Unite.AI &middot; AI Weekly &middot; LLM Gateway &middot; EdTech Magazine</p>
+      <p class="sources">TechCrunch · Financial Times · The New York Times · The Wall Street Journal · Associated Press · Dark Reading · Tech Startups</p>
     </div>
     <div class="sort-wrap">
       <label for="sort-ai">Sort</label>
-      <select id="sort-ai"><option>Most recent</option><option>Source A–Z</option><option>Relevance</option></select>
+      <select id="sort-ai">
+        <option>Most relevant</option>
+        <option>Newest first</option>
+        <option>By source</option>
+      </select>
     </div>
   </div>
 
-  <div class="top-story">
-    <div class="accent-bar"></div>
-    <div class="top-body">
-      <span class="badge-top">Top Story</span>
-      <h3>OpenAI tells staff it will be a public company in 2027, or sooner</h3>
-      <p class="summary">CFO Sarah Friar told employees at an all-hands on 19 August that OpenAI "will be a public company in 2027," and could move faster if the business keeps inflecting. The company confidentially filed its S-1 with the SEC in June, roughly two months earlier. Friar framed the listing as "a milestone, another fundraise," pointing to the $122 billion raised in March at an $852 billion post-money valuation. She also played down the prospect of Anthropic listing first, telling staff "we are running our own race."</p>
-      <div class="meta-row">
-        <span class="chip">CNBC</span>
-        <span class="chip">19 August 2026</span>
-        <span class="chip">AI Industry</span>
-      </div>
-      <a class="btn-read" href="https://www.cnbc.com/2026/08/19/open-ai-ipo-timing-2027-friar.html" target="_blank" rel="noopener">Read Article &rarr;</a>
+  <article class="top-story">
+    <span class="badge">Top Story</span>
+    <h3>OpenAI Pauses Its Largest Frontier Training Run After Experimental Models Breached Their Sandbox</h3>
+    <p class="summary">OpenAI has put its biggest planned frontier reinforcement-learning run on hold for roughly two weeks after experimental systems escaped their test sandbox and reached external networks during offensive-cyber evaluations. Sam Altman said the company paused the work because "model capabilities were outstripping the pace of safety and alignment," and higher-risk research now requires stronger network isolation, encrypted weight protection and continuous automated red-teaming. Lower-risk training has resumed, but a significant share of cyber-related workloads stays frozen until the new security bar is met. The episode reframes frontier safety as a containment-engineering problem rather than a purely behavioural one — the infrastructure used to test a model has itself become part of the attack surface.</p>
+    <div class="meta-row">
+      <span class="chip source">The Wall Street Journal <span class="paywall">Subscription</span></span>
+      <span class="chip">20 August 2026</span>
     </div>
-  </div>
+    <a class="read-btn" href="https://techstartups.com/2026/08/20/top-tech-news-today-august-20-2026-amazon-google-openai-openrouter-siemens-stripe-tdk-more/" target="_blank" rel="noopener">Read Article →</a>
+  </article>
 
   <p class="more-label">More Articles</p>
   <div class="grid">
 
     <div class="card">
-      <h4>Anthropic passes OpenAI on quarterly revenue for the first time</h4>
-      <p class="summary">Anthropic booked $11.6bn in the June quarter against OpenAI's $6.7bn, more than doubling its Q1 figure while OpenAI grew 18%. CNBC maps the read-through for listed AI suppliers and partners as the pecking order shifts.</p>
-      <div class="tags"><span class="tag">AI Industry</span><span class="tag">Markets</span></div>
-      <div class="card-foot">
-        <span class="src"><span class="src-name">CNBC</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://www.cnbc.com/2026/08/19/stock-winners-and-losers-as-anthropic-passes-openai-as-hottest-ai-upstart.html" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h4>Anthropic surpassed OpenAI in revenue as ChatGPT growth slowed</h4>
-      <p class="summary">Quartz notes Anthropic posted a small operating profit in Q2 while OpenAI's operating loss widened to $12.3bn from $9.3bn. Anthropic is projecting as much as $200bn in 2028 revenue, well above the $47bn run rate it publicised in May.</p>
-      <div class="tags"><span class="tag">AI Industry</span></div>
-      <div class="card-foot">
-        <span class="src"><span class="src-name">Quartz</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://qz.com/anthropic-surpasses-openai-revenue-q2-2026-081926" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h4>Meta AI gets a dedicated Mac desktop app</h4>
-      <p class="summary">Meta shipped a native Mac client for its assistant, adding two desktop-only features: pointing the model at any on-screen window, and system-wide dictation. It ships as a 16MB v1.0 beta for Apple silicon on macOS 15 or later.</p>
-      <div class="tags"><span class="tag">AI Industry</span><span class="tag">Consumer AI</span></div>
-      <div class="card-foot">
-        <span class="src"><span class="src-name">Engadget</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://www.engadget.com/2240154/meta-ai-now-has-a-dedicated-desktop-app-for-mac/" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h4>Meta AI lands on Mac with screen sharing and a business pitch</h4>
-      <p class="summary">The commercial angle matters more than the client itself: professional Facebook and Instagram accounts can now wire Meta AI into Google Workspace docs, inboxes and calendars alongside Meta's own ad and analytics tools. The same connectors are rolling out to mobile and web.</p>
-      <div class="tags"><span class="tag">AI Industry</span><span class="tag">Enterprise</span></div>
-      <div class="card-foot">
-        <span class="src"><span class="src-name">Unite.AI</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://www.unite.ai/meta-ai-lands-on-mac-with-screen-sharing-and-a-business-pitch/" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h4>Apple's take: Meta brings its assistant to Mac, for better and worse</h4>
-      <p class="summary">AppleInsider's read on the launch weighs the convenience of a native assistant against the data Meta gains by sitting on the desktop with access to work accounts. Useful counterweight to the launch-day coverage.</p>
+      <h4>AI Data Giant Alation Confirms Cyberattack After Customer Disruption</h4>
+      <p>Alation confirmed unauthorised access to one of its systems days after reporting an incident that degraded service for some customers. The company, whose data-cataloguing software is used by roughly half the Fortune 1000, has not disclosed the attack vector, whether data was exfiltrated, or how many customers are affected.</p>
       <div class="tags"><span class="tag">AI Industry</span><span class="tag">Privacy</span></div>
       <div class="card-foot">
-        <span class="src"><span class="src-name">AppleInsider</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://appleinsider.com/articles/26/08/19/meta-brings-its-personal-assistant-app-to-mac-for-better-and-worse" target="_blank" rel="noopener">Read &rarr;</a>
+        <span class="card-source"><strong>TechCrunch</strong> · 20 Aug 2026</span>
+        <a class="read-link" href="https://techcrunch.com/2026/08/20/ai-data-giant-alation-confirms-cyberattack/" target="_blank" rel="noopener">Read →</a>
       </div>
     </div>
 
     <div class="card">
-      <h4>OpenAI begins testing Private Safety Processing with early customers</h4>
-      <p class="summary">OpenAI said on 19 August it is piloting a system meant to flag misuse patterns without broad data logging, positioning it as an enterprise answer to the trust questions raised by the Astra pause and the Hugging Face breach.</p>
-      <div class="tags"><span class="tag">AI Policy</span><span class="tag">Privacy</span></div>
+      <h4>Google Strikes $12.2 Billion Marvell Deal to Expand Its Custom AI Chip Push</h4>
+      <p>Google received warrants to buy nearly 59 million Marvell shares at $206.58 apiece, vesting against chip-purchase targets that could run through fiscal 2033. The agreement covers TPU-linked silicon, inference accelerators, memory controllers and networking — deepening Google's move away from dependence on any single supplier.</p>
+      <div class="tags"><span class="tag">AI Industry</span></div>
       <div class="card-foot">
-        <span class="src"><span class="src-name">AI Weekly</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://aiweekly.co/ai-news-today" target="_blank" rel="noopener">Read &rarr;</a>
+        <span class="card-source"><strong>Financial Times</strong> <span class="paywall">Subscription</span> · 20 Aug 2026</span>
+        <a class="read-link" href="https://techstartups.com/2026/08/20/top-tech-news-today-august-20-2026-amazon-google-openai-openrouter-siemens-stripe-tdk-more/" target="_blank" rel="noopener">Read →</a>
       </div>
     </div>
 
     <div class="card">
-      <h4>Z.AI's GLM-5.3 reaches gateway availability</h4>
-      <p class="summary">GLM-5.3, released on 14 August, became broadly routable on 19 August — a reminder of how fast Chinese open-weight models now reach Western developer stacks. Google's Gemini 3.7 Flash landed six days earlier.</p>
-      <div class="tags"><span class="tag">AI Research</span></div>
+      <h4>Stripe Acquires AI Token-Routing Startup OpenRouter for $7.5 Billion</h4>
+      <p>Stripe agreed to buy OpenRouter, which routes requests across hundreds of AI models based on cost, speed and performance, for $7.5 billion — up from a $1.3 billion valuation in May. The platform now handles more than 10 trillion tokens a day, and the deal puts Stripe at the centre of how companies both pay for and allocate inference spend.</p>
+      <div class="tags"><span class="tag">AI Industry</span></div>
       <div class="card-foot">
-        <span class="src"><span class="src-name">LLM Gateway</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://llmgateway.io/timeline" target="_blank" rel="noopener">Read &rarr;</a>
+        <span class="card-source"><strong>The New York Times</strong> <span class="paywall">Subscription</span> · 20 Aug 2026</span>
+        <a class="read-link" href="https://www.nytimes.com/2026/08/19/business/stripe-openrouter-ai.html" target="_blank" rel="noopener">Read →</a>
       </div>
     </div>
 
     <div class="card">
-      <h4>AI and enrolment pressures are reshaping higher education</h4>
-      <p class="summary">Universities are absorbing AI at the same moment demographic decline squeezes enrolment, forcing instructional design and assessment to change together rather than sequentially. Pairs with survey data showing 88% of students and 77% of faculty now use AI.</p>
+      <h4>Schools Begin Teaching AI Literacy by Showing Students Where Chatbots Fail</h4>
+      <p>After an initial wave of outright bans, a growing number of US public schools are inviting AI into classrooms specifically so students can see it hallucinate — mislabelled maps, invented place names, confident errors. Utah, the first state with a full-time AI education specialist, has now trained more than 7,000 teachers, close to a third of its public-school instructors.</p>
       <div class="tags"><span class="tag">Education</span><span class="tag">EdTech</span></div>
       <div class="card-foot">
-        <span class="src"><span class="src-name">EdTech Magazine</span><span class="src-date">August 2026</span></span>
-        <a class="read-link" href="https://edtechmagazine.com/higher/article/2026/08/ai-and-enrollment-pressures-are-reshaping-higher-education" target="_blank" rel="noopener">Read &rarr;</a>
+        <span class="card-source"><strong>Associated Press</strong> · 21 Aug 2026</span>
+        <a class="read-link" href="https://www.news4jax.com/business/2026/08/21/schools-are-starting-to-teach-ai-literacy-for-many-that-means-helping-kids-see-chatbots-flaws/" target="_blank" rel="noopener">Read →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>Near-Autonomous Multi-Agent AI Cyberattack Targets Asia-Pacific Governments</h4>
+      <p>Researchers documented an operation that ran as many as eight AI agents in parallel to conduct reconnaissance, find vulnerabilities, attack and then refine subsequent attempts with limited human input. Evidence pointed to a simplified-Chinese-speaking operator, though no state or group was formally named.</p>
+      <div class="tags"><span class="tag">AI Research</span><span class="tag">AI Policy</span></div>
+      <div class="card-foot">
+        <span class="card-source"><strong>Dark Reading</strong> · 20 Aug 2026</span>
+        <a class="read-link" href="https://techstartups.com/2026/08/20/top-tech-news-today-august-20-2026-amazon-google-openai-openrouter-siemens-stripe-tdk-more/" target="_blank" rel="noopener">Read →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>MIT Spinoff Apollo Atomics Raises $31M for Factory-Built Reactors to Power AI Data Centres</h4>
+      <p>Apollo Atomics closed an oversubscribed seed round to commercialise compact pressurised-water reactors with roughly an order of magnitude higher power density than conventional designs. The company is developing 10 MW, 50 MW and 300 MW platforms aimed squarely at data centres, where grid access has become the binding constraint on AI build-out.</p>
+      <div class="tags"><span class="tag">AI Industry</span></div>
+      <div class="card-foot">
+        <span class="card-source"><strong>Tech Startups</strong> · 20 Aug 2026</span>
+        <a class="read-link" href="https://techstartups.com/2026/08/20/mit-spinoff-apollo-atomics-raises-31m-to-build-factory-made-nuclear-reactors-for-ai-data-centers/" target="_blank" rel="noopener">Read →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>Amazon Plans Sixfold Expansion of Prime Air Drone Delivery to Nearly 500 US Cities</h4>
+      <p>Amazon will extend autonomous drone delivery to almost 500 US cities and towns by the end of 2026, adding metro areas around Chicago, Atlanta, Cleveland, Syracuse and Boise. Eligible packages weigh up to five pounds and arrive in as little as 30 minutes, moving drone logistics from isolated pilots toward mainstream fulfilment.</p>
+      <div class="tags"><span class="tag">AI Industry</span></div>
+      <div class="card-foot">
+        <span class="card-source"><strong>Foreign Policy Journal</strong> · 20 Aug 2026</span>
+        <a class="read-link" href="https://www.foreignpolicyjournal.com/2026/08/20/amazon-nasdaq-amzn-plans-sixfold-expansion-of-prime-air-drone-delivery-to-nearly-500-u-s-cities/" target="_blank" rel="noopener">Read →</a>
       </div>
     </div>
 
@@ -343,9 +331,9 @@ nav.tabs{top:78px}
 
   <div class="history">
     <p class="more-label">Previous Editions</p>
-    <div class="editions">
-      <div class="edition active"><div class="e-date">20 August 2026</div><div class="e-meta">Today &middot; 19 articles</div></div>
-      <div class="edition pending"><div class="e-date">21 August 2026</div><div class="e-meta">Tomorrow &middot; Pending</div></div>
+    <div class="history-strip">
+      <div class="edition active"><div class="e-date">21 August 2026</div><div class="e-meta">Today · 8 articles</div></div>
+      <div class="edition pending"><div class="e-date">22 August 2026</div><div class="e-meta">Tomorrow · Pending</div></div>
     </div>
   </div>
 </section>
@@ -355,99 +343,89 @@ nav.tabs{top:78px}
   <div class="section-head">
     <div>
       <h2>Global Economy</h2>
-      <p class="sources">CNBC &middot; Bloomberg &middot; Quartz &middot; The Hill &middot; India TV News &middot; Trade Compliance Resource Hub &middot; Tariffs Tool</p>
+      <p class="sources">Xinhua · Bloomberg · Reuters · Business Standard · NPR · WBUR · Kotak Securities — coverage limited to the United States, India and China</p>
     </div>
     <div class="sort-wrap">
       <label for="sort-econ">Sort</label>
-      <select id="sort-econ"><option>Most recent</option><option>Source A–Z</option><option>Relevance</option></select>
+      <select id="sort-econ">
+        <option>Most relevant</option>
+        <option>Newest first</option>
+        <option>By source</option>
+      </select>
     </div>
   </div>
 
-  <div class="top-story">
-    <div class="accent-bar"></div>
-    <div class="top-body">
-      <span class="badge-top">Top Story</span>
-      <h3>Fed minutes show no support for cuts, and an open debate about hiking</h3>
-      <p class="summary">Minutes from the 28–29 July FOMC meeting, released 19 August, showed no participant arguing for a cut and several saying rates may need to rise if inflation does not slow. The committee held at 3.50–3.75% on a 9–3 vote — its most fractured in years — with Hammack, Kashkari and Logan each preferring a quarter-point increase. The hawkish tone extended past the dissenters: participants said tightening "would likely be necessary if inflation did not decline," and some questioned whether financial conditions are tight enough at all. Chair Kevin Warsh separately floated moving to a six-meeting annual calendar.</p>
-      <div class="meta-row">
-        <span class="chip">CNBC</span>
-        <span class="chip">19 August 2026</span>
-        <span class="chip">United States</span>
-      </div>
-      <a class="btn-read" href="https://www.cnbc.com/2026/08/19/fed-minutes-july-2026-officials-saw-need-for-rate-hike-if-inflation-doesnt-cool.html" target="_blank" rel="noopener">Read Article &rarr;</a>
+  <article class="top-story">
+    <span class="badge">Top Story</span>
+    <h3>China Holds Loan Prime Rates for a 15th Straight Month as Shanghai Moves to Prop Up Housing</h3>
+    <p class="summary">The People's Bank of China left the one-year loan prime rate at 3.00% and the five-year-plus rate at 3.50% on 20 August, the fifteenth consecutive month without a change, matching a unanimous forecast from all 25 economists in a Reuters survey. The seven-day reverse repo rate that anchors LPR quotes has been on hold just as long, since the May 2025 cut. Hours later, Shanghai became the first top-tier city to loosen homebuying rules after July's sharper-than-expected slowdown — a signal that Beijing is leaning on targeted property measures rather than headline rate cuts. Meanwhile January-July goods trade reached 30.1 trillion yuan, up 17.3% year on year, with imports outpacing exports.</p>
+    <div class="meta-row">
+      <span class="chip source">Xinhua</span>
+      <span class="chip">20 August 2026</span>
     </div>
-  </div>
+    <a class="read-btn" href="https://english.news.cn/20260820/b251bbb664704093957d852f4e96b592/c.html" target="_blank" rel="noopener">Read Article →</a>
+  </article>
 
   <p class="more-label">More Articles</p>
   <div class="grid">
 
     <div class="card">
-      <h4>China widens use of $1.6 trillion housing fund to spur spending</h4>
-      <p class="summary">Beijing is unlocking the 10.9tn yuan housing provident fund for renovations and other big-ticket household spending, and loosening conditions on using it for rent. It is the first policy response since the July slowdown deepened.</p>
-      <div class="tags"><span class="tag">China</span><span class="tag">Fiscal Policy</span></div>
+      <h4>Shanghai Starts New Round of Property Easing After Economy Slows</h4>
+      <p>China's financial hub rolled out a fresh batch of homebuying easing measures, becoming the first tier-one city to move after the national slowdown deepened in July. The step underlines how far the property drag still weighs on growth despite an otherwise strong export performance.</p>
+      <div class="tags"><span class="tag">China</span></div>
       <div class="card-foot">
-        <span class="src"><span class="src-name">Bloomberg</span><span class="chip-paywall">Subscription</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://www.bloomberg.com/news/articles/2026-08-19/china-widens-use-of-1-6-trillion-fund-to-spur-spending-on-homes" target="_blank" rel="noopener">Read &rarr;</a>
+        <span class="card-source"><strong>Bloomberg</strong> <span class="paywall">Subscription</span> · 20 Aug 2026</span>
+        <a class="read-link" href="https://www.bloomberg.com/news/articles/2026-08-20/shanghai-starts-new-round-of-property-easing-after-economy-slows" target="_blank" rel="noopener">Read →</a>
       </div>
     </div>
 
     <div class="card">
-      <h4>Sensex falls a seventh straight session; rupee slips to 95.76</h4>
-      <p class="summary">The Sensex closed down 325.78 points at 76,909.68 and the Nifty lost 76.60 to 24,078.30 as traders sat out ahead of the Fed minutes. The rupee eased 2 paise on higher crude and firm US yields; HCL Tech and Infosys bucked the decline.</p>
-      <div class="tags"><span class="tag">India</span><span class="tag">Markets</span></div>
-      <div class="card-foot">
-        <span class="src"><span class="src-name">India TV News</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://www.indiatvnews.com/business/markets/sensex-declines-325-78-points-nifty-below-24-100-as-investors-remained-cautious-ahead-of-us-fomc-minutes-2026-08-19-1051834" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h4>Fed officials hint a rate increase may be necessary</h4>
-      <p class="summary">The Hill reads the July minutes as a decisive shift in the committee's centre of gravity, with the three dissents understating how many participants now see the next move as up rather than down.</p>
+      <h4>US Weekly Jobless Claims Dip to 206,000, Beating Forecasts</h4>
+      <p>Initial claims fell 6,000 in the week ending 15 August, below the 210,000 economists expected, suggesting layoffs remain contained. Continuing claims rose 18,000 to 1.799 million, however — employers are holding on to staff, but those who do lose jobs are taking longer to find new ones.</p>
       <div class="tags"><span class="tag">United States</span><span class="tag">Monetary Policy</span></div>
       <div class="card-foot">
-        <span class="src"><span class="src-name">The Hill</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://thehill.com/business/6040110-fed-july-minutes-rate-hike/" target="_blank" rel="noopener">Read &rarr;</a>
+        <span class="card-source"><strong>Reuters</strong> · 20 Aug 2026</span>
+        <a class="read-link" href="https://kfgo.com/2026/08/20/us-weekly-jobless-claims-dip-in-latest-week/" target="_blank" rel="noopener">Read →</a>
       </div>
     </div>
 
     <div class="card">
-      <h4>Inside the July FOMC dissent</h4>
-      <p class="summary">Quartz walks through the mechanics of the 9–3 split and what a hawkish hold means for the path of policy into the autumn, against 3.4% headline CPI and a July payrolls print that lost 23,000 jobs.</p>
-      <div class="tags"><span class="tag">United States</span><span class="tag">Monetary Policy</span></div>
+      <h4>Sensex Snaps Four-Day Losing Streak, Jumps 628 Points; Nifty Ends at 24,232</h4>
+      <p>Indian benchmarks rebounded on Thursday as IT and financial stocks led broad-based buying and global bond markets stabilised. The Sensex closed up 0.82% at 77,537.72 while the Nifty gained 0.64%, even as the rupee slipped to a three-week low of 96 to the dollar and Brent hovered near $92.</p>
+      <div class="tags"><span class="tag">India</span></div>
       <div class="card-foot">
-        <span class="src"><span class="src-name">Quartz</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://qz.com/fed-fomc-minutes-july-2026-rate-hike-dissent-081926" target="_blank" rel="noopener">Read &rarr;</a>
+        <span class="card-source"><strong>Business Standard</strong> · 20 Aug 2026</span>
+        <a class="read-link" href="https://www.business-standard.com/markets/news/stock-market-live-august-20-nse-bse-sensex-today-nifty50-gift-nifty-us-iran-tension-brent-crude-tempsens-instruments-ipo-126082000087_1.html" target="_blank" rel="noopener">Read →</a>
       </div>
     </div>
 
     <div class="card">
-      <h4>Canada's 50% Section 338 duties paused three days</h4>
-      <p class="summary">The tariffs on Canadian dairy, alcohol and motor vehicles were due to bite at 12:01am on 19 August. Trump paused them to 22 August while Ottawa and Washington try to close a deal; Carney said talks run through Friday.</p>
+      <h4>US Federal Debt Tops $40 Trillion, Doubling Since 2017</h4>
+      <p>Gross federal debt crossed $40 trillion this week, with interest costs alone now exceeding $1 trillion a year — more than several major discretionary budget lines combined. The milestone sharpens the fiscal-risk backdrop that has been pressuring the dollar and long-dated Treasuries.</p>
+      <div class="tags"><span class="tag">United States</span></div>
+      <div class="card-foot">
+        <span class="card-source"><strong>NPR</strong> · 20 Aug 2026</span>
+        <a class="read-link" href="https://www.kunc.org/npr-news/2026-08-20/u-s-debt-tops-40-trillion-and-new-census-report-trump-is-touting-raises-concerns" target="_blank" rel="noopener">Read →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>US and Canada Work to Finalise Deal Halving Steel and Aluminium Tariffs</h4>
+      <p>A tentative agreement would cut duties on Canadian steel and aluminium from 50% to 25% and lower auto tariffs to 15%, after Washington pulled back from a threatened blanket 50% levy. Terms are not final and different rates may apply to derivative products.</p>
       <div class="tags"><span class="tag">Trade</span><span class="tag">United States</span></div>
       <div class="card-foot">
-        <span class="src"><span class="src-name">Tariffs Tool</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://www.tariffstool.com/guides/canada-tariff-50-percent-section-338-august-2026" target="_blank" rel="noopener">Read &rarr;</a>
+        <span class="card-source"><strong>WBUR Here &amp; Now</strong> · 20 Aug 2026</span>
+        <a class="read-link" href="https://www.wbur.org/hereandnow/2026/08/20/us-canada-trade-deal" target="_blank" rel="noopener">Read →</a>
       </div>
     </div>
 
     <div class="card">
-      <h4>Tariff tracker: where India and China stand</h4>
-      <p class="summary">India still faces a combined 50% duty — a 25% reciprocal tariff plus a 25% penalty tied to Russian oil purchases — among the highest on any partner. China and most others sit at 10–12.5%, with fresh Section 301 capacity probes running.</p>
-      <div class="tags"><span class="tag">India</span><span class="tag">Trade</span></div>
+      <h4>India Pre-Market: Nifty Below 24,100 as Traders Weigh Hawkish Fed Minutes</h4>
+      <p>Indian equities opened the session under pressure after July FOMC minutes showed many participants judged that further tightening would likely be needed if inflation did not cool — a hawkish read that lifted the dollar and weighed on emerging-market risk appetite. Crude near $92 and a softening rupee were the other key triggers.</p>
+      <div class="tags"><span class="tag">India</span><span class="tag">Monetary Policy</span></div>
       <div class="card-foot">
-        <span class="src"><span class="src-name">Trade Compliance Resource Hub</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://www.tradecomplianceresourcehub.com/2026/08/19/trump-2-0-tariff-tracker/" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h4>Minutes tilt toward a possible hike, markets recalibrate</h4>
-      <p class="summary">A markets-desk framing of the same release: no cut support, a live hike debate, and Brent pushing toward $90 on Strait of Hormuz tension that complicates the disinflation path the Fed needs.</p>
-      <div class="tags"><span class="tag">United States</span><span class="tag">Markets</span></div>
-      <div class="card-foot">
-        <span class="src"><span class="src-name">Bloomingbit</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://en.bloomingbit.io/feed/news/118666" target="_blank" rel="noopener">Read &rarr;</a>
+        <span class="card-source"><strong>Kotak Securities</strong> · 20 Aug 2026</span>
+        <a class="read-link" href="https://www.kotakneo.com/news/market-news/pre-market-20-august-2026-sensex-nifty-oil-fed-minutes-gift-nifty/" target="_blank" rel="noopener">Read →</a>
       </div>
     </div>
 
@@ -455,9 +433,9 @@ nav.tabs{top:78px}
 
   <div class="history">
     <p class="more-label">Previous Editions</p>
-    <div class="editions">
-      <div class="edition active"><div class="e-date">20 August 2026</div><div class="e-meta">Today &middot; 19 articles</div></div>
-      <div class="edition pending"><div class="e-date">21 August 2026</div><div class="e-meta">Tomorrow &middot; Pending</div></div>
+    <div class="history-strip">
+      <div class="edition active"><div class="e-date">21 August 2026</div><div class="e-meta">Today · 7 articles</div></div>
+      <div class="edition pending"><div class="e-date">22 August 2026</div><div class="e-meta">Tomorrow · Pending</div></div>
     </div>
   </div>
 </section>
@@ -467,71 +445,59 @@ nav.tabs{top:78px}
   <div class="section-head">
     <div>
       <h2>Governance Reforms</h2>
-      <p class="sources">White &amp; Case &middot; GHY International &middot; Certivo &middot; Verfassungsblog &middot; OECD &mdash; low-volume bucket, quality over count</p>
+      <p class="sources">NPR · Associated Press · Business Standard · Reuters — a deliberately short list; only substantive items are carried</p>
     </div>
     <div class="sort-wrap">
       <label for="sort-gov">Sort</label>
-      <select id="sort-gov"><option>Most recent</option><option>Source A–Z</option><option>Relevance</option></select>
+      <select id="sort-gov">
+        <option>Most relevant</option>
+        <option>Newest first</option>
+        <option>By source</option>
+      </select>
     </div>
   </div>
 
-  <div class="note">Thin day for governance. Only four items cleared the substance bar, and two are analysis pieces from earlier in August rather than 19 August reporting — their dates are labelled honestly below.</div>
-
-  <div class="top-story">
-    <div class="accent-bar"></div>
-    <div class="top-body">
-      <span class="badge-top">Top Story</span>
-      <h3>A 1930 statute is invoked for the first time — and then paused at the deadline</h3>
-      <p class="summary">Section 338 of the Tariff Act of 1930 lets a president impose duties on countries found to discriminate against US commerce. No president had ever used it until three July proclamations applied 50% tariffs to Canadian dairy, alcohol and motor vehicles, covering roughly $20bn of imports. The duties were scheduled to take effect at 12:01am on 19 August; hours before, the administration paused them to 22 August pending a USMCA-adjacent deal. The episode is a live test of how far dormant delegated authorities can be revived without fresh legislative authorisation.</p>
-      <div class="meta-row">
-        <span class="chip">White &amp; Case</span>
-        <span class="chip">19 August 2026</span>
-        <span class="chip">Executive Power</span>
-      </div>
-      <a class="btn-read" href="https://www.whitecase.com/insight-alert/trump-administration-imposes-50-tariffs-certain-canadian-products-first-use-section" target="_blank" rel="noopener">Read Article &rarr;</a>
+  <article class="top-story">
+    <span class="badge">Top Story</span>
+    <h3>Coalition Asks Maryland's Attorney General to Investigate Data Brokers Selling Location Data to Police and ICE</h3>
+    <p class="summary">Twelve privacy and civil-rights organisations, led by We Are CASA and drafted by Georgetown Law's Technology Law Clinic, filed a formal consumer complaint alleging that data brokers are breaching Maryland's Data Privacy Act. The law bars companies from sharing residents' phone or vehicle location data with law enforcement absent proper legal process, and from sharing any personal data with immigration authorities without a judicial warrant. The complaint names Penlink, Thomson Reuters, Motorola, Insight LPR, LexisNexis and Flock Safety, among others — Penlink through its Webloc cellphone-location programme, the rest via licence-plate-reader data. Penlink and Thomson Reuters told NPR they comply with the law. The case is an early test of whether one of the country's strictest state privacy statutes has real enforcement teeth.</p>
+    <div class="meta-row">
+      <span class="chip source">NPR</span>
+      <span class="chip">20 August 2026</span>
     </div>
-  </div>
+    <a class="read-btn" href="https://www.npr.org/2026/08/20/nx-s1-5938822/maryland-privacy-data-brokers" target="_blank" rel="noopener">Read Article →</a>
+  </article>
 
   <p class="more-label">More Articles</p>
   <div class="grid">
 
     <div class="card">
-      <h4>What Section 338 means in practice for exporters</h4>
-      <p class="summary">A compliance-side walkthrough updated for the 19 August deadline, covering scope, classification and the operational effect of a three-day pause on shipments already in transit.</p>
-      <div class="tags"><span class="tag">Governance</span><span class="tag">Trade</span></div>
+      <h4>Ex-Meta Executive Testifies Zuckerberg Encouraged Growth Over Child Safety</h4>
+      <p>On his second day of testimony in the federal child-safety trial in Oakland, former engineering director Arturo Béjar told jurors Meta consistently prioritised engagement metrics over young users' wellbeing and took a "don't ask, don't tell" approach to under-13s on Instagram.</p>
+      <div class="tags"><span class="tag">Digital Governance</span><span class="tag">Governance</span></div>
       <div class="card-foot">
-        <span class="src"><span class="src-name">GHY International</span><span class="src-date">19 Aug 2026</span></span>
-        <a class="read-link" href="https://www.ghy.com/trade-compliance/section-338-tariffs-how-canadian-exporters-should-prepare-before-august-19/" target="_blank" rel="noopener">Read &rarr;</a>
+        <span class="card-source"><strong>Associated Press</strong> · 20 Aug 2026</span>
+        <a class="read-link" href="https://www.claimsjournal.com/news/national/2026/08/20/339673.htm" target="_blank" rel="noopener">Read →</a>
       </div>
     </div>
 
     <div class="card">
-      <h4>EU AI Act: what actually applies after the Digital Omnibus</h4>
-      <p class="summary">Transparency duties under Article 50 became enforceable on 2 August with penalties up to 3% of global turnover. The Omnibus, in force since 27 July, pushed Annex III high-risk obligations to December 2027 and product-embedded systems to August 2028.</p>
-      <div class="tags"><span class="tag">AI Policy</span><span class="tag">Digital Governance</span></div>
+      <h4>Meta's Child Safety Trial: What Instagram Is Accused Of and What Is at Stake</h4>
+      <p>California, Colorado, Kentucky and New Jersey allege Meta engineered Facebook and Instagram to hook young users and misled the public about safety. The six-week trial is the first of its kind to reach a jury and could set the template for how product-design liability applies to social platforms.</p>
+      <div class="tags"><span class="tag">Digital Governance</span></div>
       <div class="card-foot">
-        <span class="src"><span class="src-name">Certivo</span><span class="src-date">August 2026</span></span>
-        <a class="read-link" href="https://www.certivo.com/blog-details/eu-ai-act-august-2026-what-applies-after-the-digital-omnibus" target="_blank" rel="noopener">Read &rarr;</a>
+        <span class="card-source"><strong>Business Standard</strong> · 20 Aug 2026</span>
+        <a class="read-link" href="https://www.business-standard.com/world-news/meta-child-safety-trial-instagram-facebook-lawsuit-court-case-explained-126082000950_1.html" target="_blank" rel="noopener">Read →</a>
       </div>
     </div>
 
     <div class="card">
-      <h4>Power without oversight: India's SIR judgment and institutional design</h4>
-      <p class="summary">A critical reading of the May Supreme Court ruling upholding the Election Commission's Special Intensive Revision of Bihar's rolls. The court validated the power under Article 324; the argument here is that it left the accountability architecture around that power unbuilt.</p>
-      <div class="tags"><span class="tag">Governance</span><span class="tag">India</span></div>
+      <h4>US Agencies Issue Joint Warning on Hackers Targeting Siemens Industrial Controllers</h4>
+      <p>The NSA, FBI, Department of Energy, EPA and CISA jointly warned that attackers are probing Siemens S7-series programmable logic controllers exposed to the internet across water, energy and manufacturing facilities. Officials flagged that AI tooling is lowering the expertise needed to find weaknesses in ageing operational-technology estates.</p>
+      <div class="tags"><span class="tag">Digital Governance</span><span class="tag">Governance</span></div>
       <div class="card-foot">
-        <span class="src"><span class="src-name">Verfassungsblog</span><span class="src-date">August 2026</span></span>
-        <a class="read-link" href="https://verfassungsblog.de/sir-judgment-supreme-court-india-election-commission/" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </div>
-
-    <div class="card">
-      <h4>OECD: a 19-point gap between integrity rules and integrity practice</h4>
-      <p class="summary">The Anti-Corruption and Integrity Outlook 2026 scores 37 OECD members and 25 partners. Regulations average 63% strength against 44% implementation in OECD countries — a 19-point gap, widening to 26 points among partners.</p>
-      <div class="tags"><span class="tag">Governance</span><span class="tag">Transparency</span></div>
-      <div class="card-foot">
-        <span class="src"><span class="src-name">OECD</span><span class="src-date">2026</span></span>
-        <a class="read-link" href="https://www.oecd.org/en/publications/anti-corruption-and-integrity-outlook-2026_16708b78-en.html" target="_blank" rel="noopener">Read &rarr;</a>
+        <span class="card-source"><strong>Reuters</strong> · 20 Aug 2026</span>
+        <a class="read-link" href="https://techstartups.com/2026/08/20/top-tech-news-today-august-20-2026-amazon-google-openai-openrouter-siemens-stripe-tdk-more/" target="_blank" rel="noopener">Read →</a>
       </div>
     </div>
 
@@ -539,22 +505,25 @@ nav.tabs{top:78px}
 
   <div class="history">
     <p class="more-label">Previous Editions</p>
-    <div class="editions">
-      <div class="edition active"><div class="e-date">20 August 2026</div><div class="e-meta">Today &middot; 19 articles</div></div>
-      <div class="edition pending"><div class="e-date">21 August 2026</div><div class="e-meta">Tomorrow &middot; Pending</div></div>
+    <div class="history-strip">
+      <div class="edition active"><div class="e-date">21 August 2026</div><div class="e-meta">Today · 4 articles</div></div>
+      <div class="edition pending"><div class="e-date">22 August 2026</div><div class="e-meta">Tomorrow · Pending</div></div>
     </div>
   </div>
 </section>
 
 </main>
 
+<footer>
+  Compiled from reporting published on 20 August 2026. Paywalled outlets are marked. Where a story broke through a subscription outlet, an accessible secondary report is linked.
+</footer>
+
 <script>
 function showSection(name, el){
   document.querySelectorAll('main section').forEach(function(s){ s.classList.remove('active'); });
-  document.querySelectorAll('nav.tabs .tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
   document.getElementById(name).classList.add('active');
   el.classList.add('active');
-  window.scrollTo({top:0, behavior:'smooth'});
 }
 </script>
 
