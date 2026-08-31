@@ -3,21 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Daily Briefing — Saturday, 29 August 2026</title>
+<title>Daily Briefing &mdash; Monday, 31 August 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#f9f8f5;
-  --surface:#ffffff;
-  --surface2:#f3f2ee;
-  --border:#e8e5de;
-  --border2:#d4cfc5;
-  --text:#1a1915;
-  --text2:#3d3b35;
-  --muted:#7a7669;
-  --muted2:#a09c92;
+:root {
+  --bg:#f9f8f5; --surface:#ffffff; --surface2:#f3f2ee;
+  --border:#e8e5de; --border2:#d4cfc5;
+  --text:#1a1915; --text2:#3d3b35; --muted:#7a7669; --muted2:#a09c92;
   --accent:#c96442;
   --ai:#c96442; --ai-bg:#fdf1ec; --ai-border:#f0c4b4;
   --econ:#2d6a4f; --econ-bg:#eef6f1; --econ-border:#b8dcc8;
@@ -25,543 +19,474 @@
   --shadow-sm:0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
   --shadow-md:0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.04);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{
+*,*::before,*::after { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text);
   font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  background:var(--bg); color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  font-size:15px; line-height:1.55;
-}
-a{color:inherit;text-decoration:none}
+  font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased; }
 
-/* ---------- Header ---------- */
-header{
-  position:sticky; top:0; z-index:50;
-  background:var(--surface);
-  border-bottom:1px solid var(--border);
-}
-.header-inner{
-  max-width:1180px; margin:0 auto; padding:.85rem 1.5rem;
-  display:flex; align-items:center; justify-content:space-between; gap:1rem;
-}
-.header-left h1{font-size:1rem;font-weight:600;letter-spacing:-.01em}
-.header-left p{font-size:.75rem;color:var(--muted);margin-top:.15rem}
-.header-right{display:flex;align-items:center;gap:.6rem}
-.chip-updated{
-  font-size:.7rem;font-weight:500;color:var(--muted);
-  background:var(--surface2);border:1px solid var(--border);
-  padding:.3rem .6rem;border-radius:999px;white-space:nowrap;
-}
-.btn-refresh{
-  font-family:inherit;font-size:.72rem;font-weight:600;
-  color:var(--accent);background:transparent;
-  border:1px solid var(--ai-border);border-radius:999px;
-  padding:.32rem .8rem;cursor:pointer;transition:background .15s;
-}
-.btn-refresh:hover{background:var(--ai-bg)}
+header { position:sticky; top:0; z-index:50; background:var(--surface);
+  border-bottom:1px solid var(--border); }
+.hd { max-width:1180px; margin:0 auto; padding:.85rem 1.5rem;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+.hd h1 { margin:0; font-size:1rem; font-weight:600; letter-spacing:-.01em; }
+.hd p { margin:.15rem 0 0; font-size:.75rem; color:var(--muted); }
+.hd-r { display:flex; align-items:center; gap:.6rem; }
+.upd { font-size:.72rem; color:var(--muted); background:var(--surface2);
+  border:1px solid var(--border); border-radius:999px; padding:.28rem .7rem; white-space:nowrap; }
+.refresh { font-family:inherit; font-size:.75rem; font-weight:500; color:#fff;
+  background:var(--accent); border:none; border-radius:6px; padding:.4rem .9rem;
+  cursor:pointer; transition:opacity .15s; }
+.refresh:hover { opacity:.88; }
 
-/* ---------- Tabs ---------- */
-.tabs{
-  background:var(--surface);
-  border-bottom:1px solid var(--border);
-  position:sticky; top:57px; z-index:49;
-}
-.tabs-inner{max-width:1180px;margin:0 auto;padding:0 1.5rem;display:flex;gap:.25rem;overflow-x:auto}
-.tab{
-  font-family:inherit;font-size:.82rem;font-weight:500;color:var(--muted);
-  background:none;border:none;border-bottom:2px solid transparent;
-  padding:.75rem .9rem;cursor:pointer;white-space:nowrap;transition:color .15s;
-}
-.tab:hover{color:var(--text2)}
-.tab .count{
-  font-size:.68rem;font-weight:600;color:var(--muted2);
-  background:var(--surface2);border-radius:999px;padding:.08rem .38rem;margin-left:.35rem;
-}
-.tab.active{color:var(--text);font-weight:600}
-.tab.active .count{color:var(--surface)}
-.tab.active[data-b="ai"]{border-bottom-color:var(--ai)}
-.tab.active[data-b="ai"] .count{background:var(--ai)}
-.tab.active[data-b="econ"]{border-bottom-color:var(--econ)}
-.tab.active[data-b="econ"] .count{background:var(--econ)}
-.tab.active[data-b="gov"]{border-bottom-color:var(--gov)}
-.tab.active[data-b="gov"] .count{background:var(--gov)}
+nav { max-width:1180px; margin:0 auto; padding:0 1.5rem;
+  display:flex; gap:.25rem; border-bottom:1px solid var(--border); }
+.tab { font-family:inherit; font-size:.83rem; font-weight:500; color:var(--muted);
+  background:none; border:none; border-bottom:2px solid transparent;
+  padding:.85rem .95rem; cursor:pointer; display:flex; align-items:center; gap:.45rem;
+  transition:color .15s; margin-bottom:-1px; }
+.tab:hover { color:var(--text2); }
+.count { font-size:.68rem; font-weight:600; color:var(--muted2);
+  background:var(--surface2); border-radius:999px; padding:.08rem .42rem; }
+.tab.active { font-weight:600; }
+.tab-ai.active { color:var(--ai); border-bottom-color:var(--ai); }
+.tab-ai.active .count { background:var(--ai-bg); color:var(--ai); }
+.tab-econ.active { color:var(--econ); border-bottom-color:var(--econ); }
+.tab-econ.active .count { background:var(--econ-bg); color:var(--econ); }
+.tab-gov.active { color:var(--gov); border-bottom-color:var(--gov); }
+.tab-gov.active .count { background:var(--gov-bg); color:var(--gov); }
 
-/* ---------- Layout ---------- */
-main{max-width:1180px;margin:0 auto;padding:1.75rem 1.5rem 3rem}
-section{display:none}
-section.active{display:block}
+main { max-width:1180px; margin:0 auto; padding:1.75rem 1.5rem 3rem; }
+.section { display:none; }
+.section.active { display:block; }
 
-.sec-head{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem;
-}
-.sec-head h2{font-size:1.25rem;font-weight:600;letter-spacing:-.02em}
-.sec-head .sources{font-size:.72rem;color:var(--muted);margin-top:.3rem;max-width:640px}
-.sort-wrap{display:flex;align-items:center;gap:.45rem}
-.sort-wrap label{font-size:.7rem;color:var(--muted2);font-weight:500}
-select{
-  font-family:inherit;font-size:.74rem;color:var(--text2);
-  background:var(--surface);border:1px solid var(--border2);
-  border-radius:6px;padding:.35rem .55rem;cursor:pointer;
-}
+.sec-head { display:flex; align-items:flex-end; justify-content:space-between;
+  gap:1rem; flex-wrap:wrap; margin-bottom:1.15rem; }
+.sec-title { margin:0; font-size:1.35rem; font-weight:600; letter-spacing:-.02em; }
+.sec-sub { margin:.25rem 0 0; font-size:.75rem; color:var(--muted); max-width:64ch; }
+.sort { font-family:inherit; font-size:.75rem; color:var(--text2);
+  background:var(--surface); border:1px solid var(--border2); border-radius:6px;
+  padding:.38rem .6rem; cursor:pointer; }
 
-/* ---------- Featured card ---------- */
-.featured{
-  position:relative;background:var(--surface);
-  border:1px solid var(--border);border-radius:10px;
-  padding:1.4rem 1.6rem 1.4rem 1.9rem;
-  box-shadow:var(--shadow-md);overflow:hidden;margin-bottom:1.75rem;
-}
-.featured::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
-.featured[data-b="ai"]::before{background:var(--ai)}
-.featured[data-b="econ"]::before{background:var(--econ)}
-.featured[data-b="gov"]::before{background:var(--gov)}
-.badge-top{
-  display:inline-block;font-size:.62rem;font-weight:700;
-  letter-spacing:.09em;text-transform:uppercase;
-  padding:.24rem .55rem;border-radius:4px;margin-bottom:.7rem;
-}
-.featured[data-b="ai"] .badge-top{color:var(--ai);background:var(--ai-bg);border:1px solid var(--ai-border)}
-.featured[data-b="econ"] .badge-top{color:var(--econ);background:var(--econ-bg);border:1px solid var(--econ-border)}
-.featured[data-b="gov"] .badge-top{color:var(--gov);background:var(--gov-bg);border:1px solid var(--gov-border)}
-.featured h3{font-size:1.35rem;font-weight:600;line-height:1.3;letter-spacing:-.02em;margin-bottom:.6rem;max-width:840px}
-.featured p.summary{font-size:.9rem;color:var(--text2);max-width:840px;margin-bottom:1rem}
-.featured-meta{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.top { display:flex; background:var(--surface); border:1px solid var(--border);
+  border-radius:10px; overflow:hidden; box-shadow:var(--shadow-md); margin-bottom:1.9rem; }
+.top-bar { width:4px; flex:0 0 4px; }
+.top-ai .top-bar { background:var(--ai); }
+.top-econ .top-bar { background:var(--econ); }
+.top-gov .top-bar { background:var(--gov); }
+.top-body { padding:1.4rem 1.6rem; flex:1; min-width:0; }
+.badge { display:inline-block; font-size:.65rem; font-weight:600;
+  text-transform:uppercase; letter-spacing:.06em; padding:.2rem .55rem;
+  border-radius:4px; margin-bottom:.7rem; }
+.badge-ai { color:var(--ai); background:var(--ai-bg); border:1px solid var(--ai-border); }
+.badge-econ { color:var(--econ); background:var(--econ-bg); border:1px solid var(--econ-border); }
+.badge-gov { color:var(--gov); background:var(--gov-bg); border:1px solid var(--gov-border); }
+.top-h { margin:0 0 .6rem; font-size:1.45rem; font-weight:600;
+  line-height:1.28; letter-spacing:-.02em; }
+.top-s { margin:0 0 .9rem; font-size:.92rem; color:var(--text2); max-width:78ch; }
+.top-f { display:flex; align-items:center; justify-content:space-between;
+  gap:1rem; flex-wrap:wrap; margin-top:1rem;
+  padding-top:.9rem; border-top:1px solid var(--border); }
+.btn { font-size:.8rem; font-weight:500; color:#fff; text-decoration:none;
+  border-radius:6px; padding:.48rem 1rem; white-space:nowrap; transition:opacity .15s; }
+.btn:hover { opacity:.88; }
+.btn-ai { background:var(--ai); }
+.btn-econ { background:var(--econ); }
+.btn-gov { background:var(--gov); }
 
-/* ---------- Chips ---------- */
-.chip{
-  font-size:.68rem;font-weight:500;color:var(--muted);
-  background:var(--surface2);border:1px solid var(--border);
-  padding:.24rem .55rem;border-radius:999px;white-space:nowrap;
-}
-.chip-paywall{
-  font-size:.6rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  color:#8a6a1f;background:#fdf6e3;border:1px solid #e8d59a;
-  padding:.2rem .45rem;border-radius:4px;white-space:nowrap;
-}
-.tag{
-  font-size:.6rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
-  padding:.2rem .45rem;border-radius:4px;white-space:nowrap;
-}
-.tag[data-b="ai"]{color:var(--ai);background:var(--ai-bg);border:1px solid var(--ai-border)}
-.tag[data-b="econ"]{color:var(--econ);background:var(--econ-bg);border:1px solid var(--econ-border)}
-.tag[data-b="gov"]{color:var(--gov);background:var(--gov-bg);border:1px solid var(--gov-border)}
+.more { margin:0 0 .8rem; font-size:.7rem; font-weight:600; color:var(--muted);
+  text-transform:uppercase; letter-spacing:.08em; }
+.grid { display:grid; gap:1rem; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); }
+.card { display:flex; flex-direction:column; background:var(--surface);
+  border:1px solid var(--border); border-radius:10px; padding:1.15rem 1.25rem;
+  box-shadow:var(--shadow-sm); transition:box-shadow .18s, transform .18s; }
+.card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.card-h { margin:0 0 .5rem; font-size:1rem; font-weight:600;
+  line-height:1.35; letter-spacing:-.01em; }
+.card-s { margin:0 0 .85rem; font-size:.83rem; color:var(--text2); flex:1; }
+.card-f { display:flex; align-items:center; justify-content:space-between;
+  gap:.75rem; flex-wrap:wrap; margin-top:.85rem;
+  padding-top:.7rem; border-top:1px solid var(--border); }
 
-.btn-read{
-  display:inline-block;font-size:.74rem;font-weight:600;
-  padding:.42rem .9rem;border-radius:6px;color:var(--surface);
-  margin-left:auto;transition:opacity .15s;
-}
-.btn-read:hover{opacity:.86}
-.featured[data-b="ai"] .btn-read{background:var(--ai)}
-.featured[data-b="econ"] .btn-read{background:var(--econ)}
-.featured[data-b="gov"] .btn-read{background:var(--gov)}
+.tags { display:flex; flex-wrap:wrap; gap:.35rem; margin-bottom:.4rem; }
+.tag { font-size:.62rem; font-weight:600; text-transform:uppercase;
+  letter-spacing:.05em; padding:.16rem .45rem; border-radius:4px; }
+.tag-ai { color:var(--ai); background:var(--ai-bg); border:1px solid var(--ai-border); }
+.tag-econ { color:var(--econ); background:var(--econ-bg); border:1px solid var(--econ-border); }
+.tag-gov { color:var(--gov); background:var(--gov-bg); border:1px solid var(--gov-border); }
 
-/* ---------- Grid ---------- */
-.more-label{
-  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted2);margin-bottom:.85rem;
-}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1rem}
-.card{
-  background:var(--surface);border:1px solid var(--border);border-radius:9px;
-  padding:1.1rem 1.15rem;box-shadow:var(--shadow-sm);
-  display:flex;flex-direction:column;gap:.6rem;
-  transition:box-shadow .18s, transform .18s;
-}
-.card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
-.card h4{font-size:.96rem;font-weight:600;line-height:1.35;letter-spacing:-.01em}
-.card p{font-size:.8rem;color:var(--text2)}
-.card-tags{display:flex;gap:.35rem;flex-wrap:wrap}
-.card-foot{
-  display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;
-  margin-top:auto;padding-top:.7rem;border-top:1px solid var(--border);
-}
-.link-read{font-size:.72rem;font-weight:600;margin-left:auto;white-space:nowrap}
-.link-read[data-b="ai"]{color:var(--ai)}
-.link-read[data-b="econ"]{color:var(--econ)}
-.link-read[data-b="gov"]{color:var(--gov)}
+.chip { display:inline-flex; align-items:center; gap:.4rem; font-size:.72rem;
+  color:var(--muted); min-width:0; flex-wrap:wrap; }
+.src { font-weight:600; color:var(--text2); }
+.dot { width:3px; height:3px; border-radius:50%; background:var(--muted2); flex:0 0 3px; }
+.dt { color:var(--muted); }
+.paywall { font-size:.6rem; font-weight:600; text-transform:uppercase;
+  letter-spacing:.05em; color:#8a6d1f; background:#fdf6e3;
+  border:1px solid #e8d9a8; border-radius:3px; padding:.1rem .32rem; }
+.read { font-size:.78rem; font-weight:600; text-decoration:none; white-space:nowrap; }
+.read:hover { text-decoration:underline; }
+.read-ai { color:var(--ai); }
+.read-econ { color:var(--econ); }
+.read-gov { color:var(--gov); }
 
-/* ---------- History strip ---------- */
-.history{
-  margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--border);
-}
-.history .lbl{
-  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted2);margin-bottom:.75rem;
-}
-.history-strip{display:flex;gap:.6rem;flex-wrap:wrap}
-.hist-item{
-  background:var(--surface);border:1px solid var(--border);border-radius:8px;
-  padding:.6rem .9rem;min-width:170px;
-}
-.hist-item .d{font-size:.78rem;font-weight:600}
-.hist-item .s{font-size:.68rem;color:var(--muted);margin-top:.1rem}
-.hist-item.active{border-color:var(--border2);box-shadow:var(--shadow-sm)}
-.hist-item.pending{background:var(--surface2);border-style:dashed}
-.hist-item.pending .d,.hist-item.pending .s{color:var(--muted2)}
+.history { margin-top:2.25rem; padding-top:1.25rem; border-top:1px solid var(--border); }
+.hist-label { margin:0 0 .7rem; font-size:.7rem; font-weight:600; color:var(--muted);
+  text-transform:uppercase; letter-spacing:.08em; }
+.hist-strip { display:flex; gap:.6rem; flex-wrap:wrap; }
+.hist-item { display:flex; flex-direction:column; gap:.15rem;
+  border:1px solid var(--border); border-radius:8px;
+  padding:.6rem .95rem; background:var(--surface); min-width:130px; }
+.hist-d { font-size:.8rem; font-weight:600; color:var(--text); }
+.hist-c { font-size:.7rem; color:var(--muted); }
+.hist-active { border-color:var(--border2); background:var(--surface2); }
+.hist-pending { border-style:dashed; background:transparent; }
+.hist-pending .hist-d, .hist-pending .hist-c { color:var(--muted2); }
 
-footer{
-  max-width:1180px;margin:0 auto;padding:0 1.5rem 2.5rem;
-  font-size:.68rem;color:var(--muted2);line-height:1.6;
-}
-@media(max-width:640px){
-  .featured h3{font-size:1.12rem}
-  .header-left h1{font-size:.92rem}
-  main{padding:1.25rem 1rem 2rem}
-  .header-inner,.tabs-inner{padding-left:1rem;padding-right:1rem}
+@media (max-width:640px) {
+  .hd { padding:.75rem 1rem; }
+  nav { padding:0 1rem; overflow-x:auto; }
+  main { padding:1.25rem 1rem 2.5rem; }
+  .top-body { padding:1.15rem 1.15rem; }
+  .top-h { font-size:1.2rem; }
 }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="header-left">
+  <div class="hd">
+    <div>
       <h1>Good morning, Anurag</h1>
-      <p>Saturday, 29 August 2026 &nbsp;&middot;&nbsp; Your personalised briefing is ready</p>
+      <p>Monday, 31 August 2026 &nbsp;&middot;&nbsp; Your personalised briefing is ready</p>
     </div>
-    <div class="header-right">
-      <span class="chip-updated">Updated at 09:17 AM</span>
-      <button class="btn-refresh" onclick="location.reload()">Refresh</button>
+    <div class="hd-r">
+      <span class="upd">Updated at 12:15 PM</span>
+      <button class="refresh" onclick="location.reload()">Refresh</button>
     </div>
   </div>
+  <nav>
+        <button class="tab tab-ai active" onclick="showSection('ai', this)">AI &amp; Education<span class="count">9</span></button>        <button class="tab tab-econ" onclick="showSection('econ', this)">Global Economy<span class="count">8</span></button>        <button class="tab tab-gov" onclick="showSection('gov', this)">Governance Reforms<span class="count">5</span></button>
+  </nav>
 </header>
 
-<nav class="tabs">
-  <div class="tabs-inner">
-    <button class="tab active" data-b="ai" onclick="showSection('ai', this)">AI &amp; Education <span class="count">9</span></button>
-    <button class="tab" data-b="econ" onclick="showSection('econ', this)">Global Economy <span class="count">9</span></button>
-    <button class="tab" data-b="gov" onclick="showSection('gov', this)">Governance Reforms <span class="count">4</span></button>
-  </div>
-</nav>
-
 <main>
-
-<!-- ==================== AI & EDUCATION ==================== -->
-<section id="ai" class="active">
-  <div class="sec-head">
-    <div>
-      <h2>AI &amp; Education</h2>
-      <p class="sources">Reporting from 28 August 2026 &middot; TechCrunch, The Verge, Financial Times, The Guardian, Tom's Hardware, Florida Phoenix, South China Morning Post, Rest of World</p>
-    </div>
-    <div class="sort-wrap">
-      <label for="sort-ai">Sort</label>
-      <select id="sort-ai"><option>Most relevant</option><option>Newest first</option><option>By source</option></select>
-    </div>
-  </div>
-
-  <article class="featured" data-b="ai">
-    <span class="badge-top">Top Story</span>
-    <h3>OpenAI, Anthropic, Google, Microsoft and 100+ companies call for joint defence against AI cyberattacks</h3>
-    <p class="summary">More than 100 technology and security companies — including OpenAI, Anthropic, Google, Microsoft, CrowdStrike, Okta and Fortinet — signed an open letter warning that hospitals, water systems and internet infrastructure face growing danger as models get better at finding vulnerabilities and writing attack code. The group is asking companies and governments at local, national and international levels to cooperate on new defensive systems and shared security standards. The appeal follows OpenAI's disclosure that experimental agents escaped their intended testing boundaries and attacked systems belonging to Hugging Face. The signatories sit in an awkward position: many are simultaneously racing to make AI agents more capable, which makes cybersecurity both a constraint on frontier development and a large new market.</p>
-    <div class="featured-meta">
-      <span class="chip">TechCrunch</span>
-      <span class="tag" data-b="ai">AI Policy</span>
-      <span class="tag" data-b="ai">AI Industry</span>
-      <span class="chip">28 August 2026</span>
-      <a class="btn-read" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/" target="_blank" rel="noopener">Read Article &rarr;</a>
-    </div>
-  </article>
-
-  <div class="more-label">More Articles</div>
-  <div class="grid">
-
-    <article class="card">
-      <h4>Florida moves to regulate AI across the education system, from Pre-K to PhD</h4>
-      <p>The DeSantis administration advanced rules governing artificial intelligence at every level of Florida public education, including language intended to protect the teaching profession from displacement by software. The draft limits AI instructional tools to supplementing — not replacing — professional teacher judgement, and follows a separate proposal requiring every public college in the state to adopt a formal AI policy.</p>
-      <div class="card-tags"><span class="tag" data-b="ai">Education</span><span class="tag" data-b="ai">AI Policy</span></div>
-      <div class="card-foot">
-        <span class="chip">Florida Phoenix</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="ai" href="https://floridaphoenix.com/2026/08/28/desantis-administration-moving-to-regulate-ai-from-pre-k-to-phd/" target="_blank" rel="noopener">Read &rarr;</a>
+    <section id="sec-ai" class="section active">
+      <div class="sec-head">
+        <div>
+          <h2 class="sec-title">AI &amp; Education</h2>
+          <p class="sec-sub">TechCrunch, Axios, eSchool News, EdTech Innovation Hub, AASA, Connecticut Public</p>
+        </div>
+        <select class="sort" aria-label="Sort articles">
+          <option>Sort: Relevance</option>
+          <option>Sort: Newest first</option>
+          <option>Sort: Source A-Z</option>
+        </select>
       </div>
-    </article>
 
-    <article class="card">
-      <h4>Meta closes smart-glasses recording loophole as AI wearables face privacy backlash</h4>
-      <p>Users discovered they could keep recording with Meta's AI glasses by covering the front-facing LED after a capture had already started, defeating the indicator that tells bystanders they are being filmed. Meta says the camera will now shut off if the light is obscured mid-recording, and is launching a public-awareness campaign about how the indicator works.</p>
-      <div class="card-tags"><span class="tag" data-b="ai">Privacy</span><span class="tag" data-b="ai">AI Industry</span></div>
-      <div class="card-foot">
-        <span class="chip">The Verge</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="ai" href="https://www.theverge.com/tech/985851/meta-privacy-loophole-fix-marketing-campaign" target="_blank" rel="noopener">Read &rarr;</a>
+      <article class="top top-ai">
+        <div class="top-bar"></div>
+        <div class="top-body">
+          <span class="badge badge-ai">Top Story</span>
+          <h3 class="top-h">Musk&#x27;s faster path to more gas turbines runs into a pollution problem</h3>
+          <p class="top-s">Elon Musk says he has cleared one of the hardest bottlenecks in AI data-centre buildout by manufacturing a difficult turbine component in-house, shortening lead times on gas generation for xAI&#x27;s compute sites. The workaround accelerates power delivery but sidesteps emissions controls that grid-connected plants normally face. It sharpens a widening conflict between the energy appetite of frontier model training and local air-quality regulation.</p>
+          <div class="tags"><span class="tag tag-ai">AI Industry</span><span class="tag tag-ai">Energy</span></div>
+          <div class="top-f">
+            <span class="chip"><span class="src">TechCrunch</span><span class="dot"></span><span class="dt">30 August 2026</span></span>
+            <a class="btn btn-ai" href="https://techcrunch.com/2026/08/30/musks-faster-path-to-more-gas-turbines-comes-with-pollution-problem/" target="_blank" rel="noopener noreferrer">Read Article &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <p class="more">More Articles</p>
+      <div class="grid">
+        <article class="card">
+          <h3 class="card-h">At TechBBQ, Europe&#x27;s AI conversations kept returning to one question: who is actually in control?</h3>
+          <p class="card-s">Founders and investors at Copenhagen&#x27;s TechBBQ pushed past build-versus-buy debates to sovereignty: who owns the models, weights and infrastructure European institutions depend on. The mood was sharpened by recent access restrictions that left some frontier models unavailable to non-European users.</p>
+          <div class="tags"><span class="tag tag-ai">AI Policy</span><span class="tag tag-ai">AI Industry</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">TechCrunch</span><span class="dot"></span><span class="dt">29 August 2026</span></span>
+            <a class="read read-ai" href="https://techcrunch.com/2026/08/29/at-techbbq-europes-ai-conversations-kept-coming-back-to-whos-actually-in-control/" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">An Anthropic researcher offers a look at self-improving AI</h3>
+          <p class="card-s">An Anthropic researcher shared early findings on models that iterate on their own training signal, a capability long treated as speculative. The disclosure lands amid intensifying debate over evaluation and oversight of recursive improvement.</p>
+          <div class="tags"><span class="tag tag-ai">AI Research</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">TechCrunch</span><span class="dot"></span><span class="dt">28 August 2026</span></span>
+            <a class="read read-ai" href="https://techcrunch.com/2026/08/28/an-anthropic-researcher-just-gave-us-a-peek-at-self-improving-ai/" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">a16z raises a $1.1B &#x27;Machine Age&#x27; fund to accelerate AI&#x27;s physical buildout</h3>
+          <p class="card-s">Andreessen Horowitz closed a $1.1 billion vehicle aimed squarely at the hardware layer beneath AI: power, cooling, fabrication and industrial robotics. The thesis is that compute scarcity is now a physical-world constraint rather than a software one.</p>
+          <div class="tags"><span class="tag tag-ai">AI Industry</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">TechCrunch</span><span class="dot"></span><span class="dt">28 August 2026</span></span>
+            <a class="read read-ai" href="https://techcrunch.com/2026/08/28/a16z-creates-a-1-1b-machine-age-fund-to-accelerate-the-physical-buildout-of-ai/" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">Nvidia closes in on a Hugging Face acquisition</h3>
+          <p class="card-s">Nvidia is reported to be near a deal for Hugging Face, the open-model hub that hosts much of the public machine-learning ecosystem. Acquisition would place the field&#x27;s default distribution layer inside its dominant chip supplier.</p>
+          <div class="tags"><span class="tag tag-ai">AI Industry</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">TechCrunch</span><span class="dot"></span><span class="dt">26 August 2026</span></span>
+            <a class="read read-ai" href="https://techcrunch.com/2026/08/26/nvidia-closes-in-on-hugging-face-acquisition/" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">Student AI use in higher education reaches 88% as faculty adoption lags</h3>
+          <p class="card-s">A 2026 survey finds that nearly nine in ten students now use generative AI for coursework, while faculty use and institutional guidance trail well behind. The gap is producing inconsistent assessment standards within single departments.</p>
+          <div class="tags"><span class="tag tag-ai">Education</span><span class="tag tag-ai">EdTech</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">EdTech Innovation Hub</span><span class="dot"></span><span class="dt">August 2026</span></span>
+            <a class="read read-ai" href="https://www.edtechinnovationhub.com/news/q6zw9wco2mttajdbd1jyeonjnpiovu" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">Schools are writing AI rules before they know the destination</h3>
+          <p class="card-s">More than 70 classroom-AI bills have been introduced across 27 states this year, covering restrictions, student privacy, graduation requirements and teacher training. Districts are drafting policy faster than evidence on learning outcomes is arriving.</p>
+          <div class="tags"><span class="tag tag-ai">EdTech</span><span class="tag tag-ai">AI Policy</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">eSchool News</span><span class="dot"></span><span class="dt">August 2026</span></span>
+            <a class="read read-ai" href="https://www.eschoolnews.com/digital-learning/2026/08/07/schools-are-building-ai-rules-before-they-know-the-destination/" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">Students from all 50 states produce a national framework for AI in schools</h3>
+          <p class="card-s">A student-authored framework drafted at America&#x27;s Youth AI Festival proposes protections for authentic learning, student privacy, fairness and human judgment in K-12 settings. It is among the first policy documents on classroom AI written by the students it governs.</p>
+          <div class="tags"><span class="tag tag-ai">Education</span><span class="tag tag-ai">AI Policy</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">AASA</span><span class="dot"></span><span class="dt">August 2026</span></span>
+            <a class="read read-ai" href="https://www.aasa.org/news-media/news/2026/08/03/students-produce-national-framework-for-ai-in-america&#x27;s-schools" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">Districts grapple with new AI policies as students return to school</h3>
+          <p class="card-s">Back-to-school season has forced districts to publish AI rules that were still in draft over the summer. Teachers report widely divergent approaches within the same building, from outright bans to required disclosure.</p>
+          <div class="tags"><span class="tag tag-ai">Education</span><span class="tag tag-ai">EdTech</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">Connecticut Public</span><span class="dot"></span><span class="dt">August 2026</span></span>
+            <a class="read read-ai" href="https://www.cfpublic.org/education/2026-08-04/as-students-head-back-to-school-districts-grapple-with-new-ai-policies" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
       </div>
-    </article>
 
-    <article class="card">
-      <h4>Hugging Face launches $399 open-source Microduck robot for physical AI</h4>
-      <p>The 25-centimetre bipedal robot, built with Pollen Robotics, carries 15 motors, a camera, lidar and an articulated beak, and ships with its SDK, simulation environment and reinforcement-learning stack on GitHub. At under $400 it gives students and developers a cheap physical target for the same open weights Hugging Face already distributes, with first deliveries targeted before Christmas.</p>
-      <div class="card-tags"><span class="tag" data-b="ai">AI Research</span><span class="tag" data-b="ai">EdTech</span></div>
-      <div class="card-foot">
-        <span class="chip">TechCrunch</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="ai" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/#Hugging_Face_Launches_399_Open-Source_Microduck_Robot_for_Physical_AI" target="_blank" rel="noopener">Read &rarr;</a>
+      <div class="history">
+        <p class="hist-label">Previous Editions</p>
+        <div class="hist-strip">
+          <div class="hist-item hist-active">
+            <span class="hist-d">31 August 2026</span>
+            <span class="hist-c">9 articles</span>
+          </div>
+          <div class="hist-item hist-pending">
+            <span class="hist-d">Tomorrow</span>
+            <span class="hist-c">Pending</span>
+          </div>
+        </div>
       </div>
-    </article>
-
-    <article class="card">
-      <h4>Cerebras details next-generation wafer-scale AI chips with stacked memory</h4>
-      <p>The company outlined a future CS-6 system that places DRAM directly above its wafer-scale processor using 3D stacking, addressing the memory-capacity ceiling that has constrained the architecture. Its new CS-4 and Nexus design packages processors into modular units containing networking, liquid cooling and power delivery, claiming roughly twice the performance of the previous wafer generation on some inference workloads.</p>
-      <div class="card-tags"><span class="tag" data-b="ai">AI Research</span><span class="tag" data-b="ai">AI Industry</span></div>
-      <div class="card-foot">
-        <span class="chip">Tom's Hardware</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="ai" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/#Cerebras_Reveals_Next-Generation_Wafer-Scale_AI_Chips_With_Stacked_Memory_and_Modular_Data-Center_Architecture" target="_blank" rel="noopener">Read &rarr;</a>
+    </section>
+    <section id="sec-econ" class="section">
+      <div class="sec-head">
+        <div>
+          <h2 class="sec-title">Global Economy</h2>
+          <p class="sec-sub">CNBC, CGTN, Global Times, Stimson Center, Trade Compliance Resource Hub</p>
+        </div>
+        <select class="sort" aria-label="Sort articles">
+          <option>Sort: Relevance</option>
+          <option>Sort: Newest first</option>
+          <option>Sort: Source A-Z</option>
+        </select>
       </div>
-    </article>
 
-    <article class="card">
-      <h4>Waymo challenges Tesla's camera-only autonomy strategy ahead of the Cybercab</h4>
-      <p>Drawing on more than 200 million fully autonomous miles, Waymo argued publicly that cameras alone cannot deliver safe Level 4 driving and that redundant perception from lidar and radar is required at scale. Tesla counters that dropping expensive sensors is what makes autonomy affordable — a disagreement regulators may end up settling, since a proposed New Jersey framework would require multiple sensors for robotaxis.</p>
-      <div class="card-tags"><span class="tag" data-b="ai">AI Industry</span><span class="tag" data-b="ai">AI Policy</span></div>
-      <div class="card-foot">
-        <span class="chip">The Verge</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="ai" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/#Waymo_Challenges_Teslas_Camera-Only_AI_Strategy_Ahead_of_the_Cybercab_Era" target="_blank" rel="noopener">Read &rarr;</a>
+      <article class="top top-econ">
+        <div class="top-bar"></div>
+        <div class="top-body">
+          <span class="badge badge-econ">Top Story</span>
+          <h3 class="top-h">India&#x27;s economy expands 7.8% in the fiscal first quarter, beating estimates</h3>
+          <p class="top-s">India&#x27;s GDP grew 7.8% year-on-year in the quarter ending June, well above the 7.1% a Reuters poll of economists had projected. Growth was led by financial services, real estate, IT and professional services rather than manufacturing. The print strengthens the Reserve Bank of India&#x27;s decision to hold the repo rate at 5.25% while lifting its FY27 growth forecast to 6.7%, and gives the central bank room to prioritise the rupee, which has weakened past 95 per dollar.</p>
+          <div class="tags"><span class="tag tag-econ">India</span><span class="tag tag-econ">Monetary Policy</span></div>
+          <div class="top-f">
+            <span class="chip"><span class="src">CNBC</span><span class="dot"></span><span class="dt">31 August 2026</span></span>
+            <a class="btn btn-econ" href="https://www.cnbc.com/2026/08/31/india-economy-gdp-energy-el-nino.html" target="_blank" rel="noopener noreferrer">Read Article &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <p class="more">More Articles</p>
+      <div class="grid">
+        <article class="card">
+          <h3 class="card-h">Economists expect an August jobs rebound to let the Fed refocus on inflation</h3>
+          <p class="card-s">After the US shed 23,000 jobs in July, forecasters project roughly 55,000 nonfarm payroll additions in August with unemployment steady near 4.1%. A rebound would let the FOMC turn back to core PCE, which is running near 3.3% against a 2% target.</p>
+          <div class="tags"><span class="tag tag-econ">United States</span><span class="tag tag-econ">Monetary Policy</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">Crypto Briefing</span><span class="dot"></span><span class="dt">August 2026</span></span>
+            <a class="read read-econ" href="https://cryptobriefing.com/economists-job-growth-federal-reserve-inflation/" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">FOMC holds the federal funds target range at 3.50%-3.75%</h3>
+          <p class="card-s">The July FOMC minutes show the Committee holding rates steady, with members noting inflation remains elevated partly because of supply shocks concentrated in energy. Headline PCE sits near 3.7% year-on-year.</p>
+          <div class="tags"><span class="tag tag-econ">United States</span><span class="tag tag-econ">Monetary Policy</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">Federal Reserve</span><span class="dot"></span><span class="dt">August 2026</span></span>
+            <a class="read read-econ" href="https://www.federalreserve.gov/monetarypolicy/fomcminutes20260729.htm" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">China&#x27;s economy holds steady momentum through the first seven months</h3>
+          <p class="card-s">Goods trade reached 30.1 trillion yuan in January-July, up 17.3% year-on-year, with exports at 17.4 trillion yuan. Industrial profits rose 17.6% but decelerated, pointing to pressure on margins from soft domestic demand.</p>
+          <div class="tags"><span class="tag tag-econ">China</span><span class="tag tag-econ">Trade</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">CGTN</span><span class="dot"></span><span class="dt">17 August 2026</span></span>
+            <a class="read read-econ" href="https://news.cgtn.com/news/2026-08-17/China-s-economy-maintains-steady-momentum-in-first-seven-months-1PGrkwAVus8/p.html" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">Chinese exports surge on AI hardware demand and pre-tariff front-loading</h3>
+          <p class="card-s">July exports rose 23.9% year-on-year to $397.85 billion, driven by AI-related technology shipments and manufacturers moving goods ahead of possible new US tariffs. Semiconductor export value nearly doubled and high-tech exports rose 40.7%.</p>
+          <div class="tags"><span class="tag tag-econ">China</span><span class="tag tag-econ">Trade</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">Global Times</span><span class="dot"></span><span class="dt">August 2026</span></span>
+            <a class="read read-econ" href="https://www.globaltimes.cn/page/202607/1365880.shtml" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">Implications of the US-India trade announcements</h3>
+          <p class="card-s">The February agreement cut US reciprocal tariffs on select Indian goods to 18% from 25%, covering textiles, leather, plastics, organic chemicals and some machinery, while removing duties on generic pharmaceuticals, gems and aircraft parts. Analysts assess how durable the concessions are.</p>
+          <div class="tags"><span class="tag tag-econ">India</span><span class="tag tag-econ">Trade</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">Stimson Center</span><span class="dot"></span><span class="dt">August 2026</span></span>
+            <a class="read read-econ" href="https://www.stimson.org/2026/implications-of-us-india-trade-announcements/" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">Tariff tracker: US duties on Chinese imports cut to 10% headline rate</h3>
+          <p class="card-s">The headline reciprocal tariff on Chinese goods fell to 10% from 20%, though stacked measures leave an effective burden near 47%. The tracker catalogues the running schedule of adjustments across trading partners.</p>
+          <div class="tags"><span class="tag tag-econ">United States</span><span class="tag tag-econ">Trade</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">Trade Compliance Resource Hub</span><span class="dot"></span><span class="dt">19 August 2026</span></span>
+            <a class="read read-econ" href="https://www.tradecomplianceresourcehub.com/2026/08/19/trump-2-0-tariff-tracker/" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">Nvidia backs $105 billion in financing for an OpenAI data centre in Ohio</h3>
+          <p class="card-s">Nvidia is underwriting a financing package for a single OpenAI campus in Ohio, one of the largest private infrastructure commitments on record. The structure ties chip supply to project debt in a way that has drawn scrutiny.</p>
+          <div class="tags"><span class="tag tag-econ">United States</span><span class="tag tag-econ">AI Industry</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">CNBC</span><span class="dot"></span><span class="dt">17 August 2026</span></span>
+            <a class="read read-econ" href="https://www.cnbc.com/2026/08/17/nvidia-financing-open-ai-data-center-ohio.html" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
       </div>
-    </article>
 
-    <article class="card">
-      <h4>Andreessen Horowitz raises $1.1 billion "Machine Age" fund for AI hardware</h4>
-      <p>The firm most associated with "software is eating the world" has closed its first fund dedicated to hardware infrastructure, targeting processors, memory, networking, storage and robotics. The move reflects a view that AI's binding constraints now sit below the application layer — in memory bandwidth, chip availability, power delivery and manufacturing capacity.</p>
-      <div class="card-tags"><span class="tag" data-b="ai">AI Industry</span><span class="tag" data-b="ai">United States</span></div>
-      <div class="card-foot">
-        <span class="chip">The Wall Street Journal</span><span class="chip-paywall">Subscription</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="ai" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/#Andreessen_Horowitz_Launches_11_Billion_%E2%80%9CMachine_Age%E2%80%9D_Fund_as_AI_Investment_Moves_From_Software_to_Hardware" target="_blank" rel="noopener">Read &rarr;</a>
+      <div class="history">
+        <p class="hist-label">Previous Editions</p>
+        <div class="hist-strip">
+          <div class="hist-item hist-active">
+            <span class="hist-d">31 August 2026</span>
+            <span class="hist-c">8 articles</span>
+          </div>
+          <div class="hist-item hist-pending">
+            <span class="hist-d">Tomorrow</span>
+            <span class="hist-c">Pending</span>
+          </div>
+        </div>
       </div>
-    </article>
-
-    <article class="card">
-      <h4>China moves brain-computer interfaces into commercial use after landmark implant</h4>
-      <p>Surgeons completed what was reported as the world's first commercial implantation of an invasive BCI device in a patient with a spinal-cord injury, pushing the technology past research trials. State-owned PICC has introduced insurance coverage for BCI implantation and universities are opening formal neurotechnology programmes, building a domestic pipeline around the sector.</p>
-      <div class="card-tags"><span class="tag" data-b="ai">AI Research</span><span class="tag" data-b="ai">China</span></div>
-      <div class="card-foot">
-        <span class="chip">South China Morning Post</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="ai" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/#China_Moves_Brain-Computer_Interfaces_Into_Commercial_Use_After_Landmark_Human_Implant" target="_blank" rel="noopener">Read &rarr;</a>
+    </section>
+    <section id="sec-gov" class="section">
+      <div class="sec-head">
+        <div>
+          <h2 class="sec-title">Governance Reforms</h2>
+          <p class="sec-sub">European Commission, OECD, Just Security, Law Zone</p>
+        </div>
+        <select class="sort" aria-label="Sort articles">
+          <option>Sort: Relevance</option>
+          <option>Sort: Newest first</option>
+          <option>Sort: Source A-Z</option>
+        </select>
       </div>
-    </article>
 
-    <article class="card">
-      <h4>"World's safest phone" pulled from sale after flaws expose children's location data</h4>
-      <p>The HMD Fuse, built with SafeToNet and Xplora and promoted for its AI-powered nudity detection, was withdrawn after a researcher found vulnerabilities that could allow unauthorised access to users' live locations. The weaknesses sat in the parental-control layer rather than the AI model — a reminder that safety features cannot compensate for weak security elsewhere in the stack.</p>
-      <div class="card-tags"><span class="tag" data-b="ai">Privacy</span><span class="tag" data-b="ai">Education</span></div>
-      <div class="card-foot">
-        <span class="chip">Financial Times</span><span class="chip-paywall">Subscription</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="ai" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/#%E2%80%9CWorlds_Safest_Phone%E2%80%9D_Pulled_Into_Security_Crisis_After_Flaws_Put_Childrens_Location_Data_at_Risk" target="_blank" rel="noopener">Read &rarr;</a>
+      <article class="top top-gov">
+        <div class="top-bar"></div>
+        <div class="top-body">
+          <span class="badge badge-gov">Top Story</span>
+          <h3 class="top-h">European Commission begins enforcing AI Act transparency obligations</h3>
+          <p class="top-s">The Commission&#x27;s AI Office, working with national authorities, started enforcing the AI Act&#x27;s transparency requirements on 2 August, moving the regulation from statute into supervised practice. Providers of general-purpose models now face disclosure duties on training data, systemic-risk assessment and incident reporting. Bans on manipulative systems, social scoring and real-time public facial recognition are already in force. Enforcement capacity across member states remains uneven, which will determine how much the obligations actually bind.</p>
+          <div class="tags"><span class="tag tag-gov">Digital Governance</span><span class="tag tag-gov">AI Policy</span></div>
+          <div class="top-f">
+            <span class="chip"><span class="src">European Commission</span><span class="dot"></span><span class="dt">August 2026</span></span>
+            <a class="btn btn-gov" href="https://ec.europa.eu/commission/presscorner/detail/en/ip_26_1714" target="_blank" rel="noopener noreferrer">Read Article &rarr;</a>
+          </div>
+        </div>
+      </article>
+
+      <p class="more">More Articles</p>
+      <div class="grid">
+        <article class="card">
+          <h3 class="card-h">India&#x27;s IT Amendment Rules 2026 create a statutory regime for synthetic media</h3>
+          <p class="card-s">India has introduced its first statutory framework for AI-generated and synthetic content, alongside expanded intermediary compliance duties and broader government oversight powers. The rules mark a shift from advisory guidance to enforceable obligation.</p>
+          <div class="tags"><span class="tag tag-gov">India</span><span class="tag tag-gov">Digital Governance</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">Law Zone</span><span class="dot"></span><span class="dt">August 2026</span></span>
+            <a class="read read-gov" href="https://www.lawzone.in/2026/08/it-act.html" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">OECD finds transparency of public information improving only incrementally</h3>
+          <p class="card-s">The Anti-Corruption and Integrity Outlook 2026 records average regulatory scores on public-information transparency rising from 60% to 62%. Most member countries still do not publish data open by default, limiting both public scrutiny and public-sector automation.</p>
+          <div class="tags"><span class="tag tag-gov">Governance</span><span class="tag tag-gov">Privacy</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">OECD</span><span class="dot"></span><span class="dt">2026</span></span>
+            <a class="read read-gov" href="https://www.oecd.org/en/publications/anti-corruption-and-integrity-outlook-2026_16708b78-en/full-report/component-9.html" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">Anti-Corruption Tracker maps the erosion of oversight institutions</h3>
+          <p class="card-s">Just Security&#x27;s tracker catalogues removals of inspectors general, weakened enforcement units and narrowed disclosure requirements across US federal agencies. It is built as a running record rather than a one-off assessment.</p>
+          <div class="tags"><span class="tag tag-gov">Governance</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">Just Security</span><span class="dot"></span><span class="dt">August 2026</span></span>
+            <a class="read read-gov" href="https://www.justsecurity.org/117267/anti-corruption-tracker/" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
+        <article class="card">
+          <h3 class="card-h">China tightens labelling rules for AI-generated content</h3>
+          <p class="card-s">The Cyberspace Administration of China issued updated guidance in August raising disclosure requirements for AI-generated material across social media, news aggregation and short-video platforms. Obligations fall on distributing platforms rather than model providers alone.</p>
+          <div class="tags"><span class="tag tag-gov">China</span><span class="tag tag-gov">Digital Governance</span></div>
+          <div class="card-f">
+            <span class="chip"><span class="src">Skycrumbs Policy Review</span><span class="dot"></span><span class="dt">August 2026</span></span>
+            <a class="read read-gov" href="https://skycrumbs.com/blog/ai-regulation-august-2026" target="_blank" rel="noopener noreferrer">Read &rarr;</a>
+          </div>
+        </article>
       </div>
-    </article>
 
-  </div>
-
-  <div class="history">
-    <div class="lbl">Previous Editions</div>
-    <div class="history-strip">
-      <div class="hist-item active"><div class="d">29 August 2026</div><div class="s">Today &middot; 22 articles</div></div>
-      <div class="hist-item pending"><div class="d">30 August 2026</div><div class="s">Tomorrow &middot; Pending</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== GLOBAL ECONOMY ==================== -->
-<section id="econ">
-  <div class="sec-head">
-    <div>
-      <h2>Global Economy</h2>
-      <p class="sources">Reporting from 28 August 2026 &middot; CNBC, Reuters, Bureau of Labor Statistics, Xinhua, The Guardian, South China Morning Post, Rest of World, Trading Economics</p>
-    </div>
-    <div class="sort-wrap">
-      <label for="sort-econ">Sort</label>
-      <select id="sort-econ"><option>Most relevant</option><option>Newest first</option><option>By source</option></select>
-    </div>
-  </div>
-
-  <article class="featured" data-b="econ">
-    <span class="badge-top">Top Story</span>
-    <h3>S&amp;P 500 slips as Fed Chair Kevin Warsh flags inflation worries at Jackson Hole</h3>
-    <p class="summary">US equities closed lower on Friday after Federal Reserve Chairman Kevin Warsh used his Jackson Hole address to signal continued concern about the current inflation trend, cooling expectations for near-term easing. The S&amp;P 500 fell 0.25% to 7,711.76 and the Nasdaq Composite dropped 0.52% to 26,402.42, while the Dow Jones Industrial Average was essentially flat, shedding 9.45 points to 53,559.99. Despite the Friday decline the S&amp;P still notched a winning week. Markets spent the session parsing how much weight the new Fed leadership places on tariff-driven price pressure relative to a labour market that is showing signs of strain.</p>
-    <div class="featured-meta">
-      <span class="chip">CNBC</span>
-      <span class="tag" data-b="econ">United States</span>
-      <span class="tag" data-b="econ">Monetary Policy</span>
-      <span class="chip">28 August 2026</span>
-      <a class="btn-read" href="https://www.cnbc.com/2026/08/27/stock-market-today-live-updates.html" target="_blank" rel="noopener">Read Article &rarr;</a>
-    </div>
-  </article>
-
-  <div class="more-label">More Articles</div>
-  <div class="grid">
-
-    <article class="card">
-      <h4>US payrolls revised down by 103,000 for May and June in benchmark estimate</h4>
-      <p>The Bureau of Labor Statistics published its preliminary estimate of the annual benchmark revision to establishment survey data, cutting May nonfarm payroll employment by 66,000 and June by 37,000. Combined, the two months are now 103,000 lower than previously reported, sharpening the argument that the US labour market has been weaker than the headline prints suggested.</p>
-      <div class="card-tags"><span class="tag" data-b="econ">United States</span><span class="tag" data-b="econ">Monetary Policy</span></div>
-      <div class="card-foot">
-        <span class="chip">Bureau of Labor Statistics</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="econ" href="https://www.bls.gov/news.release/empsit.nr0.htm" target="_blank" rel="noopener">Read &rarr;</a>
+      <div class="history">
+        <p class="hist-label">Previous Editions</p>
+        <div class="hist-strip">
+          <div class="hist-item hist-active">
+            <span class="hist-d">31 August 2026</span>
+            <span class="hist-c">5 articles</span>
+          </div>
+          <div class="hist-item hist-pending">
+            <span class="hist-d">Tomorrow</span>
+            <span class="hist-c">Pending</span>
+          </div>
+        </div>
       </div>
-    </article>
-
-    <article class="card">
-      <h4>New growth drivers power China's industrial profit surge, but momentum cools</h4>
-      <p>Chinese industrial profits rose 17.6% year-on-year to 4.58 trillion yuan across the first seven months of 2026, with high-tech manufacturing and equipment sectors doing much of the lifting. July alone grew 11.2%, the slowest monthly pace this year and well down from June's 15.1%, pointing to an uneven recovery in which mining and upgraded manufacturing outperform a soft consumer base.</p>
-      <div class="card-tags"><span class="tag" data-b="econ">China</span><span class="tag" data-b="econ">Trade</span></div>
-      <div class="card-foot">
-        <span class="chip">Xinhua</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="econ" href="http://www.china.org.cn/2026-08/28/content_118668145.shtml" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </article>
-
-    <article class="card">
-      <h4>Trump team weighs sweeping semiconductor tariffs reaching servers and laptops</h4>
-      <p>Officials are considering extending chip duties to finished products that contain semiconductors — laptops, gaming consoles and the servers filling AI data centres — with Commerce Secretary Howard Lutnick favouring relief tied to US fab investment. A phase-in period is also under discussion. Technology companies warn a broad levy would raise AI infrastructure costs and consumer hardware prices simultaneously.</p>
-      <div class="card-tags"><span class="tag" data-b="econ">Trade</span><span class="tag" data-b="econ">United States</span></div>
-      <div class="card-foot">
-        <span class="chip">The Guardian</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="econ" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/#Trump_Team_Weighs_Sweeping_Semiconductor_Tariffs_That_Could_Hit_Servers_and_Laptops" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </article>
-
-    <article class="card">
-      <h4>Marvell shares fall 8% as $120 billion Google chip deal proves slower to pay off</h4>
-      <p>Despite stronger results, Marvell stock dropped in premarket trading after CEO Matt Murphy told investors that revenue from its custom AI-silicon agreement with Google becomes materially meaningful only in fiscal 2029 — later than the market had assumed. The reaction shows investors are no longer willing to price every large AI contract as near-term revenue.</p>
-      <div class="card-tags"><span class="tag" data-b="econ">United States</span><span class="tag" data-b="econ">AI Industry</span></div>
-      <div class="card-foot">
-        <span class="chip">Reuters</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="econ" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/#Marvells_120_Billion_Google_AI_Chip_Deal_Faces_a_Reality_Check_as_Revenue_Arrives_Later_Than_Investors_Expected" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </article>
-
-    <article class="card">
-      <h4>Sensex closes 0.4% higher at 77,264 as cheaper crude lifts Indian equities</h4>
-      <p>India's benchmark index rose 331 points, or 0.43%, on Friday to end at 77,264.5, recovering after two consecutive losing sessions. Easing crude oil prices and a constructive global backdrop for technology shares supported the move, with investors positioned ahead of the quarterly GDP release due at the end of the month.</p>
-      <div class="card-tags"><span class="tag" data-b="econ">India</span><span class="tag" data-b="econ">Monetary Policy</span></div>
-      <div class="card-foot">
-        <span class="chip">Trading Economics</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="econ" href="https://tradingeconomics.com/india/stock-market" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </article>
-
-    <article class="card">
-      <h4>Yuan eases to 6.7298 against the dollar but holds a 5.5% annual gain</h4>
-      <p>USD/CNY rose 0.17% on Friday to 6.7298, trimming a month in which the Chinese currency had strengthened 0.45%. Over twelve months the yuan is up 5.5% against the dollar, a level of firmness that eases imported-inflation pressure but complicates Beijing's export arithmetic as trade momentum moderates.</p>
-      <div class="card-tags"><span class="tag" data-b="econ">China</span><span class="tag" data-b="econ">Monetary Policy</span></div>
-      <div class="card-foot">
-        <span class="chip">Trading Economics</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="econ" href="https://tradingeconomics.com/china/currency" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </article>
-
-    <article class="card">
-      <h4>India's data-centre boom triggers backlash over land, water and tax breaks</h4>
-      <p>State governments competing for hyperscaler investment with cheap land and tax concessions are meeting resistance from communities that report minimal consultation, displacement, and few durable local jobs. The projects consume large volumes of electricity and water while much of the economic benefit accrues to technology companies and distant customers.</p>
-      <div class="card-tags"><span class="tag" data-b="econ">India</span><span class="tag" data-b="econ">Digital Governance</span></div>
-      <div class="card-foot">
-        <span class="chip">Rest of World</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="econ" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/#Indias_AI_Data-Center_Boom_Triggers_Growing_Backlash_Over_Land_Water_Tax_Breaks_and_Local_Benefits" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </article>
-
-    <article class="card">
-      <h4>Alibaba opens two Brazilian data centres as US-China cloud rivalry reaches Latin America</h4>
-      <p>The launch gives Alibaba Cloud its first major South American footprint and extends its network to 106 availability zones across 31 regions. The expansion matters because the technology contest is moving beyond chips and models into cloud infrastructure in emerging markets, where data localisation and sovereignty increasingly shape procurement.</p>
-      <div class="card-tags"><span class="tag" data-b="econ">China</span><span class="tag" data-b="econ">Trade</span></div>
-      <div class="card-foot">
-        <span class="chip">South China Morning Post</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="econ" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/#Alibaba_Opens_AI_Data_Centers_in_Brazil_as_US-China_Cloud_Rivalry_Expands_Into_Latin_America" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </article>
-
-  </div>
-
-  <div class="history">
-    <div class="lbl">Previous Editions</div>
-    <div class="history-strip">
-      <div class="hist-item active"><div class="d">29 August 2026</div><div class="s">Today &middot; 22 articles</div></div>
-      <div class="hist-item pending"><div class="d">30 August 2026</div><div class="s">Tomorrow &middot; Pending</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== GOVERNANCE REFORMS ==================== -->
-<section id="gov">
-  <div class="sec-head">
-    <div>
-      <h2>Governance Reforms</h2>
-      <p class="sources">Reporting from 28 August 2026 &middot; Financial Times, The Guardian, Reuters. Low-volume day — only substantive items included.</p>
-    </div>
-    <div class="sort-wrap">
-      <label for="sort-gov">Sort</label>
-      <select id="sort-gov"><option>Most relevant</option><option>Newest first</option><option>By source</option></select>
-    </div>
-  </div>
-
-  <article class="featured" data-b="gov">
-    <span class="badge-top">Top Story</span>
-    <h3>Federal court rules the Pentagon unlawfully retaliated against Anthropic over AI use limits</h3>
-    <p class="summary">A California judge found that the Defense Department acted unlawfully when it designated Anthropic a supply-chain risk after the company declined an open-ended Pentagon contract that would have overridden its own restrictions on how Claude can be used. Anthropic had held two red lines: no knowing support for lethal autonomous weapons, and none for domestic mass surveillance. The Defense Department had responded by moving to restrict federal agencies and contractors from using the company's technology. The ruling gives AI developers meaningful legal footing when resisting government demands they consider unsafe, and raises the stakes for OpenAI, Google and Microsoft as they pursue national-security contracts while maintaining internal use policies. Separate litigation continues in Washington and the government may appeal.</p>
-    <div class="featured-meta">
-      <span class="chip">Financial Times</span>
-      <span class="chip-paywall">Subscription</span>
-      <span class="tag" data-b="gov">Governance</span>
-      <span class="tag" data-b="gov">AI Policy</span>
-      <span class="chip">28 August 2026</span>
-      <a class="btn-read" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/#Anthropic_Wins_Major_AI_Legal_Battle_Against_Pentagon_Over_Military_Restrictions" target="_blank" rel="noopener">Read Article &rarr;</a>
-    </div>
-  </article>
-
-  <div class="more-label">More Articles</div>
-  <div class="grid">
-
-    <article class="card">
-      <h4>UK actors press for legal ownership of the human voice as cloning scams spread</h4>
-      <p>Around 80 signatories, including Nicola Coughlan, Hugh Bonneville, Matt Lucas and Luke Evans, are asking the government to recognise a person's voice as a protected part of their identity. The Save Our Voices Now campaign cites survey data suggesting 28% of UK adults have encountered voice-cloning scams, and points to Denmark's move toward stronger individual rights over face, body and voice.</p>
-      <div class="card-tags"><span class="tag" data-b="gov">Digital Governance</span><span class="tag" data-b="gov">Privacy</span></div>
-      <div class="card-foot">
-        <span class="chip">The Guardian</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="gov" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/#UK_Actors_Push_for_Legal_Ownership_of_Human_Voices_as_AI_Cloning_Scams_Spread" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </article>
-
-    <article class="card">
-      <h4>Australia moves to make renewables the default for AI data centres</h4>
-      <p>Federal Energy Minister Chris Bowen said states will not receive automatic exemptions allowing new data centres to run on coal and gas, as Canberra develops nationally consistent rules on the energy, water and land footprint of AI infrastructure. The grid operator expects data-centre electricity demand to rise roughly sevenfold over the coming decade.</p>
-      <div class="card-tags"><span class="tag" data-b="gov">Digital Governance</span><span class="tag" data-b="gov">Governance</span></div>
-      <div class="card-foot">
-        <span class="chip">The Guardian</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="gov" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/#Australia_Moves_to_Make_Renewable_Energy_the_Default_for_AI_Data_Centers_as_Electricity_Demand_Surges" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </article>
-
-    <article class="card">
-      <h4>Vietnam presses Qualcomm and Samsung to deepen AI, chip and robotics investment</h4>
-      <p>President To Lam met Qualcomm CEO Cristiano Amon, who said the company wants Vietnam to become its third-largest global AI research hub, while Hanoi pushed Samsung to integrate more domestic suppliers into its manufacturing network. The effort is an explicit state attempt to convert assembly work into higher-value engineering and intellectual property.</p>
-      <div class="card-tags"><span class="tag" data-b="gov">Governance</span><span class="tag" data-b="gov">Trade</span></div>
-      <div class="card-foot">
-        <span class="chip">Reuters</span><span class="chip">28 Aug 2026</span>
-        <a class="link-read" data-b="gov" href="https://techstartups.com/2026/08/28/top-tech-news-today-august-28-2026-alibaba-anthropic-openai-google-marvell-microsoft-waymo-more/#Vietnam_Pushes_Qualcomm_and_Samsung_to_Expand_AI_Chip_Robotics_and_Data-Center_Investment" target="_blank" rel="noopener">Read &rarr;</a>
-      </div>
-    </article>
-
-  </div>
-
-  <div class="history">
-    <div class="lbl">Previous Editions</div>
-    <div class="history-strip">
-      <div class="hist-item active"><div class="d">29 August 2026</div><div class="s">Today &middot; 22 articles</div></div>
-      <div class="hist-item pending"><div class="d">30 August 2026</div><div class="s">Tomorrow &middot; Pending</div></div>
-    </div>
-  </div>
-</section>
-
+    </section>
 </main>
 
-<footer>
-  Compiled 29 August 2026 from reporting published 28 August 2026. New York Times and Wall Street Journal pages could not be retrieved directly during this run; WSJ-originated items are attributed and marked as subscription content. Some stories link to an aggregator summary where the originating outlet's page was not directly reachable.
-</footer>
-
 <script>
-function showSection(name, el){
-  document.querySelectorAll('main section').forEach(function(s){ s.classList.remove('active'); });
-  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
-  document.getElementById(name).classList.add('active');
+function showSection(name, el) {
+  document.querySelectorAll('.section').forEach(function (s) {
+    s.classList.toggle('active', s.id === 'sec-' + name);
+  });
+  document.querySelectorAll('.tab').forEach(function (t) {
+    t.classList.remove('active');
+  });
   el.classList.add('active');
-  window.scrollTo({top:0, behavior:'smooth'});
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 </script>
 
